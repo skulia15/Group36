@@ -15,13 +15,17 @@ struct scientists{
     int yearOfDeath;
 };
 
+void callDefaultMenu();
+
+void inputInfo();
+
 int main()
 { 
     vector<scientists> subject;
 
-    subject.push_back(scientists());
+    subject.push_back(scientists()); //default constructor
 
-    cout << "hello";
+    //callDefaultMenu();
 
     /*person1.inputName();
     person1.inputSex();
@@ -32,3 +36,42 @@ int main()
     return 0;
 }
 
+void callDefaultMenu(){
+        char a;
+        bool loop = true;
+
+        while(loop == true)
+        {
+            cout << "Press 1 to add a person" << endl;
+            cout << "Press 2 to print all persons" << endl;
+            cout << "Press 3 to search" << endl;
+            cout << "Press 4 to quit" << endl;
+
+            cin >> a;
+
+            switch(a)
+            {
+            case '1':
+                 //input();
+                 break;
+            case '2':
+                //print();
+                break;
+            case '3':
+               //search();
+               break;
+             case '4':
+                cout << "Quitting." << endl;
+                loop = false;
+                break;
+             default:
+                cout << "Error in command, try again." << endl;
+                callDefaultMenu();
+                break;
+            }
+        }
+}
+
+void inputInfo(){
+
+}
