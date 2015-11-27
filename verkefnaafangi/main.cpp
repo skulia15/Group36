@@ -44,6 +44,41 @@ void callDefaultMenu(vector<scientists>& subject){
 
     while(loop == true)
     {
+<<<<<<< HEAD
+
+
+            cout << "-----------Menu-----------"<<endl;
+            cout <<endl;
+            cout << " Please select a option  "<<endl;
+            cout << " 1 to add a person" << endl;
+            cout << " 2 to print all persons" << endl;
+            cout << " 3 to search" << endl;
+            cout << " 4 to quit" << endl;
+            cout <<endl;
+            cout << "--------------------------"<<endl;
+            cin >> a;
+
+            switch(a)
+            {
+            case '1':
+                 inputInfo(vector<scientists> subject);
+                 break;
+            case '2':
+                //print();
+                break;
+            case '3':
+               //search();
+               break;
+             case '4':
+                cout << "Quitting." << endl;
+                loop = false;
+                break;
+             default:
+                cout << "Error in command, try again." << endl;
+                break;
+            }
+
+=======
         cout << "-----------Menu-----------"<<endl;
         cout << endl;
         cout << " Please select a option  "<<endl;
@@ -72,6 +107,7 @@ void callDefaultMenu(vector<scientists>& subject){
          default:
             cout << "Error in command, try again." << endl << endl;
             break;
+>>>>>>> 000032f653c06896e69b029878402984dba2c022
         }
      }
 }
