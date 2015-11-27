@@ -33,13 +33,6 @@ int main()
 
     callDefaultMenu();
 
-
-
-    /*person1.inputName();
-    person1.inputSex();
-    person1.inputYoB();
-    person1.inputYoD();*/
-
     return 0;
 }
 
@@ -49,47 +42,43 @@ void callDefaultMenu(){
 
     while(loop == true)
     {
+        cout << "-----------Menu-----------"<<endl;
+        cout <<endl;
+        cout << " Please select a option  "<<endl;
+        cout << " 1 to add a person" << endl;
+        cout << " 2 to print all persons" << endl;
+        cout << " 3 to search" << endl;
+        cout << " 4 to quit" << endl;
+        cout <<endl;
+        cout << "--------------------------"<<endl;
+        cin >> a;
 
-
-            cout << "-----------Menu-----------"<<endl;
-            cout <<endl;
-            cout << " Please select a option  "<<endl;
-            cout << " 1 to add a person" << endl;
-            cout << " 2 to print all persons" << endl;
-            cout << " 3 to search" << endl;
-            cout << " 4 to quit" << endl;
-            cout <<endl;
-            cout << "--------------------------"<<endl;
-            cin >> a;
-
-            switch(a)
-            {
-            case '1':
-                 //input();
-                 break;
-            case '2':
-                //print();
-                break;
-            case '3':
-               //search();
-               break;
-             case '4':
-                cout << "Quitting." << endl;
-                loop = false;
-                break;
-             default:
-                cout << "Error in command, try again." << endl;
-                break;
-            }
-
+        switch(a)
+        {
+        case '1':
+             //input();
+             break;
+        case '2':
+            //print();
+            break;
+        case '3':
+           //search();
+           break;
+         case '4':
+            cout << "Quitting." << endl;
+            loop = false;
+            break;
+         default:
+            cout << "Error in command, try again." << endl;
+            break;
         }
-    }
 
+     }
+}
 
 void inputInfo(vector<scientists>& subject){
     scientists scientist1;
     char answer = 0;
-    char sex;
 
     cout << "Person's name: ";
     cin >> scientist1.firstName;
@@ -97,15 +86,9 @@ void inputInfo(vector<scientists>& subject){
     cin >> scientist1.lastName;
     cout << endl;
 
-    while(sex != 'm' || sex != 'f'){
     cout << "Sex: (m/f)";
     cin >> scientist1.personSex;
-    sex = scientist1.personSex;
-        if (scientist1.personSex != 'm' || scientist1.personSex != 'f'){
-            cout << "Enter m for male or f for female";
-    }
     cout << endl;
-    }
 
     cout << "Year of Birth: ";
     cin >> scientist1.yearOfBirth;
