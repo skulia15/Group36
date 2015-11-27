@@ -44,7 +44,6 @@ void callDefaultMenu(vector<scientists>& subject){
 
     while(loop == true)
     {
-<<<<<<< HEAD
 
 
             cout << "-----------Menu-----------"<<endl;
@@ -58,10 +57,9 @@ void callDefaultMenu(vector<scientists>& subject){
             cout << "--------------------------"<<endl;
             cin >> a;
 
-            switch(a)
-            {
+            switch(a){
             case '1':
-                 inputInfo(vector<scientists> subject);
+                 inputInfo(subject);
                  break;
             case '2':
                 //print();
@@ -78,7 +76,7 @@ void callDefaultMenu(vector<scientists>& subject){
                 break;
             }
 
-=======
+
         cout << "-----------Menu-----------"<<endl;
         cout << endl;
         cout << " Please select a option  "<<endl;
@@ -107,7 +105,6 @@ void callDefaultMenu(vector<scientists>& subject){
          default:
             cout << "Error in command, try again." << endl << endl;
             break;
->>>>>>> 000032f653c06896e69b029878402984dba2c022
         }
      }
 }
