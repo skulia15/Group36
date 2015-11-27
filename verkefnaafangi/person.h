@@ -11,11 +11,15 @@ class person{
 
 public:
     person();
+    void inputName();
+    void inputSex();
+    void inputYoB();
+    void inputYoD();
 private:
     string firstName;
     string middleName;
     string lastName;
-    char sex;
+    char personSex;
     int yearOfBirth;
     int yearOfDeath;
 };
