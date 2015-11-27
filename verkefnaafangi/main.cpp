@@ -21,6 +21,12 @@ void inputInfo();
 
 int main()
 { 
+    //ToDo list
+    //Be able to enter info into the struct and push it back into the vector
+    //Save the info into a file.
+    //print the info inside the file
+    //print options f.ex alphabetical order
+    //implement a search function
     vector<scientists> subject;
 
     subject.push_back(scientists()); //default constructor
@@ -31,7 +37,6 @@ int main()
     person1.inputSex();
     person1.inputYoB();
     person1.inputYoD();*/
-
 
     return 0;
 }
