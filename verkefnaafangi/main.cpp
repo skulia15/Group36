@@ -64,7 +64,7 @@ void callDefaultMenu(){
             switch(a)
             {
             case '1':
-                 //input();
+                 inputInfo(vector<scientists> subject);
                  break;
             case '2':
                 //print();
