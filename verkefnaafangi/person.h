@@ -1,3 +1,6 @@
+//gætum þurft að nota seinna, þori ekki að henda
+
+
 #ifndef PERSON_H
 #define PERSON_H
 #include <iostream>

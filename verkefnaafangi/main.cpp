@@ -1,18 +1,33 @@
-#include <person.h>
+#include <iostream>
+#include <algorithm>
+#include <string>
+#include <cstdlib>
+#include <vector>
 
 using namespace std;
 
-int main()
-{
-    person person1;
+struct scientists{
+    string firstName;
+    string middleName;
+    string lastName;
+    char personSex;
+    int yearOfBirth;
+    int yearOfDeath;
+};
 
-    cout << "Enter your persons info." << endl;
-    person1.inputName();
+int main()
+{ 
+    vector<scientists> subject;
+
+    subject.push_back(scientists());
+
+    cout << "hello";
+
+    /*person1.inputName();
     person1.inputSex();
     person1.inputYoB();
-    person1.inputYoD();
+    person1.inputYoD();*/
 
-    cout << "Saelir" << endl;
 
     return 0;
 }

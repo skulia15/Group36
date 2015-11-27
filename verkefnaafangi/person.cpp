@@ -1,4 +1,6 @@
-#include "person.h"
+//þori ekki að henda, gæðum þurft að nota seinna
+
+/*#include "person.h"
 
 person::person()
 {
@@ -35,3 +37,4 @@ void person::inputYoD(){
     cout << endl;
 
 }
+*/
