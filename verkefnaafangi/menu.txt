@@ -1,0 +1,40 @@
+void menu()
+{
+    int a;
+    
+    while(true)
+    {
+        cout << "Press 1 to add a person" << endl;
+        cout << "Press 2 to print all persons" << endl;
+        cout << "Press 3 to search" << endl;
+        cout << "Press 4 to quit" << endl;
+            
+        cin >> a;
+        
+        switch(a)
+        {
+            case 1:
+            {
+		input();
+	    }
+	    break;
+
+            case 2:
+            {
+		print();
+	    }
+	    break;
+
+            case 3:
+            {
+		search();
+	    }
+	    break;
+
+            case 4:
+	    {
+	    
+	    }
+        }
+    }
+}
