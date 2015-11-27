@@ -91,9 +91,9 @@ void inputInfo(vector<scientists>& subject){
             cout << "Enter the info for the next person: " << endl;
         }
 
-        cout << "Person's name: ";
+        cout << "Person's first name: ";
         cin >> scientist1.firstName;
-        cout << " ";
+        cout << " Last name: ";
         cin >> scientist1.lastName;
         cout << endl;
 
