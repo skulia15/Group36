@@ -17,7 +17,7 @@ struct scientists{
 
 void callDefaultMenu();
 
-void inputInfo();
+void inputInfo(vector<scientists> subject);
 
 int main()
 { 
@@ -32,6 +32,8 @@ int main()
     subject.push_back(scientists()); //default constructor
 
     //callDefaultMenu();
+
+    inputInfo(subject);
 
     /*person1.inputName();
     person1.inputSex();
@@ -77,6 +79,50 @@ void callDefaultMenu(){
         }
 }
 
-void inputInfo(){
+void inputInfo(vector<scientists> subject){
+    scientists scientist1;
+    char answer;
 
+    cout << "Person's name: ";
+    cin >> scientist1.firstName;
+    cout << " ";
+    cin >> scientist1.lastName;
+    cout << endl;
+
+    cout << "Sex: (m/f)";
+    cin >> scientist1.personSex;
+    cout << endl;
+
+    cout << "Year of Birth: ";
+    cin >> scientist1.yearOfBirth;
+    cout << endl;
+
+    cout << "Is the person still alive? (y/n) ";
+    cin >> answer;
+    if (answer == 'n'||answer == 'N'){
+        cout << "\nYear of Death: ";
+        cin >> scientist1.yearOfDeath;
+    }
+    cout << endl;
+
+    subject.push_back(scientist1);
+    cout << "Person's name: ";
+    cout << scientist1.firstName;
+    cout << " ";
+    cout << scientist1.lastName;
+    cout << endl;
+
+    cout << "Sex: (m/f)";
+    cout << scientist1.personSex;
+    cout << endl;
+
+    cout << "Year of Birth: ";
+    cout << scientist1.yearOfBirth;
+    cout << endl;
+
+    if (answer == 'n'||answer == 'N'){
+        cout << "Year of Death: ";
+        cout << scientist1.yearOfDeath;
+    }
+    cout << endl;
 }
