@@ -17,7 +17,7 @@ struct scientists{
 
 void callDefaultMenu();
 
-void inputInfo(vector<scientists> subject);
+void inputInfo(vector<scientists>& subject);
 
 int main()
 { 
@@ -34,6 +34,7 @@ int main()
     callDefaultMenu();
 
     inputInfo(subject);
+
 
     /*person1.inputName();
     person1.inputSex();
@@ -79,9 +80,10 @@ void callDefaultMenu(){
     }
 }
 
-void inputInfo(vector<scientists> subject){
+void inputInfo(vector<scientists>& subject){
     scientists scientist1;
-    char answer;
+    char answer = 0;
+    char sex;
 
     cout << "Person's name: ";
     cin >> scientist1.firstName;
@@ -89,16 +91,24 @@ void inputInfo(vector<scientists> subject){
     cin >> scientist1.lastName;
     cout << endl;
 
+    while(sex != 'm' || sex != 'f'){
     cout << "Sex: (m/f)";
     cin >> scientist1.personSex;
+    sex = scientist1.personSex;
+        if (scientist1.personSex != 'm' || scientist1.personSex != 'f'){
+            cout << "Enter m for male or f for female";
+    }
     cout << endl;
+    }
 
     cout << "Year of Birth: ";
     cin >> scientist1.yearOfBirth;
     cout << endl;
 
     cout << "Is the person still alive? (y/n) ";
-    cin >> answer;
+    while (answer != 'n' || answer != 'y'){
+        cin >> answer;
+    }
     if (answer == 'n'||answer == 'N'){
         cout << "\nYear of Death: ";
         cin >> scientist1.yearOfDeath;
@@ -106,23 +116,5 @@ void inputInfo(vector<scientists> subject){
     cout << endl;
 
     subject.push_back(scientist1);
-    cout << "Person's name: ";
-    cout << scientist1.firstName;
-    cout << " ";
-    cout << scientist1.lastName;
-    cout << endl;
 
-    cout << "Sex: (m/f)";
-    cout << scientist1.personSex;
-    cout << endl;
-
-    cout << "Year of Birth: ";
-    cout << scientist1.yearOfBirth;
-    cout << endl;
-
-    if (answer == 'n'||answer == 'N'){
-        cout << "Year of Death: ";
-        cout << scientist1.yearOfDeath;
-    }
-    cout << endl;
 }
