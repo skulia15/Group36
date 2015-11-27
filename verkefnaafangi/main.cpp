@@ -31,6 +31,7 @@ int main()
     vector<scientists> subject;
 
     subject.push_back(scientists()); //default constructor
+    output(subject);
 
     callDefaultMenu(subject);
 
@@ -122,16 +123,11 @@ void inputInfo(vector<scientists>& subject){
 void output(vector<scientists>& subject){
     ifstream document;
     ofstream writeToFile;
-    writeToFile.open("list.txt", ios::out | ios::app);
-    if (writeToFile.is_open()){
-         writeToFile << "testing";
-         //ostream_iterator<string> output_iterator(writeToFile, "\n");
-         //copy(subject.begin(), subject.end(), output_iterator);
-    }
-    else {
-        cout << "Unable to open file." << endl;
-    }
+    document.open("list.txt");
+    writeToFile.open("list.txt");
     writeToFile.close();
     document.close();
+
+
 }
 
