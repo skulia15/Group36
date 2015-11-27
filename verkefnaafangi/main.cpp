@@ -3,6 +3,8 @@
 #include <string>
 #include <cstdlib>
 #include <vector>
+#include <fstream>
+#include <ostream>
 
 using namespace std;
 
@@ -17,6 +19,7 @@ struct scientists{
 void callDefaultMenu(vector<scientists>& subject);
 
 void inputInfo(vector<scientists>& subject);
+void output(vector<scientists>& subject);
 
 int main()
 { 
@@ -67,7 +70,7 @@ void callDefaultMenu(vector<scientists>& subject){
             loop = false;
             break;
          default:
-            cout << "Error in command, try again." << endl;
+            cout << "Error in command, try again." << endl << endl;
             break;
         }
      }
@@ -113,5 +116,21 @@ void inputInfo(vector<scientists>& subject){
         cout << endl;
 
         subject.push_back(scientist1);
+        output(subject);
     }
 }
+
+void output(vector<scientists>& subject){
+    ifstream document;
+    ofstream writeToFile;
+    writeToFile.open("list.txt", ios::out | ios::app);
+    if (writeToFile.is_open()){
+         writeToFile << "testing";
+    }
+    else {
+        cout << "Unable to open file." << endl;
+    }
+    writeToFile.close();
+    document.close();
+}
+
