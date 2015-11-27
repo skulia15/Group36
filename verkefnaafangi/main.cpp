@@ -31,7 +31,7 @@ int main()
 
     subject.push_back(scientists()); //default constructor
 
-    //callDefaultMenu();
+    callDefaultMenu();
 
     /*person1.inputName();
     person1.inputSex();
@@ -47,11 +47,15 @@ void callDefaultMenu(){
 
         while(loop == true)
         {
-            cout << "Press 1 to add a person" << endl;
-            cout << "Press 2 to print all persons" << endl;
-            cout << "Press 3 to search" << endl;
-            cout << "Press 4 to quit" << endl;
-
+            cout << "-----------Menu-----------"<<endl;
+            cout <<endl;
+            cout << " Please select a option  "<<endl;
+            cout << " 1 to add a person" << endl;
+            cout << " 2 to print all persons" << endl;
+            cout << " 3 to search" << endl;
+            cout << " 4 to quit" << endl;
+            cout <<endl;
+            cout << "--------------------------"<<endl;
             cin >> a;
 
             switch(a)
@@ -71,7 +75,6 @@ void callDefaultMenu(){
                 break;
              default:
                 cout << "Error in command, try again." << endl;
-                callDefaultMenu();
                 break;
             }
         }
