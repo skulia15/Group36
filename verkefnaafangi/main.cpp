@@ -39,6 +39,8 @@ int main()
 
     callDefaultMenu(subject);
 
+    for(unsigned int i=0; i < subject.size(); ++i)
+      //cout << subject[i] << ' ';    þarf að yfirskifa << operator til þess að fá til að skrifa út?
     return 0;
 }
 
@@ -124,7 +126,7 @@ void inputInfo(vector<scientists>& subject){
     }
 }
 
-void output(vector<scientists>& subject){
+void output(vector<scientists>& subject){ //drag að ofstream/ifstream falli
     ifstream document;
     ofstream writeToFile;
     document.open("list.txt");
