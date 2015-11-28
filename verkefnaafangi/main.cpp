@@ -5,7 +5,6 @@
 #include <vector>
 #include <fstream>
 #include <ostream>
-#include <iterator>
 
 using namespace std;
 
@@ -24,10 +23,15 @@ void output(vector<scientists>& subject);
 int main()
 { 
     //ToDo list
-    //Save the info into a file.
-    //print the info inside the file
-    //print options f.ex alphabetical order
-    //implement a search function
+    //Check if vector pushes back values correctly
+    //Figure out how to print contents of vector
+    //Create a function to save the info into a file.
+    //Create function to read from file. - without everwriting
+    //Print options f.ex alphabetical order
+    //Implement a search function
+    //Error handling
+    //Cool extra features
+
     vector<scientists> subject;
 
     subject.push_back(scientists()); //default constructor
