@@ -178,7 +178,7 @@ void search() //þarf að laga til, er ekki að prenta rétt út.
         exit(1);
     }
 
-    cout << "Please enter search conditions (2 or more chars): ";
+    cout << "Please enter two or more characters to search for (case sensitive): ";
     cin >> find;
     cout << endl;
 
