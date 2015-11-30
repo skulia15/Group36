@@ -23,8 +23,6 @@ void print();
 void search();
 void readFromFileToVector(vector<scientists>& subject);
 void searchInVector(vector<scientists>& subject);
-
-
 void deleteVector(vector<scientists>& subject);
 
 int main()
@@ -75,7 +73,7 @@ void callDefaultMenu(vector<scientists>& subject){
             print();
             break;
         case '3':
-            //searchInVector(subject);
+            searchInVector(subject);
            break;
          case '4':
             cout << "Quitting." << endl;
@@ -99,7 +97,7 @@ void inputInfo(vector<scientists>& subject){
     while(error == false){
         cout << "How many persons would you like to add? ";
         cin >> persons;
-        if (isdigit(persons)){
+        if (isdigit(persons)){ //this if else statement is not working correctly, needs fix.
             cout << "Error in input, try again." << endl;
         }
         if (!isdigit(persons)){
@@ -173,7 +171,7 @@ void output(vector<scientists>& subject, int persons){
     else cout << "Unable to open file";
 }
 
-void print(){
+void print(){ //needs to add so that it prints f.ex name: myname sex: thesex
     ifstream myfile;
     string line;
     myfile.open("save.txt");
@@ -190,7 +188,7 @@ void print(){
 
 
 
-void searhInVector(vector<scientists>& subject){// Search function
+void searchInVector(vector<scientists>& subject){// Search function
     char a;
     bool loop = true;
     string searchFirstName;
@@ -267,31 +265,19 @@ void readFromFileToVector(vector<scientists>& subject){
 
     myfile.open("save.txt");
     string first;
+    string second;
+    string sex;
     while (!myfile.eof()){
-        getline(myfile, first);{
+        getline(myfile, first, '\n');
+        getline(myfile, second,'\n');
+        getline(myfile, sex,'\n');
         scientist1.firstName = first;
+        scientist1.lastName = second;
+        scientist1.personSex = sex;
+
+
         subject.push_back(scientist1);
-        }
-
     }
-
-       /* while (getline (myfile,line)){
-            istringstream iss(line);
-            string first, last, sex, YoB, YoD;
-
-            if (!(iss >> first >> last >> sex >> YoB >> YoD)) { break; }
-
-
-            scientist1.yearOfBirth = YoB;
-            scientist1.yearOfDeath = YoD;
-            cout << scientist1.firstName << scientist1.lastName << scientist1.personSex << scientist1.yearOfBirth << scientist1.yearOfDeath;
-            subject.push_back(scientist1);
-        }*/
-
-   // cout <<  subject[0].firstName << endl;
-  //  cout <<  subject[0].lastName << endl;
-  //  cout << subject[0].personSex << endl;
     myfile.close();
-    cout << scientist1.firstName << scientist1.lastName << scientist1.personSex << scientist1.yearOfBirth << scientist1.yearOfDeath;
   }
 
