@@ -178,8 +178,9 @@ void search() //þarf að laga til, er ekki að prenta rétt út.
         exit(1);
     }
 
-    cout << "Please enter search conditions: ";
+    cout << "Please enter search conditions (2 or more chars): ";
     cin >> find;
+    cout << endl;
 
     while(!myfile.eof()){
         getline(myfile, temp);
@@ -193,13 +194,14 @@ void search() //þarf að laga til, er ekki að prenta rétt út.
             }
         }
         if(found){
-            for(int i = find.size()+1; i < temp.size(); i++)
+            for(int i = 0; i < temp.size()-16; i++)
                 cout << temp[i];
+                cout << endl;
             break;
         }
     }
     if(myfile.eof() && (!found)){
-        cout << "Found nothing.";
+        cout << "Found nothing." << endl;
     }
 
     myfile.close();
