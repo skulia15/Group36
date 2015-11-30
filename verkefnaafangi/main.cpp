@@ -17,18 +17,17 @@ struct scientists{
     int yearOfDeath;
 };
 
-void callDefaultMenu(vector<scientists>& subject, int& totalPersons);
+void callDefaultMenu(vector<scientists>& subject);
 void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject, int persons);
 void print(vector<scientists>& subject);
-void readFromFileToVector(vector<scientists>& subject, int& totalPersons);
+void readFromFileToVector(vector<scientists>& subject);
 void searchInVector(vector<scientists>& subject);
 void deleteVector(vector<scientists>& subject);
 void clearVector(vector<scientists>& subject);
 
 int main()
 {
-    int totalPersons = 0;
     //ToDo list
 
     //Print options f.ex alphabetical order
@@ -39,14 +38,14 @@ int main()
 
     vector<scientists> subject;  //vector of persons
 
-    readFromFileToVector(subject, totalPersons);
+    readFromFileToVector(subject);
 
-    callDefaultMenu(subject, totalPersons);
+    callDefaultMenu(subject);
 
     return 0;
 }
 
-void callDefaultMenu(vector<scientists>& subject, int& totalPersons){
+void callDefaultMenu(vector<scientists>& subject){
     char a;
     bool loop = true;
 
@@ -256,7 +255,7 @@ void searchInVector(vector<scientists>& subject){// Search function
     }
 }
 
-void readFromFileToVector(vector<scientists>& subject, int& totalPersons){
+void readFromFileToVector(vector<scientists>& subject){
     ifstream myfile;
     scientists scientist1;
     myfile.open("save.txt");
@@ -276,7 +275,6 @@ void readFromFileToVector(vector<scientists>& subject, int& totalPersons){
             scientist1.yearOfBirth = atoi(YoB.c_str());
             scientist1.yearOfDeath = atoi(YoD.c_str());
             subject.push_back(scientist1);
-            totalPersons++;
         }
     }
     myfile.close();
