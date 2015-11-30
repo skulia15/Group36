@@ -44,6 +44,12 @@ int main()
 
     callDefaultMenu(subject);
 
+    for (int i = 0; subject.size(); i++){
+    cout << subject.at(i).firstName << endl;
+    cout << subject.at(i).lastName << endl;
+    cout << subject.at(i).personSex << endl;
+    }
+
     return 0;
 }
 
@@ -69,7 +75,7 @@ void callDefaultMenu(vector<scientists>& subject){
             print();
             break;
         case '3':
-            searchInVector(subject);
+            //searchInVector(subject);
            break;
          case '4':
             cout << "Quitting." << endl;
@@ -218,7 +224,7 @@ void search(); //þarf að laga til, er ekki að prenta rétt út.
 
     myfile.close();
 }*/
-
+/*
 void searhInVector(vector<scientists>& subject){// Search function
     char a;
     bool loop = true;
@@ -288,28 +294,34 @@ void searhInVector(vector<scientists>& subject){// Search function
         }
     }
 }
-
+*/
 void readFromFileToVector(vector<scientists>& subject){
     ifstream myfile;
     scientists scientist1;
     string line;
 
     myfile.open("save.txt");
+    string first;
+    while (!myfile.eof()){
+        getline(myfile, first);{
+        scientist1.firstName = first;
+        subject.push_back(scientist1);
+        }
 
-        while (getline (myfile,line)){
+    }
+
+       /* while (getline (myfile,line)){
             istringstream iss(line);
             string first, last, sex, YoB, YoD;
 
             if (!(iss >> first >> last >> sex >> YoB >> YoD)) { break; }
 
-            scientist1.firstName = first;
-            scientist1.lastName = last;
-            scientist1.personSex = sex;
+
             scientist1.yearOfBirth = YoB;
             scientist1.yearOfDeath = YoD;
             cout << scientist1.firstName << scientist1.lastName << scientist1.personSex << scientist1.yearOfBirth << scientist1.yearOfDeath;
             subject.push_back(scientist1);
-        }
+        }*/
 
    // cout <<  subject[0].firstName << endl;
   //  cout <<  subject[0].lastName << endl;
@@ -317,7 +329,4 @@ void readFromFileToVector(vector<scientists>& subject){
     myfile.close();
     cout << scientist1.firstName << scientist1.lastName << scientist1.personSex << scientist1.yearOfBirth << scientist1.yearOfDeath;
   }
-
-  //else cout << "Unable to open file";
-//}
 
