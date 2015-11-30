@@ -224,7 +224,7 @@ void searchInVector(vector<scientists>& subject)// Search function
         cout << "--------------------------"<<endl;
         cin >> a;
 
-        switch(a){
+        switch(a){ //Runs through vector and prints out the locations where "i" equals name provided
         case '1':
 
             cout<<"Please endter a firstname to search for"<<endl;
@@ -237,10 +237,10 @@ void searchInVector(vector<scientists>& subject)// Search function
                        << subject.at(i).personSex<<" "
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
-                }
+                }else{cout<<"Sorry the firstname "<< searchFirstName<<" did not match any firstname in database. \n";}
             }
              break;
-        case '2':
+        case '2': //Runs through vector and prints out the locations where "i" equals lastname provided
             cin>> searchLastName;
             for(unsigned int i=0; i<subject.size(); i++)
             {
@@ -250,10 +250,11 @@ void searchInVector(vector<scientists>& subject)// Search function
                        << subject.at(i).personSex<<" "
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
-                }
+                } else{cout<<"Sorry the lastname"<< searchLastName<<" did not match any name in database. \n";}
+
             }
             break;
-        case '3':
+        case '3': //Runs through vector and prints out the locations where "i" equals birthday provided.
             cin>> searchBirthYear;
             for(unsigned int i=0; i<subject.size(); i++)
             {
@@ -263,7 +264,7 @@ void searchInVector(vector<scientists>& subject)// Search function
                        << subject.at(i).personSex<<" "
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
-                }
+                }else{cout<<"Sorry accordin to our reccord no one was born in "<< searchBirthYear <<endl;}
             }
            break;
          case '4':
