@@ -23,7 +23,15 @@ void print();
 void search();
 void readFromFileToVector(vector<scientists>& subject);
 void searchInVector(vector<scientists>& subject);
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+void deleteVector(vector<scientists>& subject);
+=======
+>>>>>>> 52862c1a2023230e66a973292c24eeb84dfe8084
+>>>>>>> refs/remotes/origin/master
+>>>>>>> ae6604bccef2bb29c7440a69af4f1d4c1a621582
 
 int main()
 {
@@ -261,7 +269,7 @@ void searhInVector(vector<scientists>& subject){// Search function
                        << subject.at(i).personSex<<" "
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
-                } else{cout<<"Sorry the lastname"<< searchLastName<<" did not match any name in database. \n";}
+                }else{cout<<"Sorry the lastname"<< searchLastName<<" did not match any name in database. \n";}
 
             }
             break;
