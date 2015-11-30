@@ -20,13 +20,14 @@ struct scientists{
 void callDefaultMenu(vector<scientists>& subject);
 void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject, int persons);
-void print();
-void readFromFileToVector(vector<scientists>& subject);
+void print(vector<scientists>& subject);
+void readFromFileToVector(vector<scientists>& subject, int& totalPersons);
 void searchInVector(vector<scientists>& subject);
 void deleteVector(vector<scientists>& subject);
 
 int main()
 {
+    int totalPersons = 0;
     //ToDo list
     //Check if vector pushes back values correctly.
     //Figure out how to print contents of vector.
@@ -38,10 +39,11 @@ int main()
 
     vector<scientists> subject;  //vector of persons
 
-    readFromFileToVector(subject);
+    readFromFileToVector(subject, totalPersons);
 
     callDefaultMenu(subject);
 
+    readFromFileToVector(subject, totalPersons);
     return 0;
 }
 
@@ -65,7 +67,7 @@ void callDefaultMenu(vector<scientists>& subject){
              inputInfo(subject);
              break;
         case '2':
-            print();
+            print(subject);
             break;
         case '3':
             searchInVector(subject);
@@ -150,7 +152,7 @@ void output(vector<scientists>& subject, int persons){
     ofstream myfile;
     myfile.open("save.txt", ios::out | ios::app); //For adding without overwriting
     if (myfile.is_open()){
-        for (int i = 0; i < persons; i++){  //Needs to be modified, not adding persons correctly. 1 off error.
+        for (int i = 1; i < persons; i++){  //Needs to be modified, not adding persons correctly. 1 off error.
             myfile << subject[i].firstName << endl;
             myfile << subject[i].lastName << endl;
             myfile << subject[i].personSex << endl;
@@ -165,12 +167,12 @@ void output(vector<scientists>& subject, int persons){
     else cout << "Unable to open file";
 }
 
-void print(){ //needs to add so that it prints f.ex name: myname sex: thesex
+void print(vector<scientists>& subject){
     ifstream myfile;
     string first, second, sex, YoB, YoD;
     myfile.open("save.txt");
     if (myfile.is_open()){
-    cout << "------Displaying Persons------" << endl;
+        cout << "------Displaying Persons------" << endl;
     while (!myfile.eof()){
         getline(myfile, first, '\n');
         getline(myfile, second,'\n');
@@ -178,19 +180,19 @@ void print(){ //needs to add so that it prints f.ex name: myname sex: thesex
         getline(myfile, YoB,'\n');
         getline(myfile, YoD,'\n');
 
-        cout << "Name: " << first << " ";
-        cout << second << endl;
-        cout << "Sex: " << sex << endl;
-        cout << "Year of birth: " << YoB << endl;
-        cout << "Year of death: " << YoD << endl << endl;
+        for(int i = 1; i < subject.size(); i++){
+            cout << "Name: " << subject[i].firstName << " ";
+            cout << subject[i].lastName << endl;
+            cout << "Sex: " << subject[i].personSex << endl;
+            cout << "Year of birth: " << subject[i].yearOfBirth << endl;
+            cout << "Year of death: " << subject[i].yearOfDeath << endl << endl;
+        }
     }
     myfile.close();
   }
 
   else cout << "Unable to open file";
 }
-
-
 
 void searchInVector(vector<scientists>& subject){// Search function
     char a;
@@ -202,10 +204,10 @@ void searchInVector(vector<scientists>& subject){// Search function
     while(loop == true){
         cout << "--------Search Menu-----------";
         cout << " \n Please select a search option:  "<<endl;
-        cout << " \n 1. To search by Firstname" << endl;
-        cout << " 2. To search by Lastname" << endl;
-        cout << " 3. To search by Birthyear" << endl;
-        cout << " 4. To quit" << endl;
+        cout << " \n 1. To search by first name" << endl;
+        cout << " 2. To search by last name" << endl;
+        cout << " 3. To search by birth year" << endl;
+        cout << " 4. To exit to main menu" << endl;
         cout << "-----------------------------"<<endl;
         cin >> a;
 
@@ -263,7 +265,7 @@ void searchInVector(vector<scientists>& subject){// Search function
     }
 }
 
-void readFromFileToVector(vector<scientists>& subject){
+void readFromFileToVector(vector<scientists>& subject, int& totalPersons){
     ifstream myfile;
     scientists scientist1;
     myfile.open("save.txt");
@@ -281,6 +283,16 @@ void readFromFileToVector(vector<scientists>& subject){
         scientist1.yearOfBirth = atoi(YoB.c_str());
         scientist1.yearOfDeath = atoi(YoD.c_str());
         subject.push_back(scientist1);
+        totalPersons++;
+    }
+    cout << "These are the contents of the vector at the moment!" << endl;
+    for(int i = 0; i < subject.size(); i++){
+            cout << subject[i].firstName << " ";
+            cout << subject[i].lastName << endl;
+            cout << subject[i].personSex << endl;
+            cout << subject[i].yearOfBirth << endl;
+            cout << subject[i].yearOfDeath << endl;
+            cout << "END!" << endl;
     }
     myfile.close();
   }
