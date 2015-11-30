@@ -17,7 +17,7 @@ struct scientists{
     int yearOfDeath;
 };
 
-void callDefaultMenu(vector<scientists>& subject);
+void callDefaultMenu(vector<scientists>& subject, int& totalPersons);
 void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject, int persons);
 void print(vector<scientists>& subject);
@@ -42,17 +42,27 @@ int main()
 
     readFromFileToVector(subject, totalPersons);
 
-    callDefaultMenu(subject);
+    callDefaultMenu(subject, totalPersons);
 
-    readFromFileToVector(subject, totalPersons);
     return 0;
 }
 
-void callDefaultMenu(vector<scientists>& subject){
+void callDefaultMenu(vector<scientists>& subject, int& totalPersons){
     char a;
     bool loop = true;
 
+
     while(loop == true){
+
+    cout << "These are the contents of the vector at the moment!" << endl;
+    for(int i = 0; i < subject.size(); i++){
+            cout << subject[i].firstName << " ";
+            cout << subject[i].lastName << endl;
+            cout << subject[i].personSex << endl;
+            cout << subject[i].yearOfBirth << endl;
+            cout << subject[i].yearOfDeath << endl;
+    }
+    cout << "END!" << endl;
         cout << "---------Main Menu-----------";
         cout << " \n Please select a option:  "<<endl;
         cout << " \n 1. To add a computer scientist" << endl;
@@ -157,7 +167,7 @@ void output(vector<scientists>& subject, int persons){
     ofstream myfile;
     myfile.open("save.txt", ios::out | ios::app); //For adding without overwriting
     if (myfile.is_open()){
-        for (int i = 1; i < persons; i++){  //Needs to be modified, not adding persons correctly. 1 off error.
+        for (int i = 0; i < subject.size(); i++){  //Needs to be modified, not adding persons correctly. 1 off error.
             myfile << subject[i].firstName << endl;
             myfile << subject[i].lastName << endl;
             myfile << subject[i].personSex << endl;
@@ -173,31 +183,16 @@ void output(vector<scientists>& subject, int persons){
 }
 
 void print(vector<scientists>& subject){
-    ifstream myfile;
-    string first, second, sex, YoB, YoD;
-    myfile.open("save.txt");
-    if (myfile.is_open()){
-        cout << "------Displaying Persons------" << endl;
-    while (!myfile.eof()){
-        getline(myfile, first, '\n');
-        getline(myfile, second,'\n');
-        getline(myfile, sex,'\n');
-        getline(myfile, YoB,'\n');
-        getline(myfile, YoD,'\n');
-
-        for(int i = 1; i < subject.size(); i++){
+        for(int i = 0; i < subject.size(); i++){
             cout << "Name: " << subject[i].firstName << " ";
             cout << subject[i].lastName << endl;
             cout << "Sex: " << subject[i].personSex << endl;
             cout << "Year of birth: " << subject[i].yearOfBirth << endl;
             cout << "Year of death: " << subject[i].yearOfDeath << endl << endl;
         }
-    }
-    myfile.close();
-  }
-
-  else cout << "Unable to open file";
 }
+
+
 
 void searchInVector(vector<scientists>& subject){// Search function
     char a;
@@ -277,30 +272,24 @@ void readFromFileToVector(vector<scientists>& subject, int& totalPersons){
     ifstream myfile;
     scientists scientist1;
     myfile.open("save.txt");
+
     while (!myfile.eof()){
+
         string first, second, sex, YoB, YoD;
         getline(myfile, first, '\n');
         getline(myfile, second,'\n');
         getline(myfile, sex,'\n');
         getline(myfile, YoB,'\n');
         getline(myfile, YoD,'\n');
-
-        scientist1.firstName = first;
-        scientist1.lastName = second;
-        scientist1.personSex = sex;
-        scientist1.yearOfBirth = atoi(YoB.c_str());
-        scientist1.yearOfDeath = atoi(YoD.c_str());
-        subject.push_back(scientist1);
-        totalPersons++;
-    }
-    cout << "These are the contents of the vector at the moment!" << endl;
-    for(int i = 0; i < subject.size(); i++){
-            cout << subject[i].firstName << " ";
-            cout << subject[i].lastName << endl;
-            cout << subject[i].personSex << endl;
-            cout << subject[i].yearOfBirth << endl;
-            cout << subject[i].yearOfDeath << endl;
-            cout << "END!" << endl;
+        if (!myfile.eof()){
+            scientist1.firstName = first;
+            scientist1.lastName = second;
+            scientist1.personSex = sex;
+            scientist1.yearOfBirth = atoi(YoB.c_str());
+            scientist1.yearOfDeath = atoi(YoD.c_str());
+            subject.push_back(scientist1);
+            totalPersons++;
+        }
     }
     myfile.close();
   }
