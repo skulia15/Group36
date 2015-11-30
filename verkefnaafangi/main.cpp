@@ -20,8 +20,12 @@ void callDefaultMenu(vector<scientists>& subject);
 void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject, int persons);
 void print();
+<<<<<<< HEAD
 void search();
 void readFromFileToVector(vector<scientists>& subject);
+=======
+void searchInVector(vector<scientists>& subject);
+>>>>>>> 52862c1a2023230e66a973292c24eeb84dfe8084
 
 int main()
 {
@@ -65,7 +69,7 @@ void callDefaultMenu(vector<scientists>& subject){
             print();
             break;
         case '3':
-            search();
+            searchInVector(subject);
            break;
          case '4':
             cout << "Quitting." << endl;
@@ -170,7 +174,11 @@ void print(){
   else cout << "Unable to open file";
 }
 
+<<<<<<< HEAD
 void search() //þarf að laga til, er ekki að prenta rétt út.
+=======
+/*void search() //Ã¾arf aÃ° laga til, er ekki aÃ° prenta rÃ©tt Ãºt.
+>>>>>>> 52862c1a2023230e66a973292c24eeb84dfe8084
 {
     ifstream myfile;
     string find, temp="";
@@ -182,8 +190,9 @@ void search() //þarf að laga til, er ekki að prenta rétt út.
         exit(1);
     }
 
-    cout << "Please enter search conditions: ";
+    cout << "Please enter two or more characters to search for (case sensitive): ";
     cin >> find;
+    cout << endl;
 
     while(!myfile.eof()){
         getline(myfile, temp);
@@ -197,18 +206,92 @@ void search() //þarf að laga til, er ekki að prenta rétt út.
             }
         }
         if(found){
+<<<<<<< HEAD
             for(unsigned int i = find.size()+1; i < temp.size(); i++)
+=======
+            for(int i = 0; i < temp.size()-16; i++)
+>>>>>>> 52862c1a2023230e66a973292c24eeb84dfe8084
                 cout << temp[i];
+                cout << endl;
             break;
         }
     }
     if(myfile.eof() && (!found)){
-        cout << "Found nothing.";
+        cout << "Found nothing." << endl;
     }
 
     myfile.close();
-}
+}*/
+void searchInVector(vector<scientists>& subject)// Search function
+{
+    char a;
+    bool loop = true;
+    string searchFirstName;
+    string searchLastName;
+    int searchBirthYear;
 
+    while(loop == true){
+        cout << "-----------Menu-----------";
+        cout << " \n Please select a search option:  "<<endl;
+        cout << " \n 1. To search by Firstname" << endl;
+        cout << " 2. To search by Lastname" << endl;
+        cout << " 3. To search by Birthyear" << endl;
+        cout << " 4. To quit" << endl;
+        cout << "--------------------------"<<endl;
+        cin >> a;
+
+        switch(a){ //Runs through vector and prints out the locations where "i" equals name provided
+        case '1':
+
+            cout<<"Please enter a firstname to search for"<<endl;
+            cin>> searchFirstName;
+            for(unsigned int i=0; i<subject.size(); i++)
+            {
+                if(subject.at(i).firstName == searchFirstName){
+                    cout<< subject.at(i).firstName<<" "
+                       <<subject.at(i).lastName<<" "
+                       << subject.at(i).personSex<<" "
+                       << subject.at(i).yearOfBirth<<" "
+                       << subject.at(i).yearOfDeath<<endl;
+                }else{cout<<"Sorry the firstname "<< searchFirstName<<" did not match any firstname in database. \n";}
+            }
+             break;
+
+        case '2': //Runs through vector and prints out the locations where "i" equals lastname provided
+            cin>> searchLastName;
+            for(unsigned int i=0; i<subject.size(); i++)
+            {
+                if(subject.at(i).lastName == searchLastName){
+                    cout<< subject.at(i).lastName<<" "
+                       <<subject.at(i).firstName<<" "
+                       << subject.at(i).personSex<<" "
+                       << subject.at(i).yearOfBirth<<" "
+                       << subject.at(i).yearOfDeath<<endl;
+                } else{cout<<"Sorry the lastname"<< searchLastName<<" did not match any name in database. \n";}
+
+            }
+            break;
+
+        case '3': //Runs through vector and prints out the locations where "i" equals birthday provided.
+            cin>> searchBirthYear;
+            for(unsigned int i=0; i<subject.size(); i++)
+            {
+                if(subject.at(i).yearOfBirth == searchBirthYear){
+                    cout<< subject.at(i).lastName<<" "
+                       <<subject.at(i).firstName<<" "
+                       << subject.at(i).personSex<<" "
+                       << subject.at(i).yearOfBirth<<" "
+                       << subject.at(i).yearOfDeath<<endl;
+                }else{cout<<"Sorry according to our reccords nobody was born in "<< searchBirthYear <<endl;}
+            }
+           break;
+
+         case '4':
+            cout << "Going back to Main menu." << endl;
+            loop = false;
+            break;
+
+<<<<<<< HEAD
 
 void readFromFileToVector(vector<scientists>& subject){
     ifstream myfile;
@@ -241,3 +324,13 @@ void readFromFileToVector(vector<scientists>& subject){
 
   //else cout << "Unable to open file";
 //}
+=======
+         default:
+            cout << "Error in command, try again." << endl << endl;
+            break;
+        }
+     }
+
+
+}
+>>>>>>> 52862c1a2023230e66a973292c24eeb84dfe8084
