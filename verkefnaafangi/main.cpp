@@ -219,7 +219,7 @@ void searchInVector(vector<scientists>& subject)// Search function
         cout << " \n Please select a search option:  "<<endl;
         cout << " \n 1. To search by Firstname" << endl;
         cout << " 2. To search by Lastname" << endl;
-        cout << " 3. To search by birthyear" << endl;
+        cout << " 3. To search by Birthyear" << endl;
         cout << " 4. To quit" << endl;
         cout << "--------------------------"<<endl;
         cin >> a;
@@ -227,7 +227,7 @@ void searchInVector(vector<scientists>& subject)// Search function
         switch(a){ //Runs through vector and prints out the locations where "i" equals name provided
         case '1':
 
-            cout<<"Please endter a firstname to search for"<<endl;
+            cout<<"Please enter a firstname to search for"<<endl;
             cin>> searchFirstName;
             for(unsigned int i=0; i<subject.size(); i++)
             {
@@ -240,6 +240,7 @@ void searchInVector(vector<scientists>& subject)// Search function
                 }else{cout<<"Sorry the firstname "<< searchFirstName<<" did not match any firstname in database. \n";}
             }
              break;
+
         case '2': //Runs through vector and prints out the locations where "i" equals lastname provided
             cin>> searchLastName;
             for(unsigned int i=0; i<subject.size(); i++)
@@ -254,6 +255,7 @@ void searchInVector(vector<scientists>& subject)// Search function
 
             }
             break;
+
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided.
             cin>> searchBirthYear;
             for(unsigned int i=0; i<subject.size(); i++)
@@ -264,13 +266,15 @@ void searchInVector(vector<scientists>& subject)// Search function
                        << subject.at(i).personSex<<" "
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
-                }else{cout<<"Sorry accordin to our reccord no one was born in "<< searchBirthYear <<endl;}
+                }else{cout<<"Sorry according to our reccords nobody was born in "<< searchBirthYear <<endl;}
             }
            break;
+
          case '4':
-            cout << "Quitting." << endl;
+            cout << "Going back to Main menu." << endl;
             loop = false;
             break;
+
          default:
             cout << "Error in command, try again." << endl << endl;
             break;
