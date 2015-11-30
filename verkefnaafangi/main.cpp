@@ -24,6 +24,7 @@ void print(vector<scientists>& subject);
 void readFromFileToVector(vector<scientists>& subject, int& totalPersons);
 void searchInVector(vector<scientists>& subject);
 void deleteVector(vector<scientists>& subject);
+void clearVector(vector<scientists>& subject);
 
 int main()
 {
@@ -55,7 +56,8 @@ void callDefaultMenu(vector<scientists>& subject, int& totalPersons){
         cout << " \n 1. To add a computer scientist" << endl;
         cout << " 2. To print all persons" << endl;
         cout << " 3. To search" << endl;
-        cout << " 4. To quit" << endl;
+        cout << " 4. To clear the vector" << endl;
+        cout << " 5. To quit" << endl;
         cout << "------------------------------"<<endl;
         cout << "Choice: ";
         cin >> a;
@@ -70,11 +72,14 @@ void callDefaultMenu(vector<scientists>& subject, int& totalPersons){
         case '3':
             searchInVector(subject);
            break;
-         case '4':
+        case '4':
+            clearVector(subject);
+            break;
+        case '5':
             cout << "Quitting." << endl;
             loop = false;
             break;
-         default:
+        default:
             cout << "Error in command, try again." << endl << endl;
             break;
         }
@@ -223,8 +228,11 @@ void searchInVector(vector<scientists>& subject){// Search function
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
                 }
+                else if(subject.at(i).lastName != searchLastName){
+                    cout<<"Sorry the last name"<< searchLastName<<" did not match any last names in database. \n";
+                }
 
-            }cout<<"Sorry the last name"<< searchLastName<<" did not match any last names in database. \n";
+            }
             break;
 
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided.
@@ -273,3 +281,17 @@ void readFromFileToVector(vector<scientists>& subject, int& totalPersons){
     }
     myfile.close();
   }
+
+void clearVector(vector<scientists>& subject){
+    char answer;
+    cout << "Are you sure you want to clear the vector? (y/n) ";
+    cin >> answer;
+
+    if(answer == 'y'){
+        subject.clear();
+        cout << "Vector cleared of all elements." << endl;
+    }
+    else{
+        callDefaultMenu(subject);
+    }
+}
