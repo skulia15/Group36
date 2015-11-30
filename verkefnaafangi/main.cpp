@@ -50,13 +50,14 @@ void callDefaultMenu(vector<scientists>& subject){
     bool loop = true;
 
     while(loop == true){
-        cout << "-----------Menu-----------";
+        cout << "---------Main Menu-----------";
         cout << " \n Please select a option:  "<<endl;
         cout << " \n 1. To add a computer scientist" << endl;
         cout << " 2. To print all persons" << endl;
         cout << " 3. To search" << endl;
         cout << " 4. To quit" << endl;
-        cout << "--------------------------"<<endl;
+        cout << "------------------------------"<<endl;
+        cout << "Coice: ";
         cin >> a;
 
         switch(a){
@@ -199,13 +200,13 @@ void searchInVector(vector<scientists>& subject){// Search function
     int searchBirthYear;
 
     while(loop == true){
-        cout << "-----------Menu-----------";
+        cout << "--------Search Menu-----------";
         cout << " \n Please select a search option:  "<<endl;
         cout << " \n 1. To search by Firstname" << endl;
         cout << " 2. To search by Lastname" << endl;
         cout << " 3. To search by Birthyear" << endl;
         cout << " 4. To quit" << endl;
-        cout << "--------------------------"<<endl;
+        cout << "-----------------------------"<<endl;
         cin >> a;
 
         switch(a){ //Runs through vector and prints out the locations where "i" equals name provided
@@ -266,8 +267,8 @@ void readFromFileToVector(vector<scientists>& subject){
     ifstream myfile;
     scientists scientist1;
     myfile.open("save.txt");
-    string first, second, sex, YoB, YoD;
     while (!myfile.eof()){
+        string first, second, sex, YoB, YoD;
         getline(myfile, first, '\n');
         getline(myfile, second,'\n');
         getline(myfile, sex,'\n');
@@ -283,4 +284,3 @@ void readFromFileToVector(vector<scientists>& subject){
     }
     myfile.close();
   }
-
