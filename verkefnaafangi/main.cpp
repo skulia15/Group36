@@ -19,6 +19,7 @@ void callDefaultMenu(vector<scientists>& subject);
 void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject, int persons);
 void print();
+void search();
 
 int main()
 {
@@ -28,7 +29,6 @@ int main()
     //Create a function to save the info into a file.
     //Print options f.ex alphabetical order
     //Create a function to remove a computer scientist.
-    //Implement a search function.
     //Error handling.
     //Cool extra features.
 
@@ -61,7 +61,7 @@ void callDefaultMenu(vector<scientists>& subject){
             print();
             break;
         case '3':
-           //search();
+            search();
            break;
          case '4':
             cout << "Quitting." << endl;
@@ -165,3 +165,43 @@ void print(){
 
   else cout << "Unable to open file";
 }
+
+void search() //þarf að laga til, er ekki að prenta rétt út.
+{
+    ifstream myfile;
+    string find, temp="";
+    bool found = 0;
+    myfile.open("save.txt");
+
+    if(myfile.fail()){
+        cout << "Unable to open file";
+        exit(1);
+    }
+
+    cout << "Please enter search conditions: ";
+    cin >> find;
+
+    while(!myfile.eof()){
+        getline(myfile, temp);
+        for(int i = 0; i < find.size(); i++){
+            if(temp[i] == find[i]){
+                found = 1;
+            }
+            else{
+                found = 0;
+                break;
+            }
+        }
+        if(found){
+            for(int i = find.size()+1; i < temp.size(); i++)
+                cout << temp[i];
+            break;
+        }
+    }
+    if(myfile.eof() && (!found)){
+        cout << "Found nothing.";
+    }
+
+    myfile.close();
+}
+
