@@ -21,6 +21,7 @@ void callDefaultMenu(vector<scientists>& subject);
 void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject, int persons);
 void print();
+void search();
 void readFromFileToVector(vector<scientists>& subject);
 void searchInVector(vector<scientists>& subject);
 void deleteVector(vector<scientists>& subject);
@@ -38,9 +39,15 @@ int main()
 
     vector<scientists> subject;  //vector of persons
 
-    readFromFileToVector(subject);
+ readFromFileToVector(subject);
 
     callDefaultMenu(subject);
+
+    for (int i = 0; subject.size(); i++){
+    cout << subject.at(i).firstName << endl;
+    cout << subject.at(i).lastName << endl;
+    cout << subject.at(i).personSex << endl;
+    }
 
     return 0;
 }
@@ -177,11 +184,11 @@ void print(){ //needs to add so that it prints f.ex name: myname sex: thesex
         getline(myfile, YoB,'\n');
         getline(myfile, YoD,'\n');
 
-        cout << "Name: " << first << " ";
+        cout << first << " ";
         cout << second << endl;
-        cout << "Sex: " << sex << endl;
-        cout << "Year of birth: " << YoB << endl;
-        cout << "Year of death: " << YoD << endl << endl;
+        cout << sex << endl;
+        cout << YoB << endl;
+        cout << YoD << endl;
     }
     myfile.close();
   }
@@ -221,9 +228,8 @@ void searchInVector(vector<scientists>& subject){// Search function
                        << subject.at(i).personSex<<" "
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
-                }
-            }cout<<"Sorry the first name "<< searchFirstName<<" did not match any first names in database. \n";
-
+                }else{cout<<"Sorry the firstname "<< searchFirstName<<" did not match any firstname in database. \n";}
+            }
              break;
 
         case '2': //Runs through vector and prints out the locations where "i" equals lastname provided
@@ -236,9 +242,9 @@ void searchInVector(vector<scientists>& subject){// Search function
                        << subject.at(i).personSex<<" "
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
-                }
+                }else{cout<<"Sorry the lastname"<< searchLastName<<" did not match any name in database. \n";}
 
-            }cout<<"Sorry the last name"<< searchLastName<<" did not match any last names in database. \n";
+            }
             break;
 
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided.
@@ -250,8 +256,8 @@ void searchInVector(vector<scientists>& subject){// Search function
                        << subject.at(i).personSex<<" "
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
-                }
-            }cout<<"Sorry according to our records nobody was born in "<< searchBirthYear <<endl;
+                } else{ cout<<"Sorry according to our records nobody was born in "<< searchBirthYear <<endl;}
+            }
            break;
 
          case '4':
