@@ -29,11 +29,10 @@ int main()
 {
     int totalPersons = 0;
     //ToDo list
-    //Check if vector pushes back values correctly.
-    //Figure out how to print contents of vector.
-    //Create a function to save the info into a file.
+
     //Print options f.ex alphabetical order
     //Create a function to remove a computer scientist.
+    //Sorting
     //Error handling.
     //Cool extra features.
 
@@ -50,26 +49,15 @@ void callDefaultMenu(vector<scientists>& subject, int& totalPersons){
     char a;
     bool loop = true;
 
-
     while(loop == true){
-
-    cout << "These are the contents of the vector at the moment!" << endl;
-    for(int i = 0; i < subject.size(); i++){
-            cout << subject[i].firstName << " ";
-            cout << subject[i].lastName << endl;
-            cout << subject[i].personSex << endl;
-            cout << subject[i].yearOfBirth << endl;
-            cout << subject[i].yearOfDeath << endl;
-    }
-    cout << "END!" << endl;
         cout << "---------Main Menu-----------";
-        cout << " \n Please select a option:  "<<endl;
+        cout << " \n Please select an option:  "<<endl;
         cout << " \n 1. To add a computer scientist" << endl;
         cout << " 2. To print all persons" << endl;
         cout << " 3. To search" << endl;
         cout << " 4. To quit" << endl;
         cout << "------------------------------"<<endl;
-        cout << "Coice: ";
+        cout << "Choice: ";
         cin >> a;
 
         switch(a){
@@ -178,16 +166,14 @@ void output(vector<scientists>& subject, int persons){
 }
 
 void print(vector<scientists>& subject){
-        for(int i = 0; i < subject.size(); i++){
-            cout << "Name: " << subject[i].firstName << " ";
-            cout << subject[i].lastName << endl;
-            cout << "Sex: " << subject[i].personSex << endl;
-            cout << "Year of birth: " << subject[i].yearOfBirth << endl;
-            cout << "Year of death: " << subject[i].yearOfDeath << endl << endl;
-        }
+    for(int i = 0; i < subject.size(); i++){
+        cout << "Name: " << subject[i].firstName << " ";
+        cout << subject[i].lastName << endl;
+        cout << "Sex: " << subject[i].personSex << endl;
+        cout << "Year of birth: " << subject[i].yearOfBirth << endl;
+        cout << "Year of death: " << subject[i].yearOfDeath << endl << endl;
+    }
 }
-
-
 
 void searchInVector(vector<scientists>& subject){// Search function
     char a;
@@ -204,23 +190,25 @@ void searchInVector(vector<scientists>& subject){// Search function
         cout << " 3. To search by birth year" << endl;
         cout << " 4. To exit to main menu" << endl;
         cout << "-----------------------------"<<endl;
+        cout << "Search for:  ";
         cin >> a;
 
         switch(a){ //Runs through vector and prints out the locations where "i" equals name provided
         case '1':
 
-            cout<<"Please enter a firstname to search for"<<endl;
-            cin>> searchFirstName;
-            for(unsigned int i=0; i<subject.size(); i++)
-            {
+            cout << "Please enter a first name to search for"<<endl;
+            cin >> searchFirstName;
+            for(unsigned int i=0; i<subject.size(); i++){
                 if(subject.at(i).firstName == searchFirstName){
-                    cout<< subject.at(i).firstName<<" "
-                       <<subject.at(i).lastName<<" "
+                    cout << subject.at(i).firstName<<" "
+                       << subject.at(i).lastName<<" "
                        << subject.at(i).personSex<<" "
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
                 }
-            }cout<<"Sorry the first name "<< searchFirstName<<" did not match any first names in database. \n";
+            }
+
+                cout << "Sorry the first name " << searchFirstName << " did not match any first names in database. \n";
 
              break;
 
