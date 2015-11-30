@@ -285,6 +285,9 @@ void searhInVector(vector<scientists>& subject){// Search function
             cout << "Going back to Main menu." << endl;
             loop = false;
             break;
+        }
+    }
+}
 
 void readFromFileToVector(vector<scientists>& subject){
     ifstream myfile;
@@ -317,9 +320,4 @@ void readFromFileToVector(vector<scientists>& subject){
 
   //else cout << "Unable to open file";
 //}
-         default:
-            cout << "Error in command, try again." << endl << endl;
-            break;
-        }
-     }
-}
+
