@@ -96,11 +96,19 @@ void inputInfo(vector<scientists>& subject){
     string sex;
     char sexTemp;
 
-    cout << "How many persons would you like to add? ";
-    cin >> persons;
+    while(error == false){
+        cout << "How many persons would you like to add? ";
+        cin >> persons;
+        if (isdigit(persons)){
+            cout << "Error in input, try again." << endl;
+        }
+        if (!isdigit(persons)){
+              error = true;
+        }
+    }
 
     for (int i = 1;i <= persons; i++){
-        if (i == 0){
+        if (i == 1){
             cout << "\nEnter the info for the first person: " << endl;}
         else {
             cout << "Enter the info for the next person: " << endl;}
