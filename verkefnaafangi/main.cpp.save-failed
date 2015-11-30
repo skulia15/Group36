@@ -39,9 +39,15 @@ int main()
 
     vector<scientists> subject;  //vector of persons
 
-    readFromFileToVector(subject);
+ readFromFileToVector(subject);
 
     callDefaultMenu(subject);
+
+    for (int i = 0; subject.size(); i++){
+    cout << subject.at(i).firstName << endl;
+    cout << subject.at(i).lastName << endl;
+    cout << subject.at(i).personSex << endl;
+    }
 
     return 0;
 }
@@ -178,11 +184,11 @@ void print(){ //needs to add so that it prints f.ex name: myname sex: thesex
         getline(myfile, YoB,'\n');
         getline(myfile, YoD,'\n');
 
-        cout << "Name: " << first << " ";
+        cout << first << " ";
         cout << second << endl;
-        cout << "Sex: " << sex << endl;
-        cout << "Year of birth: " << YoB << endl;
-        cout << "Year of death: " << YoD << endl << endl;
+        cout << sex << endl;
+        cout << YoB << endl;
+        cout << YoD << endl;
     }
     myfile.close();
   }
