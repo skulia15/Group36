@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -11,8 +12,8 @@ struct scientists{
     string firstName;
     string lastName;
     string personSex;
-    int yearOfBirth;
-    int yearOfDeath;
+    string yearOfBirth;
+    string yearOfDeath;
 };
 
 void callDefaultMenu(vector<scientists>& subject);
@@ -20,6 +21,7 @@ void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject, int persons);
 void print();
 void search();
+void readFromFileToVector(vector<scientists>& subject);
 
 int main()
 {
@@ -33,6 +35,8 @@ int main()
     //Cool extra features.
 
     vector<scientists> subject;  //vector of persons
+
+    readFromFileToVector(subject);
 
     callDefaultMenu(subject);
 
@@ -120,7 +124,7 @@ void inputInfo(vector<scientists>& subject){
                 cin >> scientist1.yearOfDeath;
                 error = true;}
             else if (answer == 'y'||answer == 'Y'){
-                scientist1.yearOfDeath = 0;
+                scientist1.yearOfDeath = " ";
                 error = true;}
             else cout << "Input was invalid try again." << endl;
         } while (error == false);
@@ -136,14 +140,14 @@ void output(vector<scientists>& subject, int persons){
     myfile.open("save.txt", ios::out | ios::app); //For adding without overwriting
     if (myfile.is_open()){
         for (int i = 0; i < persons; i++){  //Needs to be modified, not adding persons correctly. 1 off error.
-            myfile << "Name: " << subject[i].firstName;
-            myfile << " " << subject[i].lastName << endl;
-            myfile << "Sex: "<< subject[i].personSex << endl;
-            myfile << "Year of birth: " << subject[i].yearOfBirth << endl;
-            if(subject[i].yearOfDeath == 0){  //if still alive then marks as "Still Alive"
-                myfile << subject[i].firstName << " " << subject[i].lastName << " is still alive." << endl;}
+            myfile << subject[i].firstName << endl;
+            myfile << subject[i].lastName << endl;
+            myfile << subject[i].personSex << endl;
+            myfile << subject[i].yearOfBirth << endl;
+            if(subject[i].yearOfDeath == " "){  //if still alive then marks as "Still Alive"
+                myfile << "still alive." << endl;}
             else {
-                myfile << "Year of death: " << subject[i].yearOfDeath << endl;}
+                myfile << subject[i].yearOfDeath << endl;}
             myfile << endl;
         }
         myfile.close();
@@ -166,7 +170,7 @@ void print(){
   else cout << "Unable to open file";
 }
 
-void search() //þarf að laga til, er ekki að prenta rétt út.
+void search() //�arf a� laga til, er ekki a� prenta r�tt �t.
 {
     ifstream myfile;
     string find, temp="";
@@ -183,7 +187,7 @@ void search() //þarf að laga til, er ekki að prenta rétt út.
 
     while(!myfile.eof()){
         getline(myfile, temp);
-        for(int i = 0; i < find.size(); i++){
+        for(unsigned int i = 0; i < find.size(); i++){
             if(temp[i] == find[i]){
                 found = 1;
             }
@@ -193,7 +197,7 @@ void search() //þarf að laga til, er ekki að prenta rétt út.
             }
         }
         if(found){
-            for(int i = find.size()+1; i < temp.size(); i++)
+            for(unsigned int i = find.size()+1; i < temp.size(); i++)
                 cout << temp[i];
             break;
         }
@@ -205,3 +209,35 @@ void search() //þarf að laga til, er ekki að prenta rétt út.
     myfile.close();
 }
 
+
+void readFromFileToVector(vector<scientists>& subject){
+    ifstream myfile;
+    scientists scientist1;
+    string line;
+
+    myfile.open("save.txt");
+
+        while (getline (myfile,line)){
+            istringstream iss(line);
+            string first, last, sex, YoB, YoD;
+
+            if (!(iss >> first >> last >> sex >> YoB >> YoD)) { break; }
+
+            scientist1.firstName = first;
+            scientist1.lastName = last;
+            scientist1.personSex = sex;
+            scientist1.yearOfBirth = YoB;
+            scientist1.yearOfDeath = YoD;
+            cout << scientist1.firstName << scientist1.lastName << scientist1.personSex << scientist1.yearOfBirth << scientist1.yearOfDeath;
+            subject.push_back(scientist1);
+        }
+
+   // cout <<  subject[0].firstName << endl;
+  //  cout <<  subject[0].lastName << endl;
+  //  cout << subject[0].personSex << endl;
+    myfile.close();
+    cout << scientist1.firstName << scientist1.lastName << scientist1.personSex << scientist1.yearOfBirth << scientist1.yearOfDeath;
+  }
+
+  //else cout << "Unable to open file";
+//}
