@@ -178,8 +178,9 @@ void print(){
         exit(1);
     }
 
-    cout << "Please enter search conditions: ";
+    cout << "Please enter two or more characters to search for (case sensitive): ";
     cin >> find;
+    cout << endl;
 
     while(!myfile.eof()){
         getline(myfile, temp);
@@ -193,13 +194,14 @@ void print(){
             }
         }
         if(found){
-            for(int i = find.size()+1; i < temp.size(); i++)
+            for(int i = 0; i < temp.size()-16; i++)
                 cout << temp[i];
+                cout << endl;
             break;
         }
     }
     if(myfile.eof() && (!found)){
-        cout << "Found nothing.";
+        cout << "Found nothing." << endl;
     }
 
     myfile.close();
