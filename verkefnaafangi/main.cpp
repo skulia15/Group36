@@ -19,7 +19,7 @@ void callDefaultMenu(vector<scientists>& subject);
 void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject, int persons);
 void print();
-void search();
+void searchInVector(vector<scientists>& subject);
 
 int main()
 {
@@ -61,7 +61,7 @@ void callDefaultMenu(vector<scientists>& subject){
             print();
             break;
         case '3':
-            search();
+            searchInVector(subject);
            break;
          case '4':
             cout << "Quitting." << endl;
@@ -166,7 +166,7 @@ void print(){
   else cout << "Unable to open file";
 }
 
-void search() //þarf að laga til, er ekki að prenta rétt út.
+/*void search() //þarf að laga til, er ekki að prenta rétt út.
 {
     ifstream myfile;
     string find, temp="";
@@ -203,5 +203,76 @@ void search() //þarf að laga til, er ekki að prenta rétt út.
     }
 
     myfile.close();
-}
+}*/
+void searchInVector(vector<scientists>& subject)// Search function
+{
+    char a;
+    bool loop = true;
+    string searchFirstName;
+    string searchLastName;
+    int searchBirthYear;
 
+    while(loop == true){
+        cout << "-----------Menu-----------";
+        cout << " \n Please select a search option:  "<<endl;
+        cout << " \n 1. To search by Firstname" << endl;
+        cout << " 2. To search by Lastname" << endl;
+        cout << " 3. To search by birthyear" << endl;
+        cout << " 4. To quit" << endl;
+        cout << "--------------------------"<<endl;
+        cin >> a;
+
+        switch(a){
+        case '1':
+
+            cout<<"Please endter a firstname to search for"<<endl;
+            cin>> searchFirstName;
+            for(unsigned int i=0; i<subject.size(); i++)
+            {
+                if(subject.at(i).firstName == searchFirstName){
+                    cout<< subject.at(i).firstName<<" "
+                       <<subject.at(i).lastName<<" "
+                       << subject.at(i).personSex<<" "
+                       << subject.at(i).yearOfBirth<<" "
+                       << subject.at(i).yearOfDeath<<endl;
+                }
+            }
+             break;
+        case '2':
+            cin>> searchLastName;
+            for(unsigned int i=0; i<subject.size(); i++)
+            {
+                if(subject.at(i).lastName == searchLastName){
+                    cout<< subject.at(i).lastName<<" "
+                       <<subject.at(i).firstName<<" "
+                       << subject.at(i).personSex<<" "
+                       << subject.at(i).yearOfBirth<<" "
+                       << subject.at(i).yearOfDeath<<endl;
+                }
+            }
+            break;
+        case '3':
+            cin>> searchBirthYear;
+            for(unsigned int i=0; i<subject.size(); i++)
+            {
+                if(subject.at(i).yearOfBirth == searchBirthYear){
+                    cout<< subject.at(i).lastName<<" "
+                       <<subject.at(i).firstName<<" "
+                       << subject.at(i).personSex<<" "
+                       << subject.at(i).yearOfBirth<<" "
+                       << subject.at(i).yearOfDeath<<endl;
+                }
+            }
+           break;
+         case '4':
+            cout << "Quitting." << endl;
+            loop = false;
+            break;
+         default:
+            cout << "Error in command, try again." << endl << endl;
+            break;
+        }
+     }
+
+
+}
