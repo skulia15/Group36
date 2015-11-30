@@ -1,11 +1,8 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
-#include <cstdlib>
 #include <vector>
 #include <fstream>
-#include <sstream>
-#include <stdlib.h>
 
 using namespace std;
 
@@ -21,10 +18,13 @@ void callDefaultMenu(vector<scientists>& subject);
 void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject, int persons);
 void print(vector<scientists>& subject);
+void printSearch(vector<scientists>& subject, int i);
 void readFromFileToVector(vector<scientists>& subject);
 void searchInVector(vector<scientists>& subject);
-void deleteVector(vector<scientists>& subject);
 void clearVector(vector<scientists>& subject);
+void sortVector(vector<scientists>& subject);
+
+
 
 int main()
 {
@@ -33,6 +33,8 @@ int main()
     //Print options f.ex alphabetical order
     //Create a function to remove a computer scientist.
     //Sorting
+    //function that deletes one person from file and vector
+    //function that searches for substrings
     //Error handling.
     //Cool extra features.
 
@@ -52,11 +54,11 @@ void callDefaultMenu(vector<scientists>& subject){
     while(loop == true){
         cout << "---------Main Menu-----------";
         cout << " \n Please select an option:  "<<endl;
-        cout << " \n 1. To add a computer scientist" << endl;
-        cout << " 2. To print all persons" << endl;
-        cout << " 3. To search" << endl;
-        cout << " 4. To clear the vector" << endl;
-        cout << " 5. To quit" << endl;
+        cout << " \n 1. To add a computer scientist." << endl;
+        cout << " 2. To print all persons." << endl;
+        cout << " 3. To search." << endl;
+        cout << " 4. To delete all data." << endl;
+        cout << " 5. To quit." << endl;
         cout << "------------------------------"<<endl;
         cout << "Choice: ";
         cin >> a;
@@ -154,7 +156,7 @@ void output(vector<scientists>& subject, int persons){
     ofstream myfile;
     myfile.open("save.txt", ios::out | ios::app); //For adding without overwriting
     if (myfile.is_open()){
-        for (int i = 0; i < subject.size(); i++){  //Needs to be modified, not adding persons correctly. 1 off error.
+        for (unsigned int i = 0; i < subject.size(); i++){  //Needs to be modified, not adding persons correctly. 1 off error.
             myfile << subject[i].firstName << endl;
             myfile << subject[i].lastName << endl;
             myfile << subject[i].personSex << endl;
@@ -170,18 +172,38 @@ void output(vector<scientists>& subject, int persons){
 }
 
 void print(vector<scientists>& subject){
-    for(int i = 0; i < subject.size(); i++){
+    for(unsigned int i = 0; i < subject.size(); i++){
         cout << "Name: " << subject[i].firstName << " ";
         cout << subject[i].lastName << endl;
         cout << "Sex: " << subject[i].personSex << endl;
         cout << "Year of birth: " << subject[i].yearOfBirth << endl;
-        cout << "Year of death: " << subject[i].yearOfDeath << endl << endl;
+        if (subject[i].yearOfDeath == 0){
+            cout << "Alive" << endl;
+        }
+        else{
+        cout << "Year of death: " << subject[i].yearOfDeath << endl;}
+        cout << endl;
     }
+}
+void printSearch(vector<scientists>& subject, int i){
+        cout << "Keyword was found for: " << endl;
+        cout << "Name: " << subject[i].firstName << " ";
+        cout << subject[i].lastName << endl;
+        cout << "Sex: " << subject[i].personSex << endl;
+        cout << "Year of birth: " << subject[i].yearOfBirth << endl;
+        if (subject[i].yearOfDeath == 0){
+            cout << "Alive" << endl;
+        }
+        else{
+            cout << "Year of death: " << subject[i].yearOfDeath << endl;}
+        cout << endl;
 }
 
 void searchInVector(vector<scientists>& subject){// Search function
-    char a;
+    //ATH við viljum líka finna substring!!
+    char input;
     bool loop = true;
+    bool found = false;
     string searchFirstName;
     string searchLastName;
     int searchBirthYear;
@@ -194,57 +216,51 @@ void searchInVector(vector<scientists>& subject){// Search function
         cout << " 3. To search by birth year" << endl;
         cout << " 4. To exit to main menu" << endl;
         cout << "-----------------------------"<<endl;
-        cout << "Search for:  ";
-        cin >> a;
+        cout << "Search by:  ";
+        cin >> input;
 
-        switch(a){ //Runs through vector and prints out the locations where "i" equals name provided
+        switch(input){ //Runs through vector and prints out the locations where "i" equals name provided
         case '1':
-
-            cout << "Please enter a first name to search for"<<endl;
+            cout << "Please enter a first name to search for: ";
             cin >> searchFirstName;
-            for(unsigned int i=0; i<subject.size(); i++){
-                if(subject.at(i).firstName == searchFirstName){
-                    cout << subject.at(i).firstName<<" "
-                       << subject.at(i).lastName<<" "
-                       << subject.at(i).personSex<<" "
-                       << subject.at(i).yearOfBirth<<" "
-                       << subject.at(i).yearOfDeath<<endl;
+            cout << endl;
+            for(unsigned int i = 0; i < subject.size(); i++){
+                if(subject[i].firstName == searchFirstName){
+                    printSearch(subject, i);
+                    found = true;
                 }
             }
-
-                cout << "Sorry the first name " << searchFirstName << " did not match any first names in database. \n";
-
-             break;
-
-        case '2': //Runs through vector and prints out the locations where "i" equals lastname provided
-            cin>> searchLastName;
-            for(unsigned int i=0; i<subject.size(); i++)
-            {
-                if(subject.at(i).lastName == searchLastName){
-                    cout<< subject.at(i).lastName<<" "
-                       <<subject.at(i).firstName<<" "
-                       << subject.at(i).personSex<<" "
-                       << subject.at(i).yearOfBirth<<" "
-                       << subject.at(i).yearOfDeath<<endl;
-                }
-                else if(subject.at(i).lastName != searchLastName){
-                    cout<<"Sorry the last name"<< searchLastName<<" did not match any last names in database. \n";
-                }
-
+            if (found == false){
+                cout << "Sorry the first name \"" << searchFirstName << "\" did not match any first names in database. \n";
             }
             break;
 
+        case '2': //Runs through vector and prints out the locations where "i" equals last name provided
+            cout << "Please enter a last name to search for: ";
+            cin >> searchLastName;
+            for(unsigned int i = 0; i < subject.size(); i++)
+            {
+                if(subject.at(i).lastName == searchLastName){
+                    printSearch(subject, i);
+                    found = true;
+                }
+            }
+            if (found == false){
+                cout << "Sorry the last name \""<< searchLastName << "\" did not match any last names in database. \n";}
+            break;
+
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided.
+            cout << "Enter birth year: ";
             cin >> searchBirthYear;
             for(unsigned int i = 0; i < subject.size(); i++){
                 if(subject.at(i).yearOfBirth == searchBirthYear){
-                    cout << subject.at(i).lastName<<" "
-                       << subject.at(i).firstName<<" "
-                       << subject.at(i).personSex<<" "
-                       << subject.at(i).yearOfBirth<<" "
-                       << subject.at(i).yearOfDeath<<endl;
+                    printSearch(subject, i);
+                    found = true;
                 }
-            }cout<<"Sorry according to our records nobody was born in "<< searchBirthYear <<endl;
+            }
+            if (found == false){
+                    cout <<"Sorry according to our records nobody was born in " << searchBirthYear << endl;
+            }
            break;
 
          case '4':
@@ -282,14 +298,22 @@ void readFromFileToVector(vector<scientists>& subject){
 
 void clearVector(vector<scientists>& subject){
     char answer;
-    cout << "Are you sure you want to clear the vector? (y/n) ";
+    cout << "Are you sure you want to delete all data? (y/n) ";
     cin >> answer;
 
     if(answer == 'y'){
         subject.clear();
         cout << "Vector cleared of all elements." << endl;
+        ofstream myfile;
+        myfile.open("save.txt");
+        myfile << "";
+        myfile.close();
+
     }
     else{
         callDefaultMenu(subject);
     }
+}
+void sortVector(vector<scientists>& subject){
+   // sort(subject.begin(), subject.end() );
 }
