@@ -20,6 +20,7 @@ void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject, int persons);
 void print();
 void searchInVector(vector<scientists>& subject);
+void deleteVector(vector<scientists>& subject);
 
 int main()
 {
@@ -251,7 +252,7 @@ void searchInVector(vector<scientists>& subject)// Search function
                        << subject.at(i).personSex<<" "
                        << subject.at(i).yearOfBirth<<" "
                        << subject.at(i).yearOfDeath<<endl;
-                } else{cout<<"Sorry the lastname"<< searchLastName<<" did not match any name in database. \n";}
+                }else{cout<<"Sorry the lastname"<< searchLastName<<" did not match any name in database. \n";}
 
             }
             break;
