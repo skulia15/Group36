@@ -12,8 +12,8 @@ struct scientists{
     string firstName;
     string lastName;
     string personSex;
-    string yearOfBirth;
-    string yearOfDeath;
+    int yearOfBirth;
+    int yearOfDeath;
 };
 
 void callDefaultMenu(vector<scientists>& subject);
@@ -134,7 +134,7 @@ void inputInfo(vector<scientists>& subject){
                 cin >> scientist1.yearOfDeath;
                 error = true;}
             else if (answer == 'y'||answer == 'Y'){
-                scientist1.yearOfDeath = " ";
+                scientist1.yearOfDeath = 0;
                 error = true;}
             else cout << "Input was invalid try again." << endl;
         } while (error == false);
@@ -154,7 +154,7 @@ void output(vector<scientists>& subject, int persons){
             myfile << subject[i].lastName << endl;
             myfile << subject[i].personSex << endl;
             myfile << subject[i].yearOfBirth << endl;
-            if(subject[i].yearOfDeath == " "){  //if still alive then marks as "Still Alive"
+            if(subject[i].yearOfDeath == 0){  //if still alive then marks as "Still Alive"
                 myfile << "still alive." << endl;}
             else {
                 myfile << subject[i].yearOfDeath << endl;}
@@ -180,51 +180,8 @@ void print(){
   else cout << "Unable to open file";
 }
 
-void search(); //þarf að laga til, er ekki að prenta rétt út.
-/*void search()
-{
-    ifstream myfile;
-    string find, temp="";
-    bool found = 0;
-    myfile.open("save.txt");
 
-    if(myfile.fail()){
-        cout << "Unable to open file";
-        exit(1);
-    }
 
-    cout << "Please enter two or more characters to search for (case sensitive): ";
-    cin >> find;
-    cout << endl;
-
-    while(!myfile.eof()){
-        getline(myfile, temp);
-        for(unsigned int i = 0; i < find.size(); i++){
-            if(temp[i] == find[i]){
-                found = 1;
-            }
-            else{
-                found = 0;
-                break;
-            }
-        }
-        if(found){
-
-            for(unsigned int i = find.size()+1; i < temp.size(); i++)
-            for(int i = 0; i < temp.size()-16; i++)
-
-                cout << temp[i];
-                cout << endl;
-            break;
-        }
-    }
-    if(myfile.eof() && (!found)){
-        cout << "Found nothing." << endl;
-    }
-
-    myfile.close();
-}*/
-/*
 void searhInVector(vector<scientists>& subject){// Search function
     char a;
     bool loop = true;
@@ -294,7 +251,7 @@ void searhInVector(vector<scientists>& subject){// Search function
         }
     }
 }
-*/
+
 void readFromFileToVector(vector<scientists>& subject){
     ifstream myfile;
     scientists scientist1;
