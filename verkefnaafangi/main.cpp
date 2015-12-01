@@ -17,6 +17,7 @@ struct scientists{
 };
 
 void callDefaultMenu(vector<scientists>& subject);
+void printMainMenu();
 void inputInfo(vector<scientists>& subject);
 void output(vector<scientists>& subject);
 string getSearch();
@@ -29,18 +30,13 @@ void clearVector(vector<scientists>& subject);
 void sortVector(vector<scientists>& subject, char choice);
 bool compareAlpha(const scientists& lhs, const scientists& rhs);
 bool compareReverseAlpha(const scientists& lhs, const scientists& rhs);
+bool compareAlphaLast(const scientists& lhs, const scientists& rhs);
+bool compareReverseAlphaLast(const scientists& lhs, const scientists& rhs);
+bool compareYoB(const scientists& lhs, const scientists& rhs);
 
 
 int main()
 {
-    //ToDo list
-
-    //function that searches for substrings!
-    //Create a function to remove a computer scientist.
-    //Optimize the program with classes!
-    //Error handling.
-    //Cool extra features.
-
     vector<scientists> subject;  //vector of persons
 
     readFromFileToVector(subject);
@@ -50,20 +46,24 @@ int main()
     return 0;
 }
 
+void printMainMenu(){
+    cout << "---------Main Menu-----------";
+    cout << " \n Please select an option:  "<<endl;
+    cout << " \n 1. To add a computer scientist." << endl;
+    cout << " 2. To print all persons." << endl;
+    cout << " 3. To search." << endl;
+    cout << " 4. To delete all data." << endl;
+    cout << " 5. To quit." << endl;
+    cout << "------------------------------"<<endl;
+    cout << "Choice: ";
+
+}
 void callDefaultMenu(vector<scientists>& subject){ //Displays the main menu, Calls our basic functions
     char a;
     bool loop = true;
 
     while(loop == true){
-        cout << "---------Main Menu-----------";
-        cout << " \n Please select an option:  "<<endl;
-        cout << " \n 1. To add a computer scientist." << endl;
-        cout << " 2. To print all persons." << endl;
-        cout << " 3. To search." << endl;
-        cout << " 4. To delete all data." << endl;
-        cout << " 5. To quit." << endl;
-        cout << "------------------------------"<<endl;
-        cout << "Choice: ";
+        printMainMenu();
         cin >> a;
 
         switch(a){
@@ -116,14 +116,10 @@ void inputInfo(vector<scientists>& subject){
 
         cout << "Person's first name: ";
         cin >> scientist1.firstName;
-         for (unsigned int i=0;i<scientist1.firstName.length();i++){//Change name to lowercase
-                    //scientist1.firstName[i]=tolower(scientist1.firstName[i]);
-        }
+
         cout << "Last name: ";
         cin >> scientist1.lastName;
-        for (unsigned int i=0;i<scientist1.lastName.length();i++){//Change name to lowercase
-                  //  scientist1.lastName[i]=tolower(scientist1.lastName[i]);
-        }
+
         cout << endl;
 
         do{
@@ -164,12 +160,12 @@ void output(vector<scientists>& subject){
     ofstream myfile;
     myfile.open("save.txt", ios::out | ios::app); //For adding without overwriting
     if (myfile.is_open()){
-        for (unsigned int i = 0; i < subject.size(); i++){  //Needs to be modified, not adding persons correctly. 1 off error.
+        for (unsigned int i = 0; i < subject.size(); i++){
             myfile << subject[i].firstName << endl;
             myfile << subject[i].lastName << endl;
             myfile << subject[i].personSex << endl;
             myfile << subject[i].yearOfBirth << endl;
-            if(subject[i].yearOfDeath == 0){  //if still alive then marks as "Still Alive"
+            if(subject[i].yearOfDeath == 0){
                 myfile << "still alive." << endl;}
             else {
                 myfile << subject[i].yearOfDeath << endl;}
@@ -185,8 +181,11 @@ void print(vector<scientists>& subject){
 
     while(error == false){
         cout << "How would you like to display your persons?" << endl;
-        cout << "1. In alphabetical order." << endl;
-        cout << "2. In reverse alphabetical order." << endl;
+        cout << "1. By first name in alphabetical order." << endl;
+        cout << "2. By first name in reverse alphabetical order." << endl;
+        cout << "3. By Last name in alphabetical order." << endl;
+        cout << "4. By Last name in reverse alphabetical order." << endl;
+        cout << "5. By birth year. (Oldest to youngest)" << endl;
         cout << "Input your choice: ";
         cin >> choice;
         cout << endl;
@@ -196,11 +195,23 @@ void print(vector<scientists>& subject){
 
     switch (choice){
         case '1':
-            cout << "Displaying in alphabetical order." << endl;
+            cout << "Displaying by first name in alphabetical order." << endl;
             sortVector(subject, choice);
             break;
         case '2':
-            cout << "Displaying in reverse alphabetical order." << endl;
+            cout << "Displaying by first name in reverse alphabetical order." << endl;
+            sortVector(subject, choice);
+            break;
+        case '3':
+            cout << "Displaying by last name in alphabetical order." << endl;
+            sortVector(subject, choice);
+            break;
+        case '4':
+            cout << "Displaying by last name in alphabetical order." << endl;
+            sortVector(subject, choice);
+            break;
+        case '5':
+            cout << "Displaying by birth year." << endl;
             sortVector(subject, choice);
             break;
         default:
@@ -240,7 +251,7 @@ void printSearch(vector<scientists>& subject, int i){
 string getSearch(){
     string searchName;
     cin >> searchName;
-    for (unsigned int i = 0; i < searchName.length(); i++){//Change search keyword to lowercase
+    for (unsigned int i = 0; i < searchName.length(); i++){//Changes search keyword to lowercase
             searchName[i] = tolower(searchName[i]);
     }
     cout << endl;
@@ -260,8 +271,8 @@ bool searchName(vector<scientists>& subject, char input, string searchName){
         else if (input == '3'){tempYoB = subject[i].yearOfBirth;}
         transform(tempSubject.begin(), tempSubject.end(), tempSubject.begin(), ::tolower); //Put to lowercase for case-insensitive searching.
         convert.str(""); //To clear the string steam from the iteration before.
-        convert << tempYoB;  //add the value of Number to the characters in the stream.
-        YoB = convert.str(); //set Result to the content of the stream.
+        convert << tempYoB;  //add the value of tempSubject to the characters in the stream.
+        YoB = convert.str(); //set YoB to the content of the stream.
         if(tempSubject == searchName || YoB == searchName){
             if (counter == 0){
                 cout << "Keyword was found for: " << endl;
@@ -276,7 +287,6 @@ bool searchName(vector<scientists>& subject, char input, string searchName){
 }
 
 void searchInVector(vector<scientists>& subject){// Search function.
-    //ATH við viljum líka finna substring!!
     char input;
     bool loop = true;
     bool found = false;
@@ -293,7 +303,7 @@ void searchInVector(vector<scientists>& subject){// Search function.
         cout << "Search by:  ";
         cin >> input;
 
-        switch(input){ //Runs through vector and prints out the locations where "i" equals name provided
+        switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
         case '1':
             cout << "Please enter a first name to search for: ";
             theSearchName = getSearch();
@@ -303,7 +313,7 @@ void searchInVector(vector<scientists>& subject){// Search function.
             }
             break;
 
-        case '2': //Runs through vector and prints out the locations where "i" equals last name provided
+        case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
             cout << "Please enter a last name to search for: ";
             theSearchName = getSearch();
             found = searchName(subject, input, theSearchName);
@@ -311,7 +321,7 @@ void searchInVector(vector<scientists>& subject){// Search function.
                 cout << "Sorry the last name \"" << theSearchName << "\" did not match any last names in database. \n";}
             break;
 
-        case '3': //Runs through vector and prints out the locations where "i" equals birthday provided.
+        case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
             cout << "Enter birth year: ";
             theSearchName = getSearch();
             found = searchName(subject, input, theSearchName);
@@ -371,11 +381,20 @@ void clearVector(vector<scientists>& subject){
     }
 }
 
-bool compareAlpha(const scientists& lhs, const scientists& rhs) {
+bool compareAlpha(const scientists& lhs, const scientists& rhs) { //Sorts alphabetically.
     return lhs.firstName < rhs.firstName;
 }
-bool compareReverseAlpha(const scientists& lhs, const scientists& rhs) {//add by birth year!
+bool compareReverseAlpha(const scientists& lhs, const scientists& rhs) {//Sorts reverse alphabetically.
     return lhs.firstName > rhs.firstName;
+}
+bool compareAlphaLast(const scientists& lhs, const scientists& rhs) { //Sorts alphabetically.
+    return lhs.lastName < rhs.lastName;
+}
+bool compareReverseAlphaLast(const scientists& lhs, const scientists& rhs) {//Sorts reverse alphabetically.
+    return lhs.lastName > rhs.lastName;
+}
+bool compareYoB(const scientists& lhs, const scientists& rhs) {//Sorts by birth year.
+    return lhs.yearOfBirth < rhs.yearOfBirth;
 }
 
 void sortVector(vector<scientists>& subject, char choice){
@@ -383,4 +402,10 @@ void sortVector(vector<scientists>& subject, char choice){
         sort(subject.begin(), subject.end(), compareAlpha);}
     else if (choice == '2'){
         sort(subject.begin(), subject.end(), compareReverseAlpha);}
+    else if (choice == '3'){
+        sort(subject.begin(), subject.end(), compareAlphaLast);}
+    else if (choice == '4'){
+        sort(subject.begin(), subject.end(), compareReverseAlphaLast);}
+    else if (choice == '5'){
+        sort(subject.begin(), subject.end(), compareYoB);}
 }
