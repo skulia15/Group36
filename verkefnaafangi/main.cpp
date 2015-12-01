@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <iterator>
 
 using namespace std;
 
@@ -22,19 +23,18 @@ void printSearch(vector<scientists>& subject, int i);
 void readFromFileToVector(vector<scientists>& subject);
 void searchInVector(vector<scientists>& subject);
 void clearVector(vector<scientists>& subject);
-void sortVector(vector<scientists>& subject);
-
-
+void sortVector(vector<scientists>& subject, char choice);
+bool compareAlpha(const scientists& lhs, const scientists& rhs);
+bool compareReverseAlpha(const scientists& lhs, const scientists& rhs);
 
 int main()
 {
     //ToDo list
 
-    //Print options f.ex alphabetical order
+    //function that searches for substrings!
     //Create a function to remove a computer scientist.
-    //Sorting
-    //function that deletes one person from file and vector
-    //function that searches for substrings
+    //Optimize the program with classes!
+    //Make it so the program can create "save.txt" if it does not already exist
     //Error handling.
     //Cool extra features.
 
@@ -47,7 +47,7 @@ int main()
     return 0;
 }
 
-void callDefaultMenu(vector<scientists>& subject){
+void callDefaultMenu(vector<scientists>& subject){ //Displays the main menu, Calls our basic functions
     char a;
     bool loop = true;
 
@@ -90,7 +90,7 @@ void callDefaultMenu(vector<scientists>& subject){
 void inputInfo(vector<scientists>& subject){
     scientists scientist1;
     char answer = 0;
-    int persons;
+    char persons;
     bool error = false;
     string sex;
     char sexTemp;
@@ -98,15 +98,14 @@ void inputInfo(vector<scientists>& subject){
     while(error == false){
         cout << "How many persons would you like to add? ";
         cin >> persons;
-        if (isdigit(persons)){ //this if else statement is not working correctly, needs fix.
+        if (isalpha(persons)){
             cout << "Error in input, try again." << endl;
         }
-        if (!isdigit(persons)){
-              error = true;
-        }
+        else
+            error = true;
     }
 
-    for (int i = 1;i <= persons; i++){
+    for (int i = 1;i <= persons - '0'; i++){
         if (i == 1){
             cout << "\nEnter the info for the first person: " << endl;}
         else {
@@ -172,6 +171,37 @@ void output(vector<scientists>& subject, int persons){
 }
 
 void print(vector<scientists>& subject){
+    char choice;
+    bool error = false;
+
+    while(error == false){
+        cout << "How would you like to display your persons?" << endl;
+        cout << "1. In alphabetical order." << endl;
+        cout << "2. In reverse alphabetical order." << endl;
+        cout << "Input your choice: ";
+        cin >> choice;
+        cout << endl;
+        if (isalpha(choice)){ cout << "Error in input, try again." << endl;}
+        else { error = true;}
+    }
+
+    switch (choice){
+        case '1':
+            cout << "Displaying in alphabetical order." << endl;
+            sortVector(subject, choice);
+            break;
+        case '2':
+            cout << "Displaying in reverse alphabetical order." << endl;
+            sortVector(subject, choice);
+            break;
+        default:
+            cout << "You entered a number with an undefined function." << endl
+            << "Displaying in alphabetical order." << endl;
+            sortVector(subject, '1');
+            break;
+    }
+    cout << endl;
+
     for(unsigned int i = 0; i < subject.size(); i++){
         cout << "Name: " << subject[i].firstName << " ";
         cout << subject[i].lastName << endl;
@@ -233,6 +263,7 @@ void searchInVector(vector<scientists>& subject){// Search function
             if (found == false){
                 cout << "Sorry the first name \"" << searchFirstName << "\" did not match any first names in database. \n";
             }
+
             break;
 
         case '2': //Runs through vector and prints out the locations where "i" equals last name provided
@@ -314,6 +345,17 @@ void clearVector(vector<scientists>& subject){
         callDefaultMenu(subject);
     }
 }
-void sortVector(vector<scientists>& subject){
-   // sort(subject.begin(), subject.end() );
+
+bool compareAlpha(const scientists& lhs, const scientists& rhs) {
+    return lhs.firstName < rhs.firstName;
+}
+bool compareReverseAlpha(const scientists& lhs, const scientists& rhs) {
+    return lhs.firstName > rhs.firstName;
+}
+
+void sortVector(vector<scientists>& subject, char choice){
+    if (choice == '1'){
+        sort(subject.begin(), subject.end(), compareAlpha);}
+    else if (choice == '2'){
+        sort(subject.begin(), subject.end(), compareReverseAlpha);}
 }
