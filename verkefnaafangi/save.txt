@@ -1,10 +1,10 @@
-Skuli
-Arnarsson
+upper
+case
 Male
 1995
 still alive.
-Charles
-Babbage
-Male
-1859
-1900
+normal
+case
+Female
+1990
+still alive.
