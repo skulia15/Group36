@@ -1,0 +1,60 @@
+Ada
+Lovelace
+Female
+1815
+1852
+Alan
+Turing
+Male
+1912
+1954
+Anita
+Borg
+Female
+1949
+2003
+Donald
+Knuth
+Male
+1938
+still alive.
+Edsger
+Dijkstra
+Male
+1930
+2002
+Grace
+Hopper
+Female
+1906
+1992
+John
+Neumann
+Male
+1903
+1957
+John
+Backus
+Male
+1924
+2007
+Larry
+Page
+Male
+1973
+still alive.
+Sergey
+Brin
+Male
+1973
+still alive.
+Steve
+Wozniak
+Male
+1950
+still alive.
+Tim
+Berners-Lee
+Male
+1955
+still alive.

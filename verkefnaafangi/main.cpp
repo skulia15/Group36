@@ -97,7 +97,6 @@ void inputInfo(vector<scientists>& subject){
     char answer = 0;
     char persons;
     bool error = false;
-    bool error2 = true;
     string sex;
     char sexTemp;
 
@@ -123,7 +122,7 @@ void inputInfo(vector<scientists>& subject){
         cout << "Last name: ";
         cin >> scientist1.lastName;
 
-
+        bool error2 = true;
         while (error2 == true){
             cout << "Sex: (m/f) ";
             cin >> sexTemp;
@@ -166,7 +165,7 @@ void inputInfo(vector<scientists>& subject){
 
 void output(vector<scientists>& subject){
     ofstream myfile;
-    myfile.open("save.txt", ios::out | ios::app); //For adding without overwriting
+    myfile.open("save1.txt", ios::out | ios::app); //For adding without overwriting
     if (myfile.is_open()){
         for (unsigned int i = 0; i < subject.size(); i++){
             myfile << subject[i].firstName << endl;
@@ -179,6 +178,14 @@ void output(vector<scientists>& subject){
                 myfile << subject[i].yearOfDeath << endl;}
         }
         myfile.close();
+        if( remove( "save.txt" ) != 0 )
+            perror( "Error deleting file" );
+        int result;
+        char newfile[] ="save1.txt";
+        char oldfile[] ="save.txt";
+        result= rename( newfile , oldfile );
+        if ( result != 0 )
+            perror( "Error renaming file" );
     }
     else cout << "Unable to open file";
 }
