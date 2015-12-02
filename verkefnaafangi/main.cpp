@@ -47,7 +47,7 @@ int main()
 }
 
 void printMainMenu(){
-    cout << "---------Main Menu-----------" << endl;;
+    cout << "---------Main Menu-----------" << endl;
     cout << "Please select an option:  " << endl;
     cout << " \n 1. To add a computer scientist." << endl;
     cout << " 2. To print all persons." << endl;
@@ -181,7 +181,7 @@ void output(vector<scientists>& subject){
         if( remove( "save.txt" ) != 0 )
             perror( "Error deleting file" );
         int result;
-        char newfile[] ="save1.txt";
+        char newfile[] ="save1.txt";// Create a new folder with every person and then make it overwrite the originial
         char oldfile[] ="save.txt";
         result= rename( newfile , oldfile );
         if ( result != 0 )
