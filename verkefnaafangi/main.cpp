@@ -47,14 +47,14 @@ int main()
 }
 
 void printMainMenu(){
-    cout << "---------Main Menu-----------";
-    cout << " \n Please select an option:  "<<endl;
+    cout << "---------Main Menu-----------" << endl;;
+    cout << "Please select an option:  " << endl;
     cout << " \n 1. To add a computer scientist." << endl;
     cout << " 2. To print all persons." << endl;
     cout << " 3. To search." << endl;
     cout << " 4. To delete all data." << endl;
     cout << " 5. To quit." << endl;
-    cout << "------------------------------"<<endl;
+    cout << "------------------------------"<< endl;
     cout << "Choice: ";
 
 }
@@ -80,11 +80,13 @@ void callDefaultMenu(vector<scientists>& subject){ //Displays the main menu, Cal
             clearVector(subject);
             break;
         case '5':
+            cout << "Thank you for using this program your doings have been saved" << endl;
             cout << "Quitting." << endl;
             loop = false;
             break;
         default:
-            cout << "Error in command, try again." << endl << endl;
+            cout << "Error in command, try again." << endl;
+            cout << endl;
             break;
         }
      }
@@ -121,38 +123,41 @@ void inputInfo(vector<scientists>& subject){
         cout << "Last name: ";
         cin >> scientist1.lastName;
 
-        cout << endl;
 
         while (error2 == true){
             cout << "Sex: (m/f) ";
             cin >> sexTemp;
-            if (sexTemp == 'm'||sexTemp == 'M'){ sex = "Male"; error2 = false;}
-            else if (sexTemp == 'f'||sexTemp == 'F'){ sex = "Female"; error2 = false;}
-            else error2=true;
-            cout << "Input was invalid try again." << endl;
-
-        } ;
+            if (sexTemp == 'm'||sexTemp == 'M'){
+                sex = "Male"; error2 = false;}
+            else if (sexTemp == 'f'||sexTemp == 'F'){
+                sex = "Female"; error2 = false;}
+            else
+            cout << "Input was invalid try again." << endl;}
         scientist1.personSex = sex;
-        cout << endl;
 
         cout << "Year of Birth: ";
         cin >> scientist1.yearOfBirth;
-        cout << endl;
 
         error = false;
         do{
             cout << "Is the person still alive? (y/n) ";
             cin >> answer;
             if (answer == 'n'||answer == 'N'){
-                cout << "\nYear of Death: ";
+                cout << "Year of Death: ";
                 cin >> scientist1.yearOfDeath;
+                while(scientist1.yearOfBirth > scientist1.yearOfDeath){
+                    cout << "The person can not have died before its birth, please try again" << endl;
+                    cout << "Year of Death: ";
+                    cin >> scientist1.yearOfDeath;}
+                cout << endl;
                 error = true;}
             else if (answer == 'y'||answer == 'Y'){
                 scientist1.yearOfDeath = 0;
+                cout << endl;
                 error = true;}
             else cout << "Input was invalid try again." << endl;
         } while (error == false);
-        cout << endl;
+
 
         subject.push_back(scientist1);  //The struct is pushed on to the vector
     }
@@ -183,12 +188,15 @@ void print(vector<scientists>& subject){
     bool error = false;
 
     while(error == false){
+        cout << endl;
+        cout << "--------------Display menu--------------" << endl;
         cout << "How would you like to display your persons?" << endl;
-        cout << "1. By first name in alphabetical order." << endl;
-        cout << "2. By first name in reverse alphabetical order." << endl;
-        cout << "3. By Last name in alphabetical order." << endl;
-        cout << "4. By Last name in reverse alphabetical order." << endl;
-        cout << "5. By birth year. (Oldest to youngest)" << endl;
+        cout << " \n 1. By first name in alphabetical order." << endl;
+        cout << " 2. By first name in reverse alphabetical order." << endl;
+        cout << " 3. By Last name in alphabetical order." << endl;
+        cout << " 4. By Last name in reverse alphabetical order." << endl;
+        cout << " 5. By birth year. (Oldest to youngest)" << endl;
+        cout << "----------------------------------------" << endl;
         cout << "Input your choice: ";
         cin >> choice;
         cout << endl;
@@ -296,15 +304,17 @@ void searchInVector(vector<scientists>& subject){// Search function.
     string theSearchName;
 
     while(loop == true){
-        cout << "--------Search Menu-----------";
-        cout << " \n Please select a search option:  "<<endl;
+        cout << endl;
+        cout << "--------Search Menu-----------" << endl;
+        cout << "Please select a search option:  "<< endl;
         cout << " \n 1. To search by first name" << endl;
         cout << " 2. To search by last name" << endl;
         cout << " 3. To search by birth year" << endl;
         cout << " 4. To exit to main menu" << endl;
-        cout << "-----------------------------"<<endl;
-        cout << "Search by:  ";
+        cout << "-----------------------------"<< endl;
+        cout << "Search by: ";
         cin >> input;
+        cout << endl;
 
         switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
         case '1':
@@ -312,8 +322,7 @@ void searchInVector(vector<scientists>& subject){// Search function.
             theSearchName = getSearch();
             found = searchName(subject, input, theSearchName);
             if (found == false){
-                cout << "Sorry the first name \"" << theSearchName << "\" did not match any first names in database. \n";
-            }
+                cout << "Sorry the first name \"" << theSearchName << "\" did not match any first names in database." << endl;}
             break;
 
         case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
@@ -321,7 +330,7 @@ void searchInVector(vector<scientists>& subject){// Search function.
             theSearchName = getSearch();
             found = searchName(subject, input, theSearchName);
             if (found == false){
-                cout << "Sorry the last name \"" << theSearchName << "\" did not match any last names in database. \n";}
+                cout << "Sorry the last name \"" << theSearchName << "\" did not match any last names in database." << endl;}
             break;
 
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
@@ -330,12 +339,18 @@ void searchInVector(vector<scientists>& subject){// Search function.
             found = searchName(subject, input, theSearchName);
             if (found == false){
                 cout <<"Sorry, according to our records nobody was born in " << theSearchName << endl;}
-           break;
+            break;
 
-         case '4':
+        case '4':
             cout << "Going back to Main menu." << endl;
+            cout << endl;
             loop = false;
             break;
+
+        default:
+            cout << "You entered a number with an undefined function." << endl;
+            cout << "Returning to Search menu" << endl;
+            cout << endl;
         }
     }
 }
@@ -368,20 +383,24 @@ void readFromFileToVector(vector<scientists>& subject){
 
 void clearVector(vector<scientists>& subject){
     char answer;
-    cout << "Are you sure you want to delete all data? (y/n) ";
-    cin >> answer;
-
-    if(answer == 'y'){
-        subject.clear();
-        cout << "Vector cleared of all elements." << endl;
-        ofstream myfile;
-        myfile.open("save.txt");
-        myfile << "";
-        myfile.close();
-    }
-    else{
-        callDefaultMenu(subject);
-    }
+    bool data = false;
+    do{
+        cout << "Are you sure you want to delete all data?(y/n) ";
+        cin >> answer;
+        if(answer =='y' || answer =='Y'){
+            subject.clear();
+            cout << "File cleared of all data" << endl;
+            ofstream myfile;
+            myfile.open("save.txt");
+            myfile << "";
+            myfile.close();
+            data = true;}
+        else if(answer =='n' || answer =='N'){
+            cout << "Data kept in file" << endl;
+            data = true;}
+        else
+            cout << "Invalid answer, please try again" << endl;
+    }while(data == false);
 }
 
 bool compareAlpha(const scientists& lhs, const scientists& rhs) { //Sorts alphabetically.
