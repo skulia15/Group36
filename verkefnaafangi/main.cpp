@@ -95,6 +95,7 @@ void inputInfo(vector<scientists>& subject){
     char answer = 0;
     char persons;
     bool error = false;
+    bool error2 = true;
     string sex;
     char sexTemp;
 
@@ -122,13 +123,15 @@ void inputInfo(vector<scientists>& subject){
 
         cout << endl;
 
-        do{
-            cout << "Sex: (m/f) " ;
+        while (error2 == true){
+            cout << "Sex: (m/f) ";
             cin >> sexTemp;
-            if (sexTemp == 'm'){ sex = "Male"; error = true;}
-            else if (sexTemp == 'f'){ sex = "Female"; error = true;}
-            else cout << "Input was invalid try again." << endl;
-        } while (error == false);
+            if (sexTemp == 'm'||sexTemp == 'M'){ sex = "Male"; error2 = false;}
+            else if (sexTemp == 'f'||sexTemp == 'F'){ sex = "Female"; error2 = false;}
+            else error2=true;
+            cout << "Input was invalid try again." << endl;
+
+        } ;
         scientist1.personSex = sex;
         cout << endl;
 
