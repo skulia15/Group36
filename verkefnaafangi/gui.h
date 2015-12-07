@@ -4,15 +4,13 @@
 #include "manualInsertScientist.h"
 #include "connectiontodatabase.h"
 
-class GUI
-{
+class GUI{
 public:
    void displayMainMenu();
    void mainMenu();
    void searchMenu();
    void dislpaySearchMenu();
 private:
-
 };
 
 #endif // GUI_H

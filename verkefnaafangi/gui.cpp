@@ -6,20 +6,19 @@ using namespace std;
 
 void GUI::mainMenu()
 {
-       cout << "---------Main Menu-----------" <<endl;
-       cout << " \n Please select an option:  "<<endl;
-       cout << " \n 1. To add a computer scientist." << endl;
-       cout << " 2. To print all persons." << endl;
-       cout << " 3. To search." << endl;
-       cout << " 4. To delete all data." << endl;
-       cout << " 5. To quit." << endl;
-       cout << "-----------------------------"<<endl;
-       cout << "Choice: ";
+    cout << "---------Main Menu-----------" <<endl;
+    cout << " \n Please select an option:  "<<endl;
+    cout << " \n 1. To add a computer scientist." << endl;
+    cout << " 2. To print all persons." << endl;
+    cout << " 3. To search." << endl;
+    cout << " 4. To delete all data." << endl;
+    cout << " 5. To quit." << endl;
+    cout << "-----------------------------"<<endl;
+    cout << "Choice: ";
 }
 
-void GUI::displayMainMenu()
-{
-Scientists b;
+void GUI::displayMainMenu(){
+Scientists theScientist;
     char a;
         bool loop = true;
 
@@ -29,8 +28,8 @@ Scientists b;
 
             switch(a){
             case '1':
-                  b.manualInput();
-                    cout << "Insert Computer" << endl;
+                  theScientist.manualInput();
+                    //cout << "Insert Computer" << endl;
                  break;
             case '2':
                     cout << "Print to screen" << endl;
@@ -52,8 +51,6 @@ Scientists b;
          }
 }
 
-
-
 void GUI::dislpaySearchMenu(){
     char input;
     bool loop = true;
@@ -73,6 +70,7 @@ void GUI::dislpaySearchMenu(){
             break;
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
             cout << "Search by birth year "<<endl;
+<<<<<<< HEAD
             break;
         case '4':
             cout << "Going back to Main menu." << endl;
@@ -81,18 +79,27 @@ void GUI::dislpaySearchMenu(){
         default:
             cout << "Kindly entar a number between 1 and 4." << endl << endl;
             break;
+=======
+          break;
+       case '4':
+           cout << "Going back to Main menu." << endl;
+           loop = false;
+           break;
+       default:
+           cout << "Please enter a number between 1 and 4." << endl << endl;
+           break;
+>>>>>>> 164d4166f55dccc8e0d01206b4ee6984ba400242
        }
    }
 }
 
-void GUI::searchMenu()
-{
-            cout << "--------Search Menu-----------"<<endl ;
-            cout << " \n Please select a search option:  "<<endl;
-            cout << " \n 1. To search by first name" << endl;
-            cout << " 2. To search by last name" << endl;
-            cout << " 3. To search by birth year" << endl;
-            cout << " 4. To exit to main menu" << endl;
-            cout << "------------------------------"<<endl;
-            cout << "Search by:  ";
+void GUI::searchMenu(){
+    cout << "--------Search Menu-----------"<<endl ;
+    cout << " \n Please select a search option:  "<<endl;
+    cout << " \n 1. To search by first name" << endl;
+    cout << " 2. To search by last name" << endl;
+    cout << " 3. To search by birth year" << endl;
+    cout << " 4. To exit to main menu" << endl;
+    cout << "------------------------------"<<endl;
+    cout << "Search by:  ";
 }

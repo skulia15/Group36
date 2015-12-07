@@ -3,11 +3,17 @@
 #include "gui.h"
 #include "manualInsertScientist.h"
 #include "connectiontodatabase.h"
+#include <iostream>
+#include <QtSql>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <QCoreApplication>
+#include <fstream>
 
-class connectionToDataBAse
-{
+class connectionToDataBase{
 public:
-    connectionToDataBAse();
+    connectionToDataBase();
 };
 
 #endif // CONNECTIONTODATABASE_H
