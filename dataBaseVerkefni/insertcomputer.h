@@ -16,6 +16,7 @@ public:
 
 private:
     string cpuName;
+    string built;
     int yearBuilt;
     string cpuType;
 
