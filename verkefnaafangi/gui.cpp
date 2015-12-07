@@ -33,16 +33,16 @@ Scientists b;
             switch(a){
             case '1':
                   b.manualInput();
-                    cout<<"Insert Computer"<<endl;
+                    cout << "Insert Computer" << endl;
                  break;
             case '2':
-                    cout<<"Print to screen"<<endl;
+                    cout << "Print to screen" << endl;
                 break;
             case '3':
                     GUI::dislpaySearchMenu();
                break;
             case '4':
-                    cout<<"Delete data"<<endl;
+                    cout << "Delete data" << endl;
                 break;
             case '5':
                 cout << "Quitting." << endl;

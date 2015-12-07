@@ -14,9 +14,9 @@ using namespace std;
 struct Klasi{
     int id;
     string name;
-    string email;
-    int age;
-
+    string sex;
+    int YoB;
+    int YoD;
 };
 
 //void inputInfo(vector<Klasi>& viktor);//input into Vector
@@ -91,17 +91,17 @@ void inputInfo(vector<Klasi>& viktor){
         cout << "Person's first name: ";
         cin >> nemandi.name;
         cout << "Person's first name: ";
-        cin >> nemandi.email;
+        cin >> nemandi.sex;
         cout << "Person's age: ";
-        cin >> nemandi.age;
+        cin >> nemandi.YoB;
 
         viktor.push_back(nemandi);  //The struct is pushed on to the vector
     }
     for(unsigned int i =0; i<viktor.size(); i++)
     {
-        cout << viktor.at(i).name<<" id is "<<viktor.at(i).id<<endl;
-        cout << viktor.at(i).name<<" is "<< viktor.at(i).age<<endl;
-        cout << viktor.at(i).name<< " email is "<< viktor.at(i).email<<endl;
+        cout << viktor.at(i).name <<" id is "<<viktor.at(i).id << endl;
+        cout << viktor.at(i).name <<" is "<< viktor.at(i).name << endl;
+        cout << viktor.at(i).name << " email is "<< viktor.at(i).sex << endl;
     }
 }
 
@@ -154,14 +154,14 @@ void readFromDatabaseToVector(vector<Klasi>& viktor){
         viktor.push_back(Klasi());
 
     }
-    cout <<endl;
+    cout << endl;
 
     for(unsigned int i =0; i<viktor.size();i++)
     {
-        cout << viktor.at(i).id<<endl;
-        cout << viktor.at(i).name<<endl;
-        cout << viktor.at(i).email<<endl;
-        cout << viktor.at(i).age<<endl;
+        cout << viktor.at(i).id << endl;
+        cout << viktor.at(i).name << endl;
+        cout << viktor.at(i).sex << endl;
+        cout << viktor.at(i).YoB << endl;
     }
 
 
