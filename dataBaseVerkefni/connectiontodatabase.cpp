@@ -21,7 +21,7 @@ connectionToDataBase::connectionToDataBase()
          qDebug()<<"-==== Unable to connect ot the database ====-" << db.lastError().text() << " ==========" << endl;}
 
  string queryCreate = "CREATE TABLE Scientists(id INTEGER PRIMARY KEY AUTOINCREMENT, firstName VARCHAR NOT NULL, lastName VARCHAR NOT NULL, sex VARCHAR, YoB INTEGER NOT NULL, YoD INTEGER); ";
- string queryCreate2 ="CREATE TABLE Computers(cpuName VARCHAR NOT NULL, built VARCHAR NOT NULL, yearBuilt INTEGER NOT NULL, cpuType INTEGER NOT NULL); ";
+ string queryCreate2 ="CREATE TABLE Computers(id INTEGER PRIMARY KEY AUTOINCREMENT, cpuName VARCHAR NOT NULL, built VARCHAR NOT NULL, yearBuilt INTEGER NOT NULL, cpuType VARCHAR NOT NULL); ";
 
  if(query.exec(QString(queryCreate.c_str()))){
     cout << "========== The scientist table was made successfully! =========="<< endl;}
