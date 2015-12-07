@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 3.5.1, 2015-12-07T13:38:24. -->
+=======
+<!-- Written by QtCreator 3.5.1, 2015-12-07T12:35:52. -->
+>>>>>>> e6e9f8a5556062e155d4ea892f5b42c537d9591a
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -8,7 +12,11 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
+<<<<<<< HEAD
   <value type="int">0</value>
+=======
+  <value type="int">2</value>
+>>>>>>> e6e9f8a5556062e155d4ea892f5b42c537d9591a
  </data>
  <data>
   <variable>ProjectExplorer.Project.EditorSettings</variable>

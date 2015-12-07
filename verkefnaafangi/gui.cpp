@@ -52,24 +52,34 @@ Scientists theScientist;
 }
 
 void GUI::dislpaySearchMenu(){
-char input;
-   bool loop = true;
+    char input;
+    bool loop = true;
 
-   string theSearchName;
+    string theSearchName;
 
-   while(loop == true){
-       GUI::searchMenu();
-       cin >> input;
+    while(loop == true){
+        GUI::searchMenu();
+        cin >> input;
 
-       switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
-       case '1':
-           cout << "Search after first name "<<endl;
-           break;
-       case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
-           cout << "Search after last name "<<endl;
-           break;
-       case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
+        switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
+        case '1':
+            cout << "Search after first name "<<endl;
+            break;
+        case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
+            cout << "Search after last name "<<endl;
+            break;
+        case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
             cout << "Search by birth year "<<endl;
+<<<<<<< HEAD
+            break;
+        case '4':
+            cout << "Going back to Main menu." << endl;
+            loop = false;
+            break;
+        default:
+            cout << "Kindly entar a number between 1 and 4." << endl << endl;
+            break;
+=======
           break;
        case '4':
            cout << "Going back to Main menu." << endl;
@@ -78,6 +88,7 @@ char input;
        default:
            cout << "Please enter a number between 1 and 4." << endl << endl;
            break;
+>>>>>>> 164d4166f55dccc8e0d01206b4ee6984ba400242
        }
    }
 }
