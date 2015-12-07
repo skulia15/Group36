@@ -21,7 +21,7 @@ connectionToDataBAse::connectionToDataBAse()
 
  string queryCreate ="CREATE TABLE students(id INTEGER, name VARCHAR, email VARCHAR, age INTEGER); ";
  if(query.exec(QString(queryCreate.c_str()))){
- cout<< "Bjo til DB"<<endl;}
- else {cout<< "Bjo ekki til nyjan DB"<<endl;}
+    cout << "The Database was made successfully "<< endl;}
+ else {cout<< "The Database was NOT made " << endl;}
 }
 

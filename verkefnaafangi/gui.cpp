@@ -2,8 +2,6 @@
 #include "manualInsertScientist.h"
 #include "connectiontodatabase.h"
 
-#include <iostream>
-
 using namespace std;
 
 void GUI::mainMenu()
@@ -17,7 +15,6 @@ void GUI::mainMenu()
        cout << " 5. To quit." << endl;
        cout << "-----------------------------"<<endl;
        cout << "Choice: ";
-
 }
 
 void GUI::displayMainMenu()

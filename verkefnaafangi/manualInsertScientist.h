@@ -16,9 +16,11 @@ public:
 
 private:
     string id;
-    string name;
-    string email;
-    string age;
+    string firstName;
+    string lastName;
+    string sex;
+    int YoB;
+    int YoD;
 
 };
 

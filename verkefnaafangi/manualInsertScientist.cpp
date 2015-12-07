@@ -7,10 +7,11 @@ using namespace std;
 
 Scientists::Scientists()
 {
-   id="";
-   name="";
-   email="";
-   age="";
+   firstName = "";
+   lastName = "";
+   sex = "";
+   YoB = 0;
+   YoD = 0;
 };
 
 void Scientists::manualInput()
@@ -20,8 +21,18 @@ void Scientists::manualInput()
         QSqlQuery query(db);
         //string id,name,email, age;
 
-        cout<< "Please enter ID, Name, email and age \n";
-        cin >> id>> name>> email>> age;
+        cout << "Please enter the computer scientists information." << endl;
+        cout << "First name: ";
+        cin >> firstName;
+        cout << "Last name: ";
+        cin >> lastName;
+        cout << "Sex: ";
+        cin >> sex;
+        cout << "Year of Birth ";
+        cin >> YoB;
+        cout << "Year of Death";
+        cin >> YoD;
+
 
     /*
         query.prepare("SELECT * FROM students WHERE id = :id;)");
