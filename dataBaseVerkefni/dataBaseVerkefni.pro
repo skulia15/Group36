@@ -12,11 +12,13 @@ SOURCES += main.cpp \
     gui.cpp \
     connectiontodatabase.cpp \
     manualInsertScientist.cpp \
-    display.cpp
+    display.cpp \
+    insertcomputer.cpp
 
 HEADERS += \
     gui.h \
     connectiontodatabase.h \
     manualInsertScientist.h \
-    display.h
+    display.h \
+    insertcomputer.h
 

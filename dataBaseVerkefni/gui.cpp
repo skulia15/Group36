@@ -1,5 +1,6 @@
 #include "gui.h"
 #include "manualInsertScientist.h"
+#include "insertcomputer.h"
 #include "connectiontodatabase.h"
 #include "display.h"
 
@@ -9,17 +10,19 @@ void GUI::mainMenu()
 {
     cout << "---------Main Menu-----------" <<endl;
     cout << " \n Please select an option:  "<<endl;
-    cout << " \n 1. To add a computer scientist." << endl;
-    cout << " 2. To print all persons." << endl;
-    cout << " 3. To search." << endl;
-    cout << " 4. To delete all data." << endl;
-    cout << " 5. To quit." << endl;
+    cout << " \n 1. To add a computer." << endl;
+    cout << " 2. To add a computer Scientist." << endl;
+    cout << " 3. To print all persons." << endl;
+    cout << " 4. To search." << endl;
+    cout << " 5. To delete all data." << endl;
+    cout << " 6. To quit." << endl;
     cout << "-----------------------------"<<endl;
     cout << "Choice: ";
 }
 
 void GUI::displayMainMenu(){
 Scientists theScientist;
+Computers theComputer;
 display result;
     char a;
         bool loop = true;
@@ -30,20 +33,23 @@ display result;
 
             switch(a){
             case '1':
+                theComputer.insertCPU();
+                break;
+            case '2':
                   theScientist.manualInput();
                     //cout << "Insert Computer" << endl;
                  break;
-            case '2':
+            case '3':
                     result.showresult();
                     cout << "Print to screen" << endl;
                 break;
-            case '3':
+            case '4':
                     //GUI::displaySearchMenu();
                break;
-            case '4':
+            case '5':
                     cout << "Delete data" << endl;
                 break;
-            case '5':
+            case '6':
                 cout << "Quitting." << endl;
                 loop = false;
                 break;

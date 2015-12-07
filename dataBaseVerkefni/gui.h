@@ -2,6 +2,7 @@
 #define GUI_H
 #include "gui.h"
 #include "manualInsertScientist.h"
+#include "insertcomputer.h"
 #include "connectiontodatabase.h"
 
 class GUI{
