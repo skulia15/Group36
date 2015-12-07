@@ -1,7 +1,8 @@
 #include "gui.h"
 #include "manualInsertScientist.h"
 #include "connectiontodatabase.h"
-
+#include <QCoreApplication>
+#include "display.h"
 using namespace std;
 
 struct Klasi{
