@@ -8,16 +8,16 @@ using namespace std;
 
 void GUI::mainMenu()
 {
-    cout << "---------Main Menu-----------" <<endl;
+    cout << "-------------Main Menu---------------" <<endl;
     cout << " \n Please select an option:  "<<endl;
-    cout << " \n 1. To add a computer." << endl;
-    cout << " 2. To add a computer Scientist." << endl;
-    cout << " 3. To print all persons." << endl;
+    cout << " \n 1. To add a computer scientist." << endl;
+    cout << " 2. To add a computer." << endl;
+    cout << " 3. To print all computer scientists." << endl;
     cout << " 4. To print all computers." << endl;
     cout << " 5. To search." << endl;
     cout << " 6. To delete all data." << endl;
     cout << " 7. To quit." << endl;
-    cout << "-----------------------------"<<endl;
+    cout << "-------------------------------------"<<endl;
     cout << "Choice: ";
 }
 
@@ -34,25 +34,22 @@ display result;
 
             switch(a){
             case '1':
-                theComputer.insertCPU();
+                theScientist.manualInput();
                 break;
             case '2':
-                  theScientist.manualInput();
-                    //cout << "Insert Computer" << endl;
-                 break;
+                theComputer.insertCPU();
+                break;
             case '3':
-                    result.showresult();
-
+                result.showresult();
                 break;
             case '4':
-                      result.cpuShowresult();
-
+                result.cpuShowresult();
                 break;
             case '5':
-                    //GUI::displaySearchMenu();
+                //GUI::displaySearchMenu();
                break;
             case '6':
-                    cout << "Delete data" << endl;
+                cout << "Delete data" << endl;
                 break;
             case '7':
                 cout << "Quitting." << endl;
@@ -77,19 +74,19 @@ void GUI::dislpaySearchMenu(){
 
         switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
         case '1':
-            cout << "Search after first name "<<endl;
-            break;
+           cout << "Search after first name "<<endl;
+           break;
         case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
-            cout << "Search after last name "<<endl;
-            break;
+           cout << "Search after last name "<<endl;
+           break;
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
-            cout << "Search by birth year "<<endl;
-            break;
-       case '4':
+           cout << "Search by birth year "<<endl;
+           break;
+        case '4':
            cout << "Going back to Main menu." << endl;
            loop = false;
            break;
-       default:
+        default:
            cout << "Please enter a number between 1 and 4." << endl << endl;
            break;
        }

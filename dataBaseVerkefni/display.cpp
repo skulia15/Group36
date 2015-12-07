@@ -27,14 +27,14 @@ void display::showresult()
         int YoD = query.value("YoB").toUInt();
 
         cout << "Id: "<< id << endl
-        << "Name:  "<< firstName << " " << lastName << endl
+        << "Name: "<< firstName << " " << lastName << endl
         << "Sex: " << sex << endl
         << "Year of Birth: " << YoB << endl
         << "Year of Death: " << YoD << endl;
         cout<<endl;
 
 
-}cout << "=====End of PRINTING=======" << endl;
+    }cout << "=====End of PRINTING=======" << endl;
 }
 
 void display::cpuShowresult()
@@ -54,7 +54,7 @@ void display::cpuShowresult()
 
 
         cout << "Id: "<< id << endl
-        << "Computer name:  "<< cpuName << endl
+        << "Computer name: "<< cpuName << endl
         << "Computer type: " << cpuType << endl
         << "Was built: " << yb << endl
         << "Finished: " << built << endl;
