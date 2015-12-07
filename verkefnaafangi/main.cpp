@@ -1,10 +1,3 @@
-#include <iostream>
-#include <QtSql>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <QCoreApplication>
-#include <fstream>
 #include "gui.h"
 #include "manualInsertScientist.h"
 #include "connectiontodatabase.h"
@@ -19,51 +12,29 @@ struct Klasi{
     int YoD;
 };
 
+void readFromDatabaseToVector(vector<Klasi>& viktor);
+
 //void inputInfo(vector<Klasi>& viktor);//input into Vector
 //void manualInsertToDataBase();
 //void readFromDatabaseToVector(vector<Klasi>& viktor);
 
 
-int main()
-{
-    /*
-     vector<Klasi>viktor;
+int main(){
 
-   QSqlDatabase db;
-   db = QSqlDatabase::addDatabase("QSQLITE");
-   QString dbName = "student_db.sqlite";
-   db.setDatabaseName(dbName);
-
-   db.open();
-
-    QSqlQuery query(db);
-
-   if(db.open())
-        qDebug()<<"opnadi DB";
-    else
-          qDebug()<<"Close"<<db.lastError().text();
-
-string queryCreate ="CREATE TABLE students(id INTEGER, name VARCHAR, email VARCHAR, age INTEGER); ";
-if(query.exec(QString(queryCreate.c_str()))){
-cout<< "Bjo til DB"<<endl;}
-else {cout<< "Bjo ekki til nyjan DB"<<endl;}
-
-*/
+    vector<Klasi>viktor;
 
 
 //manualInsertToDataBase();
-//inputInfo(viktor);
-//readFromDatabaseToVector(viktor);
+    readFromDatabaseToVector(viktor);
 
-GUI menu;
-
-connectionToDataBAse();
-menu.displayMainMenu();
+    GUI menu;
+    connectionToDataBase();
+    menu.displayMainMenu();
 //sci1.manualInput();
     return 0;
 }
 
-
+/*
 void inputInfo(vector<Klasi>& viktor){
     Klasi nemandi;
 
@@ -125,16 +96,6 @@ void manualInsertToDataBase() //Manual insert to Database
     query.bindValue(":age", QString::fromStdString(age));
 */
 
-
-
-  string player ="INSERT INTO students (id, name, email, age) values ('"+id+"', '"+name+"', '"+email+"', '"+age+"')";
-
-    if(query.exec(QString(player.c_str()))){
-
-        cout<<"Setti inn i Database"<<endl;
-    }else cout << "Setti Ekki inn i Database"<<endl;
-}
-
 void readFromDatabaseToVector(vector<Klasi>& viktor){
     Klasi nemandi;
     QSqlDatabase db;
@@ -156,14 +117,10 @@ void readFromDatabaseToVector(vector<Klasi>& viktor){
     }
     cout << endl;
 
-    for(unsigned int i =0; i<viktor.size();i++)
-    {
+    for(unsigned int i =0; i < viktor.size();i++){
         cout << viktor.at(i).id << endl;
         cout << viktor.at(i).name << endl;
         cout << viktor.at(i).sex << endl;
         cout << viktor.at(i).YoB << endl;
     }
-
-
 }
-

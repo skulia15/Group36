@@ -5,33 +5,29 @@
 #include <iostream>
 using namespace std;
 
-Scientists::Scientists()
-{
+Scientists::Scientists(){
    firstName = "";
    lastName = "";
    sex = "";
-   YoB = 0;
-   YoD = 0;
+   YoB;
+   YoD;
 };
 
-void Scientists::manualInput()
-{
+void Scientists::manualInput(){
+    QSqlDatabase db;
+    QSqlQuery query(db);
 
-        QSqlDatabase db;
-        QSqlQuery query(db);
-        //string id,name,email, age;
-
-        cout << "Please enter the computer scientists information." << endl;
-        cout << "First name: ";
-        cin >> firstName;
-        cout << "Last name: ";
-        cin >> lastName;
-        cout << "Sex: ";
-        cin >> sex;
-        cout << "Year of Birth ";
-        cin >> YoB;
-        cout << "Year of Death";
-        cin >> YoD;
+    cout << "Please enter the computer scientists information." << endl;
+    cout << "First name: ";
+    cin >> firstName;
+    cout << "Last name: ";
+    cin >> lastName;
+    cout << "Sex: ";
+    cin >> sex;
+    cout << "Year of Birth: ";
+    cin >> YoB;
+    cout << "Year of Death: ";
+    cin >> YoD;
 
 
     /*
@@ -46,12 +42,14 @@ void Scientists::manualInput()
     */
 
 
+   string player = "INSERT INTO Scientists (firstName, lastName, sex) values ('"+firstName+"', '"+lastName+"', '"+sex+"')";
+   //Vantar að adda YoB og YoD, fæ alltaf errors....
 
-      string player ="INSERT INTO students (id, name, email, age) values ('"+id+"', '"+name+"', '"+email+"', '"+age+"')";
-
-        if(query.exec(QString(player.c_str()))){
-
-            cout<<"Setti inn i Database"<<endl;
-        }else cout << "Setti Ekki inn i Database"<<endl;
+    if(query.exec(QString(player.c_str()))){
+        cout << "Successfully added to Database" << endl;
     }
+    else
+        cout << "Was NOT added to the Database" << endl;
+    }
+
 
