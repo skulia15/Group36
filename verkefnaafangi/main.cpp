@@ -101,7 +101,6 @@ void readFromDatabaseToVector(vector<Klasi>& viktor){
     QSqlDatabase db;
     QSqlQuery query(db);
 
-    query.exec("SELECT * FROM Scientists");
     while(query.next()){
    // qDebug()<< query.lastQuery();
     int id = query.value(0).toUInt();

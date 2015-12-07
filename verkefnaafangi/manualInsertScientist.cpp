@@ -14,6 +14,8 @@ Scientists::Scientists(){
 };
 
 void Scientists::manualInput(){
+    bool error = false;
+    char persons;
 
     QSqlDatabase db;
     QSqlQuery query(db);
@@ -21,41 +23,56 @@ void Scientists::manualInput(){
     string queryPrint = "SELECT * FROM Scientists";
     query.exec(QString(queryPrint.c_str()));
 
-    cout << "Please enter the computer scientists information." << endl;
-    cout << "First name: ";
-    cin >> firstName;
-    cout << "Last name: ";
-    cin >> lastName;
-    cout << "Sex: ";
-    cin >> sex;
-    cout << "Year of Birth: ";
-    cin >> YoB;
-    cout << "Year of Death: ";
-    cin >> YoD;
+    while(error == false){
+        cout << "How many persons would you like to add? ";
+        cin >> persons;
+        if (isalpha(persons)){
+            cout << "Error in input, try again." << endl;
+        }
+        else
+            error = true;
+     }
+
+    for (int i = 1;i <= persons - '0'; i++){
+        if (i == 1){
+            cout << "\nEnter the info for the first person: " << endl;}
+        else {
+            cout << "Enter the info for the next person: " << endl;}
+
+        cout << "First name: ";
+        cin >> firstName;
+        cout << "Last name: ";
+        cin >> lastName;
+        cout << "Sex: ";
+        cin >> sex;
+        cout << "Year of Birth: ";
+        cin >> YoB;
+        cout << "Year of Death: ";
+        cin >> YoD;
 
 
-    query.prepare("SELECT * FROM Scientists WHERE id = :id;)");
-    query.bindValue(":id", QString::fromStdString(id));
-    query.prepare("SELECT * FROM Scientists WHERE firstName = :fistName;)");
-    query.bindValue(":firstName", "%"+ QString::fromStdString(firstName)+"%");
-    query.prepare("SELECT * FROM Scientists WHERE lastName = :lastName;)");
-    query.bindValue(":lastName", "%"+QString::fromStdString(lastName)+"%");
-    query.prepare("SELECT * FROM Scientists WHERE sex = :sex;)");
-    query.bindValue(":sex", QString::fromStdString(sex));
-    query.prepare("SELECT * FROM Scientists WHERE YoB = :YoB;)");
-    query.bindValue(":YoB", QString::fromStdString(YoB));
-    query.prepare("SELECT * FROM Scientists WHERE YoD = :YoD;)");
-    query.bindValue(":YoD", QString::fromStdString(YoD));
+        query.prepare("SELECT * FROM Scientists WHERE id = :id;)");
+        query.bindValue(":id", QString::fromStdString(id));
+        query.prepare("SELECT * FROM Scientists WHERE firstName = :fistName;)");
+        query.bindValue(":firstName", "%"+ QString::fromStdString(firstName)+"%");
+        query.prepare("SELECT * FROM Scientists WHERE lastName = :lastName;)");
+        query.bindValue(":lastName", "%"+QString::fromStdString(lastName)+"%");
+        query.prepare("SELECT * FROM Scientists WHERE sex = :sex;)");
+        query.bindValue(":sex", QString::fromStdString(sex));
+        query.prepare("SELECT * FROM Scientists WHERE YoB = :YoB;)");
+        query.bindValue(":YoB", QString::fromStdString(YoB));
+        query.prepare("SELECT * FROM Scientists WHERE YoD = :YoD;)");
+        query.bindValue(":YoD", QString::fromStdString(YoD));
 
 
-      string player ="INSERT INTO Scientists (firstName, lastName, sex, YoB, YoD) values ('"+firstName+"', '"+lastName+"', '"+sex+"', '"+YoB+"', '"+YoD+"')";
+        string player = "INSERT INTO Scientists (firstName, lastName, sex, YoB, YoD) values ('"+firstName+"', '"+lastName+"', '"+sex+"', '"+YoB+"', '"+YoD+"')";
 
         if(query.exec(QString(player.c_str()))){
-
-            cout<<"========== Setti inn i Database =========="<<endl;
-        }else cout << "========== Setti Ekki inn i Database =========="<<endl;
-
+            cout << "========== Setti inn i Database ==========" << endl;
+        }else cout << "========== Setti Ekki inn i Database ==========" << endl;
+    }
 }
+
 
 
 
