@@ -5,8 +5,7 @@
 #include "connectiontodatabase.h"
 #include "display.h"
 
-class display
-{
+class display{
 public:
     display();
     void showresult();

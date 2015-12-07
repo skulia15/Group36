@@ -4,23 +4,22 @@
 #include "manualInsertScientist.h"
 #include "connectiontodatabase.h"
 #include <iostream>
+
 using namespace std;
 
-class Scientists
-{
+class Scientists{
 public:
     Scientists();
- void manualInput();
-    void display();
+    void manualInput();
     //friend ostream& operator<<(ostream& out, Computers acc);
 
 private:
-
+    string id;
     string firstName;
     string lastName;
-    int yob;
-    int yod;
-
+    string sex;
+    int YoB;
+    int YoD;
 };
 
 #endif //COMPUTERS_H
