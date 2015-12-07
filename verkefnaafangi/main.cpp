@@ -1,104 +1,74 @@
 #include <iostream>
-#include <algorithm>
+#include <QtSql>
+#include <fstream>
 #include <string>
 #include <vector>
+#include <QCoreApplication>
 #include <fstream>
-#include <iterator>
-#include <sstream>
+#include "gui.h"
+#include "manualInsertScientist.h"
+#include "connectiontodatabase.h"
 
 using namespace std;
 
-struct scientists{
-    string firstName;
-    string lastName;
-    string personSex;
-    int yearOfBirth;
-    int yearOfDeath;
+struct Klasi{
+    int id;
+    string name;
+    string email;
+    int age;
+
 };
 
-void callDefaultMenu(vector<scientists>& subject);
-void printMainMenu();
-void inputInfo(vector<scientists>& subject);
-void output(vector<scientists>& subject);
-string getSearch();
-bool searchName(vector<scientists>& subject, char input, string searchName);
-void print(vector<scientists>& subject);
-void printSearch(vector<scientists>& subject, int i);
-void readFromFileToVector(vector<scientists>& subject);
-void searchInVector(vector<scientists>& subject);
-void clearVector(vector<scientists>& subject);
-void sortVector(vector<scientists>& subject, char choice);
-bool compareAlpha(const scientists& lhs, const scientists& rhs);
-bool compareReverseAlpha(const scientists& lhs, const scientists& rhs);
-bool compareAlphaLast(const scientists& lhs, const scientists& rhs);
-bool compareReverseAlphaLast(const scientists& lhs, const scientists& rhs);
-bool compareYoB(const scientists& lhs, const scientists& rhs);
+//void inputInfo(vector<Klasi>& viktor);//input into Vector
+//void manualInsertToDataBase();
+//void readFromDatabaseToVector(vector<Klasi>& viktor);
 
 
 int main()
 {
-    vector<scientists> subject;  //vector of persons
+    /*
+     vector<Klasi>viktor;
 
-    readFromFileToVector(subject);
+   QSqlDatabase db;
+   db = QSqlDatabase::addDatabase("QSQLITE");
+   QString dbName = "student_db.sqlite";
+   db.setDatabaseName(dbName);
 
-    callDefaultMenu(subject);
+   db.open();
 
+    QSqlQuery query(db);
+
+   if(db.open())
+        qDebug()<<"opnadi DB";
+    else
+          qDebug()<<"Close"<<db.lastError().text();
+
+string queryCreate ="CREATE TABLE students(id INTEGER, name VARCHAR, email VARCHAR, age INTEGER); ";
+if(query.exec(QString(queryCreate.c_str()))){
+cout<< "Bjo til DB"<<endl;}
+else {cout<< "Bjo ekki til nyjan DB"<<endl;}
+
+*/
+
+
+//manualInsertToDataBase();
+//inputInfo(viktor);
+//readFromDatabaseToVector(viktor);
+
+GUI menu;
+
+connectionToDataBAse();
+menu.displayMainMenu();
+//sci1.manualInput();
     return 0;
 }
 
-void printMainMenu(){
-    cout << "---------Main Menu-----------" << endl;
-    cout << "Please select an option:  " << endl;
-    cout << " \n 1. To add a computer scientist." << endl;
-    cout << " 2. To print all persons." << endl;
-    cout << " 3. To search." << endl;
-    cout << " 4. To delete all data." << endl;
-    cout << " 5. To quit." << endl;
-    cout << "------------------------------"<< endl;
-    cout << "Choice: ";
 
-}
-void callDefaultMenu(vector<scientists>& subject){ //Displays the main menu, Calls our basic functions
-    char a;
-    bool loop = true;
+void inputInfo(vector<Klasi>& viktor){
+    Klasi nemandi;
 
-    while(loop == true){
-        printMainMenu();
-        cin >> a;
-
-        switch(a){
-        case '1':
-             inputInfo(subject);
-             break;
-        case '2':
-            print(subject);
-            break;
-        case '3':
-            searchInVector(subject);
-           break;
-        case '4':
-            clearVector(subject);
-            break;
-        case '5':
-            cout << "Thank you for using this program your doings have been saved" << endl;
-            cout << "Quitting." << endl;
-            loop = false;
-            break;
-        default:
-            cout << "Error in command, try again." << endl;
-            cout << endl;
-            break;
-        }
-     }
-}
-
-void inputInfo(vector<scientists>& subject){
-    scientists scientist1;
-    char answer = 0;
     char persons;
     bool error = false;
-    string sex;
-    char sexTemp;
 
     while(error == false){
         cout << "How many persons would you like to add? ";
@@ -116,325 +86,84 @@ void inputInfo(vector<scientists>& subject){
         else {
             cout << "Enter the info for the next person: " << endl;}
 
+        cout << "Person's Id: ";
+        cin >> nemandi.id;
         cout << "Person's first name: ";
-        cin >> scientist1.firstName;
+        cin >> nemandi.name;
+        cout << "Person's first name: ";
+        cin >> nemandi.email;
+        cout << "Person's age: ";
+        cin >> nemandi.age;
 
-        cout << "Last name: ";
-        cin >> scientist1.lastName;
-
-        bool error2 = true;
-        while (error2 == true){
-            cout << "Sex: (m/f) ";
-            cin >> sexTemp;
-            if (sexTemp == 'm'||sexTemp == 'M'){
-                sex = "Male"; error2 = false;}
-            else if (sexTemp == 'f'||sexTemp == 'F'){
-                sex = "Female"; error2 = false;}
-            else
-            cout << "Input was invalid try again." << endl;}
-        scientist1.personSex = sex;
-
-        cout << "Year of Birth: ";
-        cin >> scientist1.yearOfBirth;
-
-        error = false;
-        do{
-            cout << "Is the person still alive? (y/n) ";
-            cin >> answer;
-            if (answer == 'n'||answer == 'N'){
-                cout << "Year of Death: ";
-                cin >> scientist1.yearOfDeath;
-                while(scientist1.yearOfBirth > scientist1.yearOfDeath){
-                    cout << "The person can not have died before its birth, please try again" << endl;
-                    cout << "Year of Death: ";
-                    cin >> scientist1.yearOfDeath;}
-                cout << endl;
-                error = true;}
-            else if (answer == 'y'||answer == 'Y'){
-                scientist1.yearOfDeath = 0;
-                cout << endl;
-                error = true;}
-            else cout << "Input was invalid try again." << endl;
-        } while (error == false);
-
-
-        subject.push_back(scientist1);  //The struct is pushed on to the vector
+        viktor.push_back(nemandi);  //The struct is pushed on to the vector
     }
-    output(subject);
-}
-
-void output(vector<scientists>& subject){
-    ofstream myfile;
-    myfile.open("save1.txt", ios::out | ios::app); //For adding without overwriting
-    if (myfile.is_open()){
-        for (unsigned int i = 0; i < subject.size(); i++){
-            myfile << subject[i].firstName << endl;
-            myfile << subject[i].lastName << endl;
-            myfile << subject[i].personSex << endl;
-            myfile << subject[i].yearOfBirth << endl;
-            if(subject[i].yearOfDeath == 0){
-                myfile << "still alive." << endl;}
-            else {
-                myfile << subject[i].yearOfDeath << endl;}
-        }
-        myfile.close();
-        if( remove( "save.txt" ) != 0 )
-            perror( "Error deleting file" );
-        int result;
-        char newfile[] ="save1.txt";// Create a new folder with every person and then make it overwrite the originial
-        char oldfile[] ="save.txt";
-        result= rename( newfile , oldfile );
-        if ( result != 0 )
-            perror( "Error renaming file" );
-    }
-    else cout << "Unable to open file";
-}
-
-void print(vector<scientists>& subject){
-    char choice;
-    bool error = false;
-
-    while(error == false){
-        cout << endl;
-        cout << "--------------Display menu--------------" << endl;
-        cout << "How would you like to display your persons?" << endl;
-        cout << " \n 1. By first name in alphabetical order." << endl;
-        cout << " 2. By first name in reverse alphabetical order." << endl;
-        cout << " 3. By Last name in alphabetical order." << endl;
-        cout << " 4. By Last name in reverse alphabetical order." << endl;
-        cout << " 5. By birth year. (Oldest to youngest)" << endl;
-        cout << "----------------------------------------" << endl;
-        cout << "Input your choice: ";
-        cin >> choice;
-        cout << endl;
-        if (isalpha(choice)){ cout << "Error in input, try again." << endl;}
-        else { error = true;}
-    }
-
-    switch (choice){
-        case '1':
-            cout << "Displaying by first name in alphabetical order." << endl;
-            sortVector(subject, choice);
-            break;
-        case '2':
-            cout << "Displaying by first name in reverse alphabetical order." << endl;
-            sortVector(subject, choice);
-            break;
-        case '3':
-            cout << "Displaying by last name in alphabetical order." << endl;
-            sortVector(subject, choice);
-            break;
-        case '4':
-            cout << "Displaying by last name in alphabetical order." << endl;
-            sortVector(subject, choice);
-            break;
-        case '5':
-            cout << "Displaying by birth year." << endl;
-            sortVector(subject, choice);
-            break;
-        default:
-            cout << "You entered a number with an undefined function." << endl
-            << "Displaying in alphabetical order." << endl;
-            sortVector(subject, '1');
-            break;
-    }
-    cout << endl;
-
-    for(unsigned int i = 0; i < subject.size(); i++){
-        cout << "Name: " << subject[i].firstName << " ";
-        cout << subject[i].lastName << endl;
-        cout << "Sex: " << subject[i].personSex << endl;
-        cout << "Year of birth: " << subject[i].yearOfBirth << endl;
-        if (subject[i].yearOfDeath == 0){
-            cout << "Alive" << endl;
-        }
-        else{
-        cout << "Year of death: " << subject[i].yearOfDeath << endl;}
-        cout << endl;
-    }
-}
-void printSearch(vector<scientists>& subject, int i){
-        cout << "Name: " << subject[i].firstName << " ";
-        cout << subject[i].lastName << endl;
-        cout << "Sex: " << subject[i].personSex << endl;
-        cout << "Year of birth: " << subject[i].yearOfBirth << endl;
-        if (subject[i].yearOfDeath == 0){
-            cout << "Alive" << endl;
-        }
-        else{
-            cout << "Year of death: " << subject[i].yearOfDeath << endl;}
-        cout << endl;
-}
-
-string getSearch(){
-    string searchName;
-    cin >> searchName;
-    for (unsigned int i = 0; i < searchName.length(); i++){//Changes search keyword to lowercase
-            searchName[i] = tolower(searchName[i]);
-    }
-    cout << endl;
-    return searchName;
-}
-
-bool searchName(vector<scientists>& subject, char input, string searchName){
-    string tempSubject;
-    int tempYoB;
-    stringstream convert;
-    string YoB;
-    bool found = false;
-    int counter = 0; //If more than one subjects were found then don't cout "keyword was found".
-    for(unsigned int i = 0; i < subject.size(); i++){
-        if (input == '1'){tempSubject = subject[i].firstName;}
-        else if (input == '2'){tempSubject = subject[i].lastName;}
-        else if (input == '3'){tempYoB = subject[i].yearOfBirth;}
-        transform(tempSubject.begin(), tempSubject.end(), tempSubject.begin(), ::tolower); //Put to lowercase for case-insensitive searching.
-        convert.str(""); //To clear the string steam from the iteration before.
-        convert << tempYoB;  //add the value of tempSubject to the characters in the stream.
-        YoB = convert.str(); //set YoB to the content of the stream.
-        if(tempSubject == searchName || YoB == searchName){
-            if (counter == 0){
-                cout << "Keyword was found for: " << endl;
-            }
-            printSearch(subject, i);
-            found = true;
-            counter++;
-        }
-    }
-    if (found == true) return true;
-    else return false;
-}
-
-void searchInVector(vector<scientists>& subject){// Search function.
-    char input;
-    bool loop = true;
-    bool found = false;
-    string theSearchName;
-
-    while(loop == true){
-        cout << endl;
-        cout << "--------Search Menu-----------" << endl;
-        cout << "Please select a search option:  "<< endl;
-        cout << " \n 1. To search by first name" << endl;
-        cout << " 2. To search by last name" << endl;
-        cout << " 3. To search by birth year" << endl;
-        cout << " 4. To exit to main menu" << endl;
-        cout << "-----------------------------"<< endl;
-        cout << "Search by: ";
-        cin >> input;
-        cout << endl;
-
-        switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
-        case '1':
-            cout << "Please enter a first name to search for: ";
-            theSearchName = getSearch();
-            found = searchName(subject, input, theSearchName);
-            if (found == false){
-                cout << "Sorry the first name \"" << theSearchName << "\" did not match any first names in database." << endl;}
-            break;
-
-        case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
-            cout << "Please enter a last name to search for: ";
-            theSearchName = getSearch();
-            found = searchName(subject, input, theSearchName);
-            if (found == false){
-                cout << "Sorry the last name \"" << theSearchName << "\" did not match any last names in database." << endl;}
-            break;
-
-        case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
-            cout << "Enter birth year: ";
-            theSearchName = getSearch();
-            found = searchName(subject, input, theSearchName);
-            if (found == false){
-                cout <<"Sorry, according to our records nobody was born in " << theSearchName << endl;}
-            break;
-
-        case '4':
-            cout << "Going back to Main menu." << endl;
-            cout << endl;
-            loop = false;
-            break;
-
-        default:
-            cout << "You entered a number with an undefined function." << endl;
-            cout << "Returning to Search menu" << endl;
-            cout << endl;
-        }
+    for(unsigned int i =0; i<viktor.size(); i++)
+    {
+        cout << viktor.at(i).name<<" id is "<<viktor.at(i).id<<endl;
+        cout << viktor.at(i).name<<" is "<< viktor.at(i).age<<endl;
+        cout << viktor.at(i).name<< " email is "<< viktor.at(i).email<<endl;
     }
 }
 
-void readFromFileToVector(vector<scientists>& subject){
-    ifstream myfile;
-    scientists scientist1;
-    myfile.open("save.txt");
+void manualInsertToDataBase() //Manual insert to Database
+{
+    QSqlDatabase db;
+    QSqlQuery query(db);
+    string id,name,email, age;
 
-    while (!myfile.eof()){
+    cout<< "Please enter ID, Name, email and age \n";
+    cin >> id>> name>> email>> age;
 
-        string first, second, sex, YoB, YoD;
-        getline(myfile, first, '\n');
-        getline(myfile, second,'\n');
-        getline(myfile, sex,'\n');
-        getline(myfile, YoB,'\n');
-        getline(myfile, YoD,'\n');
+/*
+    query.prepare("SELECT * FROM students WHERE id = :id;)");
+    query.bindValue(":id", QString::fromStdString(id));
+    query.prepare("SELECT * FROM students WHERE name = :name;)");
+    query.bindValue(":name", "%"+ QString::fromStdString(name)+"%");
+    query.prepare("SELECT * FROM students WHERE email = :email;)");
+    query.bindValue(":email", "%"+QString::fromStdString(email)+"%");
+    query.prepare("SELECT * FROM students WHERE age = :age;)");
+    query.bindValue(":age", QString::fromStdString(age));
+*/
 
-        if (!myfile.eof()){
-            scientist1.firstName = first;
-            scientist1.lastName = second;
-            scientist1.personSex = sex;
-            scientist1.yearOfBirth = atoi(YoB.c_str());
-            scientist1.yearOfDeath = atoi(YoD.c_str());
-            subject.push_back(scientist1);
-        }
+
+
+  string player ="INSERT INTO students (id, name, email, age) values ('"+id+"', '"+name+"', '"+email+"', '"+age+"')";
+
+    if(query.exec(QString(player.c_str()))){
+
+        cout<<"Setti inn i Database"<<endl;
+    }else cout << "Setti Ekki inn i Database"<<endl;
+}
+
+void readFromDatabaseToVector(vector<Klasi>& viktor){
+    Klasi nemandi;
+    QSqlDatabase db;
+    QSqlQuery query(db);
+
+    query.exec("SELECT * FROM students");
+    while(query.next()){
+   // qDebug()<< query.lastQuery();
+    int id = query.value(0).toUInt();
+    string name = query.value("name").toString().toStdString();
+    string email = query.value("email").toString().toStdString();
+    int age = query.value("age").toUInt();
+
+
+    cout << id << " "<< name << " " << email << " "<<age <<endl;
+
+        viktor.push_back(Klasi());
+
     }
-    myfile.close();
-  }
+    cout <<endl;
 
-void clearVector(vector<scientists>& subject){
-    char answer;
-    bool data = false;
-    do{
-        cout << "Are you sure you want to delete all data?(y/n) ";
-        cin >> answer;
-        if(answer =='y' || answer =='Y'){
-            subject.clear();
-            cout << "File cleared of all data" << endl;
-            ofstream myfile;
-            myfile.open("save.txt");
-            myfile << "";
-            myfile.close();
-            data = true;}
-        else if(answer =='n' || answer =='N'){
-            cout << "Data kept in file" << endl;
-            data = true;}
-        else
-            cout << "Invalid answer, please try again" << endl;
-    }while(data == false);
+    for(unsigned int i =0; i<viktor.size();i++)
+    {
+        cout << viktor.at(i).id<<endl;
+        cout << viktor.at(i).name<<endl;
+        cout << viktor.at(i).email<<endl;
+        cout << viktor.at(i).age<<endl;
+    }
+
+
 }
 
-bool compareAlpha(const scientists& lhs, const scientists& rhs) { //Sorts alphabetically.
-    return lhs.firstName < rhs.firstName;
-}
-bool compareReverseAlpha(const scientists& lhs, const scientists& rhs) {//Sorts reverse alphabetically.
-    return lhs.firstName > rhs.firstName;
-}
-bool compareAlphaLast(const scientists& lhs, const scientists& rhs) { //Sorts alphabetically.
-    return lhs.lastName < rhs.lastName;
-}
-bool compareReverseAlphaLast(const scientists& lhs, const scientists& rhs) {//Sorts reverse alphabetically.
-    return lhs.lastName > rhs.lastName;
-}
-bool compareYoB(const scientists& lhs, const scientists& rhs) {//Sorts by birth year.
-    return lhs.yearOfBirth < rhs.yearOfBirth;
-}
-
-void sortVector(vector<scientists>& subject, char choice){
-    if (choice == '1'){
-        sort(subject.begin(), subject.end(), compareAlpha);}
-    else if (choice == '2'){
-        sort(subject.begin(), subject.end(), compareReverseAlpha);}
-    else if (choice == '3'){
-        sort(subject.begin(), subject.end(), compareAlphaLast);}
-    else if (choice == '4'){
-        sort(subject.begin(), subject.end(), compareReverseAlphaLast);}
-    else if (choice == '5'){
-        sort(subject.begin(), subject.end(), compareYoB);}
-}
