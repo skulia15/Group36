@@ -33,6 +33,7 @@ Scientists theScientist;
                  break;
             case '2':
                     cout << "Print to screen" << endl;
+
                 break;
             case '3':
                     GUI::dislpaySearchMenu();

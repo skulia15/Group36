@@ -9,13 +9,17 @@ Scientists::Scientists(){
    firstName = "";
    lastName = "";
    sex = "";
-   YoB;
-   YoD;
+   YoB = 0;
+   YoD = 0;
 };
 
 void Scientists::manualInput(){
+
     QSqlDatabase db;
     QSqlQuery query(db);
+
+    string queryPrint = "SELECT * FROM Scientists";
+    query.exec(QString(queryPrint.c_str()));
 
     cout << "Please enter the computer scientists information." << endl;
     cout << "First name: ";
@@ -30,19 +34,22 @@ void Scientists::manualInput(){
     cin >> YoD;
 
 
-    /*
-        query.prepare("SELECT * FROM students WHERE id = :id;)");
-        query.bindValue(":id", QString::fromStdString(id));
-        query.prepare("SELECT * FROM students WHERE name = :name;)");
-        query.bindValue(":name", "%"+ QString::fromStdString(name)+"%");
-        query.prepare("SELECT * FROM students WHERE email = :email;)");
-        query.bindValue(":email", "%"+QString::fromStdString(email)+"%");
-        query.prepare("SELECT * FROM students WHERE age = :age;)");
-        query.bindValue(":age", QString::fromStdString(age));
-    */
+
+    query.prepare("SELECT * FROM Scientists WHERE id = :id;)");
+    query.bindValue(":id", QString::fromStdString(id));
+    query.prepare("SELECT * FROM Scientists WHERE firstName = :fistName;)");
+    query.bindValue(":firstName", "%"+ QString::fromStdString(firstName)+"%");
+    query.prepare("SELECT * FROM Scientists WHERE lastName = :lastName;)");
+    query.bindValue(":lastName", "%"+QString::fromStdString(lastName)+"%");
+    query.prepare("SELECT * FROM Scientists WHERE sex = :sex;)");
+    query.bindValue(":sex", QString::fromStdString(sex));
+    query.prepare("SELECT * FROM Scientists WHERE YoB = :YoB;)");
+    query.bindValue(":YoB", QString(YoB));
+    query.prepare("SELECT * FROM Scientists WHERE YoD = :YoD;)");
+    query.bindValue(":YoD", QString(YoD));
 
 
-   string player = "INSERT INTO Scientists (firstName, lastName, sex) values ('"+firstName+"', '"+lastName+"', '"+sex+"')";
+   string player = "INSERT INTO Scientists (firstName, lastName, sex, YoB) values ('"+firstName+"', '"+lastName+"', '"+sex+"', '"+YoB+"')";
    //Vantar að adda YoB og YoD, fæ alltaf errors....
 
     if(query.exec(QString(player.c_str()))){
@@ -50,6 +57,7 @@ void Scientists::manualInput(){
     }
     else
         cout << "Was NOT added to the Database" << endl;
-    }
+}
+
 
 

@@ -6,7 +6,8 @@ using namespace std;
 
 struct Klasi{
     int id;
-    string name;
+    string firstName;
+    string lastName;
     string sex;
     int YoB;
     int YoD;
@@ -23,14 +24,13 @@ int main(){
 
     vector<Klasi>viktor;
 
-
-//manualInsertToDataBase();
     readFromDatabaseToVector(viktor);
 
     GUI menu;
+
     connectionToDataBase();
+
     menu.displayMainMenu();
-//sci1.manualInput();
     return 0;
 }
 
@@ -101,26 +101,29 @@ void readFromDatabaseToVector(vector<Klasi>& viktor){
     QSqlDatabase db;
     QSqlQuery query(db);
 
-    query.exec("SELECT * FROM students");
+    query.exec("SELECT * FROM Scientists");
     while(query.next()){
    // qDebug()<< query.lastQuery();
     int id = query.value(0).toUInt();
-    string name = query.value("name").toString().toStdString();
-    string email = query.value("email").toString().toStdString();
-    int age = query.value("age").toUInt();
+    string firstName = query.value("firstName").toString().toStdString();
+    string lastName = query.value("lastName").toString().toStdString();
+    string sex = query.value("sex").toString().toStdString();
+    int YoB = query.value("YoB").toUInt();
+    int YoD = query.value("YoD").toUInt();
 
+    cout << id << " "<< firstName << " " << lastName << " " << sex << " "<< YoB <<  " " << YoD << endl;
 
-    cout << id << " "<< name << " " << email << " "<<age <<endl;
-
-        viktor.push_back(Klasi());
+    viktor.push_back(Klasi());
 
     }
     cout << endl;
 
     for(unsigned int i =0; i < viktor.size();i++){
         cout << viktor.at(i).id << endl;
-        cout << viktor.at(i).name << endl;
+        cout << viktor.at(i).firstName << endl;
+        cout << viktor.at(i).lastName << endl;
         cout << viktor.at(i).sex << endl;
         cout << viktor.at(i).YoB << endl;
+        cout << viktor.at(i).YoD << endl;
     }
 }

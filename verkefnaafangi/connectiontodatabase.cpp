@@ -23,6 +23,6 @@ connectionToDataBase::connectionToDataBase()
     if(query.exec(QString(queryCreate.c_str()))){
         cout << "The Database was made successfully "<< endl;}
     else {
-        cout<< "The Database was NOT made " << endl;}
+        cout<< "A new Database was NOT made " << endl;}
 }
 
