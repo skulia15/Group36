@@ -16,23 +16,21 @@ connectionToDataBase::connectionToDataBase()
     QSqlQuery query(db);
 
     if(db.open()){
-         qDebug()<<"-==== Opnadi a tengingu vid gagnagrunn ====-" << endl;}
+         qDebug()<<"-==== We have been connected to the database ====-" << endl;}
     else{
-         qDebug()<<"-==== Tokst ekki ad koma a tenginu vid gagnagrunn ====-" << db.lastError().text() << " ==========" << endl;}
+         qDebug()<<"-==== Unable to connect ot the database ====-" << db.lastError().text() << " ==========" << endl;}
 
  string queryCreate = "CREATE TABLE Scientists(id INTEGER PRIMARY KEY AUTOINCREMENT, firstName VARCHAR NOT NULL, lastName VARCHAR NOT NULL, sex VARCHAR, YoB INTEGER NOT NULL, YoD INTEGER); ";
  string queryCreate2 ="CREATE TABLE Computers(cpuName VARCHAR NOT NULL, yearBuilt INTEGER NOT NULL, cpuType INTEGER NOT NULL); ";
 
  if(query.exec(QString(queryCreate.c_str()))){
     cout << "========== The scientist table was made successfully! =========="<< endl;}
- else {cout<< "========== The table already exists! ==========" << endl;}
+ else {cout<< "========== Scientist table enabled! ==========" << endl;}
 
  if(query.exec(QString(queryCreate2.c_str()))){
-     cout << "========= The computer table was made successfully!"
- }
- else{
-     cout << "========= The table already exists! ========="
- }
+     cout << "========= The computer table was made successfully!"<<endl;}
+  else{cout << "========= Computer table enabled! ========="<<endl<<endl;}
+
 }
 
 
