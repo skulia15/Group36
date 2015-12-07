@@ -15,15 +15,52 @@ Computers::Computers()
 
 void Computers::insertCPU()
 {
+        bool error = false;
+        bool error2 = true;
+        char cpus;
+        char temp;
+
         QSqlDatabase db;
         QSqlQuery query(db);
 
-        cout<< "Please enter cpu name, year built and cpu type. \n";
-        cin >> cpuName >> yearBuilt >> cpuType;
+        while(error == false){
+            cout << "How many computers would you like to add? ";
+            cin >> cpus;
+            if (isalpha(cpus)){
+                cout << "Error in input, try again." << endl;
+            }
+            else
+                error = true;
+        }
 
-        query.prepare("INSERT INTO Computers (cpuName, yearBuilt, cpuType) "
-                          "VALUES (:cpuName, :yearBuilt, :cpuType)");
+        for (int i = 1;i <= cpus - '0'; i++){
+            if (i == 1){
+                cout << "\nEnter the info for the first computer: " << endl;}
+            else {
+                cout << "Enter the info for the next computer: " << endl;}
+
+            cout << "Computer name: ";
+            cin >> cpuName;
+
+            while (error2 == true){
+                cout << "Was the computer built? (y/n) ";
+                cin >> temp;
+                if (temp == 'y'||temp == 'Y'){
+                    built = "Built"; error2 = false;}
+                else if (temp == 'n'||temp == 'N'){
+                    built = "Not built"; error2 = false;}
+                else
+                cout << "Input was invalid try again." << endl;}
+
+            cout << "Year built: ";
+            cin >> yearBuilt;
+            cout << "Computer type: ";
+            cin >> cpuType;
+
+        query.prepare("INSERT INTO Computers (cpuName, built, yearBuilt, cpuType) "
+                          "VALUES (:cpuName, :built, :yearBuilt, :cpuType)");
         query.bindValue(":cpuName", QString::fromStdString(cpuName));
+        query.bindValue(":built", QString::fromStdString(built));
         query.bindValue(":yearBuilt", yearBuilt);
         query.bindValue(":cpuType",  QString::fromStdString(cpuType));
 
@@ -37,3 +74,4 @@ void Computers::insertCPU()
             cout << "-==== Tokst ekki ad setja gogn inn i gagnagrunn ====-"<<endl;
             cout <<endl;}
         }
+}
