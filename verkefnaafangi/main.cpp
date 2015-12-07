@@ -25,12 +25,11 @@ int main(){
 
 
 //manualInsertToDataBase();
-    readFromDatabaseToVector(viktor);
+   // readFromDatabaseToVector(viktor);
 
-    GUI menu;
+    GUI main;
     connectionToDataBase();
-    menu.displayMainMenu();
-//sci1.manualInput();
+    main.mainMenu();
     return 0;
 }
 
@@ -85,7 +84,7 @@ void manualInsertToDataBase() //Manual insert to Database
     cout<< "Please enter ID, Name, email and age \n";
     cin >> id>> name>> email>> age;
 
-/*
+
     query.prepare("SELECT * FROM students WHERE id = :id;)");
     query.bindValue(":id", QString::fromStdString(id));
     query.prepare("SELECT * FROM students WHERE name = :name;)");

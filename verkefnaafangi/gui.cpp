@@ -70,7 +70,7 @@ void GUI::dislpaySearchMenu(){
             break;
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
             cout << "Search by birth year "<<endl;
-<<<<<<< HEAD
+
             break;
         case '4':
             cout << "Going back to Main menu." << endl;
@@ -79,16 +79,8 @@ void GUI::dislpaySearchMenu(){
         default:
             cout << "Kindly entar a number between 1 and 4." << endl << endl;
             break;
-=======
-          break;
-       case '4':
-           cout << "Going back to Main menu." << endl;
-           loop = false;
-           break;
-       default:
-           cout << "Please enter a number between 1 and 4." << endl << endl;
-           break;
->>>>>>> 164d4166f55dccc8e0d01206b4ee6984ba400242
+
+
        }
    }
 }

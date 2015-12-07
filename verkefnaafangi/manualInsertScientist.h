@@ -18,14 +18,12 @@ private:
     string firstName;
     string lastName;
     string sex;
-<<<<<<< HEAD
     string YoB;
     string YoD;
 
-=======
-    int YoB;
-    int YoD;
->>>>>>> 164d4166f55dccc8e0d01206b4ee6984ba400242
+
+
+
 };
 
 #endif //COMPUTERS_H
