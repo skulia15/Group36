@@ -10,8 +10,8 @@ Scientists::Scientists()
    firstName = "";
    lastName = "";
    sex = "";
-   YoB = 0;
-   YoD = 0;
+   YoB = "";
+   YoD = "";
 };
 
 void Scientists::manualInput()
@@ -28,9 +28,9 @@ void Scientists::manualInput()
         cin >> lastName;
         cout << "Sex: ";
         cin >> sex;
-        cout << "Year of Birth ";
+        cout << "Year of Birth: ";
         cin >> YoB;
-        cout << "Year of Death";
+        cout << "Year of Death: ";
         cin >> YoD;
 
 
@@ -47,11 +47,11 @@ void Scientists::manualInput()
 
 
 
-      string player ="INSERT INTO students (id, name, email, age) values ('"+id+"', '"+name+"', '"+email+"', '"+age+"')";
+      string player ="INSERT INTO students (firstName, lastName, sex, YoB, YoD) values ('"+firstName+"', '"+lastName+"', '"+sex+"', '"+YoB+"', '"+YoD+"')";
 
         if(query.exec(QString(player.c_str()))){
 
-            cout<<"Setti inn i Database"<<endl;
-        }else cout << "Setti Ekki inn i Database"<<endl;
+            cout<<"========== Setti inn i Database =========="<<endl;
+        }else cout << "========== Setti Ekki inn i Database =========="<<endl;
     }
 

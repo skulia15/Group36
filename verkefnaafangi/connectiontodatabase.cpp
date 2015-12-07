@@ -15,13 +15,13 @@ connectionToDataBAse::connectionToDataBAse()
      QSqlQuery query(db);
 
     if(db.open())
-         qDebug()<<"opnadi DB";
-     else
-           qDebug()<<"Close"<<db.lastError().text();
+         qDebug()<<"========== Opened the Database ==========" << endl;
+    else
+         qDebug()<<"========== Error: "<<db.lastError().text() << " ==========" << endl;
 
  string queryCreate ="CREATE TABLE students(id INTEGER, name VARCHAR, email VARCHAR, age INTEGER); ";
  if(query.exec(QString(queryCreate.c_str()))){
-    cout << "The Database was made successfully "<< endl;}
- else {cout<< "The Database was NOT made " << endl;}
+    cout << "========== The Database was made successfully! =========="<< endl;}
+ else {cout<< "========== The Database already exists! ==========" << endl;}
 }
 

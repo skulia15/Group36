@@ -19,8 +19,8 @@ private:
     string firstName;
     string lastName;
     string sex;
-    int YoB;
-    int YoD;
+    string YoB;
+    string YoD;
 
 };
 
