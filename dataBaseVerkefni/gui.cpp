@@ -13,9 +13,10 @@ void GUI::mainMenu()
     cout << " \n 1. To add a computer." << endl;
     cout << " 2. To add a computer Scientist." << endl;
     cout << " 3. To print all persons." << endl;
-    cout << " 4. To search." << endl;
-    cout << " 5. To delete all data." << endl;
-    cout << " 6. To quit." << endl;
+    cout << " 4. To print all computers." << endl;
+    cout << " 5. To search." << endl;
+    cout << " 6. To delete all data." << endl;
+    cout << " 7. To quit." << endl;
     cout << "-----------------------------"<<endl;
     cout << "Choice: ";
 }
@@ -41,15 +42,19 @@ display result;
                  break;
             case '3':
                     result.showresult();
-                    cout << "Print to screen" << endl;
+
                 break;
             case '4':
+                      result.cpuShowresult();
+
+                break;
+            case '5':
                     //GUI::displaySearchMenu();
                break;
-            case '5':
+            case '6':
                     cout << "Delete data" << endl;
                 break;
-            case '6':
+            case '7':
                 cout << "Quitting." << endl;
                 loop = false;
                 break;

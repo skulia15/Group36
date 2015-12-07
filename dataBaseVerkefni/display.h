@@ -10,6 +10,7 @@ class display{
 public:
     display();
     void showresult();
+    void cpuShowresult();
    // friend ostream& operator<<(ostream& out, display acc);
 private:
 
