@@ -21,16 +21,16 @@ void readFromDatabaseToVector(vector<Klasi>& viktor);
 
 
 int main(){
-
     vector<Klasi>viktor;
-
-    readFromDatabaseToVector(viktor);
 
     GUI menu;
 
     connectionToDataBase();
 
+    readFromDatabaseToVector(viktor);
+
     menu.displayMainMenu();
+
     return 0;
 }
 
@@ -76,24 +76,6 @@ void inputInfo(vector<Klasi>& viktor){
     }
 }
 
-void manualInsertToDataBase() //Manual insert to Database
-{
-    QSqlDatabase db;
-    QSqlQuery query(db);
-    string id,name,email, age;
-
-    cout<< "Please enter ID, Name, email and age \n";
-    cin >> id>> name>> email>> age;
-
-/*
-    query.prepare("SELECT * FROM students WHERE id = :id;)");
-    query.bindValue(":id", QString::fromStdString(id));
-    query.prepare("SELECT * FROM students WHERE name = :name;)");
-    query.bindValue(":name", "%"+ QString::fromStdString(name)+"%");
-    query.prepare("SELECT * FROM students WHERE email = :email;)");
-    query.bindValue(":email", "%"+QString::fromStdString(email)+"%");
-    query.prepare("SELECT * FROM students WHERE age = :age;)");
-    query.bindValue(":age", QString::fromStdString(age));
 */
 
 void readFromDatabaseToVector(vector<Klasi>& viktor){
@@ -116,6 +98,8 @@ void readFromDatabaseToVector(vector<Klasi>& viktor){
 
     }
     cout << endl;
+    cout << "======How big is the vector after reading to it?: ======" << endl
+         << "The size is: " << viktor.size() << endl;
 
     for(unsigned int i =0; i < viktor.size();i++){
         cout << viktor.at(i).id << endl;
