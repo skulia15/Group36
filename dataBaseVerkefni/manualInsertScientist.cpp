@@ -8,6 +8,8 @@
 #include <iostream>
 using namespace std;
 
+bool isValid(string myString);
+
 Scientists::Scientists(){
    firstName = "";
    lastName = "";
@@ -37,15 +39,24 @@ void Scientists::manualInput(){
 
     for (int i = 1;i <= persons - '0'; i++){
         if (i == 1){
-            cout << "\nEnter the info for the first person: " << endl;}
+            cout << "Please use letters from the English alphabet exclusively. ";
+            cout << "\nEnter the info for the first person: " << endl << endl;
+           }
         else {
             cout << "Enter the info for the next person: " << endl;}
+        error = false;
 
-        cout << "First name: ";
-        cin >> firstName;
-        cout << "Last name: ";
-        cin >> lastName;
-
+        while(error == false){
+            cout << "First name: ";
+            cin >> firstName;
+            error = isValid(firstName);
+        }
+        error = false;
+        while(error == false){
+            cout << "Last name: ";
+            cin >> lastName;
+            error = isValid(lastName);
+        }
         while (error2 == true){
             cout << "Sex: (m/f) ";
             cin >> temp;
@@ -96,6 +107,15 @@ void Scientists::manualInput(){
     }
 }
 
+bool isValid(string myString){
+    for(int i = 0; i < myString.length(); i++){
+        if(!isalpha(myString[i])){
+            cout << "Input was invalid. The name cannot contain numbers or symbols. Try again.\n";
+            return false;
+        }
+    }
+    return true;
+}
 
 
 
