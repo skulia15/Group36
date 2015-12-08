@@ -7,7 +7,7 @@ using namespace std;
 class display{
 public:
     display();
-    void showResult();
+    void showResult(string command);
     void cpuShowResult();
    // friend ostream& operator<<(ostream& out, display acc);
 private:

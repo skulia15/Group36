@@ -7,6 +7,7 @@ int main(){
     //Hver persóna getur verið tengd mörgum tölvum, Hver tölva getur verið tengt mörgum persónum
     //Þessar tengingar þarf að vera hægt að skoða og viðhalda, - display fall fyrir þá sem komu að gerð tölvu og öfugt
     //samræma kóðann -persistance
+    //passa að það sé ekki prentað 0 þegar einhver er ekki dáinn eða þegar tölva  var ekki byggð
     //taka út óþarfa debug kóða og texta
     //kommenta kóðann
     //Input check fyrir ALLT input

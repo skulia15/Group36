@@ -13,38 +13,24 @@ using namespace std;
 display::display(){
 }
 
-void display::showResult(){
-    //QSqlDatabase db;
-   // QSqlQuery query(db);
-
-/*    cout << "=====PRINTING=======" << endl; //Muna að taka út ===printing=== :)
-=======
-void display::showresult() //Prints out allt Scientists in database
-{
+void display::showResult(string command){
     QSqlDatabase db;
     QSqlQuery query(db);
 
-    cout << "=====PRINTING=======" << endl; //Muna að taka út ===printing=== :), Ég kan samt að meta þetta kv. Sverrir
->>>>>>> accad3148ef432184e09da424eaa99fa8c7fd96f
-    query.exec("SELECT * FROM Scientists");
 
-    while(query.next()){
-        int id = query.value(0).toUInt();
-        string firstName = query.value("firstName").toString().toStdString();
-        string lastName = query.value("lastName").toString().toStdString();
-        string sex = query.value("sex").toString().toStdString();
-        int YoB = query.value("YoB").toUInt();
-        int YoD = query.value("YoB").toUInt();
+        //string querySort = "SELECT * FROM Scientists ORDER BY firstName ASC; ";
 
-        cout << "Id: "<< id << endl
-        << "Name: "<< firstName << " " << lastName << endl
-        << "Sex: " << sex << endl
-        << "Year of Birth: " << YoB << endl
-        << "Year of Death: " << YoD << endl;
-        cout << endl;
 
-    }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :)Ég kan samt að meta þetta kv. Sverrir*/
-    QSqlQuery query("SELECT * FROM Scientists");
+        //string querySort = "SELECT * FROM Scientists ORDER BY firstName DESC; ";
+
+
+    string querySort = command;
+    if(query.exec(QString(querySort.c_str()))){
+       cout << "========== The scientist table sorted successfully! =========="<< endl;}
+    else {cout<< "========== Scientist table was NOT sorted :( ==========" << endl;}
+
+   // if (choice == 1){
+   // string querySort = "SELECT * FROM Scientists ORDER BY firstName ASC; ";}
 
     int idName = query.record().indexOf("firstName");
     while (query.next())
@@ -53,8 +39,17 @@ void display::showresult() //Prints out allt Scientists in database
        QString lastName = query.value("lastName").toString();
        QString sex = query.value("sex").toString();
        int YoB = query.value("YoB").toUInt();
-       int YoD = query.value("YoB").toUInt();
-       qDebug() << firstName << lastName << sex << YoB << YoD;
+       int YoD = query.value("YoD").toUInt();
+
+       cout << "Name: ";
+       qDebug() << qPrintable(firstName)  << qPrintable(lastName) ;
+       cout << "Sex: ";
+       qDebug() << qPrintable(sex);
+       cout << "Year of Birth: ";
+       qDebug() << YoB;
+       cout << "Year of Death: ";
+       qDebug() << YoD;
+       cout << endl;
     }
 }
 

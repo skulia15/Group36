@@ -198,6 +198,8 @@ void GUI::displayMenu(){
     display print;
     char choice;
     bool error = false;
+    QSqlDatabase db;
+    QSqlQuery query(db);
 
     while(error == false){
         cin >> choice;
@@ -207,36 +209,30 @@ void GUI::displayMenu(){
     }
 
     switch (choice){
-        case '1':{
-            QSqlDatabase db;
-            QSqlQuery query(db);
+        case '1':
             cout << "Displaying by first name in alphabetical order." << endl;
-            string querySort = "SELECT * FROM Scientists ORDER BY firstName DESC; ";
-            if(query.exec(QString(querySort.c_str()))){
-               cout << "========== The scientist table sorted successfully! =========="<< endl;}
-            else {cout<< "========== Scientist table was NOT sorted :( ==========" << endl;}
-            print.showResult();}
+            print.showResult("SELECT * FROM Scientists ORDER BY firstName ASC; ");
             break;
-        case '2':
+    case '2':
             cout << "Displaying by first name in reverse alphabetical order." << endl;
-
+            print.showResult("SELECT * FROM Scientists ORDER BY firstName DESC; ");
             break;
         case '3':
             cout << "Displaying by last name in alphabetical order." << endl;
-
+            print.showResult("SELECT * FROM Scientists ORDER BY lastName ASC; ");
             break;
         case '4':
-            cout << "Displaying by last name in alphabetical order." << endl;
-
+            cout << "Displaying by last name in reverse alphabetical order." << endl;
+            print.showResult("SELECT * FROM Scientists ORDER BY lastName DESC; ");
             break;
         case '5':
             cout << "Displaying by birth year." << endl;
-
+            print.showResult("SELECT * FROM Scientists ORDER BY YoB ASC; ");
             break;
         default:
             cout << "You entered a number with an undefined function." << endl
-            << "Displaying in alphabetical order." << endl;
-
+            << "Displaying by first name in alphabetical order." << endl;
+            print.showResult("SELECT * FROM Scientists ORDER BY firstName ASC; ");
             break;
     }
     cout << endl;
