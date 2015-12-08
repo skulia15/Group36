@@ -3,6 +3,7 @@
 #include "insertcomputer.h"
 #include "connectiontodatabase.h"
 #include "display.h"
+#include "search.h"
 
 using namespace std;
 
@@ -10,21 +11,18 @@ void GUI::mainMenu()
 {
     cout << "-------------Main Menu---------------" <<endl;
     cout << " \n Please select an option:  "<<endl;
-    cout << " \n 1. To add a computer scientist." << endl;
-    cout << " 2. To add a computer." << endl;
-    cout << " 3. To print all computer scientists." << endl;
-    cout << " 4. To print all computers." << endl;
-    cout << " 5. To search." << endl;
-    cout << " 6. To delete all data." << endl;
-    cout << " 7. To quit." << endl;
+    cout << " \n 1. To add." << endl;
+    cout << " 2. To display." << endl;
+    cout << " 3. To search." << endl;
+    cout << " 4. To delete all data." << endl;
+    cout << " 5. To quit." << endl;
     cout << "-------------------------------------"<<endl;
     cout << "Choice: ";
 }
 
 void GUI::displayMainMenu(){
-Scientists theScientist;
-Computers theComputer;
-display result;
+
+
 connectionToDataBase diconect;
     char a;
         bool loop = true;
@@ -35,24 +33,18 @@ connectionToDataBase diconect;
 
             switch(a){
             case '1':
-                theScientist.manualInput();
+                GUI::addMenu();
                 break;
             case '2':
-                theComputer.insertCPU();
+                GUI::showDisplay2();
                 break;
             case '3':
-                result.showresult();
-                break;
-            case '4':
-                result.cpuShowresult();
-                break;
-            case '5':
                 //GUI::displaySearchMenu();
                break;
-            case '6':
+            case '4':
                 cout << "Delete data" << endl;
                 break;
-            case '7':
+            case '5':
                 diconect.disconect();
                 cout << "-===== We have disconected from the database====-"<<endl;
                 cout << "Quitting." << endl;
@@ -106,3 +98,81 @@ void GUI::searchMenu(){
     cout << "------------------------------"<<endl;
     cout << "Search by:  ";
 }
+
+
+void GUI::addMenu(){
+    Scientists theScientist;
+    Computers theComputer;
+char a;
+    bool loop = true;
+
+    while(loop == true){
+        GUI::showaddMenu();
+        cin >> a;
+
+        switch(a){
+        case '1':
+            theScientist.manualInput();
+            break;
+        case '2':
+            theComputer.insertCPU();
+            break;
+        case '3':
+            cout << endl;
+            cout << "Going back to main-menu." << endl<<endl;
+            loop = false;
+            break;
+        default:
+            cout << "Error in command, try again." << endl << endl;
+            break;
+        }
+     }}
+
+    void GUI::showaddMenu(){
+        cout << "--------Add Menu-----------"<<endl ;
+        cout << " \n Please select an option:  "<<endl;
+        cout << "\n1. To add a computer scientist." << endl;
+        cout << "2. To add a computer." << endl;
+        cout << "3. To exit to main menu" << endl;
+        cout << "------------------------------"<<endl;
+        cout << "Choice: ";
+    }
+
+
+    void GUI::showDisplay2(){
+    display abba;
+
+    char a;
+        bool loop = true;
+
+        while(loop == true){
+            GUI::showDisplay();
+            cin >> a;
+
+            switch(a){
+            case '1':
+                abba.showresult();
+                break;
+            case '2':
+                abba.cpuShowresult();
+                break;
+            case '3':
+                cout << endl;
+                cout << "Going back to main-menu." << endl<<endl;
+                loop = false;
+                break;
+            default:
+                cout << "Error in command, try again." << endl << endl;
+                break;
+            }
+         }}
+
+        void GUI::showDisplay(){
+            cout << "--------Display Menu-----------"<<endl ;
+            cout << " \n Please select an option:  "<<endl;
+            cout << " \n 1. To print all computer scientists." << endl;
+            cout << " 2. To print all computers." << endl;
+            cout << " 3. To exit to main menu" << endl;
+            cout << "------------------------------"<<endl;
+            cout << "Choice: ";
+        }

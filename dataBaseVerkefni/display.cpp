@@ -3,7 +3,7 @@
 #include "insertcomputer.h"
 #include "connectiontodatabase.h"
 #include "display.h"
-#include "gui.h"
+#include "search.h"
 #include <QtSql>
 #include <iostream>
 

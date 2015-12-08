@@ -11,6 +11,10 @@ public:
    void mainMenu();
    void searchMenu();
    void dislpaySearchMenu();
+   void addMenu();
+   void showaddMenu();
+   void showDisplay2();
+   void showDisplay();
 private:
 };
 
