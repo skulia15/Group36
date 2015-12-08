@@ -4,8 +4,7 @@
 #include "connectiontodatabase.h"
 #include "display.h"
 #include "search.h"
-#include <QtSql>
-#include <iostream>
+
 
 using namespace std;
 

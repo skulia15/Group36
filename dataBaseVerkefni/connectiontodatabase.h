@@ -4,6 +4,7 @@
 #include "manualInsertScientist.h"
 #include "insertcomputer.h"
 #include "connectiontodatabase.h"
+#include "extras.h"
 #include <iostream>
 #include <QtSql>
 #include <fstream>
@@ -11,6 +12,7 @@
 #include <vector>
 #include <QCoreApplication>
 #include <fstream>
+#include <windows.h>
 
 class connectionToDataBase{
 public:

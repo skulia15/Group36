@@ -14,7 +14,8 @@ SOURCES += main.cpp \
     manualInsertScientist.cpp \
     display.cpp \
     insertcomputer.cpp \
-    search.cpp
+    search.cpp \
+    extras.cpp
 
 HEADERS += \
     gui.h \
@@ -22,5 +23,6 @@ HEADERS += \
     manualInsertScientist.h \
     display.h \
     insertcomputer.h \
-    search.h
+    search.h \
+    extras.h
 

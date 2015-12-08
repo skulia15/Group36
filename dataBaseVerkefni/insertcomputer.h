@@ -1,7 +1,5 @@
 #ifndef INSERTCOMPUTER
 #define INSERTCOMPUTER
-
-#include "gui.h"
 #include "connectiontodatabase.h"
 
 #include <iostream>

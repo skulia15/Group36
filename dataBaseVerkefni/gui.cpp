@@ -4,6 +4,7 @@
 #include "connectiontodatabase.h"
 #include "display.h"
 #include "search.h"
+#include "extras.h"
 
 using namespace std;
 
@@ -39,7 +40,7 @@ connectionToDataBase diconect;
                 GUI::showDisplay2();
                 break;
             case '3':
-                //GUI::displaySearchMenu();
+                GUI::displaySearchMenu();
                break;
             case '4':
                 cout << "Delete data" << endl;
@@ -57,9 +58,10 @@ connectionToDataBase diconect;
          }
 }
 
-void GUI::dislpaySearchMenu(){
+void GUI::displaySearchMenu(){
     char input;
     bool loop = true;
+    extras doSearch;
 
     string theSearchName;
 
@@ -77,7 +79,11 @@ void GUI::dislpaySearchMenu(){
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
            cout << "Search by birth year "<<endl;
            break;
-        case '4':
+        case '4': //Searches wikipedia
+           cout << "Search on Wikipedia"<< endl;
+           doSearch.searchWiki();
+           break;
+        case '5':
            cout << "Going back to Main menu." << endl;
            loop = false;
            break;
@@ -94,9 +100,10 @@ void GUI::searchMenu(){
     cout << " \n 1. To search by first name" << endl;
     cout << " 2. To search by last name" << endl;
     cout << " 3. To search by birth year" << endl;
-    cout << " 4. To exit to main menu" << endl;
+    cout << " 4. To search on Wikipedia" << endl;
+    cout << " 5. To exit to main menu" << endl;
     cout << "------------------------------"<<endl;
-    cout << "Search by:  ";
+    cout << "Search by:  " << endl;
 }
 
 
