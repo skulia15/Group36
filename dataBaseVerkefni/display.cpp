@@ -10,7 +10,6 @@
 display::display(){
 }
 
-<<<<<<< HEAD
 void display::showResult(){
     //QSqlDatabase db;
    // QSqlQuery query(db);
@@ -41,29 +40,24 @@ void display::showresult() //Prints out allt Scientists in database
         << "Year of Death: " << YoD << endl;
         cout << endl;
 
-    }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :)*/
+    }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :)Ég kan samt að meta þetta kv. Sverrir*/
     QSqlQuery query("SELECT * FROM Scientists");
 
-<<<<<<< HEAD
     int idName = query.record().indexOf("firstName");
     while (query.next())
     {
-       QString name = query.value("firstName").toString();
-       qDebug() << name;
+       QString firstName = query.value("firstName").toString();
+       QString lastName = query.value("lastName").toString();
+       QString sex = query.value("sex").toString();
+       int YoB = query.value("YoB").toUInt();
+       int YoD = query.value("YoB").toUInt();
+       qDebug() << firstName << lastName << sex << YoB << YoD;
     }
 }
 
+
+
 void display::cpuShowResult(){// þarf kanski að finna betri texta
-=======
-
-    }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :) Ég kan samt að meta þetta kv. Sverrir
-}
-
-
-
-void display::cpuShowresult(){// þarf kanski að finna betri texta
-
->>>>>>> accad3148ef432184e09da424eaa99fa8c7fd96f
     QSqlDatabase db;
     QSqlQuery query(db);
 
@@ -83,13 +77,8 @@ void display::cpuShowresult(){// þarf kanski að finna betri texta
         << "Was built: " << yb << endl
         << "Finished: " << built << endl;
         cout<<endl;
-
-<<<<<<< HEAD
-
-    }cout << "=====End of PRINTING=======" << endl;
-=======
-}cout << "=====End of PRINTING=======" << endl;
->>>>>>> accad3148ef432184e09da424eaa99fa8c7fd96f
+    }
+    cout << "=====End of PRINTING=======" << endl;
 }
 
 
