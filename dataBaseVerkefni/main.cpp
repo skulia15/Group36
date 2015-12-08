@@ -9,6 +9,9 @@ using namespace std;
 
 int main(){
     //ToDo
+    //Setja inn tengingar á milli Scientists og computers
+    //Hver persóna getur verið tengd mörgum tölvum, Hver tölva getur verið tengt mörgum persónum
+    //Þessar tengingar þarf að vera hægt að skoða og viðhalda, - display fall fyrir þá sem komu að gerð tölvu og öfugt
     //samræma kóðann -persistance
     //taka út óþarfa debug kóða og texta
     //kommenta kóðann
@@ -18,7 +21,6 @@ int main(){
     //taka út að ID sé prentað, það er bara fyrir reference
     //Sort fall - Skúli
     //readme skrá með leiðbeiningum
-    //Setja inn tengingar á milli Scientists og computers
     //Delete fall ef tími gefst
     //aukavirkni - fengum btw 7/10 auka stig í seinustu skilum, vel gert!
 

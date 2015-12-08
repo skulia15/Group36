@@ -5,8 +5,6 @@
 #include "display.h"
 #include "search.h"
 
-search::search()
-{
-
+search::search(){
 }
 

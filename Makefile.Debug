@@ -1945,11 +1945,11 @@ debug\search.obj: dataBaseVerkefni\search.cpp dataBaseVerkefni/gui.h \
 		dataBaseVerkefni/display.h \
 		dataBaseVerkefni/search.h
 
-debug\extras.obj: dataBaseVerkefni\extras.cpp dataBaseVerkefni/connectiontodatabase.h \
+debug\extras.obj: dataBaseVerkefni\extras.cpp dataBaseVerkefni/extras.h \
+		dataBaseVerkefni/connectiontodatabase.h \
 		dataBaseVerkefni/gui.h \
 		dataBaseVerkefni/manualInsertScientist.h \
 		dataBaseVerkefni/insertcomputer.h \
-		dataBaseVerkefni/extras.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\QtSql \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\QtSqlDepends \
 		C:\Qt\5.5\msvc2013_64\include\QtCore\QtCore \

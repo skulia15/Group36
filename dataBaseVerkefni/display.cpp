@@ -10,14 +10,14 @@
 display::display(){
 }
 
-void display::showresult(){
-    QSqlDatabase db;
-    QSqlQuery query(db);
+void display::showResult(){
+    //QSqlDatabase db;
+   // QSqlQuery query(db);
 
-    cout << "=====PRINTING=======" << endl; //Muna að taka út ===printing=== :)
+/*    cout << "=====PRINTING=======" << endl; //Muna að taka út ===printing=== :)
     query.exec("SELECT * FROM Scientists");
+
     while(query.next()){
-    //qDebug()<< query.lastQuery();
         int id = query.value(0).toUInt();
         string firstName = query.value("firstName").toString().toStdString();
         string lastName = query.value("lastName").toString().toStdString();
@@ -30,12 +30,20 @@ void display::showresult(){
         << "Sex: " << sex << endl
         << "Year of Birth: " << YoB << endl
         << "Year of Death: " << YoD << endl;
-        cout<<endl;
+        cout << endl;
 
-    }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :)
+    }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :)*/
+    QSqlQuery query("SELECT * FROM Scientists");
+
+    int idName = query.record().indexOf("firstName");
+    while (query.next())
+    {
+       QString name = query.value("firstName").toString();
+       qDebug() << name;
+    }
 }
 
-void display::cpuShowresult(){// þarf kanski að finna betri texta
+void display::cpuShowResult(){// þarf kanski að finna betri texta
     QSqlDatabase db;
     QSqlQuery query(db);
 
@@ -57,5 +65,7 @@ void display::cpuShowresult(){// þarf kanski að finna betri texta
         cout<<endl;
 
 
-}cout << "=====End of PRINTING=======" << endl;
+    }cout << "=====End of PRINTING=======" << endl;
 }
+
+

@@ -12,6 +12,8 @@ public:
    void showaddMenu();
    void showDisplay2();
    void showDisplay();
+   void showSortMenu();
+   void displayMenu();
 private:
 };
 
