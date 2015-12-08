@@ -1,8 +1,5 @@
 #include "connectiontodatabase.h"
 
-#include <QtSql>
-#include <iostream>
-
 bool isValid(string myString);
 
 Scientists::Scientists(){
@@ -93,9 +90,6 @@ void Scientists::manualInput(){
         query.bindValue(":sex",  QString::fromStdString(sex));
         query.bindValue(":YoB",  YoB);
         query.bindValue(":YoD",  YoD);
-
-
-
         if(query.exec()){
             cout << "========== Setti inn i Database ==========" << endl;
         }else cout << "========== Setti Ekki inn i Database ==========" << endl;
@@ -112,5 +106,14 @@ bool isValid(string myString){
     return true;
 }
 
-
+void Scientists::deleteScientist(){
+    QSqlDatabase db;
+    QSqlQuery query(db);
+    string tempName;
+    cout << "enter first name of victim: ";
+    cin >> tempName;
+    query.bindValue(":delete", QString::fromStdString(tempName));
+           query.prepare("DELETE FROM Scientists WHERE firstName = delete"); //not working
+           query.exec();
+}
 

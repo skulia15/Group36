@@ -1,9 +1,5 @@
-#include <windows.h>
-#include <iostream>
-#include <extras.h>
 #include "connectiontodatabase.h"
-#include <string>
-#include <iostream>
+
 using namespace std;
 
 extras::extras(){

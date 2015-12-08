@@ -1,5 +1,4 @@
 #include "connectiontodatabase.h"
-using namespace std;
 
 connectionToDataBase::connectionToDataBase(){
 }

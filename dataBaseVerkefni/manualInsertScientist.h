@@ -9,6 +9,7 @@ class Scientists{
 public:
     Scientists();
     void manualInput();
+    void deleteScientist();
     //friend ostream& operator<<(ostream& out, Computers acc);
 private:
     string id;

@@ -5,7 +5,7 @@ void GUI::mainMenu() //Prints out main menu
 {
     cout << "-------------Main Menu---------------" <<endl;
     cout << " \n Please select an option:  "<<endl;
-    cout << " \n 1. To add." << endl;
+    cout << " \n 1. To add or delete." << endl;
     cout << " 2. To display." << endl;
     cout << " 3. To search." << endl;
     cout << " 4. To delete all data." << endl;
@@ -19,7 +19,8 @@ void GUI::showaddMenu(){//Prints out add menu.
     cout << " \n Please select an option:  "<<endl;
     cout << "\n1. To add a computer scientist." << endl;
     cout << "2. To add a computer." << endl;
-    cout << "3. To exit to main menu" << endl;
+    cout << "3. To delete a scientist." << endl;
+    cout << "4. To exit to main menu" << endl;
     cout << "------------------------------"<<endl;
     cout << "Choice: ";
 }
@@ -164,6 +165,9 @@ void GUI::addMenu(){ //Switch statment for add menu.
             theComputer.insertCPU();
             break;
         case '3':
+            theScientist.deleteScientist();
+            break;
+        case '4':
             cout << endl;
             cout << "Going back to main-menu." << endl<<endl;
             loop = false;

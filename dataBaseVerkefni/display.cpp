@@ -1,14 +1,4 @@
-#include "gui.h"
-#include "manualInsertScientist.h"
-#include "insertcomputer.h"
 #include "connectiontodatabase.h"
-#include "display.h"
-#include "search.h"
-#include <QtSql>
-#include <iostream>
-
-#include <string>
-using namespace std;
 
 display::display(){
 }
@@ -38,7 +28,12 @@ void display::showResult(string command){
        cout << "Year of Birth: ";
        qDebug() << YoB;
        cout << "Year of Death: ";
-       qDebug() << YoD;
+       if (YoD == 0){
+           cout << "Still Alive" << endl;
+       }
+       else{
+           qDebug() << YoD;
+       }
        cout << endl;
     }
 }
