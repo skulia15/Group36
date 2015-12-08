@@ -10,12 +10,12 @@
 display::display(){
 }
 
-void display::showresult()
+void display::showresult() //Prints out allt Scientists in database
 {
     QSqlDatabase db;
     QSqlQuery query(db);
 
-    cout << "=====PRINTING=======" << endl; //Muna að taka út ===printing=== :)
+    cout << "=====PRINTING=======" << endl; //Muna að taka út ===printing=== :), Ég kan samt að meta þetta kv. Sverrir
     query.exec("SELECT * FROM Scientists");
     while(query.next()){
     //qDebug()<< query.lastQuery();
@@ -33,11 +33,10 @@ void display::showresult()
         << "Year of Death: " << YoD << endl;
         cout<<endl;
 
-
-    }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :)
+    }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :) Ég kan samt að meta þetta kv. Sverrir
 }
 
-void display::cpuShowresult()
+void display::cpuShowresult() //Prints out allt Computers in database
 {// þarf kanski að finna betri texta
     QSqlDatabase db;
     QSqlQuery query(db);
@@ -52,14 +51,12 @@ void display::cpuShowresult()
         int yb = query.value("yearBuilt").toUInt();
         string built = query.value("built").toString().toStdString();
 
-
         cout << "Id: "<< id << endl
         << "Computer name: "<< cpuName << endl
         << "Computer type: " << cpuType << endl
         << "Was built: " << yb << endl
         << "Finished: " << built << endl;
         cout<<endl;
-
 
 }cout << "=====End of PRINTING=======" << endl;
 }
