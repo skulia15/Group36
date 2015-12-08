@@ -15,7 +15,7 @@ void display::showresult()
     QSqlDatabase db;
     QSqlQuery query(db);
 
-    cout << "=====PRINTING=======" << endl;
+    cout << "=====PRINTING=======" << endl; //Muna að taka út ===printing=== :)
     query.exec("SELECT * FROM Scientists");
     while(query.next()){
     //qDebug()<< query.lastQuery();
@@ -34,7 +34,7 @@ void display::showresult()
         cout<<endl;
 
 
-    }cout << "=====End of PRINTING=======" << endl;
+    }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :)
 }
 
 void display::cpuShowresult()

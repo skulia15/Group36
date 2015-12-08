@@ -6,9 +6,7 @@
 #include "search.h"
 #include <QtSql>
 
-connectionToDataBase::connectionToDataBase()
-{
-
+connectionToDataBase::connectionToDataBase(){
 }
 
 
@@ -17,7 +15,7 @@ void connectionToDataBase::connect()
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString dbName = "Scientists2525.sqlite";
-    db.setDatabaseName("C:/Users/Sverrir/Documents/GitHub/Group36/build-dataBaseVerkefni-Desktop_Qt_5_5_1_MinGW_32bit-Debug/Scientists2525.sqlite");
+    db.setDatabaseName("C:/Users/Notandi/Documents/GitHub/Group36/Scientists2525.sqlite");
 
     db.open();
 
