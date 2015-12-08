@@ -51,8 +51,7 @@ void connectionToDataBase::connect()
 
 }
 
-void connectionToDataBase::disconect()
-{
+void connectionToDataBase::disconect(){
     QSqlDatabase db;
     QSqlQuery query(db);
     db.close();

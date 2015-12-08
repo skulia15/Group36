@@ -13,6 +13,7 @@
 #include <QCoreApplication>
 #include <fstream>
 #include <windows.h>
+#include <cctype>
 
 class connectionToDataBase{
 public:

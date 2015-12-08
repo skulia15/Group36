@@ -10,8 +10,7 @@
 display::display(){
 }
 
-void display::showresult()
-{
+void display::showresult(){
     QSqlDatabase db;
     QSqlQuery query(db);
 
@@ -37,8 +36,7 @@ void display::showresult()
     }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :)
 }
 
-void display::cpuShowresult()
-{// þarf kanski að finna betri texta
+void display::cpuShowresult(){// þarf kanski að finna betri texta
     QSqlDatabase db;
     QSqlQuery query(db);
 
@@ -51,7 +49,6 @@ void display::cpuShowresult()
         string cpuType = query.value("cpuType").toString().toStdString();
         int yb = query.value("yearBuilt").toUInt();
         string built = query.value("built").toString().toStdString();
-
 
         cout << "Id: "<< id << endl
         << "Computer name: "<< cpuName << endl
