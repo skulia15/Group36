@@ -3,7 +3,6 @@
 #include <extras.h>
 #include "connectiontodatabase.h"
 
-using namespace std;
 
 extras::extras(){
 
