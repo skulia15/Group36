@@ -21,6 +21,7 @@ void Computers::insertCPU()
         while(error == false){
             cout << "How many computers would you like to add? ";
             cin >> cpus;
+            cin.ignore();
             if (isalpha(cpus)){
                 cout << "Error in input, try again." << endl;
             }
@@ -38,17 +39,19 @@ void Computers::insertCPU()
 
             do{
                 cout << "Computer name: ";
-                cin >> cpuName;
+                getline (cin, cpuName, '\n');
             }while (cpuName == " " || cpuName == "");
 
             error2 = true;
             do {
                 cout << "Was the computer built? (y/n) ";
                 cin >> temp;
+                cin.ignore();
                 if (temp == 'y'||temp == 'Y'){
                     built = "Yes"; error2 = false;
                     cout << "Year built: ";
                     cin >> yearBuilt;
+                    cin.ignore();
                 }
                 else if (temp == 'n'||temp == 'N'){
                     built = "No"; error2 = false;
@@ -58,7 +61,7 @@ void Computers::insertCPU()
             }while(error2 == true);
 
             cout << "Computer type: ";
-            cin >> cpuType;
+            getline (cin, cpuType, '\n');
 
             query.prepare("INSERT INTO Computers (cpuName, built, yearBuilt, cpuType) "
                               "VALUES (:cpuName, :built, :yearBuilt, :cpuType)");
