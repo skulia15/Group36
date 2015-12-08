@@ -43,6 +43,7 @@ void display::showResult(string command){
 
 
 
+
 void display::cpuShowResult(string command){// þarf kanski að finna betri texta
     QSqlDatabase db;
     QSqlQuery query(db);

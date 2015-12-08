@@ -1,4 +1,5 @@
 #include "connectiontodatabase.h"
+#include "search.h"
 
 
 void GUI::mainMenu() //Prints out main menu
@@ -68,7 +69,7 @@ void GUI::showComputerSortMenu(){
     cout << " \n 1. By name in alphabetical order." << endl;
     cout << " 2. By name in reverse alphabetical order." << endl;
     cout << " 3. By type in alphabetical order." << endl;
-    cout << " 4. By typein reverse alphabetical order." << endl;
+    cout << " 4. By type in reverse alphabetical order." << endl;
     cout << " 5. By year built." << endl;
     cout << "----------------------------------------" << endl;
     cout << "Input your choice: ";
@@ -77,6 +78,7 @@ void GUI::showComputerSortMenu(){
 void GUI::displayMainMenu(){//Switch statment for main menu
     connectionToDataBase diconect;
     extras deleter;
+
     char a;
     bool loop = true;
 
@@ -115,8 +117,7 @@ void GUI::displaySearchMenu(){//Switch statment for search menu
     char input;
     bool loop = true;
     extras doSearch;
-
-    string theSearchName;
+    searchData theSearch;
 
     while(loop == true){
         GUI::searchMenu();
@@ -124,16 +125,17 @@ void GUI::displaySearchMenu(){//Switch statment for search menu
 
         switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
         case '1':
-           cout << "Search after first name "<<endl;
+           theSearch.searchFirstName();
+           cout << "Search by first name " << endl;
            break;
         case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
-           cout << "Search after last name "<<endl;
+           cout << "Search by last name "<< endl;
            break;
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
-           cout << "Search by birth year "<<endl;
+           cout << "Search by birth year " << endl;
            break;
         case '4': //Searches wikipedia
-           cout << "Search on Wikipedia"<< endl;
+           cout << "Search on Wikipedia" << endl;
            doSearch.searchWiki();
            break;
         case '5':

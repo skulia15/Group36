@@ -15,7 +15,6 @@
 #include <fstream>
 #include <windows.h>
 #include <cctype>
-#include <QTextStream>
 
 using namespace std;
 

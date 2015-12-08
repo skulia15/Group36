@@ -5,9 +5,9 @@
 
 using namespace std;
 
-class Searchdata{
+class searchData{
 public:
-    Searchdata();
+    searchData();
     void searchFirstName();
     void searchLastName();
     void searchBirthYear();

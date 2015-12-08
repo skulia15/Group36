@@ -13,7 +13,6 @@ int main(){
     //Search function - Leit eftir substrings //ætti ekki að vera mál í sql :)
     //laga það sem dregin var niður í seinastu skilum
     //readme skrá með leiðbeiningum
-    //Delete fall ef tími gefst
     //aukavirkni - fengum btw 7/10 auka stig í seinustu skilum, vel gert!
 
     GUI menu;

@@ -7,7 +7,7 @@
 #include <QtSql>
 #include <iostream>
 
-Searchdata::Searchdata(){
+searchData::searchData(){
     firstName = "";
     lastName = "";
     sex = "";
@@ -15,19 +15,17 @@ Searchdata::Searchdata(){
     YoD = 0;
 }
 
-void Searchdata::searchFirstName(){
+void searchData::searchFirstName(){
     QSqlDatabase db;
     QSqlQuery query(db);
-    display print;
-
-    cout << "Enter the first name you want search for: ";
+    string inputName;
+    cout << "You are in the right place" << endl;
+    cout << "Enter a name to search: ";
     cin >> inputName;
 
-    cout << "===== SEARCH RESULTS =====" << endl;
-
-    print.showResult("SELECT * FROM Scientists WHERE firstName = 'skuli'");
-
-    cout << "===== END OF RESULTS =====" << endl;
+    query.prepare("SELECT * FROM Scientists WHERE firstName = (:name)");
+    query.bindValue(":name", QString::fromStdString(inputName));
+    query.exec();
 
     if(!query.exec()){
         qDebug() << "Search failed: " << query.lastError();
@@ -35,10 +33,10 @@ void Searchdata::searchFirstName(){
     else{
         qDebug() << "Search failed: Person doesn't exist.";
     }
+    cout << "You are now leaving the right place" << endl;
 }
 
-void Searchdata::searchLastName()
-{
+void searchData::searchLastName(){
     display print;
     QSqlDatabase db;
     QSqlQuery query(db);
@@ -64,7 +62,7 @@ void Searchdata::searchLastName()
 
 }
 
-void Searchdata::searchBirthYear(){
+void searchData::searchBirthYear(){
     QSqlDatabase db;
     QSqlQuery query(db);
 

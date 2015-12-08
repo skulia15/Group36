@@ -426,8 +426,7 @@ release\main.obj: dataBaseVerkefni\main.cpp dataBaseVerkefni/connectiontodatabas
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqlrelationaltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qtsqlversion.h \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QTextStream
+		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication
 
 release\gui.obj: dataBaseVerkefni\gui.cpp dataBaseVerkefni/connectiontodatabase.h \
 		dataBaseVerkefni/gui.h \
@@ -680,7 +679,7 @@ release\gui.obj: dataBaseVerkefni\gui.cpp dataBaseVerkefni/connectiontodatabase.
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qtsqlversion.h \
 		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QTextStream
+		dataBaseVerkefni/search.h
 
 release\connectiontodatabase.obj: dataBaseVerkefni\connectiontodatabase.cpp dataBaseVerkefni/connectiontodatabase.h \
 		dataBaseVerkefni/gui.h \
@@ -932,8 +931,7 @@ release\connectiontodatabase.obj: dataBaseVerkefni\connectiontodatabase.cpp data
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqlrelationaltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qtsqlversion.h \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QTextStream
+		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication
 
 release\manualInsertScientist.obj: dataBaseVerkefni\manualInsertScientist.cpp dataBaseVerkefni/connectiontodatabase.h \
 		dataBaseVerkefni/gui.h \
@@ -1185,8 +1183,7 @@ release\manualInsertScientist.obj: dataBaseVerkefni\manualInsertScientist.cpp da
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqlrelationaltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qtsqlversion.h \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QTextStream
+		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication
 
 release\display.obj: dataBaseVerkefni\display.cpp dataBaseVerkefni/connectiontodatabase.h \
 		dataBaseVerkefni/gui.h \
@@ -1438,8 +1435,7 @@ release\display.obj: dataBaseVerkefni\display.cpp dataBaseVerkefni/connectiontod
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqlrelationaltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qtsqlversion.h \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QTextStream
+		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication
 
 release\insertcomputer.obj: dataBaseVerkefni\insertcomputer.cpp dataBaseVerkefni/connectiontodatabase.h \
 		dataBaseVerkefni/gui.h \
@@ -1691,8 +1687,7 @@ release\insertcomputer.obj: dataBaseVerkefni\insertcomputer.cpp dataBaseVerkefni
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqlrelationaltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qtsqlversion.h \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QTextStream
+		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication
 
 release\search.obj: dataBaseVerkefni\search.cpp dataBaseVerkefni/gui.h \
 		dataBaseVerkefni/connectiontodatabase.h \
@@ -1945,7 +1940,6 @@ release\search.obj: dataBaseVerkefni\search.cpp dataBaseVerkefni/gui.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qtsqlversion.h \
 		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QTextStream \
 		dataBaseVerkefni/search.h
 
 release\extras.obj: dataBaseVerkefni\extras.cpp dataBaseVerkefni/connectiontodatabase.h \
@@ -2198,8 +2192,7 @@ release\extras.obj: dataBaseVerkefni\extras.cpp dataBaseVerkefni/connectiontodat
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqlrelationaltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qsqltablemodel.h \
 		C:\Qt\5.5\msvc2013_64\include\QtSql\qtsqlversion.h \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication \
-		C:\Qt\5.5\msvc2013_64\include\QtCore\QTextStream
+		C:\Qt\5.5\msvc2013_64\include\QtCore\QCoreApplication
 
 ####### Install
 

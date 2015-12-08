@@ -91,8 +91,8 @@ void Scientists::manualInput(){
         query.bindValue(":YoB",  YoB);
         query.bindValue(":YoD",  YoD);
         if(query.exec()){
-            cout << "========== Setti inn i Database ==========" << endl;
-        }else cout << "========== Setti Ekki inn i Database ==========" << endl;
+            cout << "========== Successfully entered into the database ==========" << endl;
+        }else cout << "========== Error entering info to the database ==========" << endl;
     }
 }
 
