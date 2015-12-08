@@ -1,13 +1,29 @@
-#ifndef SEARCH_H
-#define SEARCH_H
+#ifndef SEARCH
+#define SEARCH
+
 #include "connectiontodatabase.h"
 
+using namespace std;
 
-class search
-{
+class Searchdata{
 public:
-    search();
+    Searchdata();
+    void searchFirstName();
+    void searchLastName();
+    void searchBirthYear();
+
+private:
+    string inputName;
+    string inputYear;
+
+    string id;
+    string firstName;
+    string lastName;
+    string sex;
+    int YoB;
+    int YoD;
 
 };
 
-#endif // SEARCH_H
+#endif // SEARCH
+

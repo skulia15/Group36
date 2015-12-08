@@ -15,12 +15,15 @@ void display::showResult(string command){
     int idName = query.record().indexOf("id");
     while (query.next())
     {
+       int id = query.value("id").toUInt();
        QString firstName = query.value("firstName").toString();
        QString lastName = query.value("lastName").toString();
        QString sex = query.value("sex").toString();
        int YoB = query.value("YoB").toUInt();
        int YoD = query.value("YoD").toUInt();
 
+       cout << "Scientist ID: ";
+       qDebug() << id;
        cout << "Name: ";
        qDebug() << qPrintable(firstName)  << qPrintable(lastName) ;
        cout << "Sex: ";
@@ -53,6 +56,7 @@ void display::cpuShowResult(string command){// þarf kanski að finna betri text
     int idName = query.record().indexOf("id");
     while (query.next())
     {
+
        QString cpuName = query.value("cpuName").toString();
        QString cpuType = query.value("cpuType").toString();
        QString built = query.value("built").toString();

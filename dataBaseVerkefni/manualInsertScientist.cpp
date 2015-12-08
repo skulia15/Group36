@@ -109,11 +109,19 @@ bool isValid(string myString){
 void Scientists::deleteScientist(){
     QSqlDatabase db;
     QSqlQuery query(db);
-    string tempName;
-    cout << "enter first name of victim: ";
-    cin >> tempName;
-    query.bindValue(":delete", QString::fromStdString(tempName));
-           query.prepare("DELETE FROM Scientists WHERE firstName = delete"); //not working
-           query.exec();
+    int tempID;
+
+    cout << "Enter the scientist ID: ";
+    cin >> tempID;
+
+    QString toDelete = QString::number(tempID);
+
+    query.prepare("DELETE FROM Scientists WHERE id = "+toDelete+";"); //not working
+    query.exec();
+     if(query.exec()){
+         cout << "Scientist with ID number " << tempID <<" was deleted." << endl;
+     }
+     else
+         cout << "No scientist has that ID.";
 }
 
