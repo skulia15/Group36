@@ -3,6 +3,7 @@
 
 int main(){
     //ToDo
+    //getline á Computer name! og type
     //Setja inn tengingar á milli Scientists og computers
     //Hver persóna getur verið tengd mörgum tölvum, Hver tölva getur verið tengt mörgum persónum
     //Þessar tengingar þarf að vera hægt að skoða og viðhalda, - display fall fyrir þá sem komu að gerð tölvu og öfugt

@@ -59,6 +59,19 @@ void GUI::showSortMenu(){
     cout << "Input your choice: ";
 }
 
+void GUI::showComputerSortMenu(){
+    cout << endl;
+    cout << "--------------Display menu--------------" << endl;
+    cout << "How would you like to display your computers?" << endl;
+    cout << " \n 1. By name in alphabetical order." << endl;
+    cout << " 2. By name in reverse alphabetical order." << endl;
+    cout << " 3. By type in alphabetical order." << endl;
+    cout << " 4. By typein reverse alphabetical order." << endl;
+    cout << " 5. By year built." << endl;
+    cout << "----------------------------------------" << endl;
+    cout << "Input your choice: ";
+}
+
 void GUI::displayMainMenu(){//Switch statment for main menu
     connectionToDataBase diconect;
     extras deleter;
@@ -133,8 +146,6 @@ void GUI::displaySearchMenu(){//Switch statment for search menu
 }
 
 
-
-
 void GUI::addMenu(){ //Switch statment for add menu.
     Scientists theScientist;
     Computers theComputer;
@@ -166,7 +177,7 @@ void GUI::addMenu(){ //Switch statment for add menu.
 
 
 void GUI::showDisplay2(){ // Switch statment for display menu.
-    display abba;
+
     char a;
     bool loop = true;
 
@@ -177,10 +188,11 @@ void GUI::showDisplay2(){ // Switch statment for display menu.
         switch(a){
         case '1':
             GUI::showSortMenu();
-            GUI::displayMenu();
+            GUI::displaySortMenu();
             break;
         case '2':
-            abba.cpuShowResult();
+            GUI::showComputerSortMenu();
+            GUI::displayComputerSortMenu();
             break;
         case '3':
             cout << endl;
@@ -194,7 +206,7 @@ void GUI::showDisplay2(){ // Switch statment for display menu.
      }
 }
 
-void GUI::displayMenu(){
+void GUI::displaySortMenu(){
     display print;
     char choice;
     bool error = false;
@@ -236,6 +248,54 @@ void GUI::displayMenu(){
             break;
     }
     cout << endl;
+}
+
+
+
+
+void GUI::displayComputerSortMenu(){
+    display print;
+    char choice;
+    bool error = false;
+    QSqlDatabase db;
+    QSqlQuery query(db);
+
+    while(error == false){
+        cin >> choice;
+        cout << endl;
+        if (isalpha(choice)){ cout << "Error in input, try again." << endl;}
+        else { error = true;}
+    }
+
+    switch (choice){
+        case '1':
+            cout << "Displaying by name in alphabetical order." << endl;
+            print.cpuShowResult("SELECT * FROM Computers ORDER BY cpuName ASC; ");
+            break;
+        case '2':
+            cout << "Displaying by name in reverse alphabetical order." << endl;
+            print.cpuShowResult("SELECT * FROM Computers ORDER BY cpuName DESC; ");
+            break;
+        case '3':
+            cout << "Displaying by type in alphabetical order." << endl;
+            print.cpuShowResult("SELECT * FROM Computers ORDER BY cpuType ASC; ");
+            break;
+        case '4':
+            cout << "Displaying by type in reverse alphabetical order." << endl;
+            print.cpuShowResult("SELECT * FROM Computers ORDER BY cpuType DESC; ");
+            break;
+        case '5':
+            cout << "Displaying by year built." << endl;
+            print.cpuShowResult("SELECT * FROM Computers ORDER BY yearBuilt ASC; ");
+            break;
+        default:
+            cout << "You entered a number with an undefined function." << endl
+            << "Displaying by name in alphabetical order." << endl;
+            print.cpuShowResult("SELECT * FROM Computers ORDER BY cpuName ASC; ");
+            break;
+        }
+    cout << endl;
+
 }
 
 

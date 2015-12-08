@@ -17,22 +17,12 @@ void display::showResult(string command){
     QSqlDatabase db;
     QSqlQuery query(db);
 
-
-        //string querySort = "SELECT * FROM Scientists ORDER BY firstName ASC; ";
-
-
-        //string querySort = "SELECT * FROM Scientists ORDER BY firstName DESC; ";
-
-
     string querySort = command;
     if(query.exec(QString(querySort.c_str()))){
        cout << "========== The scientist table sorted successfully! =========="<< endl;}
     else {cout<< "========== Scientist table was NOT sorted :( ==========" << endl;}
 
-   // if (choice == 1){
-   // string querySort = "SELECT * FROM Scientists ORDER BY firstName ASC; ";}
-
-    int idName = query.record().indexOf("firstName");
+    int idName = query.record().indexOf("id");
     while (query.next())
     {
        QString firstName = query.value("firstName").toString();
@@ -55,28 +45,34 @@ void display::showResult(string command){
 
 
 
-void display::cpuShowResult(){// þarf kanski að finna betri texta
+void display::cpuShowResult(string command){// þarf kanski að finna betri texta
     QSqlDatabase db;
     QSqlQuery query(db);
 
-    cout << "=====PRINTING=======" << endl;
-    query.exec("SELECT * FROM Computers");
-    while(query.next()){
-    //qDebug()<< query.lastQuery();
-        int id = query.value(0).toUInt();
-        string cpuName = query.value("cpuName").toString().toStdString();
-        string cpuType = query.value("cpuType").toString().toStdString();
-        int yb = query.value("yearBuilt").toUInt();
-        string built = query.value("built").toString().toStdString();
+    string querySort = command;
 
-        cout << "Id: "<< id << endl
-        << "Computer name: "<< cpuName << endl
-        << "Computer type: " << cpuType << endl
-        << "Was built: " << yb << endl
-        << "Finished: " << built << endl;
-        cout<<endl;
-    }
-    cout << "=====End of PRINTING=======" << endl;
+    if(query.exec(QString(querySort.c_str()))){
+       cout << "========== The Computer table sorted successfully! =========="<< endl;}
+    else {cout<< "========== Computer table was NOT sorted :( ==========" << endl;}
+
+    int idName = query.record().indexOf("id");
+    while (query.next())
+    {
+       QString cpuName = query.value("cpuName").toString();
+       QString cpuType = query.value("cpuType").toString();
+       QString built = query.value("built").toString();
+       int yb = query.value("yearBuilt").toUInt();
+
+       cout << "Name: ";
+       qDebug() << qPrintable(cpuName);
+       cout << "Type: ";
+       qDebug() << qPrintable(cpuType);
+       cout << "Was it buit?: ";
+       qDebug() << qPrintable(built);
+       cout << "Year Built: ";
+       qDebug() << yb;
+       cout << endl;
+     }
 }
 
 

@@ -8,7 +8,7 @@ class display{
 public:
     display();
     void showResult(string command);
-    void cpuShowResult();
+    void cpuShowResult(string command);
    // friend ostream& operator<<(ostream& out, display acc);
 private:
 };

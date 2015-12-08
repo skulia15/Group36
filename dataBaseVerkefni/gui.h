@@ -13,7 +13,9 @@ public:
    void showDisplay2();
    void showDisplay();
    void showSortMenu();
-   void displayMenu();
+   void displaySortMenu();
+   void showComputerSortMenu();
+   void displayComputerSortMenu();
 private:
 };
 
