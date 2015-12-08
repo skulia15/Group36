@@ -16,6 +16,7 @@ void GUI::mainMenu()
     cout << " 2. To display." << endl;
     cout << " 3. To search." << endl;
     cout << " 4. To delete all data." << endl;
+
     cout << " 5. To quit." << endl;
     cout << "-------------------------------------"<<endl;
     cout << "Choice: ";

@@ -1,4 +1,8 @@
-#include "connectiontodatabase.h"
+#include <windows.h>
+#include <iostream>
+#include <extras.h>
+
+using namespace std;
 
 using namespace std;
 
