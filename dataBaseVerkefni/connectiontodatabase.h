@@ -15,6 +15,8 @@
 class connectionToDataBase{
 public:
     connectionToDataBase();
+    void connect();
+    void disconect();
 };
 
 #endif // CONNECTIONTODATABASE_H

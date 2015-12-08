@@ -6,28 +6,36 @@
 #include "display.h"
 using namespace std;
 
-struct Klasi{
-    int id;
-    string firstName;
-    string lastName;
-    string sex;
-    int YoB;
-    int YoD;
-};
-
-//void readFromDatabaseToVector(vector<Klasi>& viktor);
-void print();
-
-//void inputInfo(vector<Klasi>& viktor);//input into Vector
-//void manualInsertToDataBase();
-//void readFromDatabaseToVector(vector<Klasi>& viktor);
-
-
 int main()
 {
     GUI menu;
-    connectionToDataBase();
+    connectionToDataBase connect;
+    connect.connect();
     menu.displayMainMenu();
 
 return 0;
 }
+
+
+/*#include <QCoreApplication>
+    #include <windows.h>
+    #include <iostream>
+    using namespace std;
+
+    int main()
+    {
+        string firstname;
+        string lastname;
+
+        cout<< "Would you like more info about your favorite computer scientist?"<<endl;
+        cout<< "Please enter his first name:";
+        cin >> firstname;
+        cout<<"Plese enter his last name:";
+        cin >> lastname;
+        string myUrl ="https://en.wikipedia.org/wiki/"+firstname+"_"+lastname;
+
+
+        system(std::string("start " + myUrl).c_str());
+
+        return 0;
+    }*/

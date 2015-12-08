@@ -25,6 +25,7 @@ void GUI::displayMainMenu(){
 Scientists theScientist;
 Computers theComputer;
 display result;
+connectionToDataBase diconect;
     char a;
         bool loop = true;
 
@@ -52,6 +53,8 @@ display result;
                 cout << "Delete data" << endl;
                 break;
             case '7':
+                diconect.disconect();
+                cout << "-===== We have disconected from the database====-"<<endl;
                 cout << "Quitting." << endl;
                 loop = false;
                 break;
