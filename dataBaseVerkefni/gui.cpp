@@ -1,5 +1,10 @@
 #include "connectiontodatabase.h"
-
+#include "gui.h"
+#include "manualInsertScientist.h"
+#include "insertcomputer.h"
+#include "connectiontodatabase.h"
+#include "search.h"
+#include "display.h"
 
 void GUI::mainMenu() //Prints out main menu
 {
@@ -115,7 +120,7 @@ void GUI::displaySearchMenu(){//Switch statment for search menu
     char input;
     bool loop = true;
     extras doSearch;
-
+    Searchdata find;
     string theSearchName;
 
     while(loop == true){
@@ -124,13 +129,13 @@ void GUI::displaySearchMenu(){//Switch statment for search menu
 
         switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
         case '1':
-           cout << "Search after first name "<<endl;
+           find.searchFirstName();
            break;
         case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
-           cout << "Search after last name "<<endl;
+           find.searchLastName();
            break;
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
-           cout << "Search by birth year "<<endl;
+           find.searchBirthYear();
            break;
         case '4': //Searches wikipedia
            cout << "Search on Wikipedia"<< endl;

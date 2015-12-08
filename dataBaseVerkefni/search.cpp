@@ -25,16 +25,56 @@ void Searchdata::searchFirstName(){
 
     cout << "===== SEARCH RESULTS =====" << endl;
 
-    print.showResult("SELECT * FROM Scientists WHERE firstName = 'skuli'");
+   query.prepare("SELECT * FROM Scientists WHERE firstName = (:name)");
+   query.bindValue(":name", QString::fromStdString(inputName));
+   query.exec();
+   while (query.next())
+   {
+      int id = query.value("id").toUInt();
+      QString firstName = query.value("firstName").toString();
+      QString lastName = query.value("lastName").toString();
+      QString sex = query.value("sex").toString();
+      int YoB = query.value("YoB").toUInt();
+      int YoD = query.value("YoD").toUInt();
 
-    cout << "===== END OF RESULTS =====" << endl;
+      cout << "Scientist ID: ";
+      qDebug() << id;
+      cout << "Name: ";
+      qDebug() << qPrintable(firstName)  << qPrintable(lastName) ;
+      cout << "Sex: ";
+      qDebug() << qPrintable(sex);
+      cout << "Year of Birth: ";
+      qDebug() << YoB;
+      cout << "Year of Death: ";
+      if (YoD == 0){
+          cout << "Still Alive" << endl;
+      }
+      else{
+          qDebug() << YoD;
+      }
+      cout << endl;
+   }
 
-    if(!query.exec()){
+
+
+
+
+
+
+
+
+
+
+
+
+   cout << "===== END OF RESULTS =====" << endl;
+
+   /* if(!query.exec()){
         qDebug() << "Search failed: " << query.lastError();
     }
     else{
         qDebug() << "Search failed: Person doesn't exist.";
-    }
+    }*/
 }
 
 void Searchdata::searchLastName()
