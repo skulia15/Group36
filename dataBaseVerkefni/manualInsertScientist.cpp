@@ -116,12 +116,12 @@ void Scientists::deleteScientist(){
 
     QString toDelete = QString::number(tempID);
 
-    query.prepare("DELETE FROM Scientists WHERE id = "+toDelete+";"); //not working
+    query.prepare("DELETE FROM Scientists WHERE id = "+toDelete+";");
     query.exec();
      if(query.exec()){
          cout << "Scientist with ID number " << tempID <<" was deleted." << endl;
      }
      else
-         cout << "No scientist has that ID.";
+         cout << "No scientist has that ID." << endl;
 }
 

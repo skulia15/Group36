@@ -8,7 +8,7 @@ class Computers{
 public:
     Computers();
     void insertCPU();
-
+    void deleteCPU();
 private:
     string cpuName;
     string built;

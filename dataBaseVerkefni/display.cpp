@@ -56,12 +56,14 @@ void display::cpuShowResult(string command){// þarf kanski að finna betri text
     int idName = query.record().indexOf("id");
     while (query.next())
     {
-
+       int id = query.value("id").toUInt();
        QString cpuName = query.value("cpuName").toString();
        QString cpuType = query.value("cpuType").toString();
        QString built = query.value("built").toString();
        int yb = query.value("yearBuilt").toUInt();
 
+       cout << "Computer ID: ";
+       qDebug() << id;
        cout << "Name: ";
        qDebug() << qPrintable(cpuName);
        cout << "Type: ";

@@ -20,7 +20,8 @@ void GUI::showaddMenu(){//Prints out add menu.
     cout << "\n1. To add a computer scientist." << endl;
     cout << "2. To add a computer." << endl;
     cout << "3. To delete a scientist." << endl;
-    cout << "4. To exit to main menu" << endl;
+    cout << "4. To delete a computer." << endl;
+    cout << "5. To exit to main menu" << endl;
     cout << "------------------------------"<<endl;
     cout << "Choice: ";
 }
@@ -168,6 +169,9 @@ void GUI::addMenu(){ //Switch statment for add menu.
             theScientist.deleteScientist();
             break;
         case '4':
+            theComputer.deleteCPU();
+            break;
+        case '5':
             cout << endl;
             cout << "Going back to main-menu." << endl<<endl;
             loop = false;

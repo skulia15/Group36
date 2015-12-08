@@ -82,3 +82,23 @@ void Computers::insertCPU()
             }
         }
 }
+
+void Computers::deleteCPU(){
+    QSqlDatabase db;
+    QSqlQuery query(db);
+    int tempID;
+
+    cout << "Enter the computer ID: ";
+    cin >> tempID;
+
+    QString toDelete = QString::number(tempID);
+
+    query.prepare("DELETE FROM Computers WHERE id = "+toDelete+";");
+    query.exec();
+     if(query.exec()){
+         cout << "Computer with ID number " << tempID <<" was deleted." << endl;
+     }
+     else
+         cout << "No Computer has that ID." << endl;
+
+}
