@@ -1,8 +1,7 @@
 #include <windows.h>
 #include <iostream>
 #include <extras.h>
-
-using namespace std;
+#include "connectiontodatabase.h"
 
 using namespace std;
 

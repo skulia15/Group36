@@ -43,10 +43,13 @@ void Computers::insertCPU()
                 cout << "Enter the info for the next computer: " << endl;
             }
 
-            cout << "Computer name: ";
-            cin >> cpuName;
+            do{
+                cout << "Computer name: ";
+                cin >> cpuName;
+            }while (cpuName == " " || cpuName == "");
 
-            while (error2 == true){
+            error2 = true;
+            do {
                 cout << "Was the computer built? (y/n) ";
                 cin >> temp;
                 if (temp == 'y'||temp == 'Y'){
@@ -59,7 +62,7 @@ void Computers::insertCPU()
                 }
                 else
                 cout << "Input was invalid, please try again." << endl;
-            }
+            }while(error2 == true);
 
             cout << "Computer type: ";
             cin >> cpuType;

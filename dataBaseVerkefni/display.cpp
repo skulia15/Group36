@@ -32,7 +32,6 @@ void display::showresult(){
         << "Year of Death: " << YoD << endl;
         cout<<endl;
 
-
     }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :)
 }
 
