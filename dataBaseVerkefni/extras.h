@@ -1,6 +1,6 @@
 #ifndef EXTRAS_H
 #define EXTRAS_H
-#include "connectiontodatabase.h"
+#include <extras.h>
 #include <iostream>
 
 

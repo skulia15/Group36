@@ -9,8 +9,8 @@ void connectionToDataBase::connect()
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbName = "Scientists2525.sqlite";
-    db.setDatabaseName("C:/Users/Notandi/Documents/GitHub/Group36/Scientists2525.sqlite");
+    QString dbName = "Scientists.sqlite";
+    db.setDatabaseName("dbName");
 
     db.open();
 
