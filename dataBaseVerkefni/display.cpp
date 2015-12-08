@@ -10,12 +10,8 @@
 display::display(){
 }
 
-<<<<<<< HEAD
 void display::showresult() //Prints out allt Scientists in database
 {
-=======
-void display::showresult(){
->>>>>>> 35ce79880775e633e8f192f853aec26278a09012
     QSqlDatabase db;
     QSqlQuery query(db);
 
@@ -37,18 +33,14 @@ void display::showresult(){
         << "Year of Death: " << YoD << endl;
         cout<<endl;
 
-<<<<<<< HEAD
+
     }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :) Ég kan samt að meta þetta kv. Sverrir
 }
 
-void display::cpuShowresult() //Prints out allt Computers in database
-{// þarf kanski að finna betri texta
-=======
-    }cout << "=====End of PRINTING=======" << endl;//Muna að taka út ===printing=== :)
-}
+
 
 void display::cpuShowresult(){// þarf kanski að finna betri texta
->>>>>>> 35ce79880775e633e8f192f853aec26278a09012
+
     QSqlDatabase db;
     QSqlQuery query(db);
 

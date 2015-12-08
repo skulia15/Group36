@@ -1,9 +1,7 @@
 #include "connectiontodatabase.h"
 
-
 connectionToDataBase::connectionToDataBase(){
 }
-
 
 void connectionToDataBase::connect()// Open connection to database
 {
@@ -25,7 +23,6 @@ void connectionToDataBase::connect()// Open connection to database
  string queryCreate2 ="CREATE TABLE Computers(id INTEGER PRIMARY KEY AUTOINCREMENT, cpuName VARCHAR NOT NULL, built VARCHAR NOT NULL, yearBuilt INTEGER NOT NULL, cpuType VARCHAR NOT NULL); "; //Sets up table for Computers
  string queryCreate3 = "CREATE TABLE Links(sci_id INTEGER,cpu_id INTEGER,FOREIGN KEY (sci_id) REFERENCES Scientists(id),FOREIGN KEY (cpu_id) REFERENCES Computers(id)PRIMARY KEY (sci_id, cpu_id));"; //Sets up table for connections between tables
 
-
  if(query.exec(QString(queryCreate.c_str()))){ //Creates table for Scientists
     cout << "========== The scientist table was made successfully! =========="<< endl;}
  else {cout<< "========== Scientist table enabled! ==========" << endl;}
@@ -37,16 +34,10 @@ void connectionToDataBase::connect()// Open connection to database
  if(query.exec(QString(queryCreate3.c_str()))){ //Creates table for connections
      cout << "========= The Combine table was created! ========="<<endl;}
   else{cout << "========= Combine table enabled! ========="<<endl<<endl;}
-
-
 }
 
-<<<<<<< HEAD
 void connectionToDataBase::disconect()// close connection to database.
 {
-=======
-void connectionToDataBase::disconect(){
->>>>>>> 35ce79880775e633e8f192f853aec26278a09012
     QSqlDatabase db;
     QSqlQuery query(db);
     db.close();
