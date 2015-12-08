@@ -4,10 +4,7 @@
 
 #include <iostream>
 
-using namespace std;
-
-class Computers
-{
+class Computers{
 public:
     Computers();
     void insertCPU();
@@ -17,7 +14,6 @@ private:
     string built;
     int yearBuilt;
     string cpuType;
-
 };
 
 #endif // INSERTCOMPUTER

@@ -5,6 +5,7 @@
 #include "insertcomputer.h"
 #include "connectiontodatabase.h"
 #include "extras.h"
+#include "display.h"
 #include <iostream>
 #include <QtSql>
 #include <fstream>
@@ -15,11 +16,13 @@
 #include <windows.h>
 #include <cctype>
 
+using namespace std;
+
 class connectionToDataBase{
-public:
-    connectionToDataBase();
-    void connect();
-    void disconect();
+    public:
+        connectionToDataBase();
+        void connect();
+        void disconect();
 };
 
 #endif // CONNECTIONTODATABASE_H

@@ -1,14 +1,14 @@
 #ifndef EXTRAS_H
 #define EXTRAS_H
-#include <extras.h>
 #include <iostream>
+#include "connectiontodatabase.h"
 
 
-class extras
-{
+class extras{
 public:
     extras();
     void searchWiki();
+    void deleteAll();
 };
 
 #endif // EXTRAS_H

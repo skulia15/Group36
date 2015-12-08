@@ -1,12 +1,5 @@
-#include "gui.h"
-#include "manualInsertScientist.h"
-#include "insertcomputer.h"
 #include "connectiontodatabase.h"
-#include "display.h"
-#include "search.h"
-#include "extras.h"
 
-using namespace std;
 
 void GUI::mainMenu() //Prints out main menu
 {
@@ -68,6 +61,7 @@ void GUI::showSortMenu(){
 
 void GUI::displayMainMenu(){//Switch statment for main menu
     connectionToDataBase diconect;
+    extras deleter;
     char a;
     bool loop = true;
 
@@ -86,7 +80,8 @@ void GUI::displayMainMenu(){//Switch statment for main menu
             GUI::displaySearchMenu();
            break;
         case '4':
-            cout << "Delete data" << endl;
+            cout << "All data was deleted." << endl;
+            deleter.deleteAll();
             break;
         case '5':
             diconect.disconect();

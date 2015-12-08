@@ -1,11 +1,5 @@
-#include "gui.h"
-#include "manualInsertScientist.h"
-#include "insertcomputer.h"
 #include "connectiontodatabase.h"
-#include "display.h"
-#include "search.h"
-#include "extras.h"
-using namespace std;
+
 
 int main(){
     //ToDo
@@ -29,13 +23,6 @@ int main(){
 
     connect.connect();
     menu.displayMainMenu();
-
-
-
-
-
-
-
 
     return 0;
 }

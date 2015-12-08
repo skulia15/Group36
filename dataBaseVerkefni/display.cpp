@@ -7,6 +7,9 @@
 #include <QtSql>
 #include <iostream>
 
+#include <string>
+using namespace std;
+
 display::display(){
 }
 
