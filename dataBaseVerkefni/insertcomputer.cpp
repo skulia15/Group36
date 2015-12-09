@@ -46,20 +46,32 @@ void Computers::insertCPU(){
             cin >> temp;
             cin.ignore();
             if (temp == 'y'||temp == 'Y'){
-                built = "Yes"; error2 = false;
-                cout << "Year built: ";
-                cin >> yearBuilt;
+                built = "Yes";
+                error2 = false;
+                while(error == false){
+                    cout << "Year built: ";
+                    cin >> yearBuilt;
+                    if (cin.fail()) {
+                        cout << "Input was invalid try again." << endl;
+                        cin.clear();
+                        cin.ignore(256,'\n');
+                    }
+                    else error = true;
+                }
+
                 cin.ignore();
             }
             else if (temp == 'n'||temp == 'N'){
                 built = "No"; error2 = false;
             }
             else
-            cout << "Input was invalid, please try again." << endl;
+                cout << "Input was invalid, please try again." << endl;
         } while(error2 == true);
 
-        cout << "Computer type: ";
-        getline (cin, cpuType, '\n');
+        do{
+            cout << "Computer type: ";
+            getline (cin, cpuType, '\n');
+        } while(cpuType == "" || cpuType == " ");
 
         query.prepare("INSERT INTO Computers (cpuName, built, yearBuilt, cpuType) "
                           "VALUES (:cpuName, :built, :yearBuilt, :cpuType)");
