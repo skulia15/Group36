@@ -63,11 +63,11 @@ void searchData::searchLastName()
     QSqlQuery query(db);
     display print;
 
-<<<<<<< HEAD
+
     cout << "Enter the last name you want to search for: ";
-=======
+
     cout << "Enter the last name you want search for: ";
->>>>>>> bce005b2e8d1b72f337f0424b4f70f302bbd74d2
+
     cin >> inputName;
 
     cout << "===== SEARCH RESULTS =====" << endl;
@@ -110,11 +110,11 @@ void searchData::searchBirthYear(){
     QSqlQuery query(db);
     display print;
 
-<<<<<<< HEAD
+
     cout << "Enter the birth year you want to search for: ";
-=======
+
     cout << "Enter the birth year you want search for: ";
->>>>>>> bce005b2e8d1b72f337f0424b4f70f302bbd74d2
+
     cin >> inputName;
 
     cout << "===== SEARCH RESULTS =====" << endl;
@@ -151,9 +151,8 @@ void searchData::searchBirthYear(){
     cout << "===== END OF RESULTS =====" << endl;
 }
 
-void Searchdata::substring()
+void searchData::substring()
 {
-
 
 }
 
