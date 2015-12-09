@@ -15,7 +15,9 @@ SOURCES += main.cpp \
     display.cpp \
     insertcomputer.cpp \
     search.cpp \
-    extras.cpp
+    extras.cpp \
+    gui.cpp \
+    search.cpp
 
 HEADERS += \
     gui.h \
