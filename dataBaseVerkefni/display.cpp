@@ -8,10 +8,6 @@ void display::showResult(string command){
     QSqlQuery query(db);
 
     string querySort = command;
-    if(query.exec(QString(querySort.c_str()))){
-       cout << "========== The scientist table sorted successfully! =========="<< endl;}
-    else {
-       cout << "========== Scientist table was NOT sorted :( ==========" << endl;}
 
     while (query.next()){
        int id = query.value("id").toUInt();
@@ -68,8 +64,11 @@ void display::cpuShowResult(string command){    // þarf kanski að finna betri 
        cout << "Was it buit?: ";
        qDebug() << qPrintable(built);
        cout << "Year Built: ";
-       qDebug() << yb;
-       cout << endl;
+       if (yb == 0){
+           cout << "Never Built.";}
+       else {
+           qDebug() << yb;}
+       cout << endl << endl;
      }
 }
 
