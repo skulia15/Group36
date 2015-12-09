@@ -109,7 +109,7 @@ void Scientists::manualInput(){ //inputs scientists to the database
 
 
         query.prepare("INSERT INTO Scientists (firstName, lastName, sex, YoB, YoD) "
-<<<<<<< HEAD
+
                 "VALUES (:firstName, :lastName, :sex, :YoB, :YoD)");
                 //query.bindValue(":id", QString::fromStdString(id));
                 query.bindValue(":firstName", QString::fromStdString(firstName));
@@ -130,40 +130,9 @@ void Scientists::manualInput(){ //inputs scientists to the database
                     cout<<endl << "========== Successfully entered into the database cpuname ==========" << endl<<endl;
                 }else cout<<endl << "========== Error entering info to the database cpuname ==========" << endl<<endl;
 
-=======
-        "VALUES (:firstName, :lastName, :sex, :YoB, :YoD)");
-        query.bindValue(":id", QString::fromStdString(id));
-        query.bindValue(":firstName", QString::fromStdString(firstName));
-        query.bindValue(":lastName",  QString::fromStdString(lastName));
-        query.bindValue(":sex",  QString::fromStdString(sex));
-        query.bindValue(":YoB",  YoB);
-        query.bindValue(":YoD",  YoD);
 
-        if(query.exec()){
-            cout << endl;
-            cout << "========== Successfully entered into the database sci ==========" << endl;
-            cout << endl;
-        }
-        else{
-            cout << endl;
-            cout << "========== Error entering info to the database sci ==========" << endl;
-            cout << endl;
-        }
 
-        query.prepare("INSERT INTO Links (cpuName) "
-        "VALUES (:cpuName)");
-        query.bindValue(":cpuName",  QString::fromStdString(nameOfCpuBuilt));
-        if(query.exec()){
-            cout << endl;
-            cout << "========== Successfully entered into the database cpuname ==========" << endl;
-            cout << endl;
-        }
-        else{
-            cout << endl;
-            cout << "========== Error entering info to the database cpuname ==========" << endl;
-            cout << endl;
-        }
->>>>>>> c7fb0d219a175fa1f22fe15590954b14e0c29883
+
     }
 }
 
