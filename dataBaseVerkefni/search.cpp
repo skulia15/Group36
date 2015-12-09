@@ -76,7 +76,7 @@ void searchData::searchLastName()
 
     cout << "===== SEARCH RESULTS =====" << endl;
 
-   query.prepare("SELECT * FROM Scientists WHERE lastName = (:name)");
+   query.prepare("SELECT * FROM Scientists WHERE lastName LIKE (:name)");
    query.bindValue(":name", QString::fromStdString(inputName));
    query.exec();
    while (query.next())
