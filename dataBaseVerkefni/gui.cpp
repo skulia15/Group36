@@ -143,7 +143,7 @@ void GUI::displaySearchChoose(){
     char input;
     bool loop = true;
     extras doSearch;
-    //Searchdata find;
+    searchData find;
     string theSearchName;
     GUI theSearcher;
 

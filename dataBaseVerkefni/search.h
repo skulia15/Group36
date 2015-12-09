@@ -14,7 +14,10 @@ public:
     void searchCpuName();
     void searchYearBuilt();
     void searchCpuType();
+
     void substring();
+
+
 private:
     string inputName;
     string inputYear;
@@ -25,7 +28,10 @@ private:
     int YoB;
     int YoD;
 
+
     string phrase;
+
+
 };
 
 #endif // SEARCH
