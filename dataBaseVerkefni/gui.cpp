@@ -102,7 +102,7 @@ void GUI::showComputerSortMenu(){
     cout << "Input your choice: ";
 }
 
-void GUI::displayMainMenu(){//Switch statment for main menu
+void GUI::displayMainMenu(){//Switch statement for main menu
     connectionToDataBase diconect;
     extras deleter;
     char a;
@@ -113,13 +113,13 @@ void GUI::displayMainMenu(){//Switch statment for main menu
         cin >> a;
 
         switch(a){
-        case '1':
+        case '1': //opens the menu for adding to the database
             GUI::addMenu();
             break;
-        case '2':
+        case '2': //opens the menu for printing and sorting
             GUI::showDisplay2();
             break;
-        case '3':
+        case '3': //opens the search menu
             GUI::displaySearchChoose();
            break;
         case '4':
@@ -139,7 +139,7 @@ void GUI::displayMainMenu(){//Switch statment for main menu
      }
 }
 
-void GUI::displaySearchChoose(){
+void GUI::displaySearchChoose(){ //displays a menu for choosing between searching for scientists or computers
     char input;
     bool loop = true;
     extras doSearch;
@@ -169,7 +169,7 @@ void GUI::displaySearchChoose(){
    }
 }
 
-void GUI::displaySearchMenu(){//Switch statment for search menu
+void GUI::displaySearchMenu(){ //Switch statment for scientist search menu
     char input;
     bool loop = true;
     extras doSearch;
@@ -180,18 +180,18 @@ void GUI::displaySearchMenu(){//Switch statment for search menu
         GUI::searchMenu();
         cin >> input;
 
-        switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
+        switch(input){
         case '1':
-           find.searchFirstName();
+           find.searchFirstName(); //Runs through database and prints out the locations where first name is like name provided.
            break;
-        case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
+        case '2': //Runs through database and prints out the locations where last name is like name provided.
            find.searchLastName();
            break;
-        case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
+        case '3': //Runs through database and prints out the locations where birth year is like year provided.
            find.searchBirthYear();
            break;
         case '4':
-            cout << "Searching for keyword." << endl;
+            cout << "Searching for keyword." << endl; //searches for a keyword
             find.searchKeyword();
             break;
         case '5': //Searches wikipedia
@@ -209,7 +209,7 @@ void GUI::displaySearchMenu(){//Switch statment for search menu
    }
 }
 
-void GUI::displaySearchCpuMenu(){
+void GUI::displaySearchCpuMenu(){ //Switch statement for computer search menu
     char input;
     bool loop = true;
     extras doSearch;
@@ -220,17 +220,17 @@ void GUI::displaySearchCpuMenu(){
         GUI::searchCpuMenu();
         cin >> input;
 
-        switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
+        switch(input){ //Runs through database and prints out the locations where name is like name provided.
         case '1':
            find.searchCpuName();
            break;
-        case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
+        case '2': //Runs through database and prints out the locations where year built is like year provided.
            find.searchYearBuilt();
            break;
-        case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
+        case '3': //Runs through database and prints out the locations where computer type is like type provided.
            find.searchCpuType();
            break;
-        case '4': //Searches wikipedia
+        case '4': //Searches wikipedia for name provided
            cout << "Search on Wikipedia"<< endl;
            doSearch.searchWikiCpu();
            break;
@@ -258,16 +258,16 @@ void GUI::addMenu(){ //Switch statment for add menu.
 
         switch(a){
         case '1':
-            theScientist.manualInput();
+            theScientist.manualInput(); //insert a scientist
             break;
         case '2':
-            theComputer.insertCPU();
+            theComputer.insertCPU(); //insert a computer
             break;
         case '3':
-            theScientist.deleteScientist();
+            theScientist.deleteScientist(); //delete a scientist
             break;
         case '4':
-            theComputer.deleteCPU();
+            theComputer.deleteCPU(); //delete a computer
             break;
         case '5':
             cout << endl;
@@ -312,7 +312,7 @@ void GUI::showDisplay2(){ // Switch statment for display menu.
      }
 }
 
-void GUI::displaySortMenu(){
+void GUI::displaySortMenu(){ //sorts scientists before printing
     display print;
     char choice;
     bool error = false;
@@ -359,7 +359,7 @@ void GUI::displaySortMenu(){
 
 
 
-void GUI::displayComputerSortMenu(){
+void GUI::displayComputerSortMenu(){ //sorts computers before printing
     display print;
     char choice;
     bool error = false;

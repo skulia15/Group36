@@ -14,11 +14,7 @@ public:
     void searchKeyword();
     void searchCpuName();
     void searchYearBuilt();
-    void searchCpuType();
-
-    void substring(); //þarf þetta?
-
-
+    void searchCpuType();   
 private:
     string inputName;
     string inputYear;
@@ -26,13 +22,9 @@ private:
     string firstName;
     string lastName;
     string sex;
+    string phrase;
     int YoB;
     int YoD;
-
-
-    string phrase;
-
-
 };
 
 #endif // SEARCH

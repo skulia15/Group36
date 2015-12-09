@@ -9,7 +9,7 @@ Computers::Computers(){
    creatorLastName="";
 };
 
-void Computers::insertCPU(){
+void Computers::insertCPU(){ //inserts computers to the database
     bool error = false;
     bool error2 = true;
     char cpus;
@@ -22,7 +22,7 @@ void Computers::insertCPU(){
         cout << "How many computers would you like to add? ";
         cin >> cpus;
         cin.ignore();
-        if (isalpha(cpus)){
+        if (isalpha(cpus)){ //checks if input is a number
             cout << "Error in input, try again." << endl;
         }
         else
@@ -113,7 +113,7 @@ void Computers::insertCPU(){
 }}
 
 
-void Computers::deleteCPU(){
+void Computers::deleteCPU(){ //deletes a computer from id number
     QSqlDatabase db;
     QSqlQuery query(db);
     int tempID;
