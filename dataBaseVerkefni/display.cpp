@@ -10,11 +10,10 @@ void display::showResult(string command){
     string querySort = command;
     if(query.exec(QString(querySort.c_str()))){
        cout << "========== The scientist table sorted successfully! =========="<< endl;}
-    else {cout<< "========== Scientist table was NOT sorted :( ==========" << endl;}
+    else {
+       cout << "========== Scientist table was NOT sorted :( ==========" << endl;}
 
-    int idName = query.record().indexOf("id");
-    while (query.next())
-    {
+    while (query.next()){
        int id = query.value("id").toUInt();
        QString firstName = query.value("firstName").toString();
        QString lastName = query.value("lastName").toString();
@@ -41,9 +40,7 @@ void display::showResult(string command){
     }
 }
 
-
-
-void display::cpuShowResult(string command){// þarf kanski að finna betri texta
+void display::cpuShowResult(string command){    // þarf kanski að finna betri texta
     QSqlDatabase db;
     QSqlQuery query(db);
 
@@ -51,11 +48,11 @@ void display::cpuShowResult(string command){// þarf kanski að finna betri text
 
     if(query.exec(QString(querySort.c_str()))){
        cout << "========== The Computer table sorted successfully! =========="<< endl;}
-    else {cout<< "========== Computer table was NOT sorted :( ==========" << endl;}
+    else {
+        cout<< "========== Computer table was NOT sorted :( ==========" << endl;}
 
-    int idName = query.record().indexOf("id");
-    while (query.next())
-    {
+    while (query.next()){
+
        int id = query.value("id").toUInt();
        QString cpuName = query.value("cpuName").toString();
        QString cpuType = query.value("cpuType").toString();

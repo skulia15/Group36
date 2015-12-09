@@ -11,19 +11,19 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "search.h"
 #include <QCoreApplication>
 #include <fstream>
 #include <windows.h>
 #include <cctype>
-#include <QTextStream>
 
 using namespace std;
 
 class connectionToDataBase{
-    public:
-        connectionToDataBase();
-        void connect();
-        void disconect();
+public:
+    connectionToDataBase();
+    void connect();
+    void disconect();
 };
 
 #endif // CONNECTIONTODATABASE_H
