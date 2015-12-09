@@ -119,16 +119,14 @@ void Scientists::manualInput(){ //inputs scientists to the database
                 query.bindValue(":YoD",  YoD);
 
                 if(query.exec()){
-                    cout<<endl << "========== Successfully entered into the database sci ==========" << endl<<endl;
-                }else cout<<endl << "========== Error entering info to the database sci ==========" << endl<<endl;
+                    cout<<endl << "========== Successfully entered into the database==========" << endl<<endl;
+                }else cout<<endl << "========== Error entering info to the database ==========" << endl<<endl;
 
 
                 query.prepare("INSERT INTO Links (cpuName) "
                 "VALUES (:cpuName)");
                 query.bindValue(":cpuName",  QString::fromStdString(nameOfCpuBuilt));
-                if(query.exec()){
-                    cout<<endl << "========== Successfully entered into the database cpuname ==========" << endl<<endl;
-                }else cout<<endl << "========== Error entering info to the database cpuname ==========" << endl<<endl;
+                query.exec();
 
 
 

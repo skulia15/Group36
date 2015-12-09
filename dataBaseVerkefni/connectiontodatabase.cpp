@@ -28,19 +28,19 @@ void connectionToDataBase::connect(){   // Open connection to database
              "REFERENCES Computers(id)PRIMARY KEY (creatorsName, cpuName));";      //Sets up table for connections between tables
 
      if(query.exec(QString(queryCreate.c_str()))){   //Creates table for Scientists
-        cout << "========== The scientist table was made successfully! =========="<< endl;}
+        cout << "========== The scientist table was created successfully! =========="<< endl;}
      else {
-         cout<< "========== Scientist table enabled! ==========" << endl;}
+         cout<< "========== Connected to Scientists table successfully ==========" << endl;}
 
      if(query.exec(QString(queryCreate2.c_str()))){  //Creates table for computers
-         cout << "========= The computer table was made successfully! =========" << endl;}
+         cout << "========= The computer table was created successfully! =========" << endl;}
      else{
-         cout << "========= Computer table enabled! =========" << endl;}
+         cout << "========= Connected to Computer table successfully =========" << endl;}
 
      if(query.exec(QString(queryCreate3.c_str()))){  //Creates table for connections
-         cout << "========= The Combine table was made successfully! =========" << endl;}
+         cout << "========= The Combine table was created successfully! =========" << endl;}
      else{
-         cout << "========= Combine table made successfully! =========" << endl << endl;}
+         cout << "========= Connected to Combine successfully! =========" << endl << endl;}
 }
 
 void connectionToDataBase::disconect(){  // close connection to the database.

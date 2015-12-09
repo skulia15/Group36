@@ -81,7 +81,7 @@ void Computers::insertCPU(){ //inserts computers to the database
 
             string temp;
 
-                cout<<"Kindly write the first creators first name: "<<endl;
+                cout<<"Kindly write the creators first name: "<<endl;
                 getline(cin,creatorFirstName);
             error=true;
 
@@ -97,30 +97,19 @@ void Computers::insertCPU(){ //inserts computers to the database
 
         if(query.exec()){
             cout << endl;
-            cout << "-==== Successfully inserted data into database computers ====-"<<endl;
+            cout << "-==== Successfully inserted data into database  ====-"<<endl;
             cout << endl;
         }
         else{
             cout << endl;
-            cout << "-==== Could not insert data into database computers ====-"<<endl;
+            cout << "-==== Could not insert data into database  ====-"<<endl;
             cout << endl;
         }
 
         query.prepare("INSERT INTO Links (creatorsName) "
                           "VALUES (:creatorsName)");
         query.bindValue(":creatorsName", QString::fromStdString(creatorFirstName));
-
-
-        if(query.exec()){
-            cout << endl;
-            cout << "-==== Successfully inserted data into database links ====-"<<endl;
-            cout << endl;
-        }
-        else{
-            cout << endl;
-            cout << "-==== Could not insert data into database links ====-"<<endl;
-            cout << endl;
-        }
+        query.exec();
 }}
 
 
