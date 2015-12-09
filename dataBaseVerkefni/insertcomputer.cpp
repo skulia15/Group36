@@ -47,10 +47,11 @@ void Computers::insertCPU(){ //inserts computers to the database
             cin >> temp;
             if (temp == 'y'||temp == 'Y'){
                 built = "Yes";
+                cout << "Year built: ";
+                cin >> yearBuilt;
+
                 error2 = false;
                 while(error == false){
-                    cout << "Year built: ";
-                    cin >> yearBuilt;
                     if (cin.fail()) {
                         cout << "Input was invalid try again." << endl;
                         cin.clear();

@@ -9,6 +9,11 @@ void display::showResult(string command){ //prints after sorting
 
     string querySort = command;
 
+    if(query.exec(QString(querySort.c_str()))){
+       cout << "========== The Computer table sorted successfully! =========="<< endl;}
+    else {
+        cout<< "========== Computer table was NOT sorted :( ==========" << endl;}
+
     while (query.next()){
        int id = query.value("id").toUInt();
        QString firstName = query.value("firstName").toString();
@@ -26,7 +31,8 @@ void display::showResult(string command){ //prints after sorting
        cout << "Year of Birth: ";
        qDebug() << YoB;
        cout << "Year of Death: ";
-       if (YoD == 0){
+
+       if(YoD == 0){
            cout << "Still Alive" << endl;
        }
        else{
