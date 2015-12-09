@@ -17,6 +17,16 @@ void extras::searchWiki(){
     system(string("start " + myUrl).c_str());
 }
 
+void extras::searchWikiCpu(){
+    string name;
+    cout<< "Please enter a computer to search for: ";
+    cin >> name;
+
+    string myUrl = "https://en.wikipedia.org/wiki/"+name+"";
+
+    system(string("start " + myUrl).c_str());
+}
+
 void extras::deleteAll(){
     QSqlDatabase db;
     QSqlQuery query(db);

@@ -38,14 +38,9 @@ void GUI::searchMenu(){
     cout << " \n 1. To search by first name" << endl;
     cout << " 2. To search by last name" << endl;
     cout << " 3. To search by birth year" << endl;
-<<<<<<< HEAD
     cout << " 4. To search anywhere by a keyword." << endl;
     cout << " 5. To search on Wikipedia" << endl;
     cout << " 6. To exit to main menu" << endl;
-=======
-    cout << " 4. To search on Wikipedia" << endl;
-    cout << " 5. To exit to main menu" << endl;
-    cout << "------------------------------"<<endl;
     cout << "Search by:  " << endl;
 }
 
@@ -67,7 +62,6 @@ void GUI::searchChoose(){
     cout << " \n 1. To search for scientists" << endl;
     cout << " 2. To search for computers" << endl;
     cout << " 3. To exit to main menu" << endl;
->>>>>>> d1942f5ce805af0ee9580fb53a5a80500949b0e6
     cout << "------------------------------"<<endl;
     cout << "Search by:  " << endl;
 }
@@ -196,19 +190,15 @@ void GUI::displaySearchMenu(){//Switch statment for search menu
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
            find.searchBirthYear();
            break;
-<<<<<<< HEAD
         case '4':
             cout << "Searching for keyword." << endl;
             find.searchKeyword();
-
             break;
         case '5': //Searches wikipedia
-=======
-        case '4': //Searches wikipedia
-           cout << "Search on Wikipedia"<< endl;
-           doSearch.searchWiki();
-           break;
-        case '5':
+            cout << "Search on Wikipedia"<< endl;
+            doSearch.searchWiki();
+            break;
+        case '6':
            cout << "Going back to Main menu." << endl;
            loop = false;
            break;
@@ -241,9 +231,8 @@ void GUI::displaySearchCpuMenu(){
            find.searchCpuType();
            break;
         case '4': //Searches wikipedia
->>>>>>> d1942f5ce805af0ee9580fb53a5a80500949b0e6
            cout << "Search on Wikipedia"<< endl;
-           doSearch.searchWiki();
+           doSearch.searchWikiCpu();
            break;
         case '5':
            cout << "Going back to Main menu." << endl;
