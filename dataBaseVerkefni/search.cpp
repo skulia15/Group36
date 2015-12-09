@@ -109,15 +109,8 @@ void searchData::searchLastName()
     cout << "===== END OF RESULTS =====" << endl;
 }
 
-
-
-
-<<<<<<< HEAD
 void searchData::searchBirthYear(){
-=======
-void Searchdata::searchBirthYear()
-{
->>>>>>> 7ec51965534c02a5f5361dfda4271d9f8332f2fb
+
     QSqlDatabase db;
     QSqlQuery query(db);
     display print;

@@ -10,7 +10,7 @@
 void GUI::mainMenu() //Prints out main menu
 {
     cout << "-------------Main Menu---------------" <<endl;
-    cout << " \n Please select an option:  "<<endl;
+    cout << " Please select an option:  "<<endl;
     cout << " \n 1. To add or delete." << endl;
     cout << " 2. To display." << endl;
     cout << " 3. To search." << endl;
@@ -56,7 +56,7 @@ void GUI::showDisplay(){
 
 void GUI::showSortMenu(){
     cout << endl;
-    cout << "--------------Display menu--------------" << endl;
+    cout << "--------------Sort menu--------------" << endl;
     cout << "How would you like to display your persons?" << endl;
     cout << " \n 1. By first name in alphabetical order." << endl;
     cout << " 2. By first name in reverse alphabetical order." << endl;
