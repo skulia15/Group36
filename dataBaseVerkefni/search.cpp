@@ -1,11 +1,6 @@
-#include "gui.h"
-#include "manualInsertScientist.h"
-#include "insertcomputer.h"
+
 #include "connectiontodatabase.h"
-#include "search.h"
-#include "display.h"
-#include <QtSql>
-#include <iostream>
+
 
 searchData::searchData(){
     firstName = "";
@@ -28,8 +23,7 @@ void searchData::searchFirstName(){
    query.prepare("SELECT * FROM Scientists WHERE firstName LIKE (:name)");
    query.bindValue(":name", QString::fromStdString(inputName));
    query.exec();
-   while (query.next())
-   {
+   while (query.next()){
       int id = query.value("id").toUInt();
       QString firstName = query.value("firstName").toString();
       QString lastName = query.value("lastName").toString();

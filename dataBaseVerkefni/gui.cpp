@@ -1,4 +1,3 @@
-
 #include "connectiontodatabase.h"
 #include "gui.h"
 #include "manualInsertScientist.h"
@@ -264,9 +263,6 @@ void GUI::displaySortMenu(){
     cout << endl;
 }
 
-
-
-
 void GUI::displayComputerSortMenu(){
     display print;
     char choice;
@@ -309,5 +305,4 @@ void GUI::displayComputerSortMenu(){
             break;
         }
     cout << endl;
-
 }
