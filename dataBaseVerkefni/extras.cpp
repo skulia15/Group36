@@ -5,7 +5,7 @@ using namespace std;
 extras::extras(){
 }
 
-void extras::searchWiki(){
+void extras::searchWiki(){ //searches wikipedia for scientists
     string firstname;
     string lastname;
     cout<< "Please enter a first and last name: ";
@@ -17,7 +17,7 @@ void extras::searchWiki(){
     system(string("start " + myUrl).c_str());
 }
 
-void extras::searchWikiCpu(){
+void extras::searchWikiCpu(){ //searches wikipedia for computers
     string name;
     cout<< "Please enter a computer to search for: ";
     cin >> name;

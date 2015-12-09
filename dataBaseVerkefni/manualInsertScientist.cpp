@@ -10,7 +10,7 @@ Scientists::Scientists(){
    YoD = 0;
 };
 
-void Scientists::manualInput(){
+void Scientists::manualInput(){ //inputs scientists to the database
     bool error = false;
     bool error2 = true;
     char persons;
@@ -22,7 +22,7 @@ void Scientists::manualInput(){
     while(error == false){
         cout << "How many persons would you like to add? ";
         cin >> persons;
-        if (isalpha(persons)){
+        if (isalpha(persons)){ //checks if input is a number
             cout << "Error in input, try again." << endl;
         }
         else
@@ -106,7 +106,7 @@ void Scientists::manualInput(){
     }
 }
 
-bool isValid(string myString){
+bool isValid(string myString){ //input check
     for(unsigned int i = 0; i < myString.length(); i++){
         if(!isalpha(myString[i])){
             cout << "Input was invalid. The name cannot contain numbers or symbols. Try again.\n";
@@ -117,7 +117,7 @@ bool isValid(string myString){
 }
 
 
-void Scientists::deleteScientist(){
+void Scientists::deleteScientist(){ //deletes a scientist from id number
     QSqlDatabase db;
     QSqlQuery query(db);
     int tempID;

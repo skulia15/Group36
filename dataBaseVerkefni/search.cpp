@@ -8,7 +8,7 @@ searchData::searchData(){
     YoD = 0;
 }
 
-void searchData::searchFirstName(){
+void searchData::searchFirstName(){ //searches table 'Scientists' for first name.
     QSqlDatabase db;
     QSqlQuery query(db);
     display print;
@@ -38,6 +38,7 @@ void searchData::searchFirstName(){
       cout << "Year of Birth: ";
       qDebug() << YoB;
       cout << "Year of Death: ";
+
       if (YoD == 0){
           cout << "Still Alive" << endl;
       }
@@ -46,18 +47,15 @@ void searchData::searchFirstName(){
       }
       cout << endl;
    }
-
     cout << "===== END OF RESULTS =====" << endl;
 
-   /* if(!query.exec()){
+    if(!query.exec())
         qDebug() << "Search failed: " << query.lastError();
-    }
-    else{
+    else
         qDebug() << "Search failed: Person doesn't exist.";
-    }*/
 }
 
-void searchData::searchLastName()
+void searchData::searchLastName() //searches table 'Scientists' for last name.
 {
     QSqlDatabase db;
     QSqlQuery query(db);
@@ -98,11 +96,15 @@ void searchData::searchLastName()
       }
       cout << endl;
    }
-
     cout << "===== END OF RESULTS =====" << endl;
+
+    if(!query.exec())
+        qDebug() << "Search failed: " << query.lastError();
+    else
+        qDebug() << "Search failed: Person doesn't exist.";
 }
 
-void searchData::searchBirthYear(){
+void searchData::searchBirthYear(){ //searches table 'Scientists' for birthyear.
 
     QSqlDatabase db;
     QSqlQuery query(db);
@@ -142,11 +144,15 @@ void searchData::searchBirthYear(){
       }
       cout << endl;
    }
-
     cout << "===== END OF RESULTS =====" << endl;
+
+    if(!query.exec())
+        qDebug() << "Search failed: " << query.lastError();
+    else
+        qDebug() << "Search failed: Person doesn't exist.";
 }
 
-void searchData::searchCpuName(){
+void searchData::searchCpuName(){ //searches table 'Computers' for name.
     QSqlDatabase db;
     QSqlQuery query(db);
     display print;
@@ -180,11 +186,15 @@ void searchData::searchCpuName(){
       qDebug() << yb;
       cout << endl;
     }
-
     cout << "===== END OF RESULTS =====" << endl;
+
+    if(!query.exec())
+        qDebug() << "Search failed: " << query.lastError();
+    else
+        qDebug() << "Search failed: Computer doesn't exist.";
 }
 
-void searchData::searchYearBuilt(){
+void searchData::searchYearBuilt(){ //searches table 'Computers' for year built.
     QSqlDatabase db;
     QSqlQuery query(db);
     display print;
@@ -218,11 +228,15 @@ void searchData::searchYearBuilt(){
       qDebug() << yb;
       cout << endl;
     }
-
     cout << "===== END OF RESULTS =====" << endl;
+
+   if(!query.exec())
+       qDebug() << "Search failed: " << query.lastError();
+   else
+       qDebug() << "Search failed: Person doesn't exist.";
 }
 
-void searchData::searchCpuType(){
+void searchData::searchCpuType(){ //searches table 'Computers' for computer type.
     QSqlDatabase db;
     QSqlQuery query(db);
     display print;
@@ -256,10 +270,14 @@ void searchData::searchCpuType(){
       qDebug() << yb;
       cout << endl;
     }
-
     cout << "===== END OF RESULTS =====" << endl;
+
+   if(!query.exec())
+       qDebug() << "Search failed: " << query.lastError();
+   else
+       qDebug() << "Search failed: Person doesn't exist.";
 }
-void searchData::searchKeyword(){
+void searchData::searchKeyword(){ //searches the database for a keyword
 
     QSqlDatabase db;
     QSqlQuery query(db);

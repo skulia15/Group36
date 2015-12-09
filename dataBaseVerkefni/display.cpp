@@ -3,7 +3,7 @@
 display::display(){
 }
 
-void display::showResult(string command){
+void display::showResult(string command){ //prints after sorting
     QSqlDatabase db;
     QSqlQuery query(db);
 
@@ -36,7 +36,7 @@ void display::showResult(string command){
     }
 }
 
-void display::cpuShowResult(string command){    // þarf kanski að finna betri texta
+void display::cpuShowResult(string command){ //sorts the data
     QSqlDatabase db;
     QSqlQuery query(db);
 

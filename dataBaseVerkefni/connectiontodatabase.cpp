@@ -38,12 +38,12 @@ void connectionToDataBase::connect(){   // Open connection to database
          cout << "========= Computer table enabled! =========" << endl;}
 
      if(query.exec(QString(queryCreate3.c_str()))){  //Creates table for connections
-         cout << "========= The Combine table was created! =========" << endl;}
+         cout << "========= The Combine table was made successfully! =========" << endl;}
      else{
          cout << "========= Combine table enabled! =========" << endl << endl;}
 }
 
-void connectionToDataBase::disconect(){  // close connection to database.
+void connectionToDataBase::disconect(){  // close connection to the database.
     QSqlDatabase db;
     QSqlQuery query(db);
     db.close();

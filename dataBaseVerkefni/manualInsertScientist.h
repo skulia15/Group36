@@ -10,7 +10,7 @@ public:
     Scientists();
     void manualInput();
     void deleteScientist();
-    //friend ostream& operator<<(ostream& out, Computers acc);
+    //friend ostream& operator<<(ostream& out, Computers acc);    
 private:
     string id;
     string firstName;
