@@ -97,7 +97,7 @@ void Scientists::manualInput(){
 }
 
 bool isValid(string myString){
-    for(int i = 0; i < myString.length(); i++){
+    for(unsigned int i = 0; i < myString.length(); i++){
         if(!isalpha(myString[i])){
             cout << "Input was invalid. The name cannot contain numbers or symbols. Try again.\n";
             return false;

@@ -16,6 +16,7 @@ public:
    void displaySortMenu();
    void showComputerSortMenu();
    void displayComputerSortMenu();
+   void searchFirstName();
 private:
 };
 
