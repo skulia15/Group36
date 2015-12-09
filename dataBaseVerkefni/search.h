@@ -11,6 +11,7 @@ public:
     void searchFirstName();
     void searchLastName();
     void searchBirthYear();
+    void substring();
 
 private:
     string inputName;
@@ -22,6 +23,8 @@ private:
     string sex;
     int YoB;
     int YoD;
+
+    string phrase;
 
 };
 
