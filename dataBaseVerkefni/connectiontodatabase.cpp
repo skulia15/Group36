@@ -40,7 +40,7 @@ void connectionToDataBase::connect(){   // Open connection to database
      if(query.exec(QString(queryCreate3.c_str()))){  //Creates table for connections
          cout << "========= The Combine table was created! =========" << endl;}
      else{
-         cout << "========= Combine table enabled! =========" << endl << endl;}
+         cout << "========= Combine table made successfully! =========" << endl << endl;}
 }
 
 void connectionToDataBase::disconect(){  // close connection to database.
