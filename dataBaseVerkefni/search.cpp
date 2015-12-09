@@ -25,7 +25,7 @@ void searchData::searchFirstName(){
 
     cout << "===== SEARCH RESULTS =====" << endl;
 
-   query.prepare("SELECT * FROM Scientists WHERE firstName = (:name)");
+   query.prepare("SELECT * FROM Scientists WHERE firstName LIKE (:name)");
    query.bindValue(":name", QString::fromStdString(inputName));
    query.exec();
    while (query.next())
@@ -71,7 +71,7 @@ void searchData::searchLastName()
     QSqlQuery query(db);
     display print;
 
-    cout << "Enter the first name you want search for: ";
+    cout << "Enter the last name you want search for: ";
     cin >> inputName;
 
     cout << "===== SEARCH RESULTS =====" << endl;
@@ -115,7 +115,7 @@ void searchData::searchBirthYear(){
     QSqlQuery query(db);
     display print;
 
-    cout << "Enter the first name you want search for: ";
+    cout << "Enter the birth year you want search for: ";
     cin >> inputName;
 
     cout << "===== SEARCH RESULTS =====" << endl;

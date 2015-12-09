@@ -19,9 +19,12 @@ void connectionToDataBase::connect()// Open connection to database
     else{
          qDebug()<<"-==== Unable to connect ot the database ====-" << db.lastError().text() << " ==========" << endl;}
 
-     string queryCreate = "CREATE TABLE Scientists(id INTEGER PRIMARY KEY AUTOINCREMENT, firstName VARCHAR NOT NULL, lastName VARCHAR NOT NULL, sex VARCHAR, YoB INTEGER NOT NULL, YoD INTEGER); "; //Sets up table for Scientists
-     string queryCreate2 ="CREATE TABLE Computers(id INTEGER PRIMARY KEY AUTOINCREMENT, cpuName VARCHAR NOT NULL, built VARCHAR NOT NULL, yearBuilt INTEGER NOT NULL, cpuType VARCHAR NOT NULL); "; //Sets up table for Computers
-     string queryCreate3 = "CREATE TABLE Links(sci_id INTEGER,cpu_id INTEGER,FOREIGN KEY (sci_id) REFERENCES Scientists(id),FOREIGN KEY (cpu_id) REFERENCES Computers(id)PRIMARY KEY (sci_id, cpu_id));"; //Sets up table for connections between tables
+     string queryCreate = "CREATE TABLE Scientists(id INTEGER PRIMARY KEY AUTOINCREMENT, firstName VARCHAR NOT NULL,"
+             "lastName VARCHAR NOT NULL, sex VARCHAR, YoB INTEGER NOT NULL, YoD INTEGER); "; //Sets up table for Scientists
+     string queryCreate2 ="CREATE TABLE Computers(id INTEGER PRIMARY KEY AUTOINCREMENT, cpuName VARCHAR NOT NULL,"
+             "built VARCHAR NOT NULL, yearBuilt INTEGER NOT NULL, cpuType VARCHAR NOT NULL); "; //Sets up table for Computers
+     string queryCreate3 = "CREATE TABLE Links(sci_id INTEGER,cpu_id INTEGER,FOREIGN KEY (sci_id) REFERENCES Scientists(id),FOREIGN KEY (cpu_id)"
+             "REFERENCES Computers(id)PRIMARY KEY (sci_id, cpu_id));"; //Sets up table for connections between tables
 
      if(query.exec(QString(queryCreate.c_str()))){ //Creates table for Scientists
         cout << "========== The scientist table was made successfully! =========="<< endl;}
