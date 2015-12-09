@@ -94,6 +94,16 @@ void Computers::insertCPU(){ //inserts computers to the database
         query.bindValue(":yearBuilt", yearBuilt);
         query.bindValue(":cpuType",  QString::fromStdString(cpuType));
 
+        if(query.exec()){
+            cout << endl;
+            cout << "-==== Successfully inserted data into database computers ====-"<<endl;
+            cout << endl;
+        }
+        else{
+            cout << endl;
+            cout << "-==== Could not insert data into database computers ====-"<<endl;
+            cout << endl;
+        }
 
         query.prepare("INSERT INTO Links (creatorsName) "
                           "VALUES (:creatorsName)");
@@ -102,12 +112,12 @@ void Computers::insertCPU(){ //inserts computers to the database
 
         if(query.exec()){
             cout << endl;
-            cout << "-==== Successfully inserted data into database ====-"<<endl;
+            cout << "-==== Successfully inserted data into database links ====-"<<endl;
             cout << endl;
         }
         else{
             cout << endl;
-            cout << "-==== Could not insert data into database ====-"<<endl;
+            cout << "-==== Could not insert data into database links ====-"<<endl;
             cout << endl;
         }
 }}

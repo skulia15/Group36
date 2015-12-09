@@ -106,20 +106,28 @@ void Scientists::manualInput(){ //inputs scientists to the database
 
           }while (error == false);
 
+
+
         query.prepare("INSERT INTO Scientists (firstName, lastName, sex, YoB, YoD) "
-        "VALUES (:firstName, :lastName, :sex, :YoB, :YoD,)");
-        query.bindValue(":id", QString::fromStdString(id));
+        "VALUES (:firstName, :lastName, :sex, :YoB, :YoD)");
+        //query.bindValue(":id", QString::fromStdString(id));
         query.bindValue(":firstName", QString::fromStdString(firstName));
         query.bindValue(":lastName",  QString::fromStdString(lastName));
         query.bindValue(":sex",  QString::fromStdString(sex));
         query.bindValue(":YoB",  YoB);
         query.bindValue(":YoD",  YoD);
+
+        if(query.exec()){
+            cout<<endl << "========== Successfully entered into the database sci ==========" << endl<<endl;
+        }else cout<<endl << "========== Error entering info to the database sci ==========" << endl<<endl;
+
+
         query.prepare("INSERT INTO Links (cpuName) "
         "VALUES (:cpuName)");
         query.bindValue(":cpuName",  QString::fromStdString(nameOfCpuBuilt));
         if(query.exec()){
-            cout<<endl << "========== Successfully entered into the database ==========" << endl<<endl;
-        }else cout<<endl << "========== Error entering info to the database ==========" << endl<<endl;
+            cout<<endl << "========== Successfully entered into the database cpuname ==========" << endl<<endl;
+        }else cout<<endl << "========== Error entering info to the database cpuname ==========" << endl<<endl;
     }
 }
 
