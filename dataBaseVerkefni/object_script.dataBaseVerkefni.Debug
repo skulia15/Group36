@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\gui.o
+./debug\connectiontodatabase.o
+./debug\manualInsertScientist.o
+./debug\display.o
+./debug\insertcomputer.o
+./debug\search.o
+./debug\extras.o
+./debug\gui.o
+./debug\search.o
+);
