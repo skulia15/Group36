@@ -9,12 +9,10 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    gui.cpp \
     connectiontodatabase.cpp \
     manualInsertScientist.cpp \
     display.cpp \
     insertcomputer.cpp \
-    search.cpp \
     extras.cpp \
     gui.cpp \
     search.cpp
