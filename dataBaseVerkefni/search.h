@@ -11,6 +11,7 @@ public:
     void searchFirstName();
     void searchLastName();
     void searchBirthYear();
+    void searchKeyword();
 
     void substring();
 

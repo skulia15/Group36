@@ -37,7 +37,7 @@ void GUI::searchMenu(){
     cout << " \n 1. To search by first name" << endl;
     cout << " 2. To search by last name" << endl;
     cout << " 3. To search by birth year" << endl;
-    cout << " 4. To search by search phrase" << endl;
+    cout << " 4. To search anywhere by a keyword." << endl;
     cout << " 5. To search on Wikipedia" << endl;
     cout << " 6. To exit to main menu" << endl;
     cout << "------------------------------"<<endl;
@@ -138,10 +138,11 @@ void GUI::displaySearchMenu(){//Switch statment for search menu
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
            find.searchBirthYear();
            break;
-        case '4': //Searches wikipedia
-           find.substring();
+        case '4':
+            cout << "Searching for keyword." << endl;
+            find.searchKeyword();
 
-           break;
+            break;
         case '5': //Searches wikipedia
            cout << "Search on Wikipedia"<< endl;
            doSearch.searchWiki();
