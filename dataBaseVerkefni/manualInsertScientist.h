@@ -18,6 +18,8 @@ private:
     string sex;
     int YoB;
     int YoD;
+
+    string nameOfCpuBuilt;
 };
 
 #endif //COMPUTERS_H

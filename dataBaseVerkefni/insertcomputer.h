@@ -14,6 +14,9 @@ private:
     string built;
     int yearBuilt;
     string cpuType;
+
+    string creatorFirstName;
+    string creatorLastName;
 };
 
 #endif // INSERTCOMPUTER

@@ -8,6 +8,7 @@ Scientists::Scientists(){
    sex = "";
    YoB = 0;
    YoD = 0;
+   nameOfCpuBuilt="";
 };
 
 void Scientists::manualInput(){
@@ -92,17 +93,33 @@ void Scientists::manualInput(){
             else cout << "Input was invalid try again." << endl;
         } while (error == false);
 
+        error = false;
+        do{
+            char temp;
+            cout<<"Did "<<firstName<<" "<<lastName<<" build a computer? (y/n) ";
+            cin>>temp;
+            if(temp =='y'||temp =='Y'){
+                cout<<"Kindly write the name of the computer: ";
+                cin>>nameOfCpuBuilt;                                                  //Ekki hægt að vear með 2 nöfn
+                error = true;}
+            else error = true;
+
+          }while (error == false);
+
         query.prepare("INSERT INTO Scientists (firstName, lastName, sex, YoB, YoD) "
-        "VALUES (:firstName, :lastName, :sex, :YoB, :YoD)");
+        "VALUES (:firstName, :lastName, :sex, :YoB, :YoD,)");
         query.bindValue(":id", QString::fromStdString(id));
         query.bindValue(":firstName", QString::fromStdString(firstName));
         query.bindValue(":lastName",  QString::fromStdString(lastName));
         query.bindValue(":sex",  QString::fromStdString(sex));
         query.bindValue(":YoB",  YoB);
         query.bindValue(":YoD",  YoD);
+        query.prepare("INSERT INTO Links (cpuName) "
+        "VALUES (:cpuName)");
+        query.bindValue(":cpuName",  QString::fromStdString(nameOfCpuBuilt));
         if(query.exec()){
-            cout << "========== Successfully entered into the database ==========" << endl;
-        }else cout << "========== Error entering info to the database ==========" << endl;
+            cout<<endl << "========== Successfully entered into the database ==========" << endl<<endl;
+        }else cout<<endl << "========== Error entering info to the database ==========" << endl<<endl;
     }
 }
 

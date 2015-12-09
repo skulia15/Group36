@@ -5,6 +5,8 @@ Computers::Computers(){
    cpuName="";
    yearBuilt=0;
    cpuType="";
+   creatorFirstName="";
+   creatorLastName="";
 };
 
 void Computers::insertCPU(){
@@ -73,12 +75,30 @@ void Computers::insertCPU(){
             getline (cin, cpuType, '\n');
         } while(cpuType == "" || cpuType == " ");
 
+        error = false;
+        do{
+
+            string temp;
+
+                cout<<"Kindly write the first creators first name: "<<endl;
+                getline(cin,creatorFirstName);
+            error=true;
+
+          }while (error == false);
+
+
         query.prepare("INSERT INTO Computers (cpuName, built, yearBuilt, cpuType) "
                           "VALUES (:cpuName, :built, :yearBuilt, :cpuType)");
         query.bindValue(":cpuName", QString::fromStdString(cpuName));
         query.bindValue(":built", QString::fromStdString(built));
         query.bindValue(":yearBuilt", yearBuilt);
         query.bindValue(":cpuType",  QString::fromStdString(cpuType));
+
+
+        query.prepare("INSERT INTO Links (creatorsName) "
+                          "VALUES (:creatorsName)");
+        query.bindValue(":creatorsName", QString::fromStdString(creatorFirstName));
+
 
         if(query.exec()){
             cout << endl;
@@ -90,8 +110,8 @@ void Computers::insertCPU(){
             cout << "-==== Could not insert data into database ====-"<<endl;
             cout << endl;
         }
-    }
-}
+}}
+
 
 void Computers::deleteCPU(){
     QSqlDatabase db;

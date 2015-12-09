@@ -24,8 +24,8 @@ void connectionToDataBase::connect(){   // Open connection to database
      string queryCreate2 ="CREATE TABLE Computers(id INTEGER PRIMARY KEY AUTOINCREMENT, cpuName VARCHAR NOT NULL,"
              "built VARCHAR NOT NULL, yearBuilt INTEGER NOT NULL, cpuType VARCHAR NOT NULL); ";         //Sets up table for Computers
 
-     string queryCreate3 = "CREATE TABLE Links(sci_id INTEGER,cpu_id INTEGER,FOREIGN KEY (sci_id) REFERENCES Scientists(id),FOREIGN KEY (cpu_id)"
-             "REFERENCES Computers(id)PRIMARY KEY (sci_id, cpu_id));";      //Sets up table for connections between tables
+     string queryCreate3 = "CREATE TABLE Links(creatorsName VARCHAR,cpuName VARCHAR,FOREIGN KEY (creatorsName) REFERENCES Scientists(id),FOREIGN KEY (cpuName)"
+             "REFERENCES Computers(id)PRIMARY KEY (creatorsName, cpuName));";      //Sets up table for connections between tables
 
      if(query.exec(QString(queryCreate.c_str()))){   //Creates table for Scientists
         cout << "========== The scientist table was made successfully! =========="<< endl;}
