@@ -61,7 +61,8 @@ void GUI::searchChoose(){
     cout << " \n Please select a search option:  "<<endl;
     cout << " \n 1. To search for scientists" << endl;
     cout << " 2. To search for computers" << endl;
-    cout << " 3. To exit to main menu" << endl;
+    cout << " 3. To search for keyword" << endl;
+    cout << " 4. To exit to main menu" << endl;
     cout << "------------------------------"<<endl;
     cout << "Search by:  " << endl;
 }
@@ -159,9 +160,12 @@ void GUI::displaySearchChoose(){ //displays a menu for choosing between searchin
            theSearcher.displaySearchCpuMenu();
            break;
         case '3':
-           cout << "Going back to Main menu." << endl;
-           loop = false;
+           find.searchKeyword();
            break;
+        case '4':
+            cout << "Going back to Main menu." << endl;
+            loop = false;
+            break;
         default:
            cout << "Please enter a number between 1 and 4." << endl << endl;
            break;

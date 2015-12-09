@@ -63,7 +63,6 @@ void searchData::searchLastName() //searches table 'Scientists' for last name.
 
 
     cout << "Enter the last name you want to search for: ";
-
     cin >> inputName;
 
     cout << "===== SEARCH RESULTS =====" << endl;
@@ -111,7 +110,6 @@ void searchData::searchBirthYear(){ //searches table 'Scientists' for birthyear.
     display print;
 
     cout << "Enter the birth year you want to search for: ";
-
     cin >> inputName;
 
     cout << "===== SEARCH RESULTS =====" << endl;
@@ -289,7 +287,6 @@ void searchData::searchKeyword(){ //searches the database for a keyword
     cout << "===== SEARCH RESULTS =====" << endl;
 
    query.prepare("SELECT * FROM Scientists WHERE firstname LIKE (:name) OR lastName LIKE (:name) OR sex LIKE (:name) OR YoB LIKE (:name)OR YoB LIKE (:name) ");
-   //það þarf að bæta við þetta að leita líka í computers eftir að það hefur verið gert join!
 
    query.bindValue(":name",QString::fromStdString(keyWord) );
    query.exec();
@@ -320,6 +317,8 @@ void searchData::searchKeyword(){ //searches the database for a keyword
    }
     cout << "===== END OF RESULTS =====" << endl;
 }
+
+
 
 
 

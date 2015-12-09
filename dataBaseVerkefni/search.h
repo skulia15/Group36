@@ -14,7 +14,7 @@ public:
     void searchKeyword();
     void searchCpuName();
     void searchYearBuilt();
-    void searchCpuType();   
+    void searchCpuType();
 private:
     string inputName;
     string inputYear;
