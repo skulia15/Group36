@@ -19,7 +19,7 @@ void connectionToDataBase::connect(){   // Open connection to database
          qDebug()<<"-==== Unable to connect ot the database ====-" << db.lastError().text() << " ==========" << endl;}
 
     string queryCreate = "CREATE TABLE Scientists(id INTEGER PRIMARY KEY AUTOINCREMENT, firstName VARCHAR NOT NULL,"
-            "lastName VARCHAR NOT NULL, sex VARCHAR, YoB INTEGER NOT NULL, YoD INTEGER); ";        //Sets up table for Scientists
+            "lastName VARCHAR NOT NULL, sex VARCHAR, YoB INTEGER NOT NULL, YoD INTEGER NOT NULL); ";        //Sets up table for Scientists
 
      string queryCreate2 ="CREATE TABLE Computers(id INTEGER PRIMARY KEY AUTOINCREMENT, cpuName VARCHAR NOT NULL,"
              "built VARCHAR NOT NULL, yearBuilt INTEGER NOT NULL, cpuType VARCHAR NOT NULL); ";         //Sets up table for Computers
