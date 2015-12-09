@@ -146,9 +146,118 @@ void searchData::searchBirthYear(){
     cout << "===== END OF RESULTS =====" << endl;
 }
 
-void searchData::substring()
-{
+void searchData::searchCpuName(){
+    QSqlDatabase db;
+    QSqlQuery query(db);
+    display print;
 
+
+    cout << "Enter name of the computer you want to search for: ";
+    cin >> inputName;
+
+    cout << "===== SEARCH RESULTS =====" << endl;
+
+   query.prepare("SELECT * FROM Computers WHERE cpuName = (:name)");
+   query.bindValue(":name",QString::fromStdString(inputName) );
+   query.exec();
+   while (query.next()){
+
+      int id = query.value("id").toUInt();
+      QString cpuName = query.value("cpuName").toString();
+      QString cpuType = query.value("cpuType").toString();
+      QString built = query.value("built").toString();
+      int yb = query.value("yearBuilt").toUInt();
+
+      cout << "Computer ID: ";
+      qDebug() << id;
+      cout << "Name: ";
+      qDebug() << qPrintable(cpuName);
+      cout << "Type: ";
+      qDebug() << qPrintable(cpuType);
+      cout << "Was it buit?: ";
+      qDebug() << qPrintable(built);
+      cout << "Year Built: ";
+      qDebug() << yb;
+      cout << endl;
+    }
+
+    cout << "===== END OF RESULTS =====" << endl;
+}
+
+void searchData::searchYearBuilt(){
+    QSqlDatabase db;
+    QSqlQuery query(db);
+    display print;
+
+
+    cout << "Enter the year you want to search for: ";
+    cin >> inputName;
+
+    cout << "===== SEARCH RESULTS =====" << endl;
+
+   query.prepare("SELECT * FROM Computers WHERE yearBuilt = (:name)");
+   query.bindValue(":name",QString::fromStdString(inputName) );
+   query.exec();
+   while (query.next()){
+
+      int id = query.value("id").toUInt();
+      QString cpuName = query.value("cpuName").toString();
+      QString cpuType = query.value("cpuType").toString();
+      QString built = query.value("built").toString();
+      int yb = query.value("yearBuilt").toUInt();
+
+      cout << "Computer ID: ";
+      qDebug() << id;
+      cout << "Name: ";
+      qDebug() << qPrintable(cpuName);
+      cout << "Type: ";
+      qDebug() << qPrintable(cpuType);
+      cout << "Was it buit?: ";
+      qDebug() << qPrintable(built);
+      cout << "Year Built: ";
+      qDebug() << yb;
+      cout << endl;
+    }
+
+    cout << "===== END OF RESULTS =====" << endl;
+}
+
+void searchData::searchCpuType(){
+    QSqlDatabase db;
+    QSqlQuery query(db);
+    display print;
+
+
+    cout << "Enter the type of computer you want to search for: ";
+    cin >> inputName;
+
+    cout << "===== SEARCH RESULTS =====" << endl;
+
+   query.prepare("SELECT * FROM Computers WHERE cpuType = (:name)");
+   query.bindValue(":name",QString::fromStdString(inputName) );
+   query.exec();
+   while (query.next()){
+
+      int id = query.value("id").toUInt();
+      QString cpuName = query.value("cpuName").toString();
+      QString cpuType = query.value("cpuType").toString();
+      QString built = query.value("built").toString();
+      int yb = query.value("yearBuilt").toUInt();
+
+      cout << "Computer ID: ";
+      qDebug() << id;
+      cout << "Name: ";
+      qDebug() << qPrintable(cpuName);
+      cout << "Type: ";
+      qDebug() << qPrintable(cpuType);
+      cout << "Was it buit?: ";
+      qDebug() << qPrintable(built);
+      cout << "Year Built: ";
+      qDebug() << yb;
+      cout << endl;
+    }
+
+    cout << "===== END OF RESULTS =====" << endl;
 }
 void searchData::searchKeyword(){
 

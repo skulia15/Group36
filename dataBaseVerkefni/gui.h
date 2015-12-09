@@ -7,7 +7,11 @@ public:
    void displayMainMenu();
    void mainMenu();
    void searchMenu();
+   void searchCpuMenu();
+   void searchChoose();
    void displaySearchMenu();
+   void displaySearchCpuMenu();
+   void displaySearchChoose();
    void addMenu();
    void showaddMenu();
    void showDisplay2();

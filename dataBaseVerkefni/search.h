@@ -11,7 +11,13 @@ public:
     void searchFirstName();
     void searchLastName();
     void searchBirthYear();
+<<<<<<< HEAD
     void searchKeyword();
+=======
+    void searchCpuName();
+    void searchYearBuilt();
+    void searchCpuType();
+>>>>>>> d1942f5ce805af0ee9580fb53a5a80500949b0e6
 
     void substring();
 
