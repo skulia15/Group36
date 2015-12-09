@@ -1,6 +1,4 @@
-
 #include "connectiontodatabase.h"
-
 
 searchData::searchData(){
     firstName = "";
@@ -73,8 +71,7 @@ void searchData::searchLastName()
    query.prepare("SELECT * FROM Scientists WHERE lastName LIKE (:name)");
    query.bindValue(":name", QString::fromStdString(inputName));
    query.exec();
-   while (query.next())
-   {
+   while (query.next()){
       int id = query.value("id").toUInt();
       QString firstName = query.value("firstName").toString();
       QString lastName = query.value("lastName").toString();
@@ -117,8 +114,7 @@ void searchData::searchBirthYear(){
    query.prepare("SELECT * FROM Scientists WHERE YoB = (:name)");
    query.bindValue(":name",QString::fromStdString(inputName) );
    query.exec();
-   while (query.next())
-   {
+   while (query.next()){
       int id = query.value("id").toUInt();
       QString firstName = query.value("firstName").toString();
       QString lastName = query.value("lastName").toString();
