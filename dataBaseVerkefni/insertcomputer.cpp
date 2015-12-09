@@ -39,12 +39,10 @@ void Computers::insertCPU(){
             cout << "Computer name: ";
             getline (cin, cpuName, '\n');
         }while (cpuName == " " || cpuName == "");
-
         error2 = true;
         do {
             cout << "Was the computer built? (y/n) ";
             cin >> temp;
-            cin.ignore();
             if (temp == 'y'||temp == 'Y'){
                 built = "Yes";
                 error2 = false;
@@ -62,7 +60,9 @@ void Computers::insertCPU(){
                 cin.ignore();
             }
             else if (temp == 'n'||temp == 'N'){
-                built = "No"; error2 = false;
+                built = "No";
+                error2 = false;
+                cin.ignore();
             }
             else
                 cout << "Input was invalid, please try again." << endl;

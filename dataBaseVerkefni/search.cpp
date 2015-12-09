@@ -271,6 +271,8 @@ void searchData::searchKeyword(){
     cout << "===== SEARCH RESULTS =====" << endl;
 
    query.prepare("SELECT * FROM Scientists WHERE firstname LIKE (:name) OR lastName LIKE (:name) OR sex LIKE (:name) OR YoB LIKE (:name)OR YoB LIKE (:name) ");
+   //það þarf að bæta við þetta að leita líka í computers eftir að það hefur verið gert join!
+
    query.bindValue(":name",QString::fromStdString(keyWord) );
    query.exec();
    while (query.next()){
@@ -298,9 +300,7 @@ void searchData::searchKeyword(){
       }
       cout << endl;
    }
-
     cout << "===== END OF RESULTS =====" << endl;
-
 }
 
 
