@@ -270,7 +270,7 @@ void searchData::searchKeyword(){
 
     cout << "===== SEARCH RESULTS =====" << endl;
 
-   query.prepare("SELECT * FROM Scientists WHERE firstname LIKE (:name) OR lastName LIKE (:name) OR sex LIKE (:name) OR YoB LIKE (:name)OR YoB LIKE (:name) ");
+   query.prepare("SELECT * FROM Scientists WHERE firstname LIKE (:name) OR lastName LIKE (:name) OR sex LIKE (:name) OR YoB LIKE (:name)OR YoB LIKE (:name) "); 
    query.bindValue(":name",QString::fromStdString(keyWord) );
    query.exec();
    while (query.next()){

@@ -59,8 +59,18 @@ void Scientists::manualInput(){
             else
             cout << "Input was invalid try again." << endl;}
 
-        cout << "Year of Birth: ";
-        cin >> YoB;
+        error = false;
+        while(error == false){
+            cout << "Year of Birth: ";
+            cin >> YoB;
+            if (cin.fail()) {
+                cout << "Input was invalid try again." << endl;
+                cin.clear();
+                cin.ignore(256,'\n');
+            }
+            else error = true;
+        }
+
 
         error = false;
         do{
@@ -105,6 +115,7 @@ bool isValid(string myString){
     }
     return true;
 }
+
 
 void Scientists::deleteScientist(){
     QSqlDatabase db;

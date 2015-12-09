@@ -11,8 +11,12 @@ public:
     void searchFirstName();
     void searchLastName();
     void searchBirthYear();
+    void searchKeyword();
+    void searchCpuName();
+    void searchYearBuilt();
+    void searchCpuType();
 
-    void substring();
+    void substring(); //þarf þetta?
 
 
 private:

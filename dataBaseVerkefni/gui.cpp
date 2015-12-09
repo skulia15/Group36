@@ -1,3 +1,4 @@
+
 #include "connectiontodatabase.h"
 #include "gui.h"
 #include "manualInsertScientist.h"
@@ -37,9 +38,30 @@ void GUI::searchMenu(){
     cout << " \n 1. To search by first name" << endl;
     cout << " 2. To search by last name" << endl;
     cout << " 3. To search by birth year" << endl;
-    cout << " 4. To search by search phrase" << endl;
+    cout << " 4. To search anywhere by a keyword." << endl;
     cout << " 5. To search on Wikipedia" << endl;
     cout << " 6. To exit to main menu" << endl;
+    cout << "Search by:  " << endl;
+}
+
+void GUI::searchCpuMenu(){
+    cout << "--------Search Menu-----------"<<endl ;
+    cout << " \n Please select a search option:  "<<endl;
+    cout << " \n 1. To search by computer name" << endl;
+    cout << " 2. To search by year built" << endl;
+    cout << " 3. To search by computer type" << endl;
+    cout << " 4. To search on Wikipedia" << endl;
+    cout << " 5. To exit to main menu" << endl;
+    cout << "------------------------------"<<endl;
+    cout << "Search by:  " << endl;
+}
+
+void GUI::searchChoose(){
+    cout << "--------Search Menu-----------"<<endl ;
+    cout << " \n Please select a search option:  "<<endl;
+    cout << " \n 1. To search for scientists" << endl;
+    cout << " 2. To search for computers" << endl;
+    cout << " 3. To exit to main menu" << endl;
     cout << "------------------------------"<<endl;
     cout << "Search by:  " << endl;
 }
@@ -98,7 +120,7 @@ void GUI::displayMainMenu(){//Switch statment for main menu
             GUI::showDisplay2();
             break;
         case '3':
-            GUI::displaySearchMenu();
+            GUI::displaySearchChoose();
            break;
         case '4':
             cout << "All data was deleted." << endl;
@@ -115,6 +137,36 @@ void GUI::displayMainMenu(){//Switch statment for main menu
             break;
         }
      }
+}
+
+void GUI::displaySearchChoose(){
+    char input;
+    bool loop = true;
+    extras doSearch;
+    searchData find;
+    string theSearchName;
+    GUI theSearcher;
+
+    while(loop == true){
+        GUI::searchChoose();
+        cin >> input;
+
+        switch(input){
+        case '1':
+           theSearcher.displaySearchMenu();
+           break;
+        case '2':
+           theSearcher.displaySearchCpuMenu();
+           break;
+        case '3':
+           cout << "Going back to Main menu." << endl;
+           loop = false;
+           break;
+        default:
+           cout << "Please enter a number between 1 and 4." << endl << endl;
+           break;
+       }
+   }
 }
 
 void GUI::displaySearchMenu(){//Switch statment for search menu
@@ -138,15 +190,51 @@ void GUI::displaySearchMenu(){//Switch statment for search menu
         case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
            find.searchBirthYear();
            break;
-        case '4': //Searches wikipedia
-           find.substring();
-
-           break;
+        case '4':
+            cout << "Searching for keyword." << endl;
+            find.searchKeyword();
+            break;
         case '5': //Searches wikipedia
-           cout << "Search on Wikipedia"<< endl;
-           doSearch.searchWiki();
-           break;
+            cout << "Search on Wikipedia"<< endl;
+            doSearch.searchWiki();
+            break;
         case '6':
+           cout << "Going back to Main menu." << endl;
+           loop = false;
+           break;
+        default:
+           cout << "Please enter a number between 1 and 4." << endl << endl;
+           break;
+       }
+   }
+}
+
+void GUI::displaySearchCpuMenu(){
+    char input;
+    bool loop = true;
+    extras doSearch;
+    searchData find;
+    string theSearchName;
+
+    while(loop == true){
+        GUI::searchCpuMenu();
+        cin >> input;
+
+        switch(input){ //Runs through vector and prints out the locations where "i" equals name provided.
+        case '1':
+           find.searchCpuName();
+           break;
+        case '2': //Runs through vector and prints out the locations where "i" equals last name provided.
+           find.searchYearBuilt();
+           break;
+        case '3': //Runs through vector and prints out the locations where "i" equals birthday provided..
+           find.searchCpuType();
+           break;
+        case '4': //Searches wikipedia
+           cout << "Search on Wikipedia"<< endl;
+           doSearch.searchWikiCpu();
+           break;
+        case '5':
            cout << "Going back to Main menu." << endl;
            loop = false;
            break;
@@ -268,6 +356,9 @@ void GUI::displaySortMenu(){
     cout << endl;
 }
 
+
+
+
 void GUI::displayComputerSortMenu(){
     display print;
     char choice;
@@ -310,4 +401,5 @@ void GUI::displayComputerSortMenu(){
             break;
         }
     cout << endl;
+
 }
