@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "utilities/constants.h"
 #include "utilities/utils.h"
-
+#include "string"
 #include <iostream>
 #include <iomanip>
 
@@ -31,18 +31,26 @@ void MainWindow::displayAllScientists()//Sverrir, Sets all scientists to vector 
 
 void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, clears display list and then shows scientists.at(i).
 {
-    ui->list_display_scientists->clear();
-    for(unsigned int i=0; i<scientists.size();i++)
-    {
-        Scientist currentScientists = scientists.at(i);
 
-        ui->list_display_scientists->addItem(QString::fromStdString(currentScientists.getName()));
+        ui->table_showAllScientists->setRowCount(scientists.size());
+        ui->table_showAllScientists->setColumnCount(5);
 
-    }
+
+             for(unsigned int row=0;row<scientists.size();row++){
+
+                 Scientist currentScientists = scientists.at(row);
+                 QTableWidgetItem* newItem = new QTableWidgetItem();
+                newItem->setText(QString::fromStdString(currentScientists.getName()));
+
+                 ui->table_showAllScientists->setItem(row,1,newItem);
+
+
+             }
 }
 
 
 void MainWindow::on_button_display_scientists_clicked()
 {
     displayAllScientists();//Sverrir, Calls display.
+    qDebug() << "Date:" << QDate::currentDate(); //Sverrir, Confirmation of button pusshed works
 }

@@ -16,7 +16,33 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QListWidget" name="list_display_scientists"/>
+     <widget class="QTableWidget" name="table_showAllScientists">
+      <column>
+       <property name="text">
+        <string>Id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Sex</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Birth Year</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Died in </string>
+       </property>
+      </column>
+     </widget>
     </item>
     <item>
      <widget class="QPushButton" name="button_display_scientists">
