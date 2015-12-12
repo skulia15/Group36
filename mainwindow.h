@@ -22,9 +22,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    ScientistService sciServ; //To be able to call class from mainWindow.cpp.
-    void displayAllScientists(); //Get all Scientists from sqlite to vector, will call on display Scientists.
-    void displayScientists(std::vector<Scientist> scientists); //Display all Scientists from vector.
+    ScientistService sciServ;//Sverrir, To be able to call class from mainWindow.cpp.
+    void displayAllScientists();//Sverrir, Get all Scientists from sqlite to vector, will call on display Scientists.
+    void displayScientists(std::vector<Scientist> scientists);//Sverrir, Display all Scientists from vector.
 };
 
 #endif // MAINWINDOW_H
