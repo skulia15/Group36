@@ -659,3 +659,4 @@ void ConsoleUI::displayError(std::string error)
     cout << "There was an error: " << error << "\n";
     cout << "Please try again or type 'back' to go back.\n\n";
 }
+

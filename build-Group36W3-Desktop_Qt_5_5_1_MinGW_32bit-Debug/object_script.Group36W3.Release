@@ -1,0 +1,15 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\computer.o
+./release\scientist.o
+./release\computerrepository.o
+./release\linkrepository.o
+./release\scientistrepository.o
+./release\computerservice.o
+./release\linkservice.o
+./release\scientistservice.o
+./release\consoleui.o
+./release\utils.o
+./release\moc_mainwindow.o
+);
