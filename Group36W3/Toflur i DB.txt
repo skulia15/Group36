@@ -21,3 +21,6 @@ CREATE TABLE ScientistComputerConnections(
     foreign key (computerId) references Computers(id),
     primary key(scientistId, computerId)
 )
+
+INSERT INTO Scientists(id, name, sex, yearBorn, yearDied)  
+VALUES(id, "Nafn", "kyn", 1989 ,Null);

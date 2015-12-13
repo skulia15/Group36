@@ -38,6 +38,7 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
              for(unsigned int row=0;row<scientists.size();row++)
              {
                 Scientist currentScientists = scientists.at(row);
+
                 QTableWidgetItem* newItem = new QTableWidgetItem();
                 newItem->setText(QString::number(currentScientists.getId()));
                 ui->table_showAllScientists->setItem(row,0,newItem);
@@ -46,12 +47,10 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
                 newItem1->setText(QString::fromStdString(currentScientists.getName()));
                 ui->table_showAllScientists->setItem(row,1,newItem1);
 
-
+                //Tekst ekki að breyta Enum í int.
+                //þarf að nota =static_cast<int>
                 QTableWidgetItem* newItem2 = new QTableWidgetItem();
-                if(currentScientists.getSex()==0){
-                     newItem2->setText("Male");                }
-                else{newItem2->setText("Female");}
-
+                newItem2->setText(QString::number(currentScientists.getSex()));
                 ui->table_showAllScientists->setItem(row,2,newItem2);
 
                 QTableWidgetItem* newItem3 = new QTableWidgetItem();
