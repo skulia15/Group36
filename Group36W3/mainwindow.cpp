@@ -76,13 +76,6 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
               }
 }
 
-
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 57083271d1868766dc427e16d474e269a1c3c9cf
 void MainWindow::on_button_scientists_to_table_clicked()
 {
     ScientistService scientistService;
@@ -122,7 +115,6 @@ void MainWindow::on_button_scientists_to_table_clicked()
         //error
        qDebug() << QDate::currentDate();
     }
-<<<<<<< HEAD
 }
 
 void MainWindow::on_Input_Filter_Scientists_textChanged(const QString &arg1)
@@ -132,6 +124,4 @@ void MainWindow::on_Input_Filter_Scientists_textChanged(const QString &arg1)
 
     vector<Scientist>scientists = scientistService.searchForScientists(inputFilter);
     displayScientists(scientists);
-=======
->>>>>>> 57083271d1868766dc427e16d474e269a1c3c9cf
 }

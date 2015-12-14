@@ -20,12 +20,8 @@ public:
 private slots:
 
     void on_button_scientists_to_table_clicked();
-<<<<<<< HEAD
 
     void on_Input_Filter_Scientists_textChanged(const QString &arg1);
-=======
->>>>>>> 57083271d1868766dc427e16d474e269a1c3c9cf
-
 private:
     Ui::MainWindow *ui;
     ScientistService sciServ;//Sverrir, To be able to call class from mainWindow.cpp.
