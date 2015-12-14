@@ -27,8 +27,8 @@ class Ui_AddScientistDialog
 {
 public:
     QVBoxLayout *verticalLayout_2;
-    QLabel *label_add_scientist;
     QHBoxLayout *horizontalLayout;
+    QLabel *label_add_scientist;
     QLabel *label_input_label;
     QLabel *label_error_name;
     QLineEdit *Input_Scientist_Name;
@@ -51,13 +51,13 @@ public:
         AddScientistDialog->resize(440, 348);
         verticalLayout_2 = new QVBoxLayout(AddScientistDialog);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label_add_scientist = new QLabel(AddScientistDialog);
         label_add_scientist->setObjectName(QStringLiteral("label_add_scientist"));
 
-        verticalLayout_2->addWidget(label_add_scientist);
+        horizontalLayout->addWidget(label_add_scientist);
 
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label_input_label = new QLabel(AddScientistDialog);
         label_input_label->setObjectName(QStringLiteral("label_input_label"));
 

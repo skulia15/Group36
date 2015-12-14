@@ -68,18 +68,6 @@ public:
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         table_showAllScientists = new QTableWidget(centralWidget);
-        if (table_showAllScientists->columnCount() < 5)
-            table_showAllScientists->setColumnCount(5);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        table_showAllScientists->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        table_showAllScientists->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        table_showAllScientists->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        table_showAllScientists->setHorizontalHeaderItem(3, __qtablewidgetitem3);
-        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        table_showAllScientists->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         table_showAllScientists->setObjectName(QStringLiteral("table_showAllScientists"));
         table_showAllScientists->setSelectionMode(QAbstractItemView::ExtendedSelection);
         table_showAllScientists->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -122,20 +110,16 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        Dropdown_Menu->clear();
+        Dropdown_Menu->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Computers", 0)
+         << QApplication::translate("MainWindow", "Scientists", 0)
+         << QApplication::translate("MainWindow", "Relations", 0)
+        );
 #ifndef QT_NO_TOOLTIP
         Dropdown_Menu->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Choose repository</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter scientists..", 0));
-        QTableWidgetItem *___qtablewidgetitem = table_showAllScientists->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "Id", 0));
-        QTableWidgetItem *___qtablewidgetitem1 = table_showAllScientists->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "Name", 0));
-        QTableWidgetItem *___qtablewidgetitem2 = table_showAllScientists->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "Sex", 0));
-        QTableWidgetItem *___qtablewidgetitem3 = table_showAllScientists->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("MainWindow", "Birth Year", 0));
-        QTableWidgetItem *___qtablewidgetitem4 = table_showAllScientists->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("MainWindow", "Died in ", 0));
         button_add_scientist->setText(QApplication::translate("MainWindow", "Add", 0));
         button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete", 0));
     } // retranslateUi

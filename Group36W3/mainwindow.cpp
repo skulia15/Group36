@@ -16,11 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->Dropdown_Menu->addItem("Scientists");
-    ui->Dropdown_Menu->addItem("Computers");
-    ui->Dropdown_Menu->addItem("Relations");
 
-    displayAllScientists();
 
     ScientistService scientistService;
 }
@@ -42,9 +38,13 @@ void MainWindow::displayAllScientists()//Sverrir, Sets all scientists to vector 
 void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, clears display list and then shows scientists.at(i).
 {
     //ui->table_showAllScientists->clear();
-    ui->table_showAllScientists->hideColumn(0);
+
     ui->table_showAllScientists->setRowCount(scientists.size());
     ui->table_showAllScientists->setColumnCount(5);
+    QStringList header;
+    header<<"ID"<<"Name"<<"Sex"<<"YoB"<<"YoD";
+    ui->table_showAllScientists->setHorizontalHeaderLabels(header);
+     ui->table_showAllScientists->hideColumn(0);
 
      for(unsigned int row = 0; row < scientists.size(); row++)
      {
@@ -131,5 +131,16 @@ void MainWindow::on_button_add_scientist_clicked()
     else
     {
         // there was an error
+    }
+}
+
+
+
+void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
+{
+    QString index = ui->Dropdown_Menu->currentText();
+    if(index=="Scientists")
+    {
+        displayAllScientists();
     }
 }

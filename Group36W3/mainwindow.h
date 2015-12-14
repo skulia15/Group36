@@ -28,6 +28,9 @@ private slots:
 
     void on_button_add_scientist_clicked();
 
+
+    void on_Dropdown_Menu_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     ScientistService sciServ;//Sverrir, To be able to call class from mainWindow.cpp.
