@@ -67,7 +67,14 @@
     <item>
      <widget class="QPushButton" name="button_add_scientist">
       <property name="text">
-       <string>Add</string>
+       <string>Add Scientist</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="button_add_computer">
+      <property name="text">
+       <string>Add Computer</string>
       </property>
      </widget>
     </item>

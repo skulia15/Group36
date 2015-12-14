@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     services/scientistservice.cpp \
     ui/consoleui.cpp \
     utilities/utils.cpp \
-    ui/addscientistdialog.cpp
+    ui/addscientistdialog.cpp \
+    ui/addcomputerdialog.cpp
 
 HEADERS  += mainwindow.h \
     models/computer.h \
@@ -38,9 +39,12 @@ HEADERS  += mainwindow.h \
     ui/consoleui.h \
     utilities/constants.h \
     utilities/utils.h \
-    ui/addscientistdialog.h
+    ui/addscientistdialog.h \
+    ui/addcomputerdialog.h
 
 FORMS    += mainwindow.ui \
-    ui/addscientistdialog.ui
+    ui/addscientistdialog.ui \
+    ui/addcomputerdialog.ui
+
 INCLUDEPATH += models \
     ui
