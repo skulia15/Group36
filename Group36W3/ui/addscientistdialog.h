@@ -16,7 +16,7 @@ public:
     ~AddScientistDialog();
 
 private slots:
-    void on_button_add_Scientist_box_clicked();
+   void on_button_add_Scientist_box_clicked();
 
 private:
     Ui::AddScientistDialog *ui;

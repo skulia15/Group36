@@ -27,8 +27,8 @@ class Ui_AddScientistDialog
 {
 public:
     QVBoxLayout *verticalLayout_2;
-    QHBoxLayout *horizontalLayout;
     QLabel *label_add_scientist;
+    QHBoxLayout *horizontalLayout;
     QLabel *label_input_label;
     QLabel *label_error_name;
     QLineEdit *Input_Scientist_Name;
@@ -40,7 +40,9 @@ public:
     QLabel *label_year_of_birth;
     QLabel *label_error_YoB;
     QLineEdit *input_year_of_birth;
+    QHBoxLayout *horizontalLayout_4;
     QLabel *label_year_of_death;
+    QLabel *label_pointless_alignment;
     QLineEdit *input_year_of_death;
     QPushButton *button_add_Scientist_box;
 
@@ -51,13 +53,13 @@ public:
         AddScientistDialog->resize(440, 348);
         verticalLayout_2 = new QVBoxLayout(AddScientistDialog);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label_add_scientist = new QLabel(AddScientistDialog);
         label_add_scientist->setObjectName(QStringLiteral("label_add_scientist"));
 
-        horizontalLayout->addWidget(label_add_scientist);
+        verticalLayout_2->addWidget(label_add_scientist, 0, Qt::AlignHCenter);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label_input_label = new QLabel(AddScientistDialog);
         label_input_label->setObjectName(QStringLiteral("label_input_label"));
 
@@ -102,7 +104,7 @@ public:
         label_year_of_birth = new QLabel(AddScientistDialog);
         label_year_of_birth->setObjectName(QStringLiteral("label_year_of_birth"));
 
-        horizontalLayout_3->addWidget(label_year_of_birth);
+        horizontalLayout_3->addWidget(label_year_of_birth, 0, Qt::AlignHCenter);
 
         label_error_YoB = new QLabel(AddScientistDialog);
         label_error_YoB->setObjectName(QStringLiteral("label_error_YoB"));
@@ -117,10 +119,20 @@ public:
 
         verticalLayout_2->addWidget(input_year_of_birth);
 
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         label_year_of_death = new QLabel(AddScientistDialog);
         label_year_of_death->setObjectName(QStringLiteral("label_year_of_death"));
 
-        verticalLayout_2->addWidget(label_year_of_death);
+        horizontalLayout_4->addWidget(label_year_of_death);
+
+        label_pointless_alignment = new QLabel(AddScientistDialog);
+        label_pointless_alignment->setObjectName(QStringLiteral("label_pointless_alignment"));
+
+        horizontalLayout_4->addWidget(label_pointless_alignment);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
 
         input_year_of_death = new QLineEdit(AddScientistDialog);
         input_year_of_death->setObjectName(QStringLiteral("input_year_of_death"));
@@ -141,14 +153,18 @@ public:
     void retranslateUi(QDialog *AddScientistDialog)
     {
         AddScientistDialog->setWindowTitle(QApplication::translate("AddScientistDialog", "Dialog", 0));
-        label_add_scientist->setText(QApplication::translate("AddScientistDialog", "Add a new Scientist", 0));
-        label_input_label->setText(QApplication::translate("AddScientistDialog", "Input scientist name", 0));
+#ifndef QT_NO_TOOLTIP
+        label_add_scientist->setToolTip(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><br/></p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
+        label_add_scientist->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600; color:#0000ff;\">Add a new Scientist</span></p></body></html>", 0));
+        label_input_label->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Scientists name</span></p></body></html>", 0));
         label_error_name->setText(QString());
-        label_input_sex->setText(QApplication::translate("AddScientistDialog", "Sex", 0));
+        label_input_sex->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Sex</span></p></body></html>", 0));
         label_error_sex->setText(QString());
-        label_year_of_birth->setText(QApplication::translate("AddScientistDialog", "Year of birth", 0));
+        label_year_of_birth->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Year of birth</span></p></body></html>", 0));
         label_error_YoB->setText(QString());
-        label_year_of_death->setText(QApplication::translate("AddScientistDialog", "Year of death", 0));
+        label_year_of_death->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Year of death</span></p></body></html>", 0));
+        label_pointless_alignment->setText(QString());
         button_add_Scientist_box->setText(QApplication::translate("AddScientistDialog", "Add Scientist", 0));
     } // retranslateUi
 

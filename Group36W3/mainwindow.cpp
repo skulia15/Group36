@@ -18,10 +18,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-<<<<<<< HEAD
+
     ComputerService computerService;
-=======
->>>>>>> 78a5c482c103cf3abb767a5b785c53d1e249bb58
+
     ScientistService scientistService;
     displayAllScientists();
 }
@@ -93,56 +92,8 @@ qDebug()<<computer.size();
 
 }
 
-void MainWindow::displayComputers(std::vector<Computer> computer)//Sverrir,  shows computer.at(i).
-{
 
 
-    ui->table_showAllScientists->setRowCount(computer.size());
-    ui->table_showAllScientists->setColumnCount(5);
-    QStringList header;
-    header<<"ID"<<"Name"<<"Type"<<"Year Built"<<"Was built";
-    ui->table_showAllScientists->setHorizontalHeaderLabels(header);
-    ui->table_showAllScientists->hideColumn(0);
-
-
-    for(unsigned int row = 0; row < computer.size(); row++)
-         {
-            Computer currentComputer = computer.at(row);
-
-            QTableWidgetItem* newItem = new QTableWidgetItem();
-            newItem->setText(QString::number(currentComputer.getId()));
-            ui->table_showAllScientists->setItem(row,0,newItem);
-
-            QTableWidgetItem* newItem1 = new QTableWidgetItem();
-            newItem1->setText(QString::fromStdString(currentComputer.getName()));
-            ui->table_showAllScientists->setItem(row,1,newItem1);
-
-            QTableWidgetItem* newItem2 = new QTableWidgetItem();
-            newItem2->setText(QString::number(currentComputer.getType()));
-            ui->table_showAllScientists->setItem(row,2,newItem2);
-
-            QTableWidgetItem* newItem3 = new QTableWidgetItem();
-            newItem3->setText(QString::number(currentComputer.getYearBuilt()));
-            ui->table_showAllScientists->setItem(row,3,newItem3);
-
-            QTableWidgetItem* newItem4 = new QTableWidgetItem();
-            newItem4->setText(QString::number(currentComputer.wasBuilt()));
-            if(newItem4 == 0)
-            {ui->table_showAllScientists->setItem(row,4,new QTableWidgetItem('Yes'));}
-            else{ui->table_showAllScientists->setItem(row,4,new QTableWidgetItem("NO"));}
-
-            //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
-          }
-        currentComputer = computer; // Hvað gerir þetta ?
-}
-
-void MainWindow::displayAllComputers()
-{
-    ComputerService computerService;
-    vector<Computer>computers = computerService.getAllComputers("name",true);
-
-    displayComputers(computers);
-}
 
 
 void MainWindow::displayComputers(std::vector<Computer> computers)
@@ -259,7 +210,7 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
     }
 }
 
-void MainWindow::on_button_add_computer_clicked()
+/*void MainWindow::on_button_add_computer_clicked()
 {
     AddComputerDialog addComputerDialog;
     int addComputerReturnValue = addComputerDialog.exec();
@@ -276,4 +227,4 @@ void MainWindow::on_button_add_computer_clicked()
     {
         ui->statusBar->showMessage("Error! Scientist was not added.", 3000);
     }
-}
+}*/

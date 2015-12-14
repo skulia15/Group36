@@ -38,6 +38,7 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QTableWidget *table_showAllScientists;
     QPushButton *button_add_scientist;
+    QPushButton *button_add_computer;
     QPushButton *button_delete_scientist;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -84,6 +85,11 @@ public:
 
         verticalLayout->addWidget(button_add_scientist);
 
+        button_add_computer = new QPushButton(centralWidget);
+        button_add_computer->setObjectName(QStringLiteral("button_add_computer"));
+
+        verticalLayout->addWidget(button_add_computer);
+
         button_delete_scientist = new QPushButton(centralWidget);
         button_delete_scientist->setObjectName(QStringLiteral("button_delete_scientist"));
         button_delete_scientist->setEnabled(false);
@@ -120,7 +126,8 @@ public:
         Dropdown_Menu->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Choose repository</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter scientists..", 0));
-        button_add_scientist->setText(QApplication::translate("MainWindow", "Add", 0));
+        button_add_scientist->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
+        button_add_computer->setText(QApplication::translate("MainWindow", "Add Computer", 0));
         button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete", 0));
     } // retranslateUi
 
