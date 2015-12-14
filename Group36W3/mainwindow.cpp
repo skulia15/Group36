@@ -4,6 +4,7 @@
 #include "utilities/utils.h"
 #include "services/scientistservice.h"
 #include "string"
+#include "addscientistdialog.h"
 #include <iostream>
 #include <iomanip>
 
@@ -17,11 +18,6 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllScientists();
 
     ScientistService scientistService;
-
-    ui->Input_Scientist_Name->text();
-    ui->input_sex->text();
-    ui->input_year_of_birth->text();
-    ui->input_year_of_death->text();
 }
 
 MainWindow::~MainWindow()
@@ -77,46 +73,6 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
     currentScientists = scientists;
 }
 
-void MainWindow::on_button_scientists_to_table_clicked()
-{
-    ScientistService scientistService;
-
-    ui->label_error_name->setText("");
-    ui->label_error_sex->setText("");
-    ui->label_error_YoB->setText("");
-
-    QString name = ui->Input_Scientist_Name->text();
-    QString sex = ui->input_sex->text();
-    QString YoB = ui->input_year_of_birth->text();
-    QString YoD = ui->input_year_of_death->text();
-
-    if (name.isEmpty()){
-        ui->label_error_name->setText("The scientist must have a name!");
-        return;
-    }
-    if (sex.isEmpty()){
-        ui->label_error_sex->setText("The scientist must have a sex!");
-        return;
-    }
-    if (YoB.isEmpty()){
-        ui->label_error_YoB->setText("The scientist must have been born!");
-        return;
-    }
-
-    bool success = scientistService.addScientist(Scientist(name.toStdString(), utils::stringToSex(sex.toStdString()), YoB.toInt(), YoD.toInt())); //, sex.toStdString(), YoB.toInt(), YoD.toInt());
-
-    if (success){
-        displayAllScientists();
-        ui->Input_Scientist_Name->setText("");
-        ui->input_sex->setText("");
-        ui->input_year_of_birth->setText("");
-        ui->input_year_of_death->setText("");
-    }
-    else{
-        //error
-       qDebug() << QDate::currentDate();
-    }
-}
 
 void MainWindow::on_Input_Filter_Scientists_textChanged(const QString &arg1)
 {
@@ -151,8 +107,24 @@ void MainWindow::on_button_delete_scientist_clicked()
     {
         //error message
     }
-
-
-
 }
 
+
+void MainWindow::on_button_add_scientist_clicked()
+{
+    AddScientistDialog AddScientistDialog;
+    int addScientistsReturnValue = AddScientistDialog.exec();
+    ScientistService scientistService;
+
+    if (addScientistsReturnValue == 0)
+    {
+        ui->Input_Filter_Scientists->setText("");
+        displayAllScientists();
+
+        ui->statusBar->showMessage("Successfully added scientist", 2500);
+    }
+    else
+    {
+        // there was an error
+    }
+}

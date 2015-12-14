@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>945</width>
-    <height>403</height>
+    <width>531</width>
+    <height>417</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,6 +32,12 @@
         <property name="selectionBehavior">
          <enum>QAbstractItemView::SelectRows</enum>
         </property>
+        <property name="sortingEnabled">
+         <bool>true</bool>
+        </property>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
         <column>
          <property name="text">
           <string>Id</string>
@@ -72,92 +78,9 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_add_scientist">
+     <widget class="QPushButton" name="button_add_scientist">
       <property name="text">
-       <string>Add a new Scientist</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QLabel" name="label_input_label">
-        <property name="text">
-         <string>Input scientist name</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_error_name">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="Input_Scientist_Name"/>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QLabel" name="label_input_sex">
-        <property name="text">
-         <string>Sex</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_error_sex">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="input_sex"/>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <item>
-       <widget class="QLabel" name="label_year_of_birth">
-        <property name="text">
-         <string>Year of birth</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_error_YoB">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="input_year_of_birth"/>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_year_of_death">
-      <property name="text">
-       <string>Year of death</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="input_year_of_death"/>
-    </item>
-    <item>
-     <widget class="QPushButton" name="button_scientists_to_table">
-      <property name="text">
-       <string>Add to table</string>
+       <string>Add scientists</string>
       </property>
      </widget>
     </item>
@@ -168,7 +91,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>945</width>
+     <width>531</width>
      <height>21</height>
     </rect>
    </property>

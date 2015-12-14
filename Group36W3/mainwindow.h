@@ -26,6 +26,8 @@ private slots:
 
     void on_button_delete_scientist_clicked();
 
+    void on_button_add_scientist_clicked();
+
 private:
     Ui::MainWindow *ui;
     ScientistService sciServ;//Sverrir, To be able to call class from mainWindow.cpp.
