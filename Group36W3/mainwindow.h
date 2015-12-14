@@ -33,6 +33,12 @@ private slots:
 
 
 
+    void on_actionAdd_Scientists_triggered();
+
+    void on_actionAdd_Computer_triggered();
+
+    void on_action_Exit_triggered();
+
 private:
     Ui::MainWindow *ui;
     ScientistService sciServ;//Sverrir, To be able to call class from mainWindow.cpp.

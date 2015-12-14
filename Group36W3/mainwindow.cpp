@@ -210,21 +210,17 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
     }
 }
 
-/*void MainWindow::on_button_add_computer_clicked()
+void MainWindow::on_actionAdd_Scientists_triggered()
 {
-    AddComputerDialog addComputerDialog;
-    int addComputerReturnValue = addComputerDialog.exec();
-    ComputerService computerService;
+    on_button_add_scientist_clicked();
+}
 
-    if (addComputerReturnValue == 0)
-    {
-        //ui->Input_Filter_Scientists->setText("");
-        //displayAllScientists();
+void MainWindow::on_actionAdd_Computer_triggered()
+{
+    //add computer via file menu
+}
 
-        ui->statusBar->showMessage("Successfully added scientist", 3000);
-    }
-    else
-    {
-        ui->statusBar->showMessage("Error! Scientist was not added.", 3000);
-    }
-}*/
+void MainWindow::on_action_Exit_triggered()
+{
+    close();
+}
