@@ -31,12 +31,17 @@ private slots:
 
     void on_Dropdown_Menu_currentIndexChanged(const QString &arg1);
 
+    void on_button_add_computer_clicked();
+
 private:
     Ui::MainWindow *ui;
     ScientistService sciServ;//Sverrir, To be able to call class from mainWindow.cpp.
     void displayAllScientists();//Sverrir, Get all Scientists from sqlite to vector, will call on display Scientists.
     void displayScientists(std::vector<Scientist> scientists);//Sverrir, Display all Scientists from vector.
+    void displayAllComputers();
+    void displayComputers(std::vector<Computer> Computers);
     std::vector <Scientist> currentScientists;
+    std::vector <Computer> currentComputers;
 };
 
 #endif // MAINWINDOW_H
