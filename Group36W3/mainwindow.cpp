@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "utilities/constants.h"
 #include "utilities/utils.h"
+#include "services/scientistservice.h"
 #include "string"
 #include <iostream>
 #include <iomanip>
@@ -14,6 +15,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ScientistService scientistService;
+
+    ui->Input_Scientist_Name->text();
+    ui->input_sex->text();
+    ui->input_year_of_birth->text();
+    ui->input_year_of_death->text();
 
 }
 
@@ -24,7 +31,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::displayAllScientists()//Sverrir, Sets all scientists to vector and calls display.
 {
-    vector<Scientist>scientists = sciServ.getAllScientists("name",true);
+    ScientistService scientistService;
+    vector<Scientist>scientists = scientistService.getAllScientists("name",true);
 
     displayScientists(scientists);
 }
@@ -32,10 +40,11 @@ void MainWindow::displayAllScientists()//Sverrir, Sets all scientists to vector 
 void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, clears display list and then shows scientists.at(i).
 {
 
+        //ui->table_showAllScientists->clear();
         ui->table_showAllScientists->setRowCount(scientists.size());
         ui->table_showAllScientists->setColumnCount(5);
 
-             for(unsigned int row=0;row<scientists.size();row++)
+             for(unsigned int row = 0; row < scientists.size(); row++)
              {
                 Scientist currentScientists = scientists.at(row);
 
@@ -67,8 +76,35 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
 }
 
 
-void MainWindow::on_button_display_scientists_clicked()//Sverrir, Button that calls on display
+
+
+
+void MainWindow::on_button_scientists_to_table_clicked()
 {
-    displayAllScientists();//Sverrir, Calls display.
-    qDebug() << "Date:" << QDate::currentDate(); //Sverrir, Confirmation of button pusshed works
+    ScientistService scientistService;
+
+    QString name = ui->Input_Scientist_Name->text();
+    QString sex = ui->input_sex->text();
+    QString YoB = ui->input_year_of_birth->text();
+    QString YoD = ui->input_year_of_death->text();
+
+    if (name.isEmpty()){
+        //error message
+        return;
+    }
+
+
+    bool success = scientistService.addScientist(Scientist(name.toStdString(), utils::stringToSex(sex.toStdString()), YoB.toInt(), YoD.toInt())); //, sex.toStdString(), YoB.toInt(), YoD.toInt());
+
+    if (success){
+        displayAllScientists();
+        ui->Input_Scientist_Name->setText("");
+        ui->input_sex->setText("");
+        ui->input_year_of_birth->setText("");
+        ui->input_year_of_death->setText("");
+    }
+    else{
+        //error
+       qDebug() << QDate::currentDate();
+    }
 }

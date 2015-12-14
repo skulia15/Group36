@@ -18,7 +18,8 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_button_display_scientists_clicked();
+
+    void on_button_scientists_to_table_clicked();
 
 private:
     Ui::MainWindow *ui;
