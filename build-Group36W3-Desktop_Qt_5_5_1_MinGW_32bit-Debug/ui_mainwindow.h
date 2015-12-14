@@ -112,8 +112,8 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         Dropdown_Menu->clear();
         Dropdown_Menu->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "Computers", 0)
          << QApplication::translate("MainWindow", "Scientists", 0)
+         << QApplication::translate("MainWindow", "Computers", 0)
          << QApplication::translate("MainWindow", "Relations", 0)
         );
 #ifndef QT_NO_TOOLTIP
