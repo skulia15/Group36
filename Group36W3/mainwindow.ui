@@ -16,6 +16,13 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <widget class="QComboBox" name="Dropdown_Menu">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose repository&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QLineEdit" name="Input_Filter_Scientists">
       <property name="placeholderText">
        <string>Filter scientists..</string>
@@ -68,19 +75,19 @@
      </layout>
     </item>
     <item>
+     <widget class="QPushButton" name="button_add_scientist">
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="button_delete_scientist">
       <property name="enabled">
        <bool>false</bool>
       </property>
       <property name="text">
-       <string>Delete scientist</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="button_add_scientist">
-      <property name="text">
-       <string>Add scientists</string>
+       <string>Delete</string>
       </property>
      </widget>
     </item>

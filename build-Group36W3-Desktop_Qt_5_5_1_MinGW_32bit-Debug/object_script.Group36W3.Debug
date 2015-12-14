@@ -11,5 +11,7 @@ INPUT(
 ./debug\scientistservice.o
 ./debug\consoleui.o
 ./debug\utils.o
+./debug\addscientistdialog.o
 ./debug\moc_mainwindow.o
+./debug\moc_addscientistdialog.o
 );

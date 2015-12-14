@@ -15,6 +15,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->Dropdown_Menu->addItem("Scientists");
+    ui->Dropdown_Menu->addItem("Computers");
+    ui->Dropdown_Menu->addItem("Relations");
+
     displayAllScientists();
 
     ScientistService scientistService;

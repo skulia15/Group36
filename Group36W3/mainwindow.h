@@ -19,7 +19,7 @@ public:
 
 private slots:
 
-    void on_button_scientists_to_table_clicked();
+    //void on_button_scientists_to_table_clicked();
 
     void on_Input_Filter_Scientists_textChanged(const QString &arg1);
     void on_table_showAllScientists_clicked(const QModelIndex &index);

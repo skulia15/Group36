@@ -11,5 +11,7 @@ INPUT(
 ./release\scientistservice.o
 ./release\consoleui.o
 ./release\utils.o
+./release\addscientistdialog.o
 ./release\moc_mainwindow.o
+./release\moc_addscientistdialog.o
 );
