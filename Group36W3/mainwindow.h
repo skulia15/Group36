@@ -48,8 +48,8 @@ private:
     void displayAllComputers();
     void displayComputers(std::vector<Computer> Computers);
     std::vector <Scientist> currentScientists;
-
     std::vector <Computer> currentComputers;
+
 
 };
 

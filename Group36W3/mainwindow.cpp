@@ -9,6 +9,7 @@
 #include "addcomputerdialog.h"
 #include <iostream>
 #include <iomanip>
+#include <services/linkservice.h>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ComputerService computerService;
-
+    LinkService links;
     ScientistService scientistService;
     displayAllScientists();
 }
@@ -93,9 +94,6 @@ qDebug()<<computer.size();
 }
 
 
-
-
-
 void MainWindow::displayComputers(std::vector<Computer> computers)
 {
     ui->table_showAllScientists->setRowCount(computers.size());
@@ -127,6 +125,7 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
         newItem5->setText(QString::number(currentComputer.wasBuilt()));
+        //Sama Enum vese og í Scientists
         if(newItem5==0){ui->table_showAllScientists->setItem(row,4,new QTableWidgetItem("No"));}
             else{ui->table_showAllScientists->setItem(row,4,new QTableWidgetItem("Yes"));}
 
@@ -135,7 +134,6 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
       }
     currentComputers = computers;
 }
-
 
 void MainWindow::on_Input_Filter_Scientists_textChanged(const QString &arg1)
 {
