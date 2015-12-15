@@ -81,7 +81,7 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
         newItem1->setText(QString::fromStdString(currentScientists.getName()));
         ui->table_showAllScientists->setItem(row,1,newItem1);
 
-<<<<<<< HEAD
+
         QTableWidgetItem* newItem2 = new QTableWidgetItem();
         newItem2->setText(QString::number(currentScientists.getSex()));
         int temp = newItem2->text().toInt();
@@ -94,13 +94,7 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
         else{if (temp == 3){}
             ui->table_showAllScientists->setItem(row,2,new QTableWidgetItem("Male"));
         }
-=======
 
-
-        QTableWidgetItem* newItem2 = new QTableWidgetItem();
-        newItem2->setText(QString::number((currentScientists.getSex())));
-        ui->table_showAllScientists->setItem(row,2,newItem2);
->>>>>>> 72d359a89fb7ebd7c2c46da40654060094cb4b5e
 
 
         QTableWidgetItem* newItem3 = new QTableWidgetItem();
@@ -177,6 +171,7 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
         newItem5->setText(QString::number(currentComputer.wasBuilt()));
         //Sama Enum vese og í Scientists
+        ui->table_showAllScientists->hideColumn(4);
         temp = newItem4->text().toInt();
         if(temp == 2) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("No"));}
             else { ui->table_showAllScientists -> setItem(row,4,new QTableWidgetItem("Yes"));}

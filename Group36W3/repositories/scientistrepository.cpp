@@ -39,12 +39,7 @@ vector<Scientist> ScientistRepository::queryScientists(QString sqlQuery)
     {
         int id = query.value("id").toUInt();
         string name = query.value("name").toString().toStdString();
-<<<<<<< HEAD
         int sex = query.value("sex").toInt();
-=======
-        enum sexType sex = utils::intToSex(query.value("sex").toInt());
-
->>>>>>> 72d359a89fb7ebd7c2c46da40654060094cb4b5e
         int yearBorn = query.value("yearBorn").toInt();
         int yearDied = query.value("yearDied").toInt();
 
