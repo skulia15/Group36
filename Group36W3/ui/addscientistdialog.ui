@@ -112,6 +112,20 @@
     <widget class="QLineEdit" name="input_year_of_death"/>
    </item>
    <item>
+    <widget class="QCheckBox" name="checkBox_cpuRelations">
+     <property name="text">
+      <string>CheckBox</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="label_cpuRelationName">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="button_add_Scientist_box">
      <property name="text">
       <string>Add Scientist</string>

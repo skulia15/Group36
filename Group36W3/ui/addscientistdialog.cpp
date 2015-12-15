@@ -46,6 +46,7 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
         thereWasAnError = true;
     }
 
+
     if (thereWasAnError)
     {
         return;
@@ -66,4 +67,16 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
         // there was some error, tell the user
        qDebug() << QDate::currentDate();
     }
+}
+
+void AddScientistDialog::on_checkBox_cpuRelations_clicked()
+{
+    if(ui->checkBox_cpuRelations->isChecked())
+        {
+            ui->label_cpuRelationName->setEnabled(1);
+        }
+    else
+        {
+           ui->label_cpuRelationName->setEnabled(0);
+        }
 }
