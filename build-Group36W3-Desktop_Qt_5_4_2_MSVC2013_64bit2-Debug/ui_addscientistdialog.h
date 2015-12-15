@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -35,6 +36,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_input_sex;
     QLabel *label_error_sex;
+    QComboBox *comboBox;
     QLineEdit *input_sex;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_year_of_birth;
@@ -93,6 +95,11 @@ public:
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
+
+        comboBox = new QComboBox(AddScientistDialog);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+
+        verticalLayout_2->addWidget(comboBox);
 
         input_sex = new QLineEdit(AddScientistDialog);
         input_sex->setObjectName(QStringLiteral("input_sex"));
@@ -163,7 +170,7 @@ public:
         label_error_sex->setText(QString());
         label_year_of_birth->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Year of birth</span></p></body></html>", 0));
         label_error_YoB->setText(QString());
-        label_year_of_death->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Year of death</span></p></body></html>", 0));
+        label_year_of_death->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Year of death </span><span style=\" font-size:9pt;\">(if relevant)</span></p></body></html>", 0));
         label_pointless_alignment->setText(QString());
         button_add_Scientist_box->setText(QApplication::translate("AddScientistDialog", "Add Scientist", 0));
     } // retranslateUi

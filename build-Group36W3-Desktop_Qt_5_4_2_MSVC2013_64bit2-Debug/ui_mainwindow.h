@@ -18,6 +18,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -31,6 +32,9 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionAdd_Scientists;
+    QAction *actionAdd_Computer;
+    QAction *action_Exit;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QComboBox *Dropdown_Menu;
@@ -41,6 +45,7 @@ public:
     QPushButton *button_add_computer;
     QPushButton *button_delete_scientist;
     QMenuBar *menuBar;
+    QMenu *menu_File;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -49,6 +54,12 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(531, 417);
+        actionAdd_Scientists = new QAction(MainWindow);
+        actionAdd_Scientists->setObjectName(QStringLiteral("actionAdd_Scientists"));
+        actionAdd_Computer = new QAction(MainWindow);
+        actionAdd_Computer->setObjectName(QStringLiteral("actionAdd_Computer"));
+        action_Exit = new QAction(MainWindow);
+        action_Exit->setObjectName(QStringLiteral("action_Exit"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -100,6 +111,8 @@ public:
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 531, 21));
+        menu_File = new QMenu(menuBar);
+        menu_File->setObjectName(QStringLiteral("menu_File"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -107,6 +120,11 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
+
+        menuBar->addAction(menu_File->menuAction());
+        menu_File->addAction(actionAdd_Scientists);
+        menu_File->addAction(actionAdd_Computer);
+        menu_File->addAction(action_Exit);
 
         retranslateUi(MainWindow);
 
@@ -116,19 +134,23 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        actionAdd_Scientists->setText(QApplication::translate("MainWindow", "Add &Scientists", 0));
+        actionAdd_Computer->setText(QApplication::translate("MainWindow", "Add &Computer", 0));
+        action_Exit->setText(QApplication::translate("MainWindow", "&Exit", 0));
         Dropdown_Menu->clear();
         Dropdown_Menu->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "Computers", 0)
          << QApplication::translate("MainWindow", "Scientists", 0)
+         << QApplication::translate("MainWindow", "Computers", 0)
          << QApplication::translate("MainWindow", "Relations", 0)
         );
 #ifndef QT_NO_TOOLTIP
         Dropdown_Menu->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Choose repository</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter scientists..", 0));
+        Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter..", 0));
         button_add_scientist->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
         button_add_computer->setText(QApplication::translate("MainWindow", "Add Computer", 0));
-        button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete", 0));
+        button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete Selected", 0));
+        menu_File->setTitle(QApplication::translate("MainWindow", "&File", 0));
     } // retranslateUi
 
 };

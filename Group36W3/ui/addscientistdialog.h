@@ -18,7 +18,10 @@ public:
 private slots:
    void on_button_add_Scientist_box_clicked();
 
+<<<<<<< HEAD
    void on_checkBox_cpuRelations_clicked();
+=======
+>>>>>>> 43329feffbca27a5d4701a64335602bbd5b07a55
 
 private:
     Ui::AddScientistDialog *ui;
