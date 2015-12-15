@@ -252,7 +252,7 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
     }
     else
     {
-        //display warning.
+        ui->statusBar->showMessage("Please select a repository", 3000);
     }
 }
 

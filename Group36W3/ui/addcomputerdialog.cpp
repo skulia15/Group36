@@ -78,7 +78,6 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
     }
     else{
         this->done(-1);
-        // there was some error, tell the user
-       qDebug() << QDate::currentDate();
+        qDebug() << QDate::currentDate();
     }
 }

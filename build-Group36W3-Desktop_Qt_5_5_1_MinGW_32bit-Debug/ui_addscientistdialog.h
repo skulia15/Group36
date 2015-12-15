@@ -100,6 +100,7 @@ public:
 
         comboBox_sex = new QComboBox(AddScientistDialog);
         comboBox_sex->setObjectName(QStringLiteral("comboBox_sex"));
+        comboBox_sex->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_2->addWidget(comboBox_sex);
 
@@ -156,6 +157,7 @@ public:
 
         button_add_Scientist_box = new QPushButton(AddScientistDialog);
         button_add_Scientist_box->setObjectName(QStringLiteral("button_add_Scientist_box"));
+        button_add_Scientist_box->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout_2->addWidget(button_add_Scientist_box);
 

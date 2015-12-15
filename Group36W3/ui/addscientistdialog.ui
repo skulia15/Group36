@@ -67,7 +67,11 @@
     </layout>
    </item>
    <item>
-    <widget class="QComboBox" name="comboBox_sex"/>
+    <widget class="QComboBox" name="comboBox_sex">
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -127,6 +131,9 @@
    </item>
    <item>
     <widget class="QPushButton" name="button_add_Scientist_box">
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="text">
       <string>Add Scientist</string>
      </property>

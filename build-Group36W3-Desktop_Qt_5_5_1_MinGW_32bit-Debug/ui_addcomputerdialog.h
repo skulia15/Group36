@@ -44,6 +44,7 @@ public:
         button_add_computer_box = new QPushButton(AddComputerDialog);
         button_add_computer_box->setObjectName(QStringLiteral("button_add_computer_box"));
         button_add_computer_box->setGeometry(QRect(130, 260, 151, 23));
+        button_add_computer_box->setCursor(QCursor(Qt::PointingHandCursor));
         Input_computer_name = new QLineEdit(AddComputerDialog);
         Input_computer_name->setObjectName(QStringLiteral("Input_computer_name"));
         Input_computer_name->setGeometry(QRect(9, 99, 241, 20));
@@ -68,6 +69,7 @@ public:
         comboBox_computer_type = new QComboBox(AddComputerDialog);
         comboBox_computer_type->setObjectName(QStringLiteral("comboBox_computer_type"));
         comboBox_computer_type->setGeometry(QRect(10, 200, 241, 22));
+        comboBox_computer_type->setCursor(QCursor(Qt::PointingHandCursor));
         label_error_computer_name = new QLabel(AddComputerDialog);
         label_error_computer_name->setObjectName(QStringLiteral("label_error_computer_name"));
         label_error_computer_name->setEnabled(true);

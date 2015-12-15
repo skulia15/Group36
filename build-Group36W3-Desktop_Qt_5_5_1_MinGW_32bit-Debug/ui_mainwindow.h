@@ -68,6 +68,7 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         Dropdown_Menu = new QComboBox(centralWidget);
         Dropdown_Menu->setObjectName(QStringLiteral("Dropdown_Menu"));
+        Dropdown_Menu->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout->addWidget(Dropdown_Menu);
 
@@ -93,17 +94,20 @@ public:
 
         button_add_scientist = new QPushButton(centralWidget);
         button_add_scientist->setObjectName(QStringLiteral("button_add_scientist"));
+        button_add_scientist->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout->addWidget(button_add_scientist);
 
         button_add_computer = new QPushButton(centralWidget);
         button_add_computer->setObjectName(QStringLiteral("button_add_computer"));
+        button_add_computer->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout->addWidget(button_add_computer);
 
         button_delete_scientist = new QPushButton(centralWidget);
         button_delete_scientist->setObjectName(QStringLiteral("button_delete_scientist"));
         button_delete_scientist->setEnabled(false);
+        button_delete_scientist->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout->addWidget(button_delete_scientist);
 
