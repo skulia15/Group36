@@ -138,12 +138,27 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
 void MainWindow::on_Input_Filter_Scientists_textChanged(const QString &arg1)
 {
-    ScientistService scientistService;
+    QString index = ui->Dropdown_Menu->currentText();
 
-    string inputFilter = ui->Input_Filter_Scientists->text().toStdString();
+    if(index == "Scientists")
+    {
+        ScientistService scientistService;
 
-    vector<Scientist>scientists = scientistService.searchForScientists(inputFilter);
-    displayScientists(scientists);
+        string inputFilter = ui->Input_Filter_Scientists->text().toStdString();
+
+        vector<Scientist>scientists = scientistService.searchForScientists(inputFilter);
+        displayScientists(scientists);
+    }
+    if(index=="Computers")
+    {
+        ComputerService computerService;
+
+        string inputFilter = ui->Input_Filter_Scientists->text().toStdString();
+
+        vector<Computer>computers = computerService.searchForComputers(inputFilter);
+        displayComputers(computers);
+    }
+
 }
 
 void MainWindow::on_table_showAllScientists_clicked(const QModelIndex &index)
