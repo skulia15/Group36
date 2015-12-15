@@ -28,10 +28,7 @@ private slots:
 
     void on_button_add_scientist_clicked();
 
-
     void on_Dropdown_Menu_currentIndexChanged(const QString &arg1);
-
-
 
     void on_actionAdd_Scientists_triggered();
 

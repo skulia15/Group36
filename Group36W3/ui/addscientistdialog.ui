@@ -26,7 +26,7 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
+     <item alignment="Qt::AlignLeft">
       <widget class="QLabel" name="label_input_label">
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Scientists name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -50,7 +50,7 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
+     <item alignment="Qt::AlignLeft">
       <widget class="QLabel" name="label_input_sex">
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Sex&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -67,14 +67,11 @@
     </layout>
    </item>
    <item>
-    <widget class="QComboBox" name="comboBox"/>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="input_sex"/>
+    <widget class="QComboBox" name="comboBox_sex"/>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item alignment="Qt::AlignHCenter">
+     <item alignment="Qt::AlignLeft">
       <widget class="QLabel" name="label_year_of_birth">
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Year of birth&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -95,7 +92,7 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <item>
+     <item alignment="Qt::AlignLeft">
       <widget class="QLabel" name="label_year_of_death">
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Year of death &lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;(if relevant)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

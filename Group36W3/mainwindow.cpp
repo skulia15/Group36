@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle("Scientists And Computer Finder 3000");
     setWindowIcon(QIcon("logo.png"));
 
+
     ComputerService computerService;
     LinkService links;
     ScientistService scientistService;
@@ -50,7 +51,7 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
     ui->table_showAllScientists->setRowCount(scientists.size());
     ui->table_showAllScientists->setColumnCount(5);
     QStringList header;
-    header<<"ID"<<"Name"<<"Sex"<<"YoB"<<"YoD";
+    header << "ID" << "Name" << "Sex" << "YoB" << "YoD";
     ui->table_showAllScientists->setHorizontalHeaderLabels(header);
      ui->table_showAllScientists->hideColumn(0);
 
@@ -83,10 +84,10 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
 
         //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
       }
-    currentScientists = scientists; //Sverrir, Hvað gerir þetta ?
+    currentScientists = scientists; //For indexing purposes
 }
 
-void MainWindow::displayAllComputers()//Sverrir, Sets all scientists to vector and calls display.
+void MainWindow::displayAllComputers() //Sverrir, Sets all scientists to vector and calls display.
 {
     ComputerService cpuService;
 
@@ -102,7 +103,7 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
     ui->table_showAllScientists->setRowCount(computers.size());
     ui->table_showAllScientists->setColumnCount(5);
     QStringList header;
-    header << "ID" << "Name" << "Year Built" << "Type"<<"Was it built";
+    header << "ID" << "Name" << "Year Built" << "Type" << "Was it built";
     ui->table_showAllScientists->setHorizontalHeaderLabels(header);
      ui->table_showAllScientists->hideColumn(0);
 
@@ -124,14 +125,17 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentComputer.getType()));
-        ui->table_showAllScientists->setItem(row,3,newItem4);
+        if(newItem4->text().toInt() == 0){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Electronic"));}
+        if(newItem4->text().toInt() == 1){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Mechatronic"));}
+        if(newItem4->text().toInt() == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Transistor"));}
+        if(newItem4->text().toInt() == 3){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Other"));}
+        else {ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("error"));}
 
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
         newItem5->setText(QString::number(currentComputer.wasBuilt()));
         //Sama Enum vese og í Scientists
-        if(newItem5==0){ui->table_showAllScientists->setItem(row,4,new QTableWidgetItem("No"));}
-            else{ui->table_showAllScientists->setItem(row,4,new QTableWidgetItem("Yes"));}
-
+        if(newItem5 == 0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("No"));}
+            else { ui->table_showAllScientists -> setItem(row,4,new QTableWidgetItem("Yes"));}
 
         //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
       }
@@ -160,7 +164,6 @@ void MainWindow::on_Input_Filter_Scientists_textChanged(const QString &arg1)
         vector<Computer>computers = computerService.searchForComputers(inputFilter);
         displayComputers(computers);
     }
-
 }
 
 void MainWindow::on_table_showAllScientists_clicked(const QModelIndex &index)
@@ -170,22 +173,48 @@ void MainWindow::on_table_showAllScientists_clicked(const QModelIndex &index)
 
 void MainWindow::on_button_delete_scientist_clicked()
 {
-    ScientistService scientistService;
-
-    int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
-    Scientist currentlySelectedScientist = currentScientists.at(indexOfSelected);
-
-    bool success = scientistService.removeScientist(currentlySelectedScientist);
-
-    if (success)
+    QString index = ui->Dropdown_Menu->currentText();
+    if(index == "Scientists")
     {
-       ui->Input_Filter_Scientists->setText("");
-       displayAllScientists();
+        ScientistService scientistService;
+
+        int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
+        Scientist currentlySelectedScientist = currentScientists.at(indexOfSelected);
+
+        bool success = scientistService.removeScientist(currentlySelectedScientist);
+
+        if (success)
+        {
+           ui->Input_Filter_Scientists->setText("");
+           displayAllScientists();
+           ui->statusBar->showMessage("Successfully removed scientist", 3000);
+        }
+        else
+        {
+           ui->statusBar->showMessage("Scientist was NOT deleted", 3000);
+        }
     }
-    else
+    if(index=="Computers")
     {
-        //error message
+        ComputerService computerService;
+
+        int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
+        Computer currentlySelectedComputer = currentComputers.at(indexOfSelected);
+
+        bool success = computerService.removeComputer(currentlySelectedComputer);
+
+        if (success)
+        {
+           ui->Input_Filter_Scientists->setText("");
+           displayAllComputers();
+           ui->statusBar->showMessage("Successfully removed Computer", 3000);
+        }
+        else
+        {
+           ui->statusBar->showMessage("Computer was NOT deleted", 3000);
+        }
     }
+
 }
 
 
@@ -207,8 +236,6 @@ void MainWindow::on_button_add_scientist_clicked()
         ui->statusBar->showMessage("Error! Scientist was not added, make sure tables have been created.", 3000);
     }
 }
-
-
 
 void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
 {
@@ -238,7 +265,7 @@ void MainWindow::on_actionAdd_Scientists_triggered()
 
 void MainWindow::on_actionAdd_Computer_triggered()
 {
-    //add computer via file menu
+    on_button_add_computer_clicked();
 }
 
 void MainWindow::on_action_Exit_triggered()
@@ -252,6 +279,19 @@ void MainWindow::on_button_add_computer_clicked()
     AddComputerDialog addComputerDialog;
     addComputerDialog.setModal(true);
     int addComputerReturnValue = addComputerDialog.exec();
+
+    if (addComputerReturnValue == 0)
+    {
+        ui->Input_Filter_Scientists->setText("");
+        displayAllComputers();
+
+        ui->statusBar->showMessage("Successfully added computer", 3000);
+    }
+    else
+    {
+        ui->statusBar->showMessage("Error! Computer was not added, make sure tables have been created.", 3000);
+    }
+
 }
 
 
