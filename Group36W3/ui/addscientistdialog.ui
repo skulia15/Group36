@@ -13,34 +13,88 @@
   <property name="palette">
    <palette>
     <active>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>110</red>
+        <green>255</green>
+        <blue>219</blue>
+       </color>
+      </brush>
+     </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>110</green>
+        <red>213</red>
+        <green>219</green>
         <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>189</red>
+        <green>255</green>
+        <blue>251</blue>
        </color>
       </brush>
      </colorrole>
     </active>
     <inactive>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>110</red>
+        <green>255</green>
+        <blue>219</blue>
+       </color>
+      </brush>
+     </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>110</green>
+        <red>213</red>
+        <green>219</green>
         <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>189</red>
+        <green>255</green>
+        <blue>251</blue>
        </color>
       </brush>
      </colorrole>
     </inactive>
     <disabled>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>110</red>
+        <green>255</green>
+        <blue>219</blue>
+       </color>
+      </brush>
+     </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
         <red>240</red>
         <green>240</green>
         <blue>240</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>51</red>
+        <green>153</green>
+        <blue>255</blue>
        </color>
       </brush>
      </colorrole>
@@ -51,7 +105,8 @@
    <string>Add Scientist</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="sr"/>
+   <iconset theme="sr">
+    <normaloff>.</normaloff>.</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item alignment="Qt::AlignHCenter">

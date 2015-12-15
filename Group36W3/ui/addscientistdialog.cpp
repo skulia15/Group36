@@ -46,7 +46,7 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
 
         thereWasAnError = true;
     }
-    if (!checkStringValid(name.toStdString())){
+    if (checkStringValid(name.toStdString())){
          ui->label_error_name->setText("<span style=color:#FF2A1A>The name can only contain alphabetic characters!</span>");
 
          thereWasAnError = true;
@@ -104,7 +104,7 @@ bool checkStringValid(string myString){
             error = true;}
              else return false;
     }
-    if (error = true){ return true;}
+    if (error == true){ return true;}
     else{ return false;}
 }
 

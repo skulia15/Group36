@@ -101,11 +101,11 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
 
 bool checkCompStringValid(string myString){
     bool error = false;
-    for (int i = 0; i < myString.length(); i++){
+    for (unsigned int i = 0; i < myString.length(); i++){
         if (isalnum(myString[i]) || isspace(myString[i])){
             error = true;}
              else return false;
     }
-    if (error = true) return true;
+    if (error == true) return true;
     else return false;
   }

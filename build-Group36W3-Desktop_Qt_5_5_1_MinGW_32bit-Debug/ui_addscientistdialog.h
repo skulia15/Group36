@@ -54,15 +54,33 @@ public:
             AddScientistDialog->setObjectName(QStringLiteral("AddScientistDialog"));
         AddScientistDialog->resize(440, 348);
         QPalette palette;
-        QBrush brush(QColor(0, 110, 255, 255));
+        QBrush brush(QColor(110, 255, 219, 255));
         brush.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Active, QPalette::Base, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
-        QBrush brush1(QColor(240, 240, 240, 255));
+        palette.setBrush(QPalette::Active, QPalette::Light, brush);
+        QBrush brush1(QColor(213, 219, 255, 255));
         brush1.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush1);
+        QBrush brush2(QColor(189, 255, 251, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Highlight, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::Light, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Highlight, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Light, brush);
+        QBrush brush3(QColor(240, 240, 240, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush3);
+        QBrush brush4(QColor(51, 153, 255, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Highlight, brush4);
         AddScientistDialog->setPalette(palette);
-        QIcon icon(QIcon::fromTheme(QStringLiteral("sr")));
+        QIcon icon;
+        QString iconThemeName = QStringLiteral("sr");
+        if (QIcon::hasThemeIcon(iconThemeName)) {
+            icon = QIcon::fromTheme(iconThemeName);
+        } else {
+            icon.addFile(QStringLiteral("."), QSize(), QIcon::Normal, QIcon::Off);
+        }
         AddScientistDialog->setWindowIcon(icon);
         verticalLayout_2 = new QVBoxLayout(AddScientistDialog);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
