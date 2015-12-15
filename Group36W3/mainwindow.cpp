@@ -156,16 +156,22 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentComputer.getType()));
-        temp = currentComputer.getType();
-        char otherTemp = static_cast<char>(temp + '0');
+        temp = newItem4->text().toInt();
 
-        qDebug() << otherTemp;
-        cout << otherTemp;
-        if(otherTemp == 1){ ui-> table_showAllScientists-> setItem (row,3,new QTableWidgetItem("Electric"));}
-        if(otherTemp == 2){ ui-> table_showAllScientists-> setItem (row,3,new QTableWidgetItem("Mechatronic"));}
-        if(otherTemp == 3){ ui-> table_showAllScientists-> setItem (row,3,new QTableWidgetItem("Transistor"));}
-        if(otherTemp == 4){ ui-> table_showAllScientists-> setItem (row,3,new QTableWidgetItem("Other"));}
-        else {ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("error"));}
+        qDebug() << temp;
+
+        if(temp == 1){
+            ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("Electronic"));
+        }
+        if(temp == 2){
+            ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("Mechatronic"));
+        }
+        if(temp == 3){
+            ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("Transistor"));
+        }
+        if(temp == 4){
+            ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("Other"));
+        }
 
 
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
