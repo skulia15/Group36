@@ -13,6 +13,8 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -35,7 +37,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_input_sex;
     QLabel *label_error_sex;
-    QLineEdit *input_sex;
+    QComboBox *comboBox_sex;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_year_of_birth;
     QLabel *label_error_YoB;
@@ -44,6 +46,8 @@ public:
     QLabel *label_year_of_death;
     QLabel *label_pointless_alignment;
     QLineEdit *input_year_of_death;
+    QCheckBox *checkBox_cpuRelations;
+    QLineEdit *label_cpuRelationName;
     QPushButton *button_add_Scientist_box;
 
     void setupUi(QDialog *AddScientistDialog)
@@ -63,7 +67,7 @@ public:
         label_input_label = new QLabel(AddScientistDialog);
         label_input_label->setObjectName(QStringLiteral("label_input_label"));
 
-        horizontalLayout->addWidget(label_input_label);
+        horizontalLayout->addWidget(label_input_label, 0, Qt::AlignLeft);
 
         label_error_name = new QLabel(AddScientistDialog);
         label_error_name->setObjectName(QStringLiteral("label_error_name"));
@@ -84,7 +88,7 @@ public:
         label_input_sex = new QLabel(AddScientistDialog);
         label_input_sex->setObjectName(QStringLiteral("label_input_sex"));
 
-        horizontalLayout_2->addWidget(label_input_sex);
+        horizontalLayout_2->addWidget(label_input_sex, 0, Qt::AlignLeft);
 
         label_error_sex = new QLabel(AddScientistDialog);
         label_error_sex->setObjectName(QStringLiteral("label_error_sex"));
@@ -94,17 +98,17 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_2);
 
-        input_sex = new QLineEdit(AddScientistDialog);
-        input_sex->setObjectName(QStringLiteral("input_sex"));
+        comboBox_sex = new QComboBox(AddScientistDialog);
+        comboBox_sex->setObjectName(QStringLiteral("comboBox_sex"));
 
-        verticalLayout_2->addWidget(input_sex);
+        verticalLayout_2->addWidget(comboBox_sex);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         label_year_of_birth = new QLabel(AddScientistDialog);
         label_year_of_birth->setObjectName(QStringLiteral("label_year_of_birth"));
 
-        horizontalLayout_3->addWidget(label_year_of_birth, 0, Qt::AlignHCenter);
+        horizontalLayout_3->addWidget(label_year_of_birth, 0, Qt::AlignLeft);
 
         label_error_YoB = new QLabel(AddScientistDialog);
         label_error_YoB->setObjectName(QStringLiteral("label_error_YoB"));
@@ -124,7 +128,7 @@ public:
         label_year_of_death = new QLabel(AddScientistDialog);
         label_year_of_death->setObjectName(QStringLiteral("label_year_of_death"));
 
-        horizontalLayout_4->addWidget(label_year_of_death);
+        horizontalLayout_4->addWidget(label_year_of_death, 0, Qt::AlignLeft);
 
         label_pointless_alignment = new QLabel(AddScientistDialog);
         label_pointless_alignment->setObjectName(QStringLiteral("label_pointless_alignment"));
@@ -138,6 +142,17 @@ public:
         input_year_of_death->setObjectName(QStringLiteral("input_year_of_death"));
 
         verticalLayout_2->addWidget(input_year_of_death);
+
+        checkBox_cpuRelations = new QCheckBox(AddScientistDialog);
+        checkBox_cpuRelations->setObjectName(QStringLiteral("checkBox_cpuRelations"));
+
+        verticalLayout_2->addWidget(checkBox_cpuRelations);
+
+        label_cpuRelationName = new QLineEdit(AddScientistDialog);
+        label_cpuRelationName->setObjectName(QStringLiteral("label_cpuRelationName"));
+        label_cpuRelationName->setEnabled(false);
+
+        verticalLayout_2->addWidget(label_cpuRelationName);
 
         button_add_Scientist_box = new QPushButton(AddScientistDialog);
         button_add_Scientist_box->setObjectName(QStringLiteral("button_add_Scientist_box"));
@@ -163,8 +178,9 @@ public:
         label_error_sex->setText(QString());
         label_year_of_birth->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Year of birth</span></p></body></html>", 0));
         label_error_YoB->setText(QString());
-        label_year_of_death->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Year of death</span></p></body></html>", 0));
+        label_year_of_death->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Year of death </span><span style=\" font-size:9pt;\">(if relevant)</span></p></body></html>", 0));
         label_pointless_alignment->setText(QString());
+        checkBox_cpuRelations->setText(QApplication::translate("AddScientistDialog", "CheckBox", 0));
         button_add_Scientist_box->setText(QApplication::translate("AddScientistDialog", "Add Scientist", 0));
     } // retranslateUi
 

@@ -43,6 +43,7 @@ public:
     QTableWidget *table_showAllScientists;
     QPushButton *button_add_scientist;
     QPushButton *button_add_computer;
+    QPushButton *button_add_relasions;
     QPushButton *button_delete_scientist;
     QMenuBar *menuBar;
     QMenu *menu_File;
@@ -101,6 +102,11 @@ public:
 
         verticalLayout->addWidget(button_add_computer);
 
+        button_add_relasions = new QPushButton(centralWidget);
+        button_add_relasions->setObjectName(QStringLiteral("button_add_relasions"));
+
+        verticalLayout->addWidget(button_add_relasions);
+
         button_delete_scientist = new QPushButton(centralWidget);
         button_delete_scientist->setObjectName(QStringLiteral("button_delete_scientist"));
         button_delete_scientist->setEnabled(false);
@@ -149,7 +155,8 @@ public:
         Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter..", 0));
         button_add_scientist->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
         button_add_computer->setText(QApplication::translate("MainWindow", "Add Computer", 0));
-        button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete", 0));
+        button_add_relasions->setText(QApplication::translate("MainWindow", "Add Relations", 0));
+        button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete Selected", 0));
         menu_File->setTitle(QApplication::translate("MainWindow", "&File", 0));
     } // retranslateUi
 

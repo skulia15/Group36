@@ -10,7 +10,7 @@
 #include <iomanip>
 #include <services/linkservice.h>
 #include "addcomputerdialog.h"
-
+#include "relations.h"
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -129,7 +129,9 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
         if(newItem4->text().toInt() == 1){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Mechatronic"));}
         if(newItem4->text().toInt() == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Transistor"));}
         if(newItem4->text().toInt() == 3){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Other"));}
+
         else {ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("error"));}
+        qDebug() << newItem4->text().toInt();
 
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
         newItem5->setText(QString::number(currentComputer.wasBuilt()));
@@ -295,3 +297,10 @@ void MainWindow::on_button_add_computer_clicked()
 }
 
 
+
+void MainWindow::on_button_add_relasions_clicked()//Sverrir, used to open Relations window.
+{
+    relations addRelations;
+    addRelations.setModal(true);
+    addRelations.exec();
+}

@@ -12,6 +12,10 @@ INPUT(
 ./debug\consoleui.o
 ./debug\utils.o
 ./debug\addscientistdialog.o
+./debug\addcomputerdialog.o
+./debug\relations.o
 ./debug\moc_mainwindow.o
 ./debug\moc_addscientistdialog.o
+./debug\moc_addcomputerdialog.o
+./debug\moc_relations.o
 );

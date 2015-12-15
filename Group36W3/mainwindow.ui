@@ -79,6 +79,13 @@
      </widget>
     </item>
     <item>
+     <widget class="QPushButton" name="button_add_relasions">
+      <property name="text">
+       <string>Add Relations</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="button_delete_scientist">
       <property name="enabled">
        <bool>false</bool>
