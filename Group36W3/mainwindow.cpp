@@ -81,8 +81,9 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentScientists.getYearDied()));
-
-        if(newItem4 == 0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Alive"));} //viljum fá ALIVE!!!
+        qDebug() <<  newItem4->text().toInt();
+        int temp = newItem4->text().toInt();
+        if(temp == 0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Alive"));} //viljum fá ALIVE!!!
             else { ui->table_showAllScientists->setItem(row,4,newItem4);}
 
         //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
