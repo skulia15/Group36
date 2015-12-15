@@ -149,7 +149,7 @@ public:
         Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter..", 0));
         button_add_scientist->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
         button_add_computer->setText(QApplication::translate("MainWindow", "Add Computer", 0));
-        button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete", 0));
+        button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete Selected", 0));
         menu_File->setTitle(QApplication::translate("MainWindow", "&File", 0));
     } // retranslateUi
 

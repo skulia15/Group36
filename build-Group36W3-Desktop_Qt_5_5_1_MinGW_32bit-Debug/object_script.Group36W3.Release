@@ -12,6 +12,8 @@ INPUT(
 ./release\consoleui.o
 ./release\utils.o
 ./release\addscientistdialog.o
+./release\addcomputerdialog.o
 ./release\moc_mainwindow.o
 ./release\moc_addscientistdialog.o
+./release\moc_addcomputerdialog.o
 );
