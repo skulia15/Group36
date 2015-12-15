@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Group36W3
 TEMPLATE = app
 CONFIG += C++11
-
+RC_FILE = myapp.rc
 SOURCES += main.cpp\
         mainwindow.cpp \
     models/computer.cpp \
@@ -45,3 +45,6 @@ FORMS    += mainwindow.ui \
 
 INCLUDEPATH += models \
     ui
+
+DISTFILES += \
+    myapp.rc

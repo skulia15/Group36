@@ -50,7 +50,6 @@ private:
     std::vector <Scientist> currentScientists;
     std::vector <Computer> currentComputers;
 
-
 };
 
 #endif // MAINWINDOW_H
