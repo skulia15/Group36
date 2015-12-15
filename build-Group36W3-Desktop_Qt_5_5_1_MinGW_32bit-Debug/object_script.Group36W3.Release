@@ -13,15 +13,9 @@ INPUT(
 ./release\utils.o
 ./release\addscientistdialog.o
 ./release\addcomputerdialog.o
-<<<<<<< HEAD
 ./release\relations.o
 ./release\moc_mainwindow.o
 ./release\moc_addscientistdialog.o
 ./release\moc_addcomputerdialog.o
 ./release\moc_relations.o
-=======
-./release\moc_mainwindow.o
-./release\moc_addscientistdialog.o
-./release\moc_addcomputerdialog.o
->>>>>>> d8b51f2a93fd3304c9bda1becc4f79021345ebbd
 );

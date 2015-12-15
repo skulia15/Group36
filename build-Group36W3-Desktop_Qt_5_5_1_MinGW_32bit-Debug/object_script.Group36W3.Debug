@@ -13,15 +13,9 @@ INPUT(
 ./debug\utils.o
 ./debug\addscientistdialog.o
 ./debug\addcomputerdialog.o
-<<<<<<< HEAD
 ./debug\relations.o
 ./debug\moc_mainwindow.o
 ./debug\moc_addscientistdialog.o
 ./debug\moc_addcomputerdialog.o
 ./debug\moc_relations.o
-=======
-./debug\moc_mainwindow.o
-./debug\moc_addscientistdialog.o
-./debug\moc_addcomputerdialog.o
->>>>>>> d8b51f2a93fd3304c9bda1becc4f79021345ebbd
 );

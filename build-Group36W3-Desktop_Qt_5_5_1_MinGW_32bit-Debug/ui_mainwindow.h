@@ -159,10 +159,7 @@ public:
         Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter..", 0));
         button_add_scientist->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
         button_add_computer->setText(QApplication::translate("MainWindow", "Add Computer", 0));
-<<<<<<< HEAD
         button_add_relasions->setText(QApplication::translate("MainWindow", "Add Relations", 0));
-=======
->>>>>>> d8b51f2a93fd3304c9bda1becc4f79021345ebbd
         button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete Selected", 0));
         menu_File->setTitle(QApplication::translate("MainWindow", "&File", 0));
     } // retranslateUi

@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
@@ -46,8 +45,6 @@ public:
     QLabel *label_year_of_death;
     QLabel *label_pointless_alignment;
     QLineEdit *input_year_of_death;
-    QCheckBox *checkBox_cpuRelations;
-    QLineEdit *label_cpuRelationName;
     QPushButton *button_add_Scientist_box;
 
     void setupUi(QDialog *AddScientistDialog)
@@ -100,10 +97,7 @@ public:
 
         comboBox_sex = new QComboBox(AddScientistDialog);
         comboBox_sex->setObjectName(QStringLiteral("comboBox_sex"));
-<<<<<<< HEAD
-=======
         comboBox_sex->setCursor(QCursor(Qt::PointingHandCursor));
->>>>>>> d8b51f2a93fd3304c9bda1becc4f79021345ebbd
 
         verticalLayout_2->addWidget(comboBox_sex);
 
@@ -147,17 +141,6 @@ public:
 
         verticalLayout_2->addWidget(input_year_of_death);
 
-        checkBox_cpuRelations = new QCheckBox(AddScientistDialog);
-        checkBox_cpuRelations->setObjectName(QStringLiteral("checkBox_cpuRelations"));
-
-        verticalLayout_2->addWidget(checkBox_cpuRelations);
-
-        label_cpuRelationName = new QLineEdit(AddScientistDialog);
-        label_cpuRelationName->setObjectName(QStringLiteral("label_cpuRelationName"));
-        label_cpuRelationName->setEnabled(false);
-
-        verticalLayout_2->addWidget(label_cpuRelationName);
-
         button_add_Scientist_box = new QPushButton(AddScientistDialog);
         button_add_Scientist_box->setObjectName(QStringLiteral("button_add_Scientist_box"));
         button_add_Scientist_box->setCursor(QCursor(Qt::PointingHandCursor));
@@ -185,7 +168,6 @@ public:
         label_error_YoB->setText(QString());
         label_year_of_death->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Year of death </span><span style=\" font-size:9pt;\">(if relevant)</span></p></body></html>", 0));
         label_pointless_alignment->setText(QString());
-        checkBox_cpuRelations->setText(QApplication::translate("AddScientistDialog", "CheckBox", 0));
         button_add_Scientist_box->setText(QApplication::translate("AddScientistDialog", "Add Scientist", 0));
     } // retranslateUi
 
