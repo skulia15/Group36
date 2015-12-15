@@ -26,9 +26,6 @@ relations::~relations()
     delete ui;
 }
 
-
-
-
 void relations::displayAllScientistsRelations()//Sverrir, Sets all scientists to vector and calls display.
 {
     ScientistService scientistService;
@@ -112,11 +109,20 @@ void relations::on_pushButton_clicked()
     QString cpuId = ui->table_relations_Computers->currentItem()->text();
     if(!sciId.isEmpty())
     {
-        link.addLink(sciId.toStdString(),cpuId.toStdString());
+        bool success = link.addLink(sciId.toStdString(),cpuId.toStdString());
+        if (success){
+            displayAllComputersRelations();
+            this->done(0);
+        }
+            else{
+                this->done(-1);
+            }
     }
     else
     {
        //Error
     }
+
+    displayAllComputersRelations();
 
 }
