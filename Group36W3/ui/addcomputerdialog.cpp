@@ -39,21 +39,26 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
 
     QString name = ui->Input_computer_name->text();
     QString yearBuilt = ui->input_year_built->text();
+
     if(ui->comboBox_computer_type->currentText() == "Electronic"){
         temp = 1;
         computerType = temp;
+        qDebug()<<temp<<computerType;
     }
     if(ui->comboBox_computer_type->currentText() == "Mechatronic"){
         temp = 2;
         computerType = temp;
+
     }
     if(ui->comboBox_computer_type->currentText() == "Transistor"){
         temp = 3;
         computerType = temp;
+    qDebug()<<temp<<computerType;
     }
     if(ui->comboBox_computer_type->currentText() == "Other"){
         temp = 4;
         computerType = temp;
+
     }
 
     if (name.isEmpty()){

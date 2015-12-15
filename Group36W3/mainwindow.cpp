@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ComputerService computerService;
     LinkService links;
     ScientistService scientistService;
-   // displayAllScientists();
+    displayAllScientists();
 
 }
 
