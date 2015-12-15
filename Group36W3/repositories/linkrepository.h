@@ -4,6 +4,8 @@
 #include <QtSql>
 #include <vector>
 #include <string>
+using namespace std;
+
 
 /**
  * @brief The LinkRepository handles connections between scientists and computers in the database
@@ -21,7 +23,8 @@ public:
      * @param computerId The computer id to connect to
      * @return true if it was a success, false if it was a failure
      */
-    bool addLink(std::string scientistId, std::string computerId);
+    bool addLink(string scientistId, string computerId);
+    bool removeLink(string scientistId, string computerId);
 
 
 private:

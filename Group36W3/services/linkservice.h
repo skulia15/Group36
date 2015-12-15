@@ -2,6 +2,7 @@
 #define LINKSERVICE_H
 
 #include "repositories/linkrepository.h"
+using namespace std;
 
 /**
  * @brief The LinkService acts as a middle layer between the UI and Data layers
@@ -18,7 +19,8 @@ public:
      * @param computerId The computer id to connect to
      * @return true if it was a success, false if it was a failure
      */
-    bool addLink(std::string scientistId, std::string computerId);
+    bool addLink(string scientistId, string computerId);
+    bool removeLink(string scientistId, string computerId);
 private:
 
     LinkRepository linkRepo;

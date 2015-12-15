@@ -43,4 +43,21 @@ bool LinkRepository::addLink(string scientistId, string computerId)
     return true;
 }
 
+bool LinkRepository::removeLink(string scientistId, string computerId)
+{
+    db.open();
+
+    QSqlQuery query(db);
+
+    stringstream sqlQuery;
+    sqlQuery << "DELETE FROM ScientistComputerConnections WHERE scientistId = " << scientistId;
+           //  << "'" << scientistId << "', "
+           //  << "'" << computerId << "'"
+           //  << ")";
+//sqlQuery << "DELETE FROM Computers WHERE id = " << computer.getId();
+    bool success = query.exec(QString::fromStdString(sqlQuery.str()));
+
+    db.close();
+    return success;
+}
 
