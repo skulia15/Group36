@@ -133,7 +133,7 @@ std::vector<Computer> ScientistRepository::queryComputersByScientist(Scientist s
     {
         int id = query.value("id").toUInt();
         string name = query.value("name").toString().toStdString();
-        enum computerType type = utils::intToComputerType(query.value("type").toInt());
+        int type = query.value("type").toInt();
         int yearBuilt = query.value("yearBuilt").toInt();
 
         computers.push_back(Computer(id, name, type, yearBuilt));

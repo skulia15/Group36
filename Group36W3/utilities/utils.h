@@ -23,8 +23,6 @@ namespace utils {
 
     std::string intToString(int number);
 
-    enum computerType intToComputerType(int number);
-
     QSqlDatabase getDatabaseConnection();
 }
 

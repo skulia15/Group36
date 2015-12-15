@@ -87,7 +87,7 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
         return;
     }
 
-    bool success = computerService.addComputer(Computer(name.toStdString(), utils::intToComputerType(temp), yearBuilt.toInt()));
+    bool success = computerService.addComputer(Computer(name.toStdString(), temp, yearBuilt.toInt()));
 
     if (success){
         ui->Input_computer_name->setText("");

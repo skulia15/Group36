@@ -75,11 +75,6 @@ namespace utils {
     }
 
 
-    enum computerType intToComputerType(int number)
-    {
-        return static_cast<enum computerType>(number);
-    }
-
 
     QSqlDatabase getDatabaseConnection()
     {

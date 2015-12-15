@@ -456,7 +456,6 @@ void ConsoleUI::displayComputers(std::vector<Computer> computers)
 
         cout << setw(5)  << std::left << computers.at(i).getId()
              << setw(20) << std::left << computers.at(i).getName()
-             << setw(15) << std::left << computers.at(i).getTypeName()
              << setw(15) << std::left << built;
         for(unsigned int j = 0; j < scientists.size(); j++)
         {
@@ -515,23 +514,23 @@ bool ConsoleUI::addComputer(string data)
     {
         string name = fields.at(0);
 
-        enum computerType type;
+        int type;
         string typeString = fields.at(1);
         if (typeString == "electronic")
         {
-            type = computerType::electronic;
+
         }
         else if (typeString == "mechatronic")
         {
-            type = computerType::mechatronic;
+
         }
         else if (typeString == "transistor")
         {
-            type = computerType::transistor;
+
         }
         else
         {
-            type = computerType::other;
+
         }
 
         if (fields.size() == 2)
