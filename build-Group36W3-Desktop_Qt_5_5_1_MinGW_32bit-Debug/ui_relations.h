@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
 
@@ -26,6 +27,8 @@ public:
     QTableWidget *table_relations_scientists;
     QTableWidget *table_relations_Computers;
     QPushButton *pushButton;
+    QLabel *label_error_Sci;
+    QLabel *label_error_cpu;
 
     void setupUi(QDialog *relations)
     {
@@ -51,6 +54,12 @@ public:
         pushButton = new QPushButton(relations);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(230, 270, 111, 23));
+        label_error_Sci = new QLabel(relations);
+        label_error_Sci->setObjectName(QStringLiteral("label_error_Sci"));
+        label_error_Sci->setGeometry(QRect(100, 10, 47, 13));
+        label_error_cpu = new QLabel(relations);
+        label_error_cpu->setObjectName(QStringLiteral("label_error_cpu"));
+        label_error_cpu->setGeometry(QRect(400, 10, 47, 13));
 
         retranslateUi(relations);
 
@@ -61,6 +70,8 @@ public:
     {
         relations->setWindowTitle(QApplication::translate("relations", "Dialog", 0));
         pushButton->setText(QApplication::translate("relations", "Add Relation", 0));
+        label_error_Sci->setText(QApplication::translate("relations", "TextLabel", 0));
+        label_error_cpu->setText(QApplication::translate("relations", "TextLabel", 0));
     } // retranslateUi
 
 };

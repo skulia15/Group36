@@ -34,7 +34,6 @@ void relations::displayAllScientistsRelations()//Sverrir, Sets all scientists to
     displayScientistsRelations(scientists);
 }
 
-
 void relations::displayScientistsRelations(std::vector<Scientist> scientists)//Sverrir, shows scientists.at(i).
 {
 
@@ -70,9 +69,7 @@ void relations::displayAllComputersRelations() //Sverrir, Sets all scientists to
     vector<Computer>computer = cpuService.getAllComputers("name",true);
 
     displayComputersRelations(computer);
-
 }
-
 
 void relations::displayComputersRelations(std::vector<Computer> computers)
 {
@@ -107,8 +104,18 @@ void relations::on_pushButton_clicked()
     LinkService link;
     QString sciId = ui->table_relations_scientists->currentItem()->text();
     QString cpuId = ui->table_relations_Computers->currentItem()->text();
-    if(!sciId.isEmpty())
+
+    bool error =false;
+    do {
+
+    if(!sciId.isEmpty() || !cpuId.isEmpty())
     {
+
+        link.addLink(sciId.toStdString(),cpuId.toStdString());
+        displayAllScientistsRelations();
+        displayAllComputersRelations();
+        error = true;
+
         bool success = link.addLink(sciId.toStdString(),cpuId.toStdString());
         if (success){
             displayAllComputersRelations();
@@ -118,11 +125,29 @@ void relations::on_pushButton_clicked()
                 this->done(-1);
             }
     }
-    else
+
+
+    if(sciId.isEmpty() || cpuId.isEmpty())
     {
-       //Error
+       ui->label_error_Sci->setText("Kindly include a scientists");
+       ui->label_error_cpu->setText("Kindly inlcude a computer");
     }
+
+    if(sciId.isEmpty())
+    {
+       ui->label_error_Sci->setText("Kindly include a scientists");
+    }
+
+
+    if(cpuId.isEmpty())
+    {
+       ui->label_error_cpu->setText("Kindly inlcude a computer");
+    }
+
+}while(error==false);
 
     displayAllComputersRelations();
 
+
 }
+
