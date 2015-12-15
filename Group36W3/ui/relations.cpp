@@ -110,10 +110,20 @@ void relations::on_pushButton_clicked()
 
     if(!sciId.isEmpty() || !cpuId.isEmpty())
     {
+
         link.addLink(sciId.toStdString(),cpuId.toStdString());
         displayAllScientistsRelations();
         displayAllComputersRelations();
         error = true;
+
+        bool success = link.addLink(sciId.toStdString(),cpuId.toStdString());
+        if (success){
+            displayAllComputersRelations();
+            this->done(0);
+        }
+            else{
+                this->done(-1);
+            }
     }
 
 
@@ -128,11 +138,16 @@ void relations::on_pushButton_clicked()
        ui->label_error_Sci->setText("Kindly include a scientists");
     }
 
+
     if(cpuId.isEmpty())
     {
        ui->label_error_cpu->setText("Kindly inlcude a computer");
     }
 
 }while(error==false);
+
+    displayAllComputersRelations();
+
+
 }
 

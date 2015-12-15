@@ -14,8 +14,11 @@
 #include "repositories/linkrepository.h"
 #include "repositories/computerrepository.h"
 #include "repositories/scientistrepository.h"
-
+#include "relations.h"
+#include "services/linkservice.h"
 #include "utilities/utils.h"
+#include "ui/relations.h"
+#include "ui_relations.h"
 
 using namespace std;
 
@@ -157,8 +160,6 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentComputer.getType()));
         temp = newItem4->text().toInt();
-
-        qDebug() << temp;
 
         if(temp == 1){
             ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("Electronic"));
@@ -360,11 +361,20 @@ void MainWindow::on_button_add_computer_clicked()
 void MainWindow::on_button_add_relasions_clicked()//Sverrir, used to open Relations window.
 {
     relations addRelations;
+   //displayAll relations
     addRelations.setModal(true);
-    addRelations.exec();
+    int addRelationsReturnValue = addRelations.exec();
+
+    if (addRelationsReturnValue == 0)
+    {
+        displayRelation();
+        ui->statusBar->showMessage("Successfully added relation", 3000);
+    }
+    else
+    {
+        ui->statusBar->showMessage("Error! Relation was not added, make sure tables have been created.", 3000);
+    }
 }
-
-
 
 
 void MainWindow::displayRelation()
@@ -392,8 +402,6 @@ void MainWindow::displayRelation()
             }
 
         db.close();
-
-
 
                ui->table_showAllScientists->setRowCount(viktor.size());
                ui->table_showAllScientists->setColumnCount(3);
