@@ -99,9 +99,9 @@ qDebug()<<computer.size();
 void MainWindow::displayComputers(std::vector<Computer> computers)
 {
     ui->table_showAllScientists->setRowCount(computers.size());
-    ui->table_showAllScientists->setColumnCount(4);
+    ui->table_showAllScientists->setColumnCount(5);
     QStringList header;
-    header << "ID" << "Name" << "Year Built" << "Type";
+    header << "ID" << "Name" << "Year Built" << "Type"<<"Was it built";
     ui->table_showAllScientists->setHorizontalHeaderLabels(header);
      ui->table_showAllScientists->hideColumn(0);
 
@@ -119,11 +119,16 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
         QTableWidgetItem* newItem3 = new QTableWidgetItem();
         newItem3->setText(QString::number(currentComputer.getYearBuilt()));
-        ui->table_showAllScientists->setItem(row,3,newItem3);
+        ui->table_showAllScientists->setItem(row,2,newItem3);
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentComputer.getType()));
-        ui->table_showAllScientists->setItem(row,4,newItem4);
+        ui->table_showAllScientists->setItem(row,3,newItem4);
+
+        QTableWidgetItem* newItem5 = new QTableWidgetItem();
+        newItem5->setText(QString::number(currentComputer.wasBuilt()));
+        if(newItem5==0){ui->table_showAllScientists->setItem(row,4,new QTableWidgetItem("No"));}
+            else{ui->table_showAllScientists->setItem(row,4,new QTableWidgetItem("Yes"));}
 
 
         //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
