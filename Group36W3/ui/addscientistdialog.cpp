@@ -9,6 +9,9 @@ AddScientistDialog::AddScientistDialog(QWidget *parent) :
     ui(new Ui::AddScientistDialog)
 {
     ui->setupUi(this);
+    ui->comboBox_sex->addItem("");
+    ui->comboBox_sex->addItem("Male");
+    ui->comboBox_sex->addItem("Female");
 }
 
 AddScientistDialog::~AddScientistDialog()
@@ -26,7 +29,7 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
     ui->label_error_YoB->setText("");
 
     QString name = ui->Input_Scientist_Name->text();
-    QString sex = ui->input_sex->text();
+    QString sex = ui->comboBox_sex->currentText();
     QString YoB = ui->input_year_of_birth->text();
     QString YoD = ui->input_year_of_death->text();
 
@@ -57,7 +60,6 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
 
     if (success){
         ui->Input_Scientist_Name->setText("");
-        ui->input_sex->setText("");
         ui->input_year_of_birth->setText("");
         ui->input_year_of_death->setText("");
         this->done(0);
@@ -80,3 +82,5 @@ void AddScientistDialog::on_checkBox_cpuRelations_clicked()
            ui->label_cpuRelationName->setEnabled(0);
         }
 }
+
+

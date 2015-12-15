@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle("Scientists And Computer Finder 3000");
     setWindowIcon(QIcon("logo.png"));
 
+
     ComputerService computerService;
     LinkService links;
     ScientistService scientistService;
@@ -48,7 +49,7 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
     ui->table_showAllScientists->setRowCount(scientists.size());
     ui->table_showAllScientists->setColumnCount(5);
     QStringList header;
-    header<<"ID"<<"Name"<<"Sex"<<"YoB"<<"YoD";
+    header << "ID" << "Name" << "Sex" << "YoB" << "YoD";
     ui->table_showAllScientists->setHorizontalHeaderLabels(header);
      ui->table_showAllScientists->hideColumn(0);
 
@@ -81,10 +82,10 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
 
         //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
       }
-    currentScientists = scientists; //Sverrir, Hvað gerir þetta ?
+    currentScientists = scientists; //For indexing purposes
 }
 
-void MainWindow::displayAllComputers()//Sverrir, Sets all scientists to vector and calls display.
+void MainWindow::displayAllComputers() //Sverrir, Sets all scientists to vector and calls display.
 {
     ComputerService cpuService;
 
@@ -127,9 +128,8 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
         newItem5->setText(QString::number(currentComputer.wasBuilt()));
         //Sama Enum vese og í Scientists
-        if(newItem5==0){ui->table_showAllScientists->setItem(row,4,new QTableWidgetItem("No"));}
-            else{ui->table_showAllScientists->setItem(row,4,new QTableWidgetItem("Yes"));}
-
+        if(newItem5==0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("No"));}
+            else { ui->table_showAllScientists -> setItem(row,4,new QTableWidgetItem("Yes"));}
 
         //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
       }
@@ -200,7 +200,7 @@ void MainWindow::on_button_delete_scientist_clicked()
 
         if (success)
         {
-           //ui->Input_Filter_Scientists->setText(""); gera filter fyrir  computers
+           ui->Input_Filter_Scientists->setText("");
            displayAllComputers();
            ui->statusBar->showMessage("Successfully removed Computer", 3000);
         }
@@ -231,8 +231,6 @@ void MainWindow::on_button_add_scientist_clicked()
         ui->statusBar->showMessage("Error! Scientist was not added, make sure tables have been created.", 3000);
     }
 }
-
-
 
 void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
 {
@@ -279,7 +277,7 @@ void MainWindow::on_button_add_computer_clicked()
 
     if (addComputerReturnValue == 0)
     {
-       // ui->Input_Filter_Scientists->setText(""); setja filter fyrir comps
+        ui->Input_Filter_Scientists->setText("");
         displayAllComputers();
 
         ui->statusBar->showMessage("Successfully added computer", 3000);

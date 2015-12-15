@@ -10,6 +10,11 @@ AddComputerDialog::AddComputerDialog(QWidget *parent) :
     ui(new Ui::AddComputerDialog)
 {
     ui->setupUi(this);
+    ui->comboBox_computer_type->addItem("");
+    ui->comboBox_computer_type->addItem("Electronic");
+    ui->comboBox_computer_type->addItem("Mechatronic");
+    ui->comboBox_computer_type->addItem("Transistor");
+    ui->comboBox_computer_type->addItem("Other");
 }
 
 AddComputerDialog::~AddComputerDialog()
@@ -28,7 +33,7 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
 
     QString name = ui->Input_computer_name->text();
     QString yearBuilt = ui->input_year_built->text();
-    QString computerType = ui->input_computer_type->text();
+    QString computerType = ui->comboBox_computer_type->currentText();
 
     if (name.isEmpty()){
         ui->label_error_computer_name->setText("The computer must have a name!");
@@ -49,10 +54,8 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
 
     bool success = computerService.addComputer(Computer(name.toStdString(), utils::intToComputerType(computerType.toInt()), yearBuilt.toInt()));
 
-
     if (success){
         ui->Input_computer_name->setText("");
-        ui->input_computer_type->setText("");
         ui->input_year_built->setText("");
         this->done(0);
     }
