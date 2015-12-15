@@ -263,7 +263,7 @@ void MainWindow::on_button_delete_scientist_clicked()
     }
     if(index=="Relations"){
         LinkService link;
-        QString sciId = ui->table_relations_scientists->currentItem()->text();
+        QString sciId = ui->table->currentItem()->text();
         QString cpuId = ui->table_relations_Computers->currentItem()->text();
 
         int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
@@ -273,7 +273,7 @@ void MainWindow::on_button_delete_scientist_clicked()
         if (success)
         {
            ui->Input_Filter_Scientists->setText("");
-           displayAllComputers();
+           displayRelation();
            ui->statusBar->showMessage("Successfully removed Relation", 3000);
         }
         else
