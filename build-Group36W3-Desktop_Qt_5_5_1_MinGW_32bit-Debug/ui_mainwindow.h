@@ -69,6 +69,7 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         Dropdown_Menu = new QComboBox(centralWidget);
         Dropdown_Menu->setObjectName(QStringLiteral("Dropdown_Menu"));
+        Dropdown_Menu->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout->addWidget(Dropdown_Menu);
 
@@ -94,11 +95,13 @@ public:
 
         button_add_scientist = new QPushButton(centralWidget);
         button_add_scientist->setObjectName(QStringLiteral("button_add_scientist"));
+        button_add_scientist->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout->addWidget(button_add_scientist);
 
         button_add_computer = new QPushButton(centralWidget);
         button_add_computer->setObjectName(QStringLiteral("button_add_computer"));
+        button_add_computer->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout->addWidget(button_add_computer);
 
@@ -110,6 +113,7 @@ public:
         button_delete_scientist = new QPushButton(centralWidget);
         button_delete_scientist->setObjectName(QStringLiteral("button_delete_scientist"));
         button_delete_scientist->setEnabled(false);
+        button_delete_scientist->setCursor(QCursor(Qt::PointingHandCursor));
 
         verticalLayout->addWidget(button_delete_scientist);
 
@@ -155,7 +159,10 @@ public:
         Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter..", 0));
         button_add_scientist->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
         button_add_computer->setText(QApplication::translate("MainWindow", "Add Computer", 0));
+<<<<<<< HEAD
         button_add_relasions->setText(QApplication::translate("MainWindow", "Add Relations", 0));
+=======
+>>>>>>> d8b51f2a93fd3304c9bda1becc4f79021345ebbd
         button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete Selected", 0));
         menu_File->setTitle(QApplication::translate("MainWindow", "&File", 0));
     } // retranslateUi

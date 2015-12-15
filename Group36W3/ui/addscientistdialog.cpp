@@ -68,8 +68,6 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
     }
     else{
         this->done(-1);
-        // there was some error, tell the user
-       qDebug() << QDate::currentDate();
     }
 }
 

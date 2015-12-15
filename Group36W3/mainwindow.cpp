@@ -70,7 +70,7 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
         //Tekst ekki að breyta Enum í int.
         //þarf að nota =static_cast<int>
         QTableWidgetItem* newItem2 = new QTableWidgetItem();
-        newItem2->setText(QString::number(currentScientists.getSex()));
+        newItem2->setText(QString::number(static_cast<int>(currentScientists.getSex())));
         ui->table_showAllScientists->setItem(row,2,newItem2);
 
         QTableWidgetItem* newItem3 = new QTableWidgetItem();
@@ -124,12 +124,20 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
         ui->table_showAllScientists->setItem(row,2,newItem3);
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
+<<<<<<< HEAD
         newItem4->setText(QString::number(currentComputer.getType()));
         if(newItem4->text().toInt() == 0){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Electronic"));}
         if(newItem4->text().toInt() == 1){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Mechatronic"));}
         if(newItem4->text().toInt() == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Transistor"));}
         if(newItem4->text().toInt() == 3){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Other"));}
 
+=======
+        newItem4->setText(QString::number(static_cast<int>(currentComputer.getType())));
+        if(newItem4->text() == 0){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Electronic"));}
+        if(newItem4->text() == "Mechatronic"){ ui-> table_showAllScientists-> setItem (row,4,newItem4);}
+        if(newItem4->text() == "2"){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Transistor"));}
+        if(newItem4->text().toInt() == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Other"));}
+>>>>>>> d8b51f2a93fd3304c9bda1becc4f79021345ebbd
         else {ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("error"));}
         qDebug() << newItem4->text().toInt();
 
@@ -256,7 +264,7 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
     }
     else
     {
-        //display warning.
+        ui->statusBar->showMessage("Please select a repository", 3000);
     }
 }
 
