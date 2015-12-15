@@ -11,24 +11,18 @@
  * @brief The data model for computers
  */
 
-enum computerType {
-    electronic,
-    mechatronic,
-    transistor,
-    other
-};
 
 class Computer
 {
 public:
     Computer();
-    Computer(std::string name, enum computerType type);
-    Computer(std::string name, enum computerType type, int yearBuilt);
-    Computer(unsigned int id, std::string name, enum computerType type, int yearBuilt);
+    Computer(std::string name, int type);
+    Computer(std::string name, int type, int yearBuilt);
+    Computer(unsigned int id, std::string name, int type, int yearBuilt);
 
     unsigned int getId();
     std::string getName();
-    enum computerType getType();
+    int getType();
     std::string getTypeName();
     int getYearBuilt();
     bool wasBuilt();
@@ -39,7 +33,7 @@ public:
 private:
     unsigned int id;
     std::string name;
-    enum computerType type;
+    int type;
     int yearBuilt;
 
     std::vector<Scientist> scientists;

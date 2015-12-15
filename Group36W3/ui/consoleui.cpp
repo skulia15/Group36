@@ -410,7 +410,6 @@ void ConsoleUI::displayScientists(std::vector<Scientist> scientists)
          << setw(20) << std::left << "Computers:" << endl;
 
     for (unsigned int i = 0; i < scientists.size(); i++) {
-        string scientistSex = (scientists.at(i).getSex() == sexType::male) ? "Male" : "Female";
 
         int yearDied = scientists.at(i).getYearDied();
         string died = (yearDied == constants::YEAR_UNSELECTED_VALUE) ? "Alive" : utils::intToString(yearDied);
@@ -418,7 +417,6 @@ void ConsoleUI::displayScientists(std::vector<Scientist> scientists)
 
         cout << setw(5)  << std::left << scientists.at(i).getId()
              << setw(20) << std::left << scientists.at(i).getName()
-             << setw(8)  << std::left << scientistSex
              << setw(12) << std::left << scientists.at(i).getYearBorn()
              << setw(12) << std::left << died;
         for(unsigned int j = 0; j < computers.size(); j++)
@@ -458,7 +456,6 @@ void ConsoleUI::displayComputers(std::vector<Computer> computers)
 
         cout << setw(5)  << std::left << computers.at(i).getId()
              << setw(20) << std::left << computers.at(i).getName()
-             << setw(15) << std::left << computers.at(i).getTypeName()
              << setw(15) << std::left << built;
         for(unsigned int j = 0; j < scientists.size(); j++)
         {
@@ -482,14 +479,14 @@ bool ConsoleUI::addScientist(string data)
     {
         string name = fields.at(0);
 
-        enum sexType sex;
+        int sex;
         if (fields.at(1) == "male")
         {
-            sex = sexType::male;
+            sex = 1;
         }
         else
         {
-            sex = sexType::female;
+            sex = 2;
         }
 
         int yearBorn = utils::stringToInt(fields.at(2));
@@ -517,23 +514,23 @@ bool ConsoleUI::addComputer(string data)
     {
         string name = fields.at(0);
 
-        enum computerType type;
+        int type;
         string typeString = fields.at(1);
         if (typeString == "electronic")
         {
-            type = computerType::electronic;
+
         }
         else if (typeString == "mechatronic")
         {
-            type = computerType::mechatronic;
+
         }
         else if (typeString == "transistor")
         {
-            type = computerType::transistor;
+
         }
         else
         {
-            type = computerType::other;
+
         }
 
         if (fields.size() == 2)

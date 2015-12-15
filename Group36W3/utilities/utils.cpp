@@ -74,22 +74,6 @@ namespace utils {
         return stream.str();
     }
 
-    enum sexType intToSex(int number)
-    {
-       return static_cast<enum sexType>(number);
-
-    }
-
-    enum computerType intToComputerType(int number)
-    {
-        return static_cast<enum computerType>(number);
-    }
-
-    enum sexType stringToSex(std::string str)
-    {
-       return intToSex(stringToInt(str));
-
-    }
 
     QSqlDatabase getDatabaseConnection()
     {
