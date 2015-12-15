@@ -101,7 +101,7 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
     ui->table_showAllScientists->setRowCount(computers.size());
     ui->table_showAllScientists->setColumnCount(5);
     QStringList header;
-    header << "ID" << "Name" << "Year Built" << "Type"<<"Was it built";
+    header << "ID" << "Name" << "Year Built" << "Type" << "Was it built";
     ui->table_showAllScientists->setHorizontalHeaderLabels(header);
      ui->table_showAllScientists->hideColumn(0);
 
@@ -123,12 +123,16 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentComputer.getType()));
-        ui->table_showAllScientists->setItem(row,3,newItem4);
+        if(newItem4->text().toInt() == 0){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Electronic"));}
+        if(newItem4->text().toInt() == 1){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Mechatronic"));}
+        if(newItem4->text().toInt() == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Transistor"));}
+        if(newItem4->text().toInt() == 3){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Other"));}
+        else {ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("error"));}
 
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
         newItem5->setText(QString::number(currentComputer.wasBuilt()));
         //Sama Enum vese og í Scientists
-        if(newItem5==0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("No"));}
+        if(newItem5 == 0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("No"));}
             else { ui->table_showAllScientists -> setItem(row,4,new QTableWidgetItem("Yes"));}
 
         //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
@@ -158,7 +162,6 @@ void MainWindow::on_Input_Filter_Scientists_textChanged(const QString &arg1)
         vector<Computer>computers = computerService.searchForComputers(inputFilter);
         displayComputers(computers);
     }
-
 }
 
 void MainWindow::on_table_showAllScientists_clicked(const QModelIndex &index)
