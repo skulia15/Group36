@@ -146,7 +146,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         Dropdown_Menu->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Choose repository</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
-        Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter scientists..", 0));
+        Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter..", 0));
         button_add_scientist->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
         button_add_computer->setText(QApplication::translate("MainWindow", "Add Computer", 0));
         button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete", 0));

@@ -40,7 +40,7 @@
     <item>
      <widget class="QLineEdit" name="Input_Filter_Scientists">
       <property name="placeholderText">
-       <string>Filter scientists..</string>
+       <string>Filter..</string>
       </property>
      </widget>
     </item>
