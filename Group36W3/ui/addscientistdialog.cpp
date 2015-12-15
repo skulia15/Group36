@@ -45,10 +45,26 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
         thereWasAnError = true;
     }
     if (!checkStringValid(name.toStdString())){
-            ui->label_error_name->setText("<span style=color:#FF2A1A>The name can only contain alphabetic characters!</span>");
+         ui->label_error_name->setText("<span style=color:#FF2A1A>The name can only contain alphabetic characters!</span>");
 
-            thereWasAnError = true;
-          }
+         thereWasAnError = true;
+    }
+    if (checkStringValid(YoB.toStdString())){
+         ui->label_error_YoB->setText("<span style=color:#FF2A1A>This this field can only contain numbers!</span>");
+
+         thereWasAnError = true;
+    }
+
+    if (checkStringValid(YoD.toStdString())){
+        if (!YoD.isEmpty()){
+            ui->label_error_YoD->setText("<span style=color:#FF2A1A>This this field can only contain numbers!</span>");
+        }
+
+         thereWasAnError = true;
+         if (YoD.isEmpty()){
+             thereWasAnError = false;
+         }
+    }
     if (sex.isEmpty()){
         ui->label_error_sex->setText("<span style=color:#FF2A1A>The scientist must have a sex!</span>");
 

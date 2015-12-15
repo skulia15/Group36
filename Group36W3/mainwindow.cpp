@@ -35,8 +35,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
 void MainWindow::displayAllScientists()//Sverrir, Sets all scientists to vector and calls display.
 {
     ScientistService scientistService;

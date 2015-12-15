@@ -4,6 +4,9 @@
 #include "services/computerservice.h"
 #include "utilities/utils.h"
 #include "mainwindow.h"
+using namespace std;
+
+bool checkStringValid(string myString);
 
 AddComputerDialog::AddComputerDialog(QWidget *parent) :
     QDialog(parent),
@@ -58,6 +61,20 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
         thereWasAnError = true;
     }
 
+    if (!checkStringValid(name.toStdString())){
+         ui->label_error_computer_name->setText("<span style=color:#FF2A1A>The name can only contain alphabetic characters!</span>");
+
+         thereWasAnError = true;
+    }
+    if (checkStringValid(yearBuilt.toStdString())){
+        if (!yearBuilt.isEmpty()){
+            ui->label_error_YB->setText("<span style=color:#FF2A1A>This this field can only contain numbers!</span>");
+        }
+         thereWasAnError = true;
+         if (yearBuilt.isEmpty()){
+             thereWasAnError = false;
+         }
+    }
     if (computerType.isEmpty()){
         ui->label_error_computer_type->setText("<span style=color:#FF2A1A>The computer must have a type!</span>");
 
@@ -81,3 +98,4 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
         qDebug() << QDate::currentDate();
     }
 }
+
