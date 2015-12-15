@@ -81,7 +81,6 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentScientists.getYearDied()));
-        qDebug() <<  newItem4->text().toInt();
         int temp = newItem4->text().toInt();
         if(temp == 0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Alive"));} //viljum fá ALIVE!!!
             else { ui->table_showAllScientists->setItem(row,4,newItem4);}
@@ -97,7 +96,6 @@ void MainWindow::displayAllComputers() //Sverrir, Sets all scientists to vector 
 
     vector<Computer>computer = cpuService.getAllComputers("name",true);
     displayComputers(computer);
-
 }
 
 
@@ -127,18 +125,22 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
         ui->table_showAllScientists->setItem(row,2,newItem3);
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
-
         newItem4->setText(QString::number(currentComputer.getType()));
-        if(newItem4->text().toInt() == 0){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Electronic"));}
-        if(newItem4->text().toInt() == 1){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Mechatronic"));}
-        if(newItem4->text().toInt() == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Transistor"));}
-        if(newItem4->text().toInt() == 3){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Other"));}
+        int temp = newItem4->text().toInt();
+
+        if(temp == 1){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Electronic"));}
+        if(temp == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Mechatronic"));}
+        if(temp == 3){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Transistor"));}
+        if(temp == 4){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Other"));}
         else {ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("error"));}
+
 
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
         newItem5->setText(QString::number(currentComputer.wasBuilt()));
         //Sama Enum vese og í Scientists
-        if(newItem5 == 0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("No"));}
+        qDebug() << newItem4->text().toInt();
+        temp = newItem4->text().toInt();
+        if(temp == 2) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("No"));}
             else { ui->table_showAllScientists -> setItem(row,4,new QTableWidgetItem("Yes"));}
 
         //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
