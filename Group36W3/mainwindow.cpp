@@ -122,11 +122,16 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
         QTableWidgetItem* newItem3 = new QTableWidgetItem();
         newItem3->setText(QString::number(currentComputer.getYearBuilt()));
-        ui->table_showAllScientists->setItem(row,2,newItem3);
+        int temp = newItem3->text().toInt();
+        qDebug() << temp;
+        if(temp == 0){ ui-> table_showAllScientists-> setItem (row,2,new QTableWidgetItem("Not Built"));}
+                else {ui->table_showAllScientists->setItem(row,2,newItem3);}
+
+
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentComputer.getType()));
-        int temp = newItem4->text().toInt();
+        temp = newItem4->text().toInt();
 
         if(temp == 1){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Electronic"));}
         if(temp == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Mechatronic"));}
