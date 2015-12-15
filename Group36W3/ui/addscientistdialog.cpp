@@ -4,6 +4,7 @@
 #include "utilities/utils.h"
 #include "mainwindow.h"
 
+
 AddScientistDialog::AddScientistDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddScientistDialog)
@@ -18,6 +19,7 @@ AddScientistDialog::~AddScientistDialog()
 
 void AddScientistDialog::on_button_add_Scientist_box_clicked()
 {
+
     ScientistService scientistService;
     bool thereWasAnError = false;
 
@@ -29,6 +31,7 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
     QString sex = ui->input_sex->text();
     QString YoB = ui->input_year_of_birth->text();
     QString YoD = ui->input_year_of_death->text();
+
 
     if (name.isEmpty()){
         ui->label_error_name->setText("The scientist must have a name!");
@@ -45,7 +48,6 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
 
         thereWasAnError = true;
     }
-
 
     if (thereWasAnError)
     {
@@ -80,3 +82,5 @@ void AddScientistDialog::on_checkBox_cpuRelations_clicked()
            ui->label_cpuRelationName->setEnabled(0);
         }
 }
+
+

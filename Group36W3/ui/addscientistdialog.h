@@ -23,6 +23,7 @@ private slots:
 
 private:
     Ui::AddScientistDialog *ui;
+
 };
 
 #endif // ADDSCIENTISTDIALOG_H

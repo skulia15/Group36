@@ -14,6 +14,7 @@ class LinkRepository
 public:
     LinkRepository();
 
+
     /**
      * @brief addLink saves a link between scientist and computer to the database
      * @param scientistId The scientist id to connect to

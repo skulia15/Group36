@@ -32,6 +32,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+
 void MainWindow::displayAllScientists()//Sverrir, Sets all scientists to vector and calls display.
 {
     ScientistService scientistService;
@@ -251,3 +253,5 @@ void MainWindow::on_button_add_computer_clicked()
     addComputerDialog.setModal(true);
     int addComputerReturnValue = addComputerDialog.exec();
 }
+
+
