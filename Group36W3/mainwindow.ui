@@ -75,6 +75,12 @@
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
+      <property name="mouseTracking">
+       <bool>false</bool>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For adding a scientists to the database&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -97,6 +103,9 @@
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For adding a computer to the database&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="text">
        <string>Add Computer</string>
       </property>
@@ -104,8 +113,21 @@
     </item>
     <item>
      <widget class="QPushButton" name="button_add_relasions">
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For adding a relation between computers and scientists to the database&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="text">
        <string>Add Relations</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="button_wiki_search">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Search Wikipedia for Selected</string>
       </property>
      </widget>
     </item>
@@ -137,9 +159,10 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="actionAdd_Scientists"/>
     <addaction name="actionAdd_Computer"/>
+    <addaction name="actionAdd_Scientists"/>
     <addaction name="actionAdd_Relation"/>
+    <addaction name="separator"/>
     <addaction name="action_Exit"/>
    </widget>
    <addaction name="menu_File"/>

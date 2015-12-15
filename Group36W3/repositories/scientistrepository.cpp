@@ -1,6 +1,10 @@
 #include "scientistrepository.h"
 #include "utilities/utils.h"
 #include "utilities/constants.h"
+#include "services/scientistservice.h"
+#include "addscientistdialog.h"
+#include "mainwindow.h"
+
 
 #include <cstdlib>
 #include <sstream>
@@ -152,3 +156,4 @@ bool ScientistRepository::removeScientist(Scientist scientist)
     db.close();
     return success;
 }
+

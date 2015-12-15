@@ -2658,6 +2658,17 @@ release/scientistrepository.o: ../Group36W3/repositories/scientistrepository.cpp
 		../Group36W3/utilities/utils.h \
 		../Group36W3/models/computer.h \
 		../Group36W3/utilities/constants.h \
+		../Group36W3/services/scientistservice.h \
+		../Group36W3/ui/addscientistdialog.h \
+		C:/Program\ Files\ (x86)/Qt/5.5/mingw492_32/include/QtWidgets/QDialog \
+		C:/Program\ Files\ (x86)/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
+		../Group36W3/mainwindow.h \
+		../Group36W3/services/computerservice.h \
+		../Group36W3/repositories/computerrepository.h \
+		../Group36W3/services/linkservice.h \
+		../Group36W3/repositories/linkrepository.h \
+		C:/Program\ Files\ (x86)/Qt/5.5/mingw492_32/include/QtWidgets/QMainWindow \
+		C:/Program\ Files\ (x86)/Qt/5.5/mingw492_32/include/QtWidgets/qmainwindow.h \
 		C:/Program\ Files\ (x86)/Qt/5.5/mingw492_32/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\scientistrepository.o ..\Group36W3\repositories\scientistrepository.cpp
 

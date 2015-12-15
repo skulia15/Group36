@@ -131,10 +131,7 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
         if(newItem4->text().toInt() == 1){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Mechatronic"));}
         if(newItem4->text().toInt() == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Transistor"));}
         if(newItem4->text().toInt() == 3){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Other"));}
-
-
         else {ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("error"));}
-        qDebug() << newItem4->text().toInt();
 
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
         newItem5->setText(QString::number(currentComputer.wasBuilt()));
@@ -174,6 +171,7 @@ void MainWindow::on_Input_Filter_Scientists_textChanged(const QString &arg1)
 void MainWindow::on_table_showAllScientists_clicked(const QModelIndex &index)
 {
     ui->button_delete_scientist->setEnabled(true);
+    ui->button_wiki_search->setEnabled(true);
 }
 
 void MainWindow::on_button_delete_scientist_clicked()
@@ -251,6 +249,7 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
         ui->button_add_scientist->setVisible(true);
         ui->button_add_computer->setVisible(false);
         ui->button_add_relasions->setVisible(false);
+        ui->button_wiki_search->setVisible(true);
     }
     if(index=="Computers")
     {
@@ -258,6 +257,7 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
         ui->button_add_computer->setVisible(true);
         ui->button_add_relasions->setVisible(false);
         ui->button_add_scientist->setVisible(false);
+        ui->button_wiki_search->setVisible(true);
     }
     if(index=="Relations")
     {
@@ -265,6 +265,7 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
         ui->button_add_scientist->setVisible(false);
         ui->button_add_computer->setVisible(false);
         ui->button_add_relasions->setVisible(true);
+        ui->button_wiki_search->setVisible(false);
     }
     else
     {
@@ -308,8 +309,6 @@ void MainWindow::on_button_add_computer_clicked()
 
 }
 
-
-
 void MainWindow::on_button_add_relasions_clicked()//Sverrir, used to open Relations window.
 {
     relations addRelations;
@@ -320,4 +319,39 @@ void MainWindow::on_button_add_relasions_clicked()//Sverrir, used to open Relati
 void MainWindow::on_actionAdd_Relation_triggered()
 {
     on_button_add_relasions_clicked();
+}
+
+
+void MainWindow::on_button_wiki_search_clicked()//searches wikipedia for computers
+{
+    QString index = ui->Dropdown_Menu->currentText();
+
+    if(index == "Scientists")
+    {
+    ScientistService scientistService;
+
+    int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
+    Scientist currentlySelectedScientist = currentScientists.at(indexOfSelected);
+    string myString = currentlySelectedScientist.getName();
+    string myOtherString = currentlySelectedScientist.getName();
+    size_t pos = myString.find(" ");
+    string str3 = myString.substr(pos);
+
+    string myUrl = "https://en.wikipedia.org/wiki/"+myString+"_"+str3+"";;
+
+    system(string("start " + myUrl).c_str());
+    }
+    if(index=="Computers")
+    {
+        ComputerService ComputerService;
+
+        int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
+        Computer currentlySelectedComputer = currentComputers.at(indexOfSelected);
+        string myString = currentlySelectedComputer.getName();
+
+
+        string myUrl = "https://en.wikipedia.org/wiki/"+myString+"";
+
+        system(string("start " + myUrl).c_str());
+    }
 }

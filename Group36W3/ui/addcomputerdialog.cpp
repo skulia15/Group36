@@ -96,7 +96,6 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
     }
     else{
         this->done(-1);
-        qDebug() << QDate::currentDate();
     }
 }
 

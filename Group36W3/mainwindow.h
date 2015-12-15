@@ -42,6 +42,8 @@ private slots:
 
     void on_actionAdd_Relation_triggered();
 
+    void on_button_wiki_search_clicked();
+
 private:
     Ui::MainWindow *ui;
     ScientistService sciServ;//Sverrir, To be able to call class from mainWindow.cpp.
@@ -52,6 +54,7 @@ private:
     void displayComputers(std::vector<Computer> Computers);
     std::vector <Scientist> currentScientists;
     std::vector <Computer> currentComputers;
+    void searchWikiCpu();
 
 };
 
