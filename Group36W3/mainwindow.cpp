@@ -28,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowIcon(QIcon("logo.png"));
     QPalette palette;
     ui->statusBar->setPalette(palette);
+    ui->button_add_computer->setVisible(false);
+    ui->button_add_relasions->setVisible(false);
 
 
     ComputerService computerService;
@@ -92,8 +94,9 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentScientists.getYearDied()));
-        ui->table_showAllScientists->setItem(row,4,newItem4);
-
+        int temp = newItem4->text().toInt();
+        if(temp == 0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Alive"));} //viljum fá ALIVE!!!
+            else { ui->table_showAllScientists->setItem(row,4,newItem4);}
 
         //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
       }
@@ -107,7 +110,6 @@ void MainWindow::displayAllComputers() //Sverrir, Sets all scientists to vector 
     vector<Computer>computer = cpuService.getAllComputers("name",true);
 
     displayComputers(computer);
-
 }
 
 
@@ -139,24 +141,30 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
         QTableWidgetItem* newItem3 = new QTableWidgetItem();
         newItem3->setText(QString::number(currentComputer.getYearBuilt()));
-        ui->table_showAllScientists->setItem(row,2,newItem3);
+        int temp = newItem3->text().toInt();
+        qDebug() << temp;
+        if(temp == 0){ ui-> table_showAllScientists-> setItem (row,2,new QTableWidgetItem("Not Built"));}
+                else {ui->table_showAllScientists->setItem(row,2,newItem3);}
+
+
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
-
         newItem4->setText(QString::number(currentComputer.getType()));
-        if(newItem4->text().toInt() == 0){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Electronic"));}
-        if(newItem4->text().toInt() == 1){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Mechatronic"));}
-        if(newItem4->text().toInt() == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Transistor"));}
-        if(newItem4->text().toInt() == 3){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Other"));}
+        temp = newItem4->text().toInt();
 
-
+        if(temp == 1){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Electronic"));}
+        if(temp == 2){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Mechatronic"));}
+        if(temp == 3){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Transistor"));}
+        if(temp == 4){ ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Other"));}
         else {ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("error"));}
 
 
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
         newItem5->setText(QString::number(currentComputer.wasBuilt()));
         //Sama Enum vese og í Scientists
-        if(newItem5 == 0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("No"));}
+        qDebug() << newItem4->text().toInt();
+        temp = newItem4->text().toInt();
+        if(temp == 2) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("No"));}
             else { ui->table_showAllScientists -> setItem(row,4,new QTableWidgetItem("Yes"));}
 
         //courtsey of https://forum.qt.io/topic/27584/fill-a-qtablewidget/10
@@ -191,6 +199,7 @@ void MainWindow::on_Input_Filter_Scientists_textChanged(const QString &arg1)
 void MainWindow::on_table_showAllScientists_clicked(const QModelIndex &index)
 {
     ui->button_delete_scientist->setEnabled(true);
+    ui->button_wiki_search->setEnabled(true);
 }
 
 void MainWindow::on_button_delete_scientist_clicked()
@@ -265,16 +274,33 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
     if(index == "Scientists")
     {   ui->table_showAllScientists->clear();
         displayAllScientists();
+        ui->button_add_scientist->setVisible(true);
+        ui->button_add_computer->setVisible(false);
+        ui->button_add_relasions->setVisible(false);
+        ui->button_wiki_search->setVisible(true);
     }
     if(index=="Computers")
     {   ui->table_showAllScientists->clear();
         displayAllComputers();
+        ui->button_add_computer->setVisible(true);
+        ui->button_add_relasions->setVisible(false);
+        ui->button_add_scientist->setVisible(false);
+        ui->button_wiki_search->setVisible(true);
     }
     if(index=="Relations")
+
     {   ui->table_showAllScientists->clear();
         displayRelation();
+
+    {
+        //display Relations.
+        ui->button_add_scientist->setVisible(false);
+        ui->button_add_computer->setVisible(false);
+        ui->button_add_relasions->setVisible(true);
+        ui->button_wiki_search->setVisible(false);
+
     }
-    else
+    }else
     {
         ui->statusBar->showMessage("Please select a repository", 3000);
     }
@@ -322,6 +348,7 @@ void MainWindow::on_button_add_relasions_clicked()//Sverrir, used to open Relati
     addRelations.setModal(true);
     addRelations.exec();
 }
+
 
 
 
@@ -380,4 +407,45 @@ void MainWindow::displayRelation()
                 }
 }
 
+
+
+void MainWindow::on_actionAdd_Relation_triggered()
+{
+    on_button_add_relasions_clicked();
+}
+
+
+void MainWindow::on_button_wiki_search_clicked()//searches wikipedia for computers
+{
+    QString index = ui->Dropdown_Menu->currentText();
+
+    if(index == "Scientists")
+    {
+    ScientistService scientistService;
+
+    int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
+    Scientist currentlySelectedScientist = currentScientists.at(indexOfSelected);
+    string myString = currentlySelectedScientist.getName();
+    string myOtherString = currentlySelectedScientist.getName();
+    size_t pos = myString.find(" ");
+    string str3 = myString.substr(pos);
+
+    string myUrl = "https://en.wikipedia.org/wiki/"+myString+"_"+str3+"";;
+
+    system(string("start " + myUrl).c_str());
+    }
+    if(index=="Computers")
+    {
+        ComputerService ComputerService;
+
+        int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
+        Computer currentlySelectedComputer = currentComputers.at(indexOfSelected);
+        string myString = currentlySelectedComputer.getName();
+
+
+        string myUrl = "https://en.wikipedia.org/wiki/"+myString+"";
+
+        system(string("start " + myUrl).c_str());
+    }
+}
 

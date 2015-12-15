@@ -35,6 +35,7 @@ public:
     QAction *actionAdd_Scientists;
     QAction *actionAdd_Computer;
     QAction *action_Exit;
+    QAction *actionAdd_Relation;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QComboBox *Dropdown_Menu;
@@ -44,6 +45,7 @@ public:
     QPushButton *button_add_scientist;
     QPushButton *button_add_computer;
     QPushButton *button_add_relasions;
+    QPushButton *button_wiki_search;
     QPushButton *button_delete_scientist;
     QMenuBar *menuBar;
     QMenu *menu_File;
@@ -61,6 +63,8 @@ public:
         actionAdd_Computer->setObjectName(QStringLiteral("actionAdd_Computer"));
         action_Exit = new QAction(MainWindow);
         action_Exit->setObjectName(QStringLiteral("action_Exit"));
+        actionAdd_Relation = new QAction(MainWindow);
+        actionAdd_Relation->setObjectName(QStringLiteral("actionAdd_Relation"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -95,7 +99,12 @@ public:
 
         button_add_scientist = new QPushButton(centralWidget);
         button_add_scientist->setObjectName(QStringLiteral("button_add_scientist"));
+        button_add_scientist->setEnabled(true);
         button_add_scientist->setCursor(QCursor(Qt::PointingHandCursor));
+        button_add_scientist->setMouseTracking(false);
+        button_add_scientist->setAutoFillBackground(false);
+        button_add_scientist->setAutoDefault(false);
+        button_add_scientist->setFlat(false);
 
         verticalLayout->addWidget(button_add_scientist);
 
@@ -109,6 +118,12 @@ public:
         button_add_relasions->setObjectName(QStringLiteral("button_add_relasions"));
 
         verticalLayout->addWidget(button_add_relasions);
+
+        button_wiki_search = new QPushButton(centralWidget);
+        button_wiki_search->setObjectName(QStringLiteral("button_wiki_search"));
+        button_wiki_search->setEnabled(false);
+
+        verticalLayout->addWidget(button_wiki_search);
 
         button_delete_scientist = new QPushButton(centralWidget);
         button_delete_scientist->setObjectName(QStringLiteral("button_delete_scientist"));
@@ -132,11 +147,16 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menu_File->menuAction());
-        menu_File->addAction(actionAdd_Scientists);
         menu_File->addAction(actionAdd_Computer);
+        menu_File->addAction(actionAdd_Scientists);
+        menu_File->addAction(actionAdd_Relation);
+        menu_File->addSeparator();
         menu_File->addAction(action_Exit);
 
         retranslateUi(MainWindow);
+
+        button_add_scientist->setDefault(false);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -147,6 +167,7 @@ public:
         actionAdd_Scientists->setText(QApplication::translate("MainWindow", "Add &Scientists", 0));
         actionAdd_Computer->setText(QApplication::translate("MainWindow", "Add &Computer", 0));
         action_Exit->setText(QApplication::translate("MainWindow", "&Exit", 0));
+        actionAdd_Relation->setText(QApplication::translate("MainWindow", "Add Relation", 0));
         Dropdown_Menu->clear();
         Dropdown_Menu->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Scientists", 0)
@@ -157,9 +178,19 @@ public:
         Dropdown_Menu->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Choose repository</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter..", 0));
+#ifndef QT_NO_WHATSTHIS
+        button_add_scientist->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>For adding a scientists to the database</p></body></html>", 0));
+#endif // QT_NO_WHATSTHIS
         button_add_scientist->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
+#ifndef QT_NO_WHATSTHIS
+        button_add_computer->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>For adding a computer to the database</p></body></html>", 0));
+#endif // QT_NO_WHATSTHIS
         button_add_computer->setText(QApplication::translate("MainWindow", "Add Computer", 0));
+#ifndef QT_NO_WHATSTHIS
+        button_add_relasions->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>For adding a relation between computers and scientists to the database</p></body></html>", 0));
+#endif // QT_NO_WHATSTHIS
         button_add_relasions->setText(QApplication::translate("MainWindow", "Add Relations", 0));
+        button_wiki_search->setText(QApplication::translate("MainWindow", "Search Wikipedia for Selected", 0));
         button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete Selected", 0));
         menu_File->setTitle(QApplication::translate("MainWindow", "&File", 0));
     } // retranslateUi

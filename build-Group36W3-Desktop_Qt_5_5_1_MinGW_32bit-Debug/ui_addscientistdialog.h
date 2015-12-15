@@ -44,6 +44,7 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_year_of_death;
     QLabel *label_pointless_alignment;
+    QLabel *label_error_YoD;
     QLineEdit *input_year_of_death;
     QPushButton *button_add_Scientist_box;
 
@@ -52,6 +53,35 @@ public:
         if (AddScientistDialog->objectName().isEmpty())
             AddScientistDialog->setObjectName(QStringLiteral("AddScientistDialog"));
         AddScientistDialog->resize(440, 348);
+        QPalette palette;
+        QBrush brush(QColor(110, 255, 219, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Light, brush);
+        QBrush brush1(QColor(213, 219, 255, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush1);
+        QBrush brush2(QColor(189, 255, 251, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Highlight, brush2);
+        palette.setBrush(QPalette::Inactive, QPalette::Light, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Highlight, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::Light, brush);
+        QBrush brush3(QColor(240, 240, 240, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush3);
+        QBrush brush4(QColor(51, 153, 255, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Highlight, brush4);
+        AddScientistDialog->setPalette(palette);
+        QIcon icon;
+        QString iconThemeName = QStringLiteral("sr");
+        if (QIcon::hasThemeIcon(iconThemeName)) {
+            icon = QIcon::fromTheme(iconThemeName);
+        } else {
+            icon.addFile(QStringLiteral("."), QSize(), QIcon::Normal, QIcon::Off);
+        }
+        AddScientistDialog->setWindowIcon(icon);
         verticalLayout_2 = new QVBoxLayout(AddScientistDialog);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         label_add_scientist = new QLabel(AddScientistDialog);
@@ -133,6 +163,11 @@ public:
 
         horizontalLayout_4->addWidget(label_pointless_alignment);
 
+        label_error_YoD = new QLabel(AddScientistDialog);
+        label_error_YoD->setObjectName(QStringLiteral("label_error_YoD"));
+
+        horizontalLayout_4->addWidget(label_error_YoD);
+
 
         verticalLayout_2->addLayout(horizontalLayout_4);
 
@@ -155,7 +190,7 @@ public:
 
     void retranslateUi(QDialog *AddScientistDialog)
     {
-        AddScientistDialog->setWindowTitle(QApplication::translate("AddScientistDialog", "Dialog", 0));
+        AddScientistDialog->setWindowTitle(QApplication::translate("AddScientistDialog", "Add Scientist", 0));
 #ifndef QT_NO_TOOLTIP
         label_add_scientist->setToolTip(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><br/></p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
@@ -168,6 +203,7 @@ public:
         label_error_YoB->setText(QString());
         label_year_of_death->setText(QApplication::translate("AddScientistDialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Year of death </span><span style=\" font-size:9pt;\">(if relevant)</span></p></body></html>", 0));
         label_pointless_alignment->setText(QString());
+        label_error_YoD->setText(QString());
         button_add_Scientist_box->setText(QApplication::translate("AddScientistDialog", "Add Scientist", 0));
     } // retranslateUi
 

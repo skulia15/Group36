@@ -16,6 +16,8 @@ AddScientistDialog::AddScientistDialog(QWidget *parent) :
     ui->comboBox_sex->addItem("");
     ui->comboBox_sex->addItem("Male");
     ui->comboBox_sex->addItem("Female");
+
+    setWindowIcon(QIcon("myapp2.rc"));
 }
 
 AddScientistDialog::~AddScientistDialog()
@@ -96,11 +98,14 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
 }
 
 bool checkStringValid(string myString){
-    for (int i = 0; i < myString.length(); i++){
-        if (!isalpha(myString[i]))
-            return false;
+    bool error = false;
+    for (unsigned int i = 0; i < myString.length(); i++){
+        if (isalpha(myString[i]) || isspace(myString[i])){
+            error = true;}
+             else return false;
     }
-    return true;
-  }
+    if (error == true){ return true;}
+    else{ return false;}
+}
 
 

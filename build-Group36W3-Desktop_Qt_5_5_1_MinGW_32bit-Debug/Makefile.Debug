@@ -81,7 +81,8 @@ OBJECTS       = debug/main.o \
 		debug/moc_addcomputerdialog.o \
 		debug/moc_relations.o
 
-DIST          = myapp.rc ..\Group36W3\mainwindow.h \
+DIST          = myapp.rc \
+		myapp2.rc ..\Group36W3\mainwindow.h \
 		..\Group36W3\models\computer.h \
 		..\Group36W3\models\scientist.h \
 		..\Group36W3\repositories\computerrepository.h \
@@ -1601,54 +1602,15 @@ debug/mainwindow.o: ../Group36W3/mainwindow.cpp ../Group36W3/mainwindow.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qmainwindow.h \
 		ui_mainwindow.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/QVariant \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QAction \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QApplication \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qapplication.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qguiapplication.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qinputmethod.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QComboBox \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlayout.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QHeaderView \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QLineEdit \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextcursor.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextformat.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qpen.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextoption.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QMenu \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qmenu.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QMenuBar \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qmenubar.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QStatusBar \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qstatusbar.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QTableWidget \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtablewidget.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtableview.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QToolBar \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtoolbar.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QVBoxLayout \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QWidget \
 		../Group36W3/utilities/constants.h \
 		../Group36W3/utilities/utils.h \
 		../Group36W3/ui/addscientistdialog.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QDialog \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		../Group36W3/ui/addcomputerdialog.h \
-		../Group36W3/ui/relations.h
+		../Group36W3/ui/relations.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/QStatusBar \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qstatusbar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\Group36W3\mainwindow.cpp
 
 debug/computer.o: ../Group36W3/models/computer.cpp ../Group36W3/models/computer.h \
@@ -2658,6 +2620,17 @@ debug/scientistrepository.o: ../Group36W3/repositories/scientistrepository.cpp .
 		../Group36W3/utilities/utils.h \
 		../Group36W3/models/computer.h \
 		../Group36W3/utilities/constants.h \
+		../Group36W3/services/scientistservice.h \
+		../Group36W3/ui/addscientistdialog.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/QDialog \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
+		../Group36W3/mainwindow.h \
+		../Group36W3/services/computerservice.h \
+		../Group36W3/repositories/computerrepository.h \
+		../Group36W3/services/linkservice.h \
+		../Group36W3/repositories/linkrepository.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/QMainWindow \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\scientistrepository.o ..\Group36W3\repositories\scientistrepository.cpp
 
@@ -4020,57 +3993,6 @@ debug/addscientistdialog.o: ../Group36W3/ui/addscientistdialog.cpp ../Group36W3/
 		C:/Qt/5.5/mingw492_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.5/mingw492_32/include/QtGui/qtouchdevice.h \
 		ui_addscientistdialog.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/QVariant \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QAction \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qicon.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QApplication \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qapplication.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/qeventloop.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qguiapplication.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qinputmethod.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QComboBox \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qcombobox.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qvalidator.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/qregularexpression.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qslider.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qstyle.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qframe.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlayout.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QHeaderView \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QLabel \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QLineEdit \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextcursor.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextformat.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qpen.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextoption.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QVBoxLayout \
 		../Group36W3/services/scientistservice.h \
 		../Group36W3/repositories/scientistrepository.h \
 		C:/Qt/5.5/mingw492_32/include/QtSql/QtSql \
@@ -4108,8 +4030,10 @@ debug/addscientistdialog.o: ../Group36W3/ui/addscientistdialog.cpp ../Group36W3/
 		C:/Qt/5.5/mingw492_32/include/QtCore/qtemporarydir.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/QScopedPointer \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qtemporaryfile.h \
+		C:/Qt/5.5/mingw492_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qabstractproxymodel.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qidentityproxymodel.h \
+		C:/Qt/5.5/mingw492_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qsortfilterproxymodel.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qstringlistmodel.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qjsonarray.h \
@@ -4117,8 +4041,10 @@ debug/addscientistdialog.o: ../Group36W3/ui/addscientistdialog.cpp ../Group36W3/
 		C:/Qt/5.5/mingw492_32/include/QtCore/qjsondocument.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qjsonobject.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qabstracteventdispatcher.h \
+		C:/Qt/5.5/mingw492_32/include/QtCore/qeventloop.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qabstractnativeeventfilter.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qbasictimer.h \
+		C:/Qt/5.5/mingw492_32/include/QtCore/qcoreapplication.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qmath.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qmetaobject.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qmimedata.h \
@@ -4172,6 +4098,7 @@ debug/addscientistdialog.o: ../Group36W3/ui/addscientistdialog.cpp ../Group36W3/
 		C:/Qt/5.5/mingw492_32/include/QtCore/qlinkedlist.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qmessageauthenticationcode.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qqueue.h \
+		C:/Qt/5.5/mingw492_32/include/QtCore/qregularexpression.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qscopedvaluerollback.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qstack.h \
 		C:/Qt/5.5/mingw492_32/include/QtCore/qtextboundaryfinder.h \
@@ -4192,7 +4119,22 @@ debug/addscientistdialog.o: ../Group36W3/ui/addscientistdialog.cpp ../Group36W3/
 		C:/Qt/5.5/mingw492_32/include/QtSql/qsqlquerymodel.h \
 		C:/Qt/5.5/mingw492_32/include/QtSql/qsqlrelationaldelegate.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qitemdelegate.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qstyleoption.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Qt/5.5/mingw492_32/include/QtGui/qvalidator.h \
+		C:/Qt/5.5/mingw492_32/include/QtGui/qicon.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qslider.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractslider.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qstyle.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtabbar.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtabwidget.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qrubberband.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qframe.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlistview.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.5/mingw492_32/include/QtWidgets/qcombobox.h \
 		C:/Qt/5.5/mingw492_32/include/QtSql/qsqlrelationaltablemodel.h \
 		C:/Qt/5.5/mingw492_32/include/QtSql/qsqltablemodel.h \
 		C:/Qt/5.5/mingw492_32/include/QtSql/qtsqlversion.h \
@@ -4468,31 +4410,6 @@ debug/addcomputerdialog.o: ../Group36W3/ui/addcomputerdialog.cpp ../Group36W3/ui
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qmainwindow.h \
 		../Group36W3/ui/addscientistdialog.h \
 		ui_addcomputerdialog.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/QVariant \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QAction \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QApplication \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qapplication.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qguiapplication.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qinputmethod.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QComboBox \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QHeaderView \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QLabel \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QLineEdit \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextcursor.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextformat.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qpen.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextoption.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractbutton.h \
 		../Group36W3/utilities/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\addcomputerdialog.o ..\Group36W3\ui\addcomputerdialog.cpp
 
@@ -4754,50 +4671,11 @@ debug/relations.o: ../Group36W3/ui/relations.cpp ../Group36W3/ui/relations.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QDialog \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdialog.h \
 		ui_relations.h \
-		C:/Qt/5.5/mingw492_32/include/QtCore/QVariant \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QAction \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qaction.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QApplication \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qapplication.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qguiapplication.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qinputmethod.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QHeaderView \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QPushButton \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QTableWidget \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtablewidget.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtableview.h \
 		../Group36W3/utilities/utils.h \
 		../Group36W3/mainwindow.h \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.5/mingw492_32/include/QtWidgets/qmainwindow.h \
-		ui_mainwindow.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QComboBox \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlayout.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QLineEdit \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextcursor.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextformat.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qpen.h \
-		C:/Qt/5.5/mingw492_32/include/QtGui/qtextoption.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QMenu \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qmenu.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QMenuBar \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qmenubar.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QToolBar \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/qtoolbar.h \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QVBoxLayout \
-		C:/Qt/5.5/mingw492_32/include/QtWidgets/QWidget
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\relations.o ..\Group36W3\ui\relations.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 

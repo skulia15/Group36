@@ -7,6 +7,7 @@
 using namespace std;
 
 bool checkStringValid(string myString);
+bool checkCompStringValid(string myString);
 
 AddComputerDialog::AddComputerDialog(QWidget *parent) :
     QDialog(parent),
@@ -61,8 +62,8 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
         thereWasAnError = true;
     }
 
-    if (!checkStringValid(name.toStdString())){
-         ui->label_error_computer_name->setText("<span style=color:#FF2A1A>The name can only contain alphabetic characters!</span>");
+    if (!checkCompStringValid(name.toStdString())){
+         ui->label_error_computer_name->setText("<span style=color:#FF2A1A>The name must only contain alphanumeric characters</span>");
 
          thereWasAnError = true;
     }
@@ -99,3 +100,13 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
     }
 }
 
+bool checkCompStringValid(string myString){
+    bool error = false;
+    for (unsigned int i = 0; i < myString.length(); i++){
+        if (isalnum(myString[i]) || isspace(myString[i])){
+            error = true;}
+             else return false;
+    }
+    if (error == true) return true;
+    else return false;
+  }
