@@ -17,13 +17,13 @@ CXXFLAGS      = -nologo -Zm200 -Zc:wchar_t -FS -Zi -MDd -GR -W3 -w34100 -w34189 
 INCPATH       = -I"..\Group36W3" -I"." -I"..\Group36W3\models" -I"..\Group36W3\ui" -I"C:\Qt\5.4\msvc2013_64\include" -I"C:\Qt\5.4\msvc2013_64\include\QtWidgets" -I"C:\Qt\5.4\msvc2013_64\include\QtGui" -I"C:\Qt\5.4\msvc2013_64\include\QtANGLE" -I"C:\Qt\5.4\msvc2013_64\include\QtSql" -I"C:\Qt\5.4\msvc2013_64\include\QtCore" -I"debug" -I"." -I"C:\Qt\5.4\msvc2013_64\mkspecs\win32-msvc2013" 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /DEBUG /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:C:\Qt\5.4\msvc2013_64\lib C:\Qt\5.4\msvc2013_64\lib\qtmaind.lib shell32.lib C:\Qt\5.4\msvc2013_64\lib\Qt5Widgetsd.lib C:\Qt\5.4\msvc2013_64\lib\Qt5Guid.lib C:\Qt\5.4\msvc2013_64\lib\Qt5Sqld.lib C:\Qt\5.4\msvc2013_64\lib\Qt5Cored.lib 
+LIBS          = /LIBPATH:C:\Qt\5.4\msvc2013_64\lib C:\Qt\5.4\msvc2013_64\lib\qtmaind.lib shell32.lib C:\Qt\5.4\msvc2013_64\lib\Qt5Widgetsd.lib C:\Qt\5.4\msvc2013_64\lib\Qt5Guid.lib C:\Qt\5.4\msvc2013_64\lib\Qt5Sqld.lib C:\Qt\5.4\msvc2013_64\lib\Qt5Cored.lib debug\myapp.res 
 QMAKE         = C:\Qt\5.4\msvc2013_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = debug\myapp.res
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = $(COPY)
@@ -77,7 +77,7 @@ OBJECTS       = debug\main.obj \
 		debug\moc_addscientistdialog.obj \
 		debug\moc_addcomputerdialog.obj
 
-DIST          =  ..\Group36W3\mainwindow.h \
+DIST          = myapp.rc ..\Group36W3\mainwindow.h \
 		..\Group36W3\models\computer.h \
 		..\Group36W3\models\scientist.h \
 		..\Group36W3\repositories\computerrepository.h \
@@ -278,10 +278,13 @@ DESTDIR_TARGET = debug\Group36W3.exe
 first: all
 all: Makefile.Debug $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_mainwindow.h ui_addscientistdialog.h ui_addcomputerdialog.h $(OBJECTS) 
+$(DESTDIR_TARGET): ui_mainwindow.h ui_addscientistdialog.h ui_addcomputerdialog.h $(OBJECTS) debug\myapp.res
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
 $(OBJECTS) $(LIBS)
 <<
+
+debug\myapp.res: ..\Group36W3\myapp.rc
+	rc -D_DEBUG $(DEFINES) -fo debug\myapp.res ..\Group36W3\myapp.rc
 
 qmake: FORCE
 	@$(QMAKE) -spec win32-msvc2013 CONFIG+=debug -o Makefile.Debug ..\Group36W3\Group36W3.pro
@@ -294,6 +297,7 @@ dist:
 clean: compiler_clean 
 	-$(DEL_FILE) debug\main.obj debug\mainwindow.obj debug\computer.obj debug\scientist.obj debug\computerrepository.obj debug\linkrepository.obj debug\scientistrepository.obj debug\computerservice.obj debug\linkservice.obj debug\scientistservice.obj debug\consoleui.obj debug\utils.obj debug\addscientistdialog.obj debug\addcomputerdialog.obj debug\moc_mainwindow.obj debug\moc_addscientistdialog.obj debug\moc_addcomputerdialog.obj
 	-$(DEL_FILE) debug\Group36W3.exp debug\Group36W3.ilk debug\Group36W3.idb
+	-$(DEL_FILE) debug\myapp.res
 
 distclean: clean 
 	-$(DEL_FILE) debug\Group36W3.pdb
@@ -779,6 +783,161 @@ debug\moc_addcomputerdialog.cpp: C:\Qt\5.4\msvc2013_64\include\QtWidgets\QDialog
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qfiledevice.h \
 		C:\Qt\5.4\msvc2013_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.4\msvc2013_64\include\QtGui\qtouchdevice.h \
+		..\Group36W3\services\scientistservice.h \
+		..\Group36W3\repositories\scientistrepository.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\QtSql \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\QtSqlDepends \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\QtCore \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\QtCoreDepends \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractanimation.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qanimationgroup.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qparallelanimationgroup.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qpauseanimation.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qpropertyanimation.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qvariantanimation.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qeasingcurve.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qsequentialanimationgroup.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qtextcodec.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qendian.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qlibraryinfo.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qbuffer.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qdir.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qfileinfo.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qdiriterator.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qfileselector.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\QObject \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\QStringList \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qfilesystemwatcher.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qlockfile.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qloggingcategory.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qprocess.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qresource.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qsavefile.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qsettings.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qstandardpaths.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qstorageinfo.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qtemporarydir.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\QScopedPointer \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qtemporaryfile.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractproxymodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qidentityproxymodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qsortfilterproxymodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qstringlistmodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qjsonarray.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qjsonvalue.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qjsondocument.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qjsonobject.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstracteventdispatcher.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractnativeeventfilter.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qbasictimer.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qmath.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qmetaobject.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qmimedata.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qobjectcleanuphandler.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qpointer.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qsharedmemory.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qsignalmapper.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qsocketnotifier.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qsystemsemaphore.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qtimer.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qtranslator.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qwineventnotifier.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qmimedatabase.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qmimetype.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qfactoryinterface.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qlibrary.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qplugin.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qpluginloader.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\quuid.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractstate.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstracttransition.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qeventtransition.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qfinalstate.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qhistorystate.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qsignaltransition.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qstate.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qstatemachine.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qexception.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qfuture.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qfutureinterface.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qrunnable.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qresultstore.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qfuturesynchronizer.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qfuturewatcher.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qreadwritelock.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qsemaphore.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qthread.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qthreadpool.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qthreadstorage.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qwaitcondition.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qarraydataops.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qarraydatapointer.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qbitarray.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qbytearraymatcher.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qcache.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qcollator.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qcommandlineoption.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qcommandlineparser.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qcryptographichash.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qelapsedtimer.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qlinkedlist.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qmessageauthenticationcode.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qqueue.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qregularexpression.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qscopedvaluerollback.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qstack.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qtextboundaryfinder.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qtimeline.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qtimezone.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qxmlstream.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qtcoreversion.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsql.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqldriver.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqldriverplugin.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlerror.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlfield.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlindex.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlrecord.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlquery.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlresult.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlquerymodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlrelationaldelegate.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qitemdelegate.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qstyleoption.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\5.4\msvc2013_64\include\QtGui\qvalidator.h \
+		C:\Qt\5.4\msvc2013_64\include\QtGui\qicon.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qslider.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractslider.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qstyle.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qtabbar.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qrubberband.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlistview.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qcombobox.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlrelationaltablemodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqltablemodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtSql\qtsqlversion.h \
+		..\Group36W3\models\scientist.h \
+		..\Group36W3\services\computerservice.h \
+		..\Group36W3\repositories\computerrepository.h \
+		..\Group36W3\models\computer.h \
+		..\Group36W3\mainwindow.h \
+		..\Group36W3\services\linkservice.h \
+		..\Group36W3\repositories\linkrepository.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QMainWindow \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qmainwindow.h \
+		..\Group36W3\ui\addscientistdialog.h \
 		..\Group36W3\ui\addcomputerdialog.h
 	C:\Qt\5.4\msvc2013_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1800 -D_WIN32 -D_WIN64 -IC:/Qt/5.4/msvc2013_64/mkspecs/win32-msvc2013 -IC:/Users/Notandi/Documents/GitHub/Group36/Group36W3 -IC:/Users/Notandi/Documents/GitHub/Group36/Group36W3/models -IC:/Users/Notandi/Documents/GitHub/Group36/Group36W3/ui -IC:/Qt/5.4/msvc2013_64/include -IC:/Qt/5.4/msvc2013_64/include/QtWidgets -IC:/Qt/5.4/msvc2013_64/include/QtGui -IC:/Qt/5.4/msvc2013_64/include/QtANGLE -IC:/Qt/5.4/msvc2013_64/include/QtSql -IC:/Qt/5.4/msvc2013_64/include/QtCore -I. ..\Group36W3\ui\addcomputerdialog.h -o debug\moc_addcomputerdialog.cpp
 
@@ -1350,9 +1509,10 @@ debug\mainwindow.obj: ..\Group36W3\mainwindow.cpp ..\Group36W3\mainwindow.h \
 		C:\Qt\5.4\msvc2013_64\include\QtGui\qtextformat.h \
 		C:\Qt\5.4\msvc2013_64\include\QtGui\qpen.h \
 		C:\Qt\5.4\msvc2013_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QMenu \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qmenu.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QMenuBar \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qmenubar.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qmenu.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QPushButton \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qpushbutton.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractbutton.h \
@@ -3744,18 +3904,8 @@ debug\addscientistdialog.obj: ..\Group36W3\ui\addscientistdialog.cpp ..\Group36W
 		C:\Qt\5.4\msvc2013_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QButtonGroup \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qbuttongroup.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QHBoxLayout \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qboxlayout.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlayout.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlayoutitem.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qgridlayout.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QHeaderView \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qheaderview.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemview.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractitemmodel.h \
-		C:\Qt\5.4\msvc2013_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QComboBox \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qcombobox.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qstyleoption.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
@@ -3767,6 +3917,18 @@ debug\addscientistdialog.obj: ..\Group36W3\ui\addscientistdialog.cpp ..\Group36W
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qtabbar.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qrubberband.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QHBoxLayout \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qboxlayout.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlayout.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlayoutitem.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qgridlayout.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QHeaderView \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qheaderview.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qitemselectionmodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QLabel \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlabel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QLineEdit \
@@ -3901,7 +4063,6 @@ debug\addscientistdialog.obj: ..\Group36W3\ui\addscientistdialog.cpp ..\Group36W
 		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlrelationaldelegate.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qitemdelegate.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlistview.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qcombobox.h \
 		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlrelationaltablemodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqltablemodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtSql\qtsqlversion.h \
@@ -4020,56 +4181,6 @@ debug\addcomputerdialog.obj: ..\Group36W3\ui\addcomputerdialog.cpp ..\Group36W3\
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qfiledevice.h \
 		C:\Qt\5.4\msvc2013_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.4\msvc2013_64\include\QtGui\qtouchdevice.h \
-		ui_addcomputerdialog.h \
-		C:\Qt\5.4\msvc2013_64\include\QtCore\QVariant \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QAction \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qaction.h \
-		C:\Qt\5.4\msvc2013_64\include\QtGui\qicon.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qactiongroup.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QApplication \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.4\msvc2013_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.4\msvc2013_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.4\msvc2013_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.4\msvc2013_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QButtonGroup \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qbuttongroup.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QHBoxLayout \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qboxlayout.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlayout.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlayoutitem.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qgridlayout.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QHeaderView \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qheaderview.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemview.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractitemmodel.h \
-		C:\Qt\5.4\msvc2013_64\include\QtCore\qitemselectionmodel.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qstyleoption.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.4\msvc2013_64\include\QtGui\qvalidator.h \
-		C:\Qt\5.4\msvc2013_64\include\QtCore\qregularexpression.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qslider.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractslider.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qstyle.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qtabbar.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qtabwidget.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qrubberband.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QLabel \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QLineEdit \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlineedit.h \
-		C:\Qt\5.4\msvc2013_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.4\msvc2013_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.4\msvc2013_64\include\QtGui\qpen.h \
-		C:\Qt\5.4\msvc2013_64\include\QtGui\qtextoption.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QPushButton \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qpushbutton.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractbutton.h \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QVBoxLayout \
 		..\Group36W3\services\scientistservice.h \
 		..\Group36W3\repositories\scientistrepository.h \
 		C:\Qt\5.4\msvc2013_64\include\QtSql\QtSql \
@@ -4107,8 +4218,10 @@ debug\addcomputerdialog.obj: ..\Group36W3\ui\addcomputerdialog.cpp ..\Group36W3\
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qtemporarydir.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\QScopedPointer \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qtemporaryfile.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractitemmodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractproxymodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qidentityproxymodel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qitemselectionmodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qsortfilterproxymodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qstringlistmodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qjsonarray.h \
@@ -4116,8 +4229,10 @@ debug\addcomputerdialog.obj: ..\Group36W3\ui\addcomputerdialog.cpp ..\Group36W3\
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qjsondocument.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qjsonobject.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstracteventdispatcher.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qeventloop.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qabstractnativeeventfilter.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qbasictimer.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qcoreapplication.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qmath.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qmetaobject.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qmimedata.h \
@@ -4171,6 +4286,7 @@ debug\addcomputerdialog.obj: ..\Group36W3\ui\addcomputerdialog.cpp ..\Group36W3\
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qlinkedlist.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qmessageauthenticationcode.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qqueue.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\qregularexpression.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qscopedvaluerollback.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qstack.h \
 		C:\Qt\5.4\msvc2013_64\include\QtCore\qtextboundaryfinder.h \
@@ -4191,21 +4307,67 @@ debug\addcomputerdialog.obj: ..\Group36W3\ui\addcomputerdialog.cpp ..\Group36W3\
 		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlquerymodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlrelationaldelegate.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qitemdelegate.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qstyleoption.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\5.4\msvc2013_64\include\QtGui\qvalidator.h \
+		C:\Qt\5.4\msvc2013_64\include\QtGui\qicon.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qslider.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractslider.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qstyle.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qtabbar.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qrubberband.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qframe.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlistview.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qcombobox.h \
 		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqlrelationaltablemodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtSql\qsqltablemodel.h \
 		C:\Qt\5.4\msvc2013_64\include\QtSql\qtsqlversion.h \
 		..\Group36W3\models\scientist.h \
-		..\Group36W3\utilities\utils.h \
-		..\Group36W3\models\computer.h \
-		..\Group36W3\mainwindow.h \
 		..\Group36W3\services\computerservice.h \
 		..\Group36W3\repositories\computerrepository.h \
+		..\Group36W3\models\computer.h \
+		..\Group36W3\mainwindow.h \
 		..\Group36W3\services\linkservice.h \
 		..\Group36W3\repositories\linkrepository.h \
 		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QMainWindow \
-		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qmainwindow.h
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qmainwindow.h \
+		..\Group36W3\ui\addscientistdialog.h \
+		ui_addcomputerdialog.h \
+		C:\Qt\5.4\msvc2013_64\include\QtCore\QVariant \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QAction \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qaction.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qactiongroup.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QApplication \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.4\msvc2013_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.4\msvc2013_64\include\QtGui\qinputmethod.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QButtonGroup \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qbuttongroup.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QHBoxLayout \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qboxlayout.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlayout.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlayoutitem.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qgridlayout.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QHeaderView \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qheaderview.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QLabel \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlabel.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QLineEdit \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qlineedit.h \
+		C:\Qt\5.4\msvc2013_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.4\msvc2013_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.4\msvc2013_64\include\QtGui\qpen.h \
+		C:\Qt\5.4\msvc2013_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QPushButton \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qpushbutton.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractbutton.h \
+		C:\Qt\5.4\msvc2013_64\include\QtWidgets\QVBoxLayout \
+		..\Group36W3\utilities\utils.h
 
 debug\moc_mainwindow.obj: debug\moc_mainwindow.cpp 
 

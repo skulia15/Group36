@@ -67,6 +67,9 @@
     </layout>
    </item>
    <item>
+    <widget class="QComboBox" name="comboBox"/>
+   </item>
+   <item>
     <widget class="QLineEdit" name="input_sex"/>
    </item>
    <item>
@@ -95,7 +98,7 @@
      <item>
       <widget class="QLabel" name="label_year_of_death">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Year of death&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Year of death &lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;(if relevant)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>

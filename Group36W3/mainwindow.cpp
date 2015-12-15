@@ -6,10 +6,10 @@
 #include "services/computerservice.h"
 #include "string"
 #include "addscientistdialog.h"
-#include "addcomputerdialog.h"
 #include <iostream>
 #include <iomanip>
 #include <services/linkservice.h>
+#include "addcomputerdialog.h"
 
 using namespace std;
 
@@ -202,7 +202,7 @@ void MainWindow::on_button_add_scientist_clicked()
     }
     else
     {
-        ui->statusBar->showMessage("Error! Scientist was not added.", 3000);
+        ui->statusBar->showMessage("Error! Scientist was not added, make sure tables have been created.", 3000);
     }
 }
 
@@ -242,4 +242,12 @@ void MainWindow::on_actionAdd_Computer_triggered()
 void MainWindow::on_action_Exit_triggered()
 {
     close();
+}
+
+
+void MainWindow::on_button_add_computer_clicked()
+{
+    AddComputerDialog addComputerDialog;
+    addComputerDialog.setModal(true);
+    int addComputerReturnValue = addComputerDialog.exec();
 }

@@ -84,7 +84,7 @@
        <bool>false</bool>
       </property>
       <property name="text">
-       <string>Delete</string>
+       <string>Delete Selected</string>
       </property>
      </widget>
     </item>
