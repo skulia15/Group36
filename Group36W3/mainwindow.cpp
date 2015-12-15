@@ -168,22 +168,48 @@ void MainWindow::on_table_showAllScientists_clicked(const QModelIndex &index)
 
 void MainWindow::on_button_delete_scientist_clicked()
 {
-    ScientistService scientistService;
-
-    int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
-    Scientist currentlySelectedScientist = currentScientists.at(indexOfSelected);
-
-    bool success = scientistService.removeScientist(currentlySelectedScientist);
-
-    if (success)
+    QString index = ui->Dropdown_Menu->currentText();
+    if(index == "Scientists")
     {
-       ui->Input_Filter_Scientists->setText("");
-       displayAllScientists();
+        ScientistService scientistService;
+
+        int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
+        Scientist currentlySelectedScientist = currentScientists.at(indexOfSelected);
+
+        bool success = scientistService.removeScientist(currentlySelectedScientist);
+
+        if (success)
+        {
+           ui->Input_Filter_Scientists->setText("");
+           displayAllScientists();
+           ui->statusBar->showMessage("Successfully removed scientist", 3000);
+        }
+        else
+        {
+           ui->statusBar->showMessage("Scientist was NOT deleted", 3000);
+        }
     }
-    else
+    if(index=="Computers")
     {
-        //error message
+        ComputerService computerService;
+
+        int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
+        Computer currentlySelectedComputer = currentComputers.at(indexOfSelected);
+
+        bool success = computerService.removeComputer(currentlySelectedComputer);
+
+        if (success)
+        {
+           //ui->Input_Filter_Scientists->setText(""); gera filter fyrir  computers
+           displayAllComputers();
+           ui->statusBar->showMessage("Successfully removed Computer", 3000);
+        }
+        else
+        {
+           ui->statusBar->showMessage("Computer was NOT deleted", 3000);
+        }
     }
+
 }
 
 
@@ -236,7 +262,7 @@ void MainWindow::on_actionAdd_Scientists_triggered()
 
 void MainWindow::on_actionAdd_Computer_triggered()
 {
-    //add computer via file menu
+    on_button_add_computer_clicked();
 }
 
 void MainWindow::on_action_Exit_triggered()
@@ -250,4 +276,17 @@ void MainWindow::on_button_add_computer_clicked()
     AddComputerDialog addComputerDialog;
     addComputerDialog.setModal(true);
     int addComputerReturnValue = addComputerDialog.exec();
+
+    if (addComputerReturnValue == 0)
+    {
+       // ui->Input_Filter_Scientists->setText(""); setja filter fyrir comps
+        displayAllComputers();
+
+        ui->statusBar->showMessage("Successfully added computer", 3000);
+    }
+    else
+    {
+        ui->statusBar->showMessage("Error! Computer was not added, make sure tables have been created.", 3000);
+    }
+
 }

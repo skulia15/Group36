@@ -67,9 +67,6 @@
     </layout>
    </item>
    <item>
-    <widget class="QComboBox" name="comboBox"/>
-   </item>
-   <item>
     <widget class="QLineEdit" name="input_sex"/>
    </item>
    <item>

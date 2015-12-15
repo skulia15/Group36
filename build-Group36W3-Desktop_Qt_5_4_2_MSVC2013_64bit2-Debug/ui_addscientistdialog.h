@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -36,7 +35,6 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_input_sex;
     QLabel *label_error_sex;
-    QComboBox *comboBox;
     QLineEdit *input_sex;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_year_of_birth;
@@ -95,11 +93,6 @@ public:
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
-
-        comboBox = new QComboBox(AddScientistDialog);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-
-        verticalLayout_2->addWidget(comboBox);
 
         input_sex = new QLineEdit(AddScientistDialog);
         input_sex->setObjectName(QStringLiteral("input_sex"));
