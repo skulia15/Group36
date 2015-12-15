@@ -35,6 +35,7 @@ public:
     QAction *actionAdd_Scientists;
     QAction *actionAdd_Computer;
     QAction *action_Exit;
+    QAction *actionAdd_Relation;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QComboBox *Dropdown_Menu;
@@ -61,6 +62,8 @@ public:
         actionAdd_Computer->setObjectName(QStringLiteral("actionAdd_Computer"));
         action_Exit = new QAction(MainWindow);
         action_Exit->setObjectName(QStringLiteral("action_Exit"));
+        actionAdd_Relation = new QAction(MainWindow);
+        actionAdd_Relation->setObjectName(QStringLiteral("actionAdd_Relation"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -95,7 +98,11 @@ public:
 
         button_add_scientist = new QPushButton(centralWidget);
         button_add_scientist->setObjectName(QStringLiteral("button_add_scientist"));
+        button_add_scientist->setEnabled(true);
         button_add_scientist->setCursor(QCursor(Qt::PointingHandCursor));
+        button_add_scientist->setAutoFillBackground(false);
+        button_add_scientist->setAutoDefault(false);
+        button_add_scientist->setFlat(false);
 
         verticalLayout->addWidget(button_add_scientist);
 
@@ -134,9 +141,13 @@ public:
         menuBar->addAction(menu_File->menuAction());
         menu_File->addAction(actionAdd_Scientists);
         menu_File->addAction(actionAdd_Computer);
+        menu_File->addAction(actionAdd_Relation);
         menu_File->addAction(action_Exit);
 
         retranslateUi(MainWindow);
+
+        button_add_scientist->setDefault(false);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -147,6 +158,7 @@ public:
         actionAdd_Scientists->setText(QApplication::translate("MainWindow", "Add &Scientists", 0));
         actionAdd_Computer->setText(QApplication::translate("MainWindow", "Add &Computer", 0));
         action_Exit->setText(QApplication::translate("MainWindow", "&Exit", 0));
+        actionAdd_Relation->setText(QApplication::translate("MainWindow", "Add Relation", 0));
         Dropdown_Menu->clear();
         Dropdown_Menu->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Scientists", 0)

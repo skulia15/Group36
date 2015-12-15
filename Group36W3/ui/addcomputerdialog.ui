@@ -6,15 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>496</width>
-    <height>336</height>
+    <width>465</width>
+    <height>348</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Add Computer</string>
-  </property>
-  <property name="windowIcon">
-   <iconset theme="myapp2.rc"/>
+   <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item alignment="Qt::AlignHCenter">
@@ -88,6 +85,20 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QPushButton" name="button_add_computer_box">

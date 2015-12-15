@@ -69,11 +69,26 @@
     </item>
     <item>
      <widget class="QPushButton" name="button_add_scientist">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Add Scientist</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
@@ -124,6 +139,7 @@
     </property>
     <addaction name="actionAdd_Scientists"/>
     <addaction name="actionAdd_Computer"/>
+    <addaction name="actionAdd_Relation"/>
     <addaction name="action_Exit"/>
    </widget>
    <addaction name="menu_File"/>
@@ -150,6 +166,11 @@
   <action name="action_Exit">
    <property name="text">
     <string>&amp;Exit</string>
+   </property>
+  </action>
+  <action name="actionAdd_Relation">
+   <property name="text">
+    <string>Add Relation</string>
    </property>
   </action>
  </widget>

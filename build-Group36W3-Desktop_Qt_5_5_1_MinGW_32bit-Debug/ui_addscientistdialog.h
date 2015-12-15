@@ -53,6 +53,15 @@ public:
         if (AddScientistDialog->objectName().isEmpty())
             AddScientistDialog->setObjectName(QStringLiteral("AddScientistDialog"));
         AddScientistDialog->resize(440, 348);
+        QPalette palette;
+        QBrush brush(QColor(0, 110, 255, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        QBrush brush1(QColor(240, 240, 240, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        AddScientistDialog->setPalette(palette);
         QIcon icon(QIcon::fromTheme(QStringLiteral("sr")));
         AddScientistDialog->setWindowIcon(icon);
         verticalLayout_2 = new QVBoxLayout(AddScientistDialog);

@@ -40,6 +40,8 @@ private slots:
 
     void on_button_add_relasions_clicked();
 
+    void on_actionAdd_Relation_triggered();
+
 private:
     Ui::MainWindow *ui;
     ScientistService sciServ;//Sverrir, To be able to call class from mainWindow.cpp.

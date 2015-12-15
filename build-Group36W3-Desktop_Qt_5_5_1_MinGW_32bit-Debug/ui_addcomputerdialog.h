@@ -38,15 +38,15 @@ public:
     QLabel *label_Computer_type;
     QLabel *label_error_computer_type;
     QComboBox *comboBox_computer_type;
+    QLabel *label;
+    QLabel *label_2;
     QPushButton *button_add_computer_box;
 
     void setupUi(QDialog *AddComputerDialog)
     {
         if (AddComputerDialog->objectName().isEmpty())
             AddComputerDialog->setObjectName(QStringLiteral("AddComputerDialog"));
-        AddComputerDialog->resize(496, 336);
-        QIcon icon(QIcon::fromTheme(QStringLiteral("myapp2.rc")));
-        AddComputerDialog->setWindowIcon(icon);
+        AddComputerDialog->resize(465, 348);
         verticalLayout_2 = new QVBoxLayout(AddComputerDialog);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         label_add_computer = new QLabel(AddComputerDialog);
@@ -106,6 +106,16 @@ public:
 
         verticalLayout_2->addLayout(verticalLayout);
 
+        label = new QLabel(AddComputerDialog);
+        label->setObjectName(QStringLiteral("label"));
+
+        verticalLayout_2->addWidget(label);
+
+        label_2 = new QLabel(AddComputerDialog);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        verticalLayout_2->addWidget(label_2);
+
         button_add_computer_box = new QPushButton(AddComputerDialog);
         button_add_computer_box->setObjectName(QStringLiteral("button_add_computer_box"));
         button_add_computer_box->setCursor(QCursor(Qt::PointingHandCursor));
@@ -120,7 +130,7 @@ public:
 
     void retranslateUi(QDialog *AddComputerDialog)
     {
-        AddComputerDialog->setWindowTitle(QApplication::translate("AddComputerDialog", "Add Computer", 0));
+        AddComputerDialog->setWindowTitle(QApplication::translate("AddComputerDialog", "Dialog", 0));
 #ifndef QT_NO_TOOLTIP
         label_add_computer->setToolTip(QApplication::translate("AddComputerDialog", "<html><head/><body><p align=\"center\"><br/></p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
@@ -131,6 +141,8 @@ public:
         label_error_YB->setText(QString());
         label_Computer_type->setText(QApplication::translate("AddComputerDialog", "<html><head/><body><p><span style=\" font-size:11pt;\">Computer Type</span></p></body></html>", 0));
         label_error_computer_type->setText(QString());
+        label->setText(QString());
+        label_2->setText(QString());
         button_add_computer_box->setText(QApplication::translate("AddComputerDialog", "Add Computer", 0));
     } // retranslateUi
 

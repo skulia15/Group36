@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowIcon(QIcon("logo.png"));
     QPalette palette;
     ui->statusBar->setPalette(palette);
+    ui->button_add_computer->setVisible(false);
+    ui->button_add_relasions->setVisible(false);
 
 
     ComputerService computerService;
@@ -246,14 +248,23 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
     if(index == "Scientists")
     {
         displayAllScientists();
+        ui->button_add_scientist->setVisible(true);
+        ui->button_add_computer->setVisible(false);
+        ui->button_add_relasions->setVisible(false);
     }
     if(index=="Computers")
     {
         displayAllComputers();
+        ui->button_add_computer->setVisible(true);
+        ui->button_add_relasions->setVisible(false);
+        ui->button_add_scientist->setVisible(false);
     }
     if(index=="Relations")
     {
         //display Relations.
+        ui->button_add_scientist->setVisible(false);
+        ui->button_add_computer->setVisible(false);
+        ui->button_add_relasions->setVisible(true);
     }
     else
     {
@@ -304,4 +315,9 @@ void MainWindow::on_button_add_relasions_clicked()//Sverrir, used to open Relati
     relations addRelations;
     addRelations.setModal(true);
     addRelations.exec();
+}
+
+void MainWindow::on_actionAdd_Relation_triggered()
+{
+    on_button_add_relasions_clicked();
 }
