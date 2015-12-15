@@ -1,5 +1,6 @@
 #include "linkrepository.h"
 #include "utilities/utils.h"
+#include "models/linkrelations.h"
 
 #include <cstdlib>
 #include <sstream>
@@ -10,6 +11,7 @@ using namespace std;
 LinkRepository::LinkRepository()
 {
     db = utils::getDatabaseConnection();
+
 }
 
 bool LinkRepository::addLink(string scientistId, string computerId)
@@ -34,8 +36,11 @@ bool LinkRepository::addLink(string scientistId, string computerId)
         return false;
     }
 
+
+
     db.close();
 
     return true;
 }
+
 

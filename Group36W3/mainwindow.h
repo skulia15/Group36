@@ -5,6 +5,7 @@
 #include "services/linkservice.h"
 #include <QMainWindow>
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -40,9 +41,11 @@ private slots:
 
     void on_button_add_relasions_clicked();
 
+
     void on_actionAdd_Relation_triggered();
 
     void on_button_wiki_search_clicked();
+
 
 private:
     Ui::MainWindow *ui;
@@ -54,7 +57,12 @@ private:
     void displayComputers(std::vector<Computer> Computers);
     std::vector <Scientist> currentScientists;
     std::vector <Computer> currentComputers;
+
+    void displayRelation();
+    QSqlDatabase db;
+
     void searchWikiCpu();
+
 
 };
 
