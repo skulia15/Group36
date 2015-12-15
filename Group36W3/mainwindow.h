@@ -5,6 +5,7 @@
 #include "services/linkservice.h"
 #include <QMainWindow>
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -40,6 +41,8 @@ private slots:
 
     void on_button_add_relasions_clicked();
 
+
+
 private:
     Ui::MainWindow *ui;
     ScientistService sciServ;//Sverrir, To be able to call class from mainWindow.cpp.
@@ -50,6 +53,8 @@ private:
     void displayComputers(std::vector<Computer> Computers);
     std::vector <Scientist> currentScientists;
     std::vector <Computer> currentComputers;
+    void displayRelation();
+    QSqlDatabase db;
 
 };
 

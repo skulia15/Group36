@@ -11,6 +11,12 @@
 #include <services/linkservice.h>
 #include "addcomputerdialog.h"
 #include "relations.h"
+#include "repositories/linkrepository.h"
+#include "repositories/computerrepository.h"
+#include "repositories/scientistrepository.h"
+
+#include "utilities/utils.h"
+
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -27,7 +33,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ComputerService computerService;
     LinkService links;
     ScientistService scientistService;
-    displayAllScientists();
+   // displayAllScientists();
+
 }
 
 MainWindow::~MainWindow()
@@ -46,13 +53,18 @@ void MainWindow::displayAllScientists()//Sverrir, Sets all scientists to vector 
 
 void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, shows scientists.at(i).
 {
-    //ui->table_showAllScientists->clear();
+
 
     ui->table_showAllScientists->setRowCount(scientists.size());
     ui->table_showAllScientists->setColumnCount(5);
     QStringList header;
     header << "ID" << "Name" << "Sex" << "YoB" << "YoD";
     ui->table_showAllScientists->setHorizontalHeaderLabels(header);
+    ui->table_showAllScientists->setColumnWidth(0,120);
+    ui->table_showAllScientists->setColumnWidth(1,120);
+    ui->table_showAllScientists->setColumnWidth(2,120);
+    ui->table_showAllScientists->setColumnWidth(3,120);
+    ui->table_showAllScientists->setColumnWidth(4,120);
      ui->table_showAllScientists->hideColumn(0);
 
      for(unsigned int row = 0; row < scientists.size(); row++)
@@ -67,11 +79,12 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
         newItem1->setText(QString::fromStdString(currentScientists.getName()));
         ui->table_showAllScientists->setItem(row,1,newItem1);
 
-        //Tekst ekki að breyta Enum í int.
-        //þarf að nota =static_cast<int>
+
+
         QTableWidgetItem* newItem2 = new QTableWidgetItem();
-        newItem2->setText(QString::number(static_cast<int>(currentScientists.getSex())));
+        newItem2->setText(QString::number((currentScientists.getSex())));
         ui->table_showAllScientists->setItem(row,2,newItem2);
+
 
         QTableWidgetItem* newItem3 = new QTableWidgetItem();
         newItem3->setText(QString::number(currentScientists.getYearBorn()));
@@ -92,7 +105,7 @@ void MainWindow::displayAllComputers() //Sverrir, Sets all scientists to vector 
     ComputerService cpuService;
 
     vector<Computer>computer = cpuService.getAllComputers("name",true);
-qDebug()<<computer.size();
+
     displayComputers(computer);
 
 }
@@ -106,6 +119,11 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
     header << "ID" << "Name" << "Year Built" << "Type" << "Was it built";
     ui->table_showAllScientists->setHorizontalHeaderLabels(header);
      ui->table_showAllScientists->hideColumn(0);
+     ui->table_showAllScientists->setColumnWidth(0,120);
+     ui->table_showAllScientists->setColumnWidth(1,120);
+     ui->table_showAllScientists->setColumnWidth(2,120);
+     ui->table_showAllScientists->setColumnWidth(3,120);
+     ui->table_showAllScientists->setColumnWidth(4,120);
 
      for(unsigned int row = 0; row < computers.size(); row++)
      {
@@ -133,7 +151,7 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
 
 
         else {ui->table_showAllScientists->setItem(row,3,new QTableWidgetItem("error"));}
-        qDebug() << newItem4->text().toInt();
+
 
         QTableWidgetItem* newItem5 = new QTableWidgetItem();
         newItem5->setText(QString::number(currentComputer.wasBuilt()));
@@ -245,16 +263,16 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
 {
     QString index = ui->Dropdown_Menu->currentText();
     if(index == "Scientists")
-    {
+    {   ui->table_showAllScientists->clear();
         displayAllScientists();
     }
     if(index=="Computers")
-    {
+    {   ui->table_showAllScientists->clear();
         displayAllComputers();
     }
     if(index=="Relations")
-    {
-        //display Relations.
+    {   ui->table_showAllScientists->clear();
+        displayRelation();
     }
     else
     {
@@ -298,11 +316,68 @@ void MainWindow::on_button_add_computer_clicked()
 
 }
 
-
-
 void MainWindow::on_button_add_relasions_clicked()//Sverrir, used to open Relations window.
 {
     relations addRelations;
     addRelations.setModal(true);
     addRelations.exec();
 }
+
+
+
+void MainWindow::displayRelation()
+    {
+
+        std::vector<string>viktor;
+        std::vector<string>viktor2;
+
+
+            db = utils::getDatabaseConnection();
+
+
+            QSqlQuery query(db);
+            query.exec("SELECT *FROM ScientistComputerConnections");
+            while(query.next())
+            {
+                string scid = query.value("scientistId").toString().toStdString();
+                string cpuId = query.value("computerId").toString().toStdString();
+
+
+                 viktor.push_back(scid);
+                 viktor2.push_back(cpuId);
+
+
+            }
+
+        db.close();
+
+
+
+               ui->table_showAllScientists->setRowCount(viktor.size());
+               ui->table_showAllScientists->setColumnCount(3);
+               QStringList header;
+               header << "Id"<< "Sci ID" << "Cpu Id";
+               ui->table_showAllScientists->setHorizontalHeaderLabels(header);
+               ui->table_showAllScientists->hideColumn(0);
+               ui->table_showAllScientists->setColumnWidth(0,120);
+               ui->table_showAllScientists->setColumnWidth(1,120);
+               ui->table_showAllScientists->setColumnWidth(2,120);
+
+
+                for(unsigned int row = 0; row < viktor.size(); row++)
+                     {
+
+                        QTableWidgetItem* newItem = new QTableWidgetItem();
+                        newItem->setText(QString::fromStdString(viktor.at(row)));
+                        ui->table_showAllScientists->setItem(row,1,newItem);
+
+                     }
+                for(unsigned int row = 0; row<viktor2.size();row++)
+                {
+                    QTableWidgetItem* newItem2 = new QTableWidgetItem();
+                    newItem2->setText(QString::fromStdString(viktor2.at(row)));
+                    ui->table_showAllScientists->setItem(row,2,newItem2);
+                }
+}
+
+

@@ -76,7 +76,8 @@ namespace utils {
 
     enum sexType intToSex(int number)
     {
-        return static_cast<enum sexType>(number);
+       return static_cast<enum sexType>(number);
+
     }
 
     enum computerType intToComputerType(int number)
@@ -86,7 +87,8 @@ namespace utils {
 
     enum sexType stringToSex(std::string str)
     {
-        return intToSex(stringToInt(str));
+       return intToSex(stringToInt(str));
+
     }
 
     QSqlDatabase getDatabaseConnection()

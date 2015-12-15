@@ -57,7 +57,7 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
 
     if (checkStringValid(YoD.toStdString())){
         if (!YoD.isEmpty()){
-            ui->label_error_YoD->setText("<span style=color:#FF2A1A>This this field can only contain numbers!</span>");
+            //ui->label_error_YoD->setText("<span style=color:#FF2A1A>This this field can only contain numbers!</span>");
         }
 
          thereWasAnError = true;

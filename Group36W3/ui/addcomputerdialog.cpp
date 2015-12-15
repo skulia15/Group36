@@ -68,7 +68,7 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
     }
     if (checkStringValid(yearBuilt.toStdString())){
         if (!yearBuilt.isEmpty()){
-            ui->label_error_YB->setText("<span style=color:#FF2A1A>This this field can only contain numbers!</span>");
+            //ui->label_error_YB->setText("<span style=color:#FF2A1A>This this field can only contain numbers!</span>");
         }
          thereWasAnError = true;
          if (yearBuilt.isEmpty()){
@@ -95,7 +95,7 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
     }
     else{
         this->done(-1);
-        qDebug() << QDate::currentDate();
+
     }
 }
 
