@@ -92,7 +92,6 @@ void MainWindow::displayAllComputers() //Sverrir, Sets all scientists to vector 
     ComputerService cpuService;
 
     vector<Computer>computer = cpuService.getAllComputers("name",true);
-qDebug()<<computer.size();
     displayComputers(computer);
 
 }
