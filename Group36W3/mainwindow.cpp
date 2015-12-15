@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowTitle("Scientists And Computer Finder 3000");
     setWindowIcon(QIcon("logo.png"));
+    QPalette palette;
+    ui->statusBar->setPalette(palette);
 
 
     ComputerService computerService;

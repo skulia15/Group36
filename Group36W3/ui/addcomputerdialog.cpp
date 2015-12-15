@@ -53,13 +53,13 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
     }
 
     if (name.isEmpty()){
-        ui->label_error_computer_name->setText("The computer must have a name!");
+        ui->label_error_computer_name->setText("<span style=color:#FF2A1A>The computer must have a name!</span>");
 
         thereWasAnError = true;
     }
 
     if (computerType.isEmpty()){
-        ui->label_error_computer_type->setText("The computer must have a type!");
+        ui->label_error_computer_type->setText("<span style=color:#FF2A1A>The computer must have a type!</span>");
 
         thereWasAnError = true;
     }

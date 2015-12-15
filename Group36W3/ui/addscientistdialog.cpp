@@ -4,6 +4,9 @@
 #include "utilities/utils.h"
 #include "mainwindow.h"
 
+using namespace std;
+
+bool checkStringValid(string myString);
 
 AddScientistDialog::AddScientistDialog(QWidget *parent) :
     QDialog(parent),
@@ -37,17 +40,22 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
 
 
     if (name.isEmpty()){
-        ui->label_error_name->setText("The scientist must have a name!");
+        ui->label_error_name->setText("<span style=color:#FF2A1A>The scientist must have a name!</span>");
 
         thereWasAnError = true;
     }
+    if (!checkStringValid(name.toStdString())){
+            ui->label_error_name->setText("<span style=color:#FF2A1A>The name can only contain alphabetic characters!</span>");
+
+            thereWasAnError = true;
+          }
     if (sex.isEmpty()){
-        ui->label_error_sex->setText("The scientist must have a sex!");
+        ui->label_error_sex->setText("<span style=color:#FF2A1A>The scientist must have a sex!</span>");
 
         thereWasAnError = true;
     }
     if (YoB.isEmpty()){
-        ui->label_error_YoB->setText("The scientist must have been born!");
+        ui->label_error_YoB->setText("<span style=color:#FF2A1A>The scientist must have been born!</span>");
 
         thereWasAnError = true;
     }
@@ -71,5 +79,12 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
     }
 }
 
+bool checkStringValid(string myString){
+    for (int i = 0; i < myString.length(); i++){
+        if (!isalpha(myString[i]))
+            return false;
+    }
+    return true;
+  }
 
 
