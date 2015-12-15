@@ -72,8 +72,17 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
         //Tekst ekki að breyta Enum í int.
         //þarf að nota =static_cast<int>
         QTableWidgetItem* newItem2 = new QTableWidgetItem();
-        newItem2->setText(QString::number(static_cast<int>(currentScientists.getSex())));
-        ui->table_showAllScientists->setItem(row,2,newItem2);
+        newItem2->setText(QString::number(currentScientists.getSex()));
+        int temp = newItem2->text().toInt();
+        if (temp == 1){
+            ui->table_showAllScientists->setItem(row,2,new QTableWidgetItem("Male"));
+        }
+        if (temp == 2){
+            ui->table_showAllScientists->setItem(row,2,new QTableWidgetItem("Female"));
+        }
+        else{if (temp == 3){}
+            ui->table_showAllScientists->setItem(row,2,new QTableWidgetItem("Male"));
+        }
 
         QTableWidgetItem* newItem3 = new QTableWidgetItem();
         newItem3->setText(QString::number(currentScientists.getYearBorn()));
@@ -81,7 +90,7 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentScientists.getYearDied()));
-        int temp = newItem4->text().toInt();
+        temp = newItem4->text().toInt();
         if(temp == 0) { ui-> table_showAllScientists-> setItem (row,4,new QTableWidgetItem("Alive"));} //viljum fá ALIVE!!!
             else { ui->table_showAllScientists->setItem(row,4,newItem4);}
 
@@ -123,11 +132,8 @@ void MainWindow::displayComputers(std::vector<Computer> computers)
         QTableWidgetItem* newItem3 = new QTableWidgetItem();
         newItem3->setText(QString::number(currentComputer.getYearBuilt()));
         int temp = newItem3->text().toInt();
-        qDebug() << temp;
         if(temp == 0){ ui-> table_showAllScientists-> setItem (row,2,new QTableWidgetItem("Not Built"));}
                 else {ui->table_showAllScientists->setItem(row,2,newItem3);}
-
-
 
         QTableWidgetItem* newItem4 = new QTableWidgetItem();
         newItem4->setText(QString::number(currentComputer.getType()));

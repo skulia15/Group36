@@ -30,13 +30,23 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
 
     ScientistService scientistService;
     bool thereWasAnError = false;
+    int sex;
 
     ui->label_error_name->setText("");
     ui->label_error_sex->setText("");
     ui->label_error_YoB->setText("");
 
     QString name = ui->Input_Scientist_Name->text();
-    QString sex = ui->comboBox_sex->currentText();
+    QString temp = ui->comboBox_sex->currentText();
+
+    if (temp == "Male"){
+        sex = 1;
+    }
+    else if (temp == "Female"){
+        sex = 2;
+    }
+    else sex = 3;
+
     QString YoB = ui->input_year_of_birth->text();
     QString YoD = ui->input_year_of_death->text();
 
@@ -67,7 +77,7 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
              thereWasAnError = false;
          }
     }
-    if (sex.isEmpty()){
+    if (sex == 3){
         ui->label_error_sex->setText("<span style=color:#FF2A1A>The scientist must have a sex!</span>");
 
         thereWasAnError = true;
@@ -83,7 +93,7 @@ void AddScientistDialog::on_button_add_Scientist_box_clicked()
         return;
     }
 
-    bool success = scientistService.addScientist(Scientist(name.toStdString(), utils::stringToSex(sex.toStdString()), YoB.toInt(), YoD.toInt()));
+    bool success = scientistService.addScientist(Scientist(name.toStdString(), sex, YoB.toInt(), YoD.toInt()));
 
 
     if (success){
