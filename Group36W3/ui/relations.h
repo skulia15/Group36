@@ -17,9 +17,14 @@ class relations : public QDialog
 public:
     explicit relations(QWidget *parent = 0);
     ~relations();
-
+    bool value;
+    bool value2;
+    void unlock(bool value, bool value2);
 private slots:
     void on_pushButton_clicked();
+
+    void on_table_relations_scientists_clicked();
+    void on_table_relations_Computers_clicked();
 
 private:
     Ui::relations *ui;
