@@ -100,7 +100,6 @@ void relations::displayComputersRelations(std::vector<Computer> computers)
 
 void relations::on_pushButton_clicked()
 {
-
     LinkService link;
     QString sciId = ui->table_relations_scientists->currentItem()->text();
     QString cpuId = ui->table_relations_Computers->currentItem()->text();
@@ -110,7 +109,6 @@ void relations::on_pushButton_clicked()
 
     if(!sciId.isEmpty() || !cpuId.isEmpty())
     {
-
         link.addLink(sciId.toStdString(),cpuId.toStdString());
         displayAllScientistsRelations();
         displayAllComputersRelations();
@@ -119,9 +117,11 @@ void relations::on_pushButton_clicked()
         bool success = link.addLink(sciId.toStdString(),cpuId.toStdString());
         if (success){
             displayAllComputersRelations();
+            displayAllScientistsRelations();
             this->done(0);
         }
             else{
+            displayAllComputersRelations();
                 this->done(-1);
             }
     }
@@ -141,7 +141,7 @@ void relations::on_pushButton_clicked()
 
     if(cpuId.isEmpty())
     {
-       ui->label_error_cpu->setText("Kindly inlcude a computer");
+       ui->label_error_cpu->setText("Kindly include a computer");
     }
 
 }while(error==false);

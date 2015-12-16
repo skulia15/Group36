@@ -70,7 +70,8 @@ void MainWindow::displayScientists(std::vector<Scientist> scientists)//Sverrir, 
     ui->table_showAllScientists->setColumnWidth(2,120);
     ui->table_showAllScientists->setColumnWidth(3,120);
     ui->table_showAllScientists->setColumnWidth(4,120);
-     ui->table_showAllScientists->hideColumn(0);
+    ui->table_showAllScientists->showColumn(4);
+    ui->table_showAllScientists->hideColumn(0);
 
      for(unsigned int row = 0; row < scientists.size(); row++)
      {
@@ -263,12 +264,13 @@ void MainWindow::on_button_delete_scientist_clicked()
     }
     if(index=="Relations"){
         LinkService link;
-        QString sciId = ui->table_relations_Computers->currentItem()->text();
-        QString cpuId = ui->table_relations_Computers->currentItem()->text();
 
         int indexOfSelected = ui->table_showAllScientists->currentIndex().row();
 
-        bool success = removeLink(sciId, cpuId);
+        QString sciId = ui->table_showAllScientists->currentItem()->text();
+        QString cpuId = ui->table_showAllScientists->currentItem()->text();
+
+        bool success = link.removeLink(sciId.toStdString(), cpuId.toStdString());
 
         if (success)
         {
@@ -281,7 +283,6 @@ void MainWindow::on_button_delete_scientist_clicked()
            ui->statusBar->showMessage("Relation was NOT deleted", 3000);
         }
     }
-
 }
 
 
@@ -329,7 +330,7 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
         displayRelation();
 
     {
-        //display Relations.
+        displayRelation();
         ui->button_add_scientist->setVisible(false);
         ui->button_add_computer->setVisible(false);
         ui->button_add_relasions->setVisible(true);
@@ -338,7 +339,7 @@ void MainWindow::on_Dropdown_Menu_currentIndexChanged(const QString &arg1)
     }
     }else
     {
-        ui->statusBar->showMessage("Please select a repository", 3000);
+        ui->statusBar->showMessage("Please select a repository", 1000);
     }
 }
 
@@ -394,6 +395,7 @@ void MainWindow::on_button_add_relasions_clicked()//Sverrir, used to open Relati
     {
         ui->statusBar->showMessage("Error! Relation was not added, make sure tables have been created.", 3000);
     }
+    displayRelation();
 }
 
 
