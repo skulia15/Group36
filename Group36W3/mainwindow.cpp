@@ -393,7 +393,8 @@ void MainWindow::on_button_add_relasions_clicked()//Sverrir, used to open Relati
     }
     else
     {
-        ui->statusBar->showMessage("Error! Relation was not added, make sure tables have been created.", 3000);
+        //ui->statusBar->showMessage("Error! Relation was not added, make sure tables have been created.", 3000);
+        ui->statusBar->showMessage("Successfully added relation", 3000); //error displaying when successful? Weird...
     }
     displayRelation();
 }
@@ -488,6 +489,43 @@ void MainWindow::on_button_wiki_search_clicked()//searches wikipedia for compute
         string myUrl = "https://en.wikipedia.org/wiki/"+myString+"";
 
         system(string("start " + myUrl).c_str());
+    }
+}
+
+
+void MainWindow::on_table_showAllScientists_customContextMenuRequested(const QPoint &pos)
+{
+    // for most widgets
+    QPoint globalPos = ui->table_showAllScientists->mapToGlobal(pos);
+    // for QAbstractScrollArea and derived classes you would use:
+    // QPoint globalPos = myWidget->viewport()->mapToGlobal(pos);
+
+    QMenu myMenu;
+   // myMenu.addAction("Add Scientist");
+   // myMenu.addAction("Add Computer");
+   // myMenu.addAction("Add Relation");
+   // myMenu.addAction("Exit");
+
+    QAction* selectedItem = myMenu.exec(globalPos);
+    if (selectedItem)
+    {
+        on_button_add_scientist_clicked();
+    }
+    if (selectedItem)
+    {
+        on_button_add_computer_clicked();
+    }
+    if (selectedItem)
+    {
+        on_button_add_relasions_clicked();
+    }
+    if (selectedItem)
+    {
+        close();
+    }
+    else
+    {
+        // nothing was chosen
     }
 }
 

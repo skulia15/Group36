@@ -47,6 +47,8 @@ private slots:
     void on_button_wiki_search_clicked();
 
 
+    void on_table_showAllScientists_customContextMenuRequested(const QPoint &pos);
+
 private:
     Ui::MainWindow *ui;
     ScientistService sciServ;//Sverrir, To be able to call class from mainWindow.cpp.

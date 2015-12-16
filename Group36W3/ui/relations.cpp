@@ -43,6 +43,7 @@ void relations::displayScientistsRelations(std::vector<Scientist> scientists)//S
     QStringList header;
     header << "ID" << "Name";
     ui->table_relations_scientists->setHorizontalHeaderLabels(header);
+    ui->table_relations_scientists->hideColumn(0);
 
 
      for(unsigned int row = 0; row < scientists.size(); row++)
@@ -79,7 +80,7 @@ void relations::displayComputersRelations(std::vector<Computer> computers)
     QStringList header;
     header << "ID" << "Name";
     ui->table_relations_Computers->setHorizontalHeaderLabels(header);
-    // ui->table_relations_Computers->hideColumn(0);
+    ui->table_relations_Computers->hideColumn(0);
 
      for(unsigned int row = 0; row < computers.size(); row++)
      {

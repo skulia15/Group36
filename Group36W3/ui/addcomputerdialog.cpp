@@ -67,7 +67,7 @@ void AddComputerDialog::on_button_add_computer_box_clicked()
         thereWasAnError = true;
     }
 
-    if (!checkCompStringValid(name.toStdString())){
+    else if (!checkCompStringValid(name.toStdString())){
          ui->label_error_computer_name->setText("<span style=color:#FF2A1A>The name must only contain alphanumeric characters</span>");
 
          thereWasAnError = true;
