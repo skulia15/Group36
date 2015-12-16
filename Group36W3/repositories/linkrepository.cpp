@@ -49,6 +49,7 @@ bool LinkRepository::removeLink(string scientistId, string computerId)
 
     stringstream sqlQuery;
     sqlQuery << "DELETE FROM ScientistComputerConnections WHERE scientistId = '" << scientistId << "'";
+    //sqlQuery << "DELETE FROM ScientistComputerConnections WHERE computerId = '" << computerId << "'";
     bool success = query.exec(QString::fromStdString(sqlQuery.str()));
 
     db.close();
