@@ -6,6 +6,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QStatusBar>
+#include "ui/relations.h"
 
 using namespace std;
 
@@ -127,7 +128,6 @@ void relations::on_pushButton_clicked()
             }
     }
 
-
     if(sciId.isEmpty() || cpuId.isEmpty())
     {
        ui->label_error_Sci->setText("Kindly include a scientists");
@@ -139,7 +139,6 @@ void relations::on_pushButton_clicked()
        ui->label_error_Sci->setText("Kindly include a scientists");
     }
 
-
     if(cpuId.isEmpty())
     {
        ui->label_error_cpu->setText("Kindly include a computer");
@@ -148,7 +147,24 @@ void relations::on_pushButton_clicked()
 }while(error==false);
 
     displayAllComputersRelations();
-
-
 }
 
+void relations::on_table_relations_scientists_clicked()
+{
+    value = false;
+    qDebug()<< value;
+}
+
+void relations::on_table_relations_Computers_clicked()
+{
+    value2 = false;
+    qDebug()<< value2;
+unlock(value,value2);
+}
+
+void relations::unlock(bool value, bool value2)
+{
+
+ if(value == false && value2 == false)
+     ui->pushButton->setEnabled(true);
+}
