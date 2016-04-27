@@ -13,10 +13,12 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -30,20 +32,23 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionAdd_Scientists;
+    QAction *actionAdd_Computer;
+    QAction *action_Exit;
+    QAction *actionAdd_Relation;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
+    QComboBox *Dropdown_Menu;
+    QLineEdit *Input_Filter_Scientists;
+    QHBoxLayout *horizontalLayout_4;
     QTableWidget *table_showAllScientists;
-    QLabel *label_add_scientist;
-    QLabel *label_input_label;
-    QLineEdit *Input_Scientist_Name;
-    QLabel *label_input_sex;
-    QLineEdit *input_sex;
-    QLabel *label_year_of_birth;
-    QLineEdit *input_year_of_birth;
-    QLabel *label_year_of_death;
-    QLineEdit *input_year_of_death;
-    QPushButton *button_scientists_to_table;
+    QPushButton *button_add_scientist;
+    QPushButton *button_add_computer;
+    QPushButton *button_add_relasions;
+    QPushButton *button_wiki_search;
+    QPushButton *button_delete_scientist;
     QMenuBar *menuBar;
+    QMenu *menu_File;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -51,84 +56,100 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(945, 403);
+        MainWindow->resize(531, 417);
+        actionAdd_Scientists = new QAction(MainWindow);
+        actionAdd_Scientists->setObjectName(QStringLiteral("actionAdd_Scientists"));
+        actionAdd_Computer = new QAction(MainWindow);
+        actionAdd_Computer->setObjectName(QStringLiteral("actionAdd_Computer"));
+        action_Exit = new QAction(MainWindow);
+        action_Exit->setObjectName(QStringLiteral("action_Exit"));
+        actionAdd_Relation = new QAction(MainWindow);
+        actionAdd_Relation->setObjectName(QStringLiteral("actionAdd_Relation"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        Dropdown_Menu = new QComboBox(centralWidget);
+        Dropdown_Menu->setObjectName(QStringLiteral("Dropdown_Menu"));
+        Dropdown_Menu->setCursor(QCursor(Qt::PointingHandCursor));
+
+        verticalLayout->addWidget(Dropdown_Menu);
+
+        Input_Filter_Scientists = new QLineEdit(centralWidget);
+        Input_Filter_Scientists->setObjectName(QStringLiteral("Input_Filter_Scientists"));
+
+        verticalLayout->addWidget(Input_Filter_Scientists);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         table_showAllScientists = new QTableWidget(centralWidget);
-        if (table_showAllScientists->columnCount() < 5)
-            table_showAllScientists->setColumnCount(5);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        table_showAllScientists->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        table_showAllScientists->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        table_showAllScientists->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        table_showAllScientists->setHorizontalHeaderItem(3, __qtablewidgetitem3);
-        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        table_showAllScientists->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         table_showAllScientists->setObjectName(QStringLiteral("table_showAllScientists"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(12);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(table_showAllScientists->sizePolicy().hasHeightForWidth());
+        table_showAllScientists->setSizePolicy(sizePolicy);
+        table_showAllScientists->setContextMenuPolicy(Qt::CustomContextMenu);
+        table_showAllScientists->setToolTipDuration(-2);
+        table_showAllScientists->setAutoFillBackground(true);
+        table_showAllScientists->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        table_showAllScientists->setSelectionMode(QAbstractItemView::ExtendedSelection);
+        table_showAllScientists->setSelectionBehavior(QAbstractItemView::SelectRows);
+        table_showAllScientists->setSortingEnabled(true);
+        table_showAllScientists->horizontalHeader()->setCascadingSectionResizes(true);
+        table_showAllScientists->horizontalHeader()->setDefaultSectionSize(122);
+        table_showAllScientists->horizontalHeader()->setStretchLastSection(true);
+        table_showAllScientists->verticalHeader()->setVisible(false);
 
-        verticalLayout->addWidget(table_showAllScientists);
+        horizontalLayout_4->addWidget(table_showAllScientists);
 
-        label_add_scientist = new QLabel(centralWidget);
-        label_add_scientist->setObjectName(QStringLiteral("label_add_scientist"));
 
-        verticalLayout->addWidget(label_add_scientist);
+        verticalLayout->addLayout(horizontalLayout_4);
 
-        label_input_label = new QLabel(centralWidget);
-        label_input_label->setObjectName(QStringLiteral("label_input_label"));
+        button_add_scientist = new QPushButton(centralWidget);
+        button_add_scientist->setObjectName(QStringLiteral("button_add_scientist"));
+        button_add_scientist->setEnabled(true);
+        button_add_scientist->setCursor(QCursor(Qt::PointingHandCursor));
+        button_add_scientist->setMouseTracking(false);
+        button_add_scientist->setAutoFillBackground(false);
+        button_add_scientist->setAutoDefault(false);
+        button_add_scientist->setFlat(false);
 
-        verticalLayout->addWidget(label_input_label);
+        verticalLayout->addWidget(button_add_scientist);
 
-        Input_Scientist_Name = new QLineEdit(centralWidget);
-        Input_Scientist_Name->setObjectName(QStringLiteral("Input_Scientist_Name"));
+        button_add_computer = new QPushButton(centralWidget);
+        button_add_computer->setObjectName(QStringLiteral("button_add_computer"));
+        button_add_computer->setCursor(QCursor(Qt::PointingHandCursor));
 
-        verticalLayout->addWidget(Input_Scientist_Name);
+        verticalLayout->addWidget(button_add_computer);
 
-        label_input_sex = new QLabel(centralWidget);
-        label_input_sex->setObjectName(QStringLiteral("label_input_sex"));
+        button_add_relasions = new QPushButton(centralWidget);
+        button_add_relasions->setObjectName(QStringLiteral("button_add_relasions"));
 
-        verticalLayout->addWidget(label_input_sex);
+        verticalLayout->addWidget(button_add_relasions);
 
-        input_sex = new QLineEdit(centralWidget);
-        input_sex->setObjectName(QStringLiteral("input_sex"));
+        button_wiki_search = new QPushButton(centralWidget);
+        button_wiki_search->setObjectName(QStringLiteral("button_wiki_search"));
+        button_wiki_search->setEnabled(false);
 
-        verticalLayout->addWidget(input_sex);
+        verticalLayout->addWidget(button_wiki_search);
 
-        label_year_of_birth = new QLabel(centralWidget);
-        label_year_of_birth->setObjectName(QStringLiteral("label_year_of_birth"));
+        button_delete_scientist = new QPushButton(centralWidget);
+        button_delete_scientist->setObjectName(QStringLiteral("button_delete_scientist"));
+        button_delete_scientist->setEnabled(false);
+        button_delete_scientist->setCursor(QCursor(Qt::PointingHandCursor));
 
-        verticalLayout->addWidget(label_year_of_birth);
-
-        input_year_of_birth = new QLineEdit(centralWidget);
-        input_year_of_birth->setObjectName(QStringLiteral("input_year_of_birth"));
-
-        verticalLayout->addWidget(input_year_of_birth);
-
-        label_year_of_death = new QLabel(centralWidget);
-        label_year_of_death->setObjectName(QStringLiteral("label_year_of_death"));
-
-        verticalLayout->addWidget(label_year_of_death);
-
-        input_year_of_death = new QLineEdit(centralWidget);
-        input_year_of_death->setObjectName(QStringLiteral("input_year_of_death"));
-
-        verticalLayout->addWidget(input_year_of_death);
-
-        button_scientists_to_table = new QPushButton(centralWidget);
-        button_scientists_to_table->setObjectName(QStringLiteral("button_scientists_to_table"));
-
-        verticalLayout->addWidget(button_scientists_to_table);
+        verticalLayout->addWidget(button_delete_scientist);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 945, 21));
+        menuBar->setGeometry(QRect(0, 0, 531, 21));
+        menu_File = new QMenu(menuBar);
+        menu_File->setObjectName(QStringLiteral("menu_File"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -137,7 +158,17 @@ public:
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
 
+        menuBar->addAction(menu_File->menuAction());
+        menu_File->addAction(actionAdd_Computer);
+        menu_File->addAction(actionAdd_Scientists);
+        menu_File->addAction(actionAdd_Relation);
+        menu_File->addSeparator();
+        menu_File->addAction(action_Exit);
+
         retranslateUi(MainWindow);
+
+        button_add_scientist->setDefault(false);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -145,22 +176,35 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        QTableWidgetItem *___qtablewidgetitem = table_showAllScientists->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "Id", 0));
-        QTableWidgetItem *___qtablewidgetitem1 = table_showAllScientists->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "Name", 0));
-        QTableWidgetItem *___qtablewidgetitem2 = table_showAllScientists->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "Sex", 0));
-        QTableWidgetItem *___qtablewidgetitem3 = table_showAllScientists->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("MainWindow", "Birth Year", 0));
-        QTableWidgetItem *___qtablewidgetitem4 = table_showAllScientists->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("MainWindow", "Died in ", 0));
-        label_add_scientist->setText(QApplication::translate("MainWindow", "Add a new Scientist", 0));
-        label_input_label->setText(QApplication::translate("MainWindow", "Input scientist name", 0));
-        label_input_sex->setText(QApplication::translate("MainWindow", "Sex", 0));
-        label_year_of_birth->setText(QApplication::translate("MainWindow", "Year of birth", 0));
-        label_year_of_death->setText(QApplication::translate("MainWindow", "Year of death", 0));
-        button_scientists_to_table->setText(QApplication::translate("MainWindow", "Add to table", 0));
+        actionAdd_Scientists->setText(QApplication::translate("MainWindow", "Add &Scientists", 0));
+        actionAdd_Computer->setText(QApplication::translate("MainWindow", "Add &Computer", 0));
+        action_Exit->setText(QApplication::translate("MainWindow", "&Exit", 0));
+        actionAdd_Relation->setText(QApplication::translate("MainWindow", "Add Relation", 0));
+        Dropdown_Menu->clear();
+        Dropdown_Menu->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Scientists", 0)
+         << QApplication::translate("MainWindow", "Computers", 0)
+         << QApplication::translate("MainWindow", "Relations", 0)
+        );
+#ifndef QT_NO_TOOLTIP
+        Dropdown_Menu->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p>Choose repository</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
+        Input_Filter_Scientists->setPlaceholderText(QApplication::translate("MainWindow", "Filter..", 0));
+#ifndef QT_NO_WHATSTHIS
+        button_add_scientist->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>For adding a scientists to the database</p></body></html>", 0));
+#endif // QT_NO_WHATSTHIS
+        button_add_scientist->setText(QApplication::translate("MainWindow", "Add Scientist", 0));
+#ifndef QT_NO_WHATSTHIS
+        button_add_computer->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>For adding a computer to the database</p></body></html>", 0));
+#endif // QT_NO_WHATSTHIS
+        button_add_computer->setText(QApplication::translate("MainWindow", "Add Computer", 0));
+#ifndef QT_NO_WHATSTHIS
+        button_add_relasions->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>For adding a relation between computers and scientists to the database</p></body></html>", 0));
+#endif // QT_NO_WHATSTHIS
+        button_add_relasions->setText(QApplication::translate("MainWindow", "Add Relations", 0));
+        button_wiki_search->setText(QApplication::translate("MainWindow", "Search Wikipedia for Selected", 0));
+        button_delete_scientist->setText(QApplication::translate("MainWindow", "Delete Selected", 0));
+        menu_File->setTitle(QApplication::translate("MainWindow", "&File", 0));
     } // retranslateUi
 
 };
